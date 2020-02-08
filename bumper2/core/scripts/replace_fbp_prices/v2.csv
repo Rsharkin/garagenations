@@ -1,0 +1,15 @@
+Panel  / Part,Internal,Part / Panel Id,Replace,Replace with FBP,Material,Labour
+Front Bumper,N,4,3199,0,0,0
+Rear Bumper,N,5,3199,0,0,0
+Left Fender,N,1,3199,0,0,0
+Right Fender,N,2,3199,0,0,0
+Trunk,N,10,5799,2600,2000,600
+Bonnet,N,3,3199,0,0,0
+Left Front Door,N,6,3699,500,0,500
+Right Front Door,N,7,3699,500,0,500
+Left Rear Door,N,8,3699,500,0,500
+Right Rear Door,N,9,3699,500,0,500
+Left Running Board,N,13,5199,2000,0,2000
+Right Running Board,N,14,5199,2000,0,2000
+Left Quarter Panel,N,11,5199,2000,0,2000
+Right Quarter Panel,N,12,5199,2000,0,2000

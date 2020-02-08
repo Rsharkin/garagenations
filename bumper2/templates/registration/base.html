@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Login to Bumper">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <title>Bumper</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'libs/css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'opsPanel/libs/css/font-awesome/font-awesome.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'libs/css/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'opsPanel/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'opsPanel/css/ops-main.css' %}" rel="stylesheet">
+  </head>
+
+  <body class="gray-bg">
+
+    <div class="container">
+
+    {% block container %}
+    {% endblock %}
+
+    </div> <!-- /container -->
+    <!-- Mainly scripts -->
+    <script src="{% static 'libs/js/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/js/bootstrap/bootstrap.min.js' %}"></script>
+  </body>
+</html>

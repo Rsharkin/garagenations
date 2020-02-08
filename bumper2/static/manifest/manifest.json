@@ -1,0 +1,21 @@
+
+{
+  "short_name": "Bumper",
+  "name": "Car body repair and wash",
+  "icons": [
+    {
+      "src": "https://staging.bumper.com/static/img/logo.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "start_url": "/",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.bumper.android"
+    }
+  ]
+}

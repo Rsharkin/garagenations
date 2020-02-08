@@ -1,0 +1,720 @@
+<div class="row">
+    <div class="col-lg-4" permission="['OpsAdmin','OpsManager','WorkshopManager','WorkshopAssistantManager']">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Quick Actions</h5>
+            </div>
+            <div class="ibox-content">
+                <ul class="list-group" ng-if="!editBookingCtrl.booking.workshop">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-click="editBookingCtrl.assignWorkshop()"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Assign Workshop</button>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list-group" ng-if="editBookingCtrl.booking.workshop">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && editBookingCtrl.booking.ops_status.id) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingWorkshopCtrl.setHandoverSheetUploaded(134)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Handover sheet Uploaded</button>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && editBookingCtrl.booking.ops_status.flow_order_num>=6) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id)) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(105)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Car Received at Workshop</button>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && editBookingCtrl.booking.ops_status.id != 6) ||
+                                    !editBookingWorkshopCtrl.handoverSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingWorkshopCtrl.setInspectionSheetUploaded(128)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Inspection sheet Uploaded</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(129)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Pending Part Procurement</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(130)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Pending Customer Approval</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(148)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Pending Insurance</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(131)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Part arrived</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(135)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Part Price Updated</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(132)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Customer Approval Received</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(133)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Pending Workshop ETA</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num != 10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.id) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(146)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Pending Customer ETA</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=12 || editBookingCtrl.booking.status.flow_order_num<10 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==10 && !editBookingCtrl.booking.ops_status.flow_order_num)) ||
+                                    !editBookingWorkshopCtrl.inspectionSheetUploaded ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingWorkshopCtrl.setStatusJobScheduled(12)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Car Job Scheduled
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=13 || editBookingCtrl.booking.status.flow_order_num<12) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(13)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Work in progress
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(112)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Paint Stripping Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(113)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Dent Removal Ongoing
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(114)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Denting Removal Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(115)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Body Filler Application Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(136)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Body Filler Sanding Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(116)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Putty Application Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(137)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Putty Sanding Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(138)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Primer Masking
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(117)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Primer Application Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(139)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Primer Sanding Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(140)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Painting Masking
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(118)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Painting Process Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(119)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Paint Drying
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(141)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Paint Dried
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(121)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Dull Polishing Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(142)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Parts Fitting
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(120)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Wax Polishing Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(157)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Washing Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(122)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                VAS Done
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(125)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Work Completed In Workshop
+                            </button>
+                        </div>
+                    </li>
+                    <!--<li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(126)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Workshop QC check Done
+                            </button>
+                        </div>
+                    </li>-->
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=15 || editBookingCtrl.booking.status.flow_order_num<13) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingWorkshopCtrl.setStatusReadyForDelivery(15)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Ready For Delivery
+                            </button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=16 || editBookingCtrl.booking.status.flow_order_num<15) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingWorkshopCtrl.setStatusPendingPayment(16)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-9 col-lg-offset-2">
+                                Pending Payment & Drop
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <form method="get" class="form-horizontal m-t-lg">
+            <h3>Workshop Details</h3>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <select ng-model="editBookingWorkshopCtrl.selected_workshop" ng-options="item as item.name for item in editBookingWorkshopCtrl.workshopList track by item.id" class="form-control input-sm" disabled="disabled">
+                                <option value=""> Select Workshop </option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button"
+                                    ng-click="editBookingCtrl.assignWorkshop()"
+                                    permission="['OpsAdmin','OpsManager','WorkshopManager', 'WorkshopAssistantManager']"
+                                    class="btn btn-sm btn-primary">
+                                Change Workshop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop Manager</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>{$ editBookingWorkshopCtrl.booking.workshop_manager_details.name  $}</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button"
+                                    ng-click="editBookingCtrl.assignWorkshopManager('WorkshopManager')"
+                                    permission="['OpsAdmin','OpsManager','WorkshopManager']"
+                                    class="btn btn-sm btn-primary">
+                                Change Manager</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop Associate Manager</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>{$ editBookingWorkshopCtrl.booking.workshop_asst_mgr.name  $}</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button"
+                                    ng-click="editBookingCtrl.assignWorkshopManager('WorkshopAssistantManager')"
+                                    permission="['OpsAdmin','OpsManager','WorkshopManager','WorkshopAssistantManager']"
+                                    class="btn btn-sm btn-primary">
+                                Change Associate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop ETA</label>
+                <div class="col-sm-3">
+                    <span>{$ editBookingWorkshopCtrl.booking.workshop_eta | date:'medium' : '+0530' $}</span>
+                </div>
+                <div class="col-sm-4" permission="['OpsAdmin','OpsManager','WorkshopManager', 'WorkshopAssistantManager']">
+                    <input
+                            ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23"
+                            type="button" value="Edit ETA" class="btn btn-sm btn-primary"
+                            ng-click="editBookingCtrl.setETA()">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Customer ETA</label>
+                <div class="col-sm-3">
+                    <span>{$ editBookingWorkshopCtrl.booking.estimate_complete_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <h3>ETA Updates</h3>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Updated</th>
+                            <th>Delay Reason</th>
+                            <th>Delay Details</th>
+                            <th>Updated By</th>
+                            <th>Updated At</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in editBookingWorkshopCtrl.delays">
+                            <td>
+                                <span ng-if="item.item_tracked === 'estimate_complete_time'">Customer ETA</span>
+                                <span ng-if="item.item_tracked === 'workshop_eta'">Workshop ETA</span>
+                            </td>
+                            <td> {$ item.delay_reason_details.reason $} </td>
+                            <td> {$ item.reason_text $} </td>
+                            <td> {$ item.updated_by_details.name $} {$ item.updated_by.ops_phone $} </td>
+                            <td> {$ item.created_at | date:'medium' : '+0530' $} </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Car Received At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingWorkshopCtrl.booking.workshop_reached_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Work Scheduled At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingWorkshopCtrl.booking.estimate_work_start_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Work started At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingWorkshopCtrl.booking.actual_work_start_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Work completed At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingWorkshopCtrl.booking.actual_work_end_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Quality Check</label>
+                <div class="col-sm-9">
+                    <div class="col-sm-8">
+
+                        <div class="ibox">
+                            <div class="ibox-content product-box">
+                                <div style="min-height: 175px">
+                                    <table class="table table-bordered table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th colspan="4" class="text-center">
+                                                <a href="#" class="product-name">Quality Checks</a>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>Uploaded By</th>
+                                            <th>Details</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="item in editBookingWorkshopCtrl.testedQualityCheckslGroupWise">
+                                            <td>
+                                                <span ng-if="item.hasItemsWithIssue" class=" label label-danger">QC Failed</span>
+                                                <span ng-if="!item.hasItemsWithIssue" class="label label-primary">Pass</span>
+                                            </td>
+                                            <td> <small>{$ item.created_at | date:'medium' : '+0530' $} By: <b>{$ item.updated_by_name $}</b>, {$ item.updated_by_num $}</small></td>
+                                            <td><a ng-click="editBookingWorkshopCtrl.showChecklistItems(item.data)">Details</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--<span ng-if="editBookingWorkshopCtrl.testedQualityChecks.length>0">
+                            <label ng-if="editBookingWorkshopCtrl.isQCPass" class="label label-primary m-r-lg">QC Passed</label>
+                            <label ng-if="!editBookingWorkshopCtrl.isQCPass" class="label label-danger  m-r-lg">QC Failed</label>
+                            <input
+                                    type="button" value="QC Details" class="btn btn-sm btn-primary"
+                                    ng-click="editBookingWorkshopCtrl.showQCDetails(1)">
+                        </span>
+                        <span ng-if="editBookingWorkshopCtrl.testedQualityChecks.length==0">
+                            <label class="label label-warning-light m-r-lg">QC Not Done</label>
+                        </span>-->
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="button"
+                               ng-disabled="editBookingCtrl.booking.status.flow_order_num < 13
+                                || editBookingCtrl.booking.status.flow_order_num >= 20
+                                || !editBookingWorkshopCtrl.hasRework"
+                               ng-click="editBookingWorkshopCtrl.restartWorkOnBooking()"
+                               permission="['OpsAdmin','OpsManager','WorkshopManager','WorkshopAssistantManager']"
+                               class="btn btn-sm btn-danger"
+                               value="Rework: Start Work Again"
+                        />
+                        <small ng-if="!editBookingWorkshopCtrl.hasRework">(First add rework from summary tab.)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Quality Check - older version (will be depriciating)</label>
+                <div class="col-sm-9">
+                    <div class="col-sm-8">
+                        <span ng-if="editBookingWorkshopCtrl.testedQualityChecksOld.length>0">
+                            <label ng-if="editBookingWorkshopCtrl.isOldQCPassed" class="label label-primary m-r-lg">QC Passed </label>
+                            <label ng-if="!editBookingWorkshopCtrl.isOldQCPassed" class="label label-danger  m-r-lg">QC Failed</label>
+                            <input
+                                    type="button" value="QC Details" class="btn btn-sm btn-primary"
+                                    ng-click="editBookingWorkshopCtrl.showQCDetails(2)">
+                        </span>
+                        <span ng-if="editBookingWorkshopCtrl.testedQualityChecksOld.length==0">
+                            <label class="label label-warning-light m-r-lg">QC Not Done</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label text-danger">Delivery Reason For Failed QC</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingWorkshopCtrl.deliveryDesc $}</span>
+                </div>
+            </div>
+        </form>
+        <div ng-if=" editBookingCtrl.booking.status.flow_order_num>=10 && editBookingCtrl.booking.status.flow_order_num<=12"
+             permission="['OpsAdmin','OpsManager','WorkshopManager']">
+            <hr>
+            <h3>Extra Actions</h3>
+            <div class="form-group">
+                <input type="button"
+                       class="btn btn-sm btn-danger btn-outline"
+                       ng-click="editBookingWorkshopCtrl.returnCar()"
+                       value="Return Car back to Customer">
+            </div>
+        </div>
+        <div>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Internal Notes</h5>
+                    <a
+                            ng-click="editBookingWorkshopCtrl.addWorkshopNotes()"
+                            class="btn btn-xs btn-primary pull-right">Add Notes</a>
+                </div>
+                <div class="ibox-content" style="max-height: 450px;overflow-y: auto;">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="followup in editBookingWorkshopCtrl.workshopNotes | filter:{ follow_for: 2 }" >
+                            <p>{$ followup.created_at | date:'d MMMM yy HH:mm' : 'IST' $} by
+                                <small><strong>{$ followup.updated_by.name $}</strong></small>
+                            </p>
+                            <p>{$ followup.note $}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Expected EOD <small>(If status of booking is not updated but expected to be done.)</small> </h5>
+                    <a
+                            ng-click="editBookingWorkshopCtrl.showExpectedEODForm=true"
+                            class="btn btn-xs btn-primary pull-right">Set expected EOD for Today</a>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="alert-info">
+                                To be used in scheduler for better processing.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editBookingWorkshopCtrl.showExpectedEODForm">
+                        <div class="col-sm-12">
+                            <form method="POST" class="form-horizontal m-t-lg" name="setExpectedEODForm">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">What is expected to be done today:</label>
+                                    <div class="col-sm-3">
+                                        <select ng-model="editBookingWorkshopCtrl.expectedEod"
+                                                required
+                                                class="form-control input-sm">
+                                            <option value=""> Select status </option>
+                                            <option ng-repeat="item in editBookingWorkshopCtrl.eodStatusList" value="{$ item.id $}"> {$ item.ops_status_desc $} </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="submit"
+                                               ng-click="editBookingWorkshopCtrl.setExpectedEOD()"
+                                               ng-disabled="editBookingWorkshopCtrl.ajax_loading || setExpectedEODForm.$invalid "
+                                               ng-value="editBookingWorkshopCtrl.ajax_loading?'Please Wait..':'Set Expected EOD'"
+                                               class="btn btn-sm btn-primary"/>
+                                        <button type="button"
+                                                ng-click="editBookingWorkshopCtrl.showExpectedEODForm=false"
+                                                class="btn btn-sm btn-default">
+                                            Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>History for EOD set:</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item" ng-repeat="item in editBookingWorkshopCtrl.savedExpectedEods">
+                                    <div class="row">
+                                        <div class="col-md-4">{$ item.for_date $}</div>
+                                        <div class="col-md-4">{$ item.ops_status_details.ops_status_desc $}</div>
+                                        <div class="col-md-4">{$ item.updated_by_details.name $}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

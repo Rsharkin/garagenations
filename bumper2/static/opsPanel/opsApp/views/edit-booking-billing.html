@@ -1,0 +1,579 @@
+<div xmlns="http://www.w3.org/1999/html">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Advance Payments (Proforma Invoice)</h5>
+            <a permission="['OpsAdmin','OpsManager','CityCallCenterManager']"
+               ng-click="editBookingBillingCtrl.generateProformaInvoice()"
+               class="btn btn-primary btn-sm pull-right"
+               ng-if="!editBookingBillingCtrl.bookingBill.bill_details.invoice_id
+               && editBookingBillingCtrl.booking.status_id!=24
+               && !editBookingBillingCtrl.bookingBill.bill_details.proforma_invoices.length>0"
+            >
+                <i class="fa fa-money"></i> Collect Advance Payment
+            </a>
+        </div>
+        <div class="ibox-content">
+            <div>
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Proforma ID</th>
+                        <th>Amount</th>
+                        <th>Notes</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in editBookingBillingCtrl.bookingBill.bill_details.proforma_invoices">
+                        <td>{$ item.id $}</td>
+                        <td>{$ item.payable_amt $}</td>
+                        <td>{$ item.note $}</td>
+                        <td ng-if="item.status == 1">Pending</td>
+                        <td ng-if="item.status == 2">Cancelled</td>
+                        <td ng-if="item.status == 3">Paid</td>
+                        <td>
+                            <span ng-if="editBookingBillingCtrl.bookingBill.payment_details.pending_payment_id">
+                                Pending Payment Id: {$ editBookingBillingCtrl.bookingBill.payment_details.pending_payment_id $}
+                            </span>
+                            <input
+                                    type="button"
+                                    class="btn btn-sm btn-primary"
+                                    value="Generate Payment Link"
+                                    ng-if="editBookingBillingCtrl.bookingBill.payment_details.pending_payment_id && item.status == 1"
+                                    ng-click="editBookingBillingCtrl.generatePaymentLink()"
+                            />
+                            <input
+                                    type="button"
+                                    class="btn btn-sm btn-primary"
+                                    value="Generate Payment Id"
+                                    ng-if="!editBookingBillingCtrl.bookingBill.payment_details.pending_payment_id && item.status ==1"
+                                    ng-click="editBookingBillingCtrl.initiateProformaPayment(item.payable_amt)"
+                            />
+                            <input
+                                    type="button"
+                                    class="btn btn-sm btn-warning"
+                                    value="Cancel Invoice"
+                                    ng-if="item.status==1"
+                                    ng-click="editBookingBillingCtrl.cancelProformaInvoice(item.id)"
+                            />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>Invoice</h2>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a ng-click="editBookingBillingCtrl.printDiv('inv',editBookingBillingCtrl.bookingBill.id)" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> Print Invoice </a>
+        </div>
+    </div>
+</div>
+<div id="invoice_holder">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="ibox-content p-xl" style="border-width: 0 0;">
+                    <div class="table-responsive m-t">
+                        <table class="table invoice-table table-responsive">
+                            <tr>
+                                <td>
+                                    <h5 style="float: none;">From:</h5>
+                                    <address>
+                                        <strong>Bumper.com</strong><br>
+                                        2nd Floor, No. 11, 80 Ft Road,<br>
+                                        Koramangala, Bengaluru - 560034<br>
+                                        <abbr title="Phone">M:</abbr> 910 844 6586
+                                    </address>
+                                </td>
+                                <td class="text-right">
+                                    <h4>Invoice No.</h4>
+                                    <h4 class="text-navy">INV-{$ editBookingBillingCtrl.bookingBill.bill_details.invoice_id $}</h4>
+                                    <span>To:</span>
+                                    <address>
+                                        <strong>{$ editBookingBillingCtrl.bookingBill.user.name $}</strong><br>
+                                        <abbr>M:</abbr> {$ editBookingBillingCtrl.bookingBill.user.phone $}<br>
+                                        <abbr>E:</abbr> {$ editBookingBillingCtrl.bookingBill.user.email $}
+                                    </address>
+                                    <p>
+                                        <strong>Invoice Date:</strong> {$editBookingBillingCtrl.bookingBill.bill_details.invoice_creation_date| date:'yyyy-MM-dd'$}<br/>
+
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive m-t">
+                            <table class="table invoice-table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th></th>
+                                    <th>Quantity</th>
+                                    <th>Part Cost (<i class="fa fa-rupee"></i>)</th>
+                                    <th>Labour Charges (<i class="fa fa-rupee"></i>)</th>
+                                    <th>Material Cost (<i class="fa fa-rupee"></i>)</th>
+
+                                    <th>Total Price (<i class="fa fa-rupee"></i>)</th>
+                                </tr>
+                                </thead>
+                                <tbody ng-repeat="item in editBookingBillingCtrl.bookingBill.booking_package">
+                                <tr>
+                                    <td>
+                                        <strong>{$item.package.package.name$}</strong><br/>
+                                    </td>
+                                    <td></td>
+                                    <td><span ng-if="item.package.package.category!=2">1</span></td>
+                                    <td class="text-center">
+                                        <span ng-if="item.package.package.category!=2">{$item.part_price $}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-if="item.package.package.category!=2">{$ item.labour_price $}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-if="item.package.package.category!=2">{$ item.material_price $}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-if="item.package.package.category !=2">{$item.price$}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="panels in item.booking_package_panel">
+                                    <td>
+                                        <div style="padding-left: 20px"><strong><small>{$panels.panel_details.car_panel.name$}</small> </strong></div>
+                                        <small style="padding-left: 20px">{$panels.panel_details.type_of_work$}</small>
+                                    </td>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td class="text-center">
+                                        <span>{$panels.part_price $}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>{$panels.labour_price $}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>{$panels.material_price $}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>{$panels.price$}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- /table-responsive -->
+                    </div>
+                    <div class="row">
+                        <table class="table invoice-total table-responsive">
+                            <tbody>
+                            <tr>
+                                <td><strong> GRAND TOTAL (<i class="fa fa-rupee"></i>) :</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.total_amt $}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coupon Discount (<i class="fa fa-rupee"></i>):</strong></td>
+                                <td ng-if="editBookingBillingCtrl.bookingBill.bill_details.discount_dict.coupon_discount">{$ editBookingBillingCtrl.bookingBill.bill_details.discount_dict.coupon_discount $}</td>
+                                <td ng-if="!editBookingBillingCtrl.bookingBill.bill_details.discount_dict.coupon_discount">0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Discount (<i class="fa fa-rupee"></i>):</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.total_discount $}</td>
+                            </tr>
+                            <!--<tr>
+                                <td><strong>Cash Back (<i class="fa fa-rupee"></i>):</strong></td>
+                                <td ng-if="editBookingBillingCtrl.bookingBill.bill_details.discount_dict.cashback_discount">{$ editBookingBillingCtrl.bookingBill.bill_details.discount_dict.cashback_discount $}</td>
+                                <td ng-if="!editBookingBillingCtrl.bookingBill.bill_details.discount_dict.cashback_discount">0</td>
+                            </tr>-->
+                            <tr ng-if="editBookingBillingCtrl.bookingBill.bill_details.total_gst>0">
+                                <td><strong> TAXES (<i class="fa fa-rupee"></i>) :</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.total_gst $}</td>
+                            </tr>
+                            <tr>
+                                <td><strong> Payable Amount after discount (<i class="fa fa-rupee"></i>) :</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.orig_payable_amt $}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Advance Payment (<i class="fa fa-rupee"></i>):</strong></td>
+                                <td ng-if="editBookingBillingCtrl.bookingBill.bill_details.advance_payment_received">{$ editBookingBillingCtrl.bookingBill.bill_details.advance_payment_received $}</td>
+                                <td ng-if="!editBookingBillingCtrl.bookingBill.bill_details.advance_payment_received">0</td>
+                            </tr>
+                            <tr>
+                                <td><strong> Credits Used (<i class="fa fa-rupee"></i>) :</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.total_credits_used $}</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong> Payment Received (<i class="fa fa-rupee"></i>) :</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.total_payment_received $}</td>
+                            </tr>
+                            <tr>
+                                <td><strong> Payment Remaining (<i class="fa fa-rupee"></i>) :</strong></td>
+                                <td>{$ editBookingBillingCtrl.bookingBill.bill_details.payable_amt $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="well m-t"><small>This is an auto-generated ​invoice and does not require any signature.</small>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none">
+        <section id="inv">
+            <table style="width:100%;max-width:800px;margin-left:auto;margin-right:auto; padding-bottom:22px;border-bottom:1px solid #f6f6f6">
+                <tr style="width:100%">
+                    <td>
+                        <img src="https://d18qyvmj2t58jj.cloudfront.net/img/logo_tagline-dd592ca1fc.svg" style="display:block;float:left;margin-bottom:25px">
+                    </td>
+                </tr>
+                <tr >
+                    <td style ="opacity: 0.5;font-family: Roboto;font-size: 16px;font-weight: 500;line-height: 1.5;color: #000000;">
+                       <span ng-if="editBookingBillingCtrl.booking.city==1">
+                           Unbox Technologies Private Limited<br>
+                           2nd Floor, No. 11, 80 Ft Road,<br>
+                           Koramangala, Bengaluru - 560034<br>
+                           M: 910 844 6586
+                       </span>
+                        <span ng-if="editBookingBillingCtrl.booking.city==2">
+                            Unbox Technologies Private Limited<br>
+                            2nd Floor, SCO No-313,<br>
+                            Sector- 29, Gurugram - 122002<br>
+                            M: 910 844 6586
+                        </span>
+                    </td>
+                    <td style="font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;text-align:right">
+                        GSTIN Number -
+                        <span ng-if="editBookingBillingCtrl.booking.city==1">29AABCU6599C2ZW</span>
+                        <span ng-if="editBookingBillingCtrl.booking.city==2">AA060717014213K</span>
+                        <br>
+                        PAN - AABCU6599C<br>
+                        <span ng-if="editBookingBillingCtrl.booking.city==1">State - Karnataka, State Code  - 29</span>
+                        <span ng-if="editBookingBillingCtrl.booking.city==2">State - Haryana, State Code - 06</span>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;max-width:800px;margin-left:auto;margin-right:auto; padding-top:15px;padding-bottom:20px">
+                <tr>
+                    <td style="margin-top:8px" >
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-bottom:5px">Booking Id</p>
+                        <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;margin-top:5px">{$editBookingBillingCtrl.bookingBill.id$}</p>
+                    </td>
+                    <td style="text-align:right">
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-bottom:5px">Invoice No</p>
+                        <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;margin-top:5px">INV-{$ editBookingBillingCtrl.bookingBill.bill_details.invoice_id $}</p>
+                    </td>
+                </tr>
+                <tr >
+                    <td style="margin-top:8px">
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-bottom:5px">Name</p>
+                        <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;margin-top:5px">{$ editBookingBillingCtrl.bookingBill.user.name $}</p>
+
+                    </td>
+                    <td style="text-align:right">
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-bottom:5px">Invoice Date</p>
+                        <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;margin-top:5px">{$editBookingBillingCtrl.bookingBill.bill_details.invoice_creation_date | date:'yyyy-MM-dd'$}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="margin-top:8px">
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-bottom:5px">Car Reg No</p>
+                        <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;margin-top:5px"> {$editBookingBillingCtrl.carRegNo$}</p>
+                    </td>
+                    <td style="text-align:right">
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-bottom:5px">Total Amount</p>
+                        <p style="	font-family: Roboto;font-size: 18px;font-weight: 500;color: #795ff9;margin-top:5px"> &#8377; {$editBookingBillingCtrl.bookingBill.bill_details.orig_payable_amt|number:0$}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" >
+                        <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-top:10px;margin-bottom:5px">Bill To Address</p>
+                        <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;margin-top:5px">{$editBookingBillingCtrl.booking.booking_address[0].address.address1$},
+                            <span ng-if="editBookingBillingCtrl.booking.booking_address[0].address.address2">{$editBookingBillingCtrl.booking.booking_address[0].address.address2$}</span>
+                            <span ng-if="editBookingBillingCtrl.booking.booking_address[0].address.area">{$editBookingBillingCtrl.booking.booking_address[0].address.area$}</span><br>
+                            <span ng-if="editBookingBillingCtrl.booking.booking_address[0].address.city">{$editBookingBillingCtrl.booking.booking_address[0].address.city$}</span>
+                            <span ng-if="editBookingBillingCtrl.booking.booking_address[0].address.pin_code"> - {$editBookingBillingCtrl.booking.booking_address[0].address.pin_code$}</span>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;max-width:800px;margin-left:auto;margin-right:auto;margin-bottom:30px;border-collapse: collapse;">
+                <thead style="border:1px solid #f6f6f6;background-color: rgba(248, 248, 248, 0.4);	opacity: 0.6;font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">
+                <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">Package</td>
+                <td style="border:1px solid #f6f6f6;padding:15px">HSN/SAC</td>
+                <td style="border:1px solid #f6f6f6;padding:15px">Qty</td>
+                <td style="border:1px solid #f6f6f6;padding:15px">Part Price (&#8377;)</td>
+                <td style="border:1px solid #f6f6f6;padding:15px">Service Charges (&#8377;)</td>
+                <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">Amount (&#8377;)</td>
+                </thead>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;line-height: 1.3;color: #000000;" ng-repeat="item in editBookingBillingCtrl.bookingBill.booking_package">
+                <tr ng-if="item.package.package.category!=2">
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">{$item.package.package.name$} </td>
+                    <td style="border:1px solid #f6f6f6;padding:15px">9987</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px">1</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" ><span ng-if="item.package.package.category!=2">{$item.part_price|number:0 $}</span></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" ><span ng-if="item.package.package.category!=2">{$(item.material_price - -item.labour_price)|number:0$}</span></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right" >{$item.price|number:0$}</td>
+                </tr>
+                <tr ng-repeat="panels in item.booking_package_panel" style="font-size: 14px;opacity: 0.8" ng-if="item.package.package.category=2">
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">{$panels.panel_details.car_panel.name$}-{$panels.panel_details.type_of_work$} </td>
+                    <td style="border:1px solid #f6f6f6;padding:15px">9987</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px">1</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" >{$panels.part_price|number:0 $}</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" >{$(panels.material_price- -panels.labour_price)|number:0$}</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right" >{$panels.price|number:0$}</td>
+                </tr>
+
+                </tbody>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;line-height: 1.3;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.discount_dict.coupon_discount">
+                <tr><td style="border:1px solid #f6f6f6;padding:15px;text-align: left">Coupon Discount</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">{$ editBookingBillingCtrl.bookingBill.bill_details.discount_dict.coupon_discount|number:0 $}</td>
+                </tr>
+                </tbody>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;line-height: 1.3;color: #000000;"  ng-if="editBookingBillingCtrl.bookingBill.bill_details.total_discount>0">
+                <tr> <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">Total Discount</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">{$ editBookingBillingCtrl.bookingBill.bill_details.total_discount|number:0 $}</td>
+                </tr>
+                </tbody>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;line-height: 1.3;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.discount_dict.cashback_discount">
+                <tr><td style="border:1px solid #f6f6f6;padding:15px;text-align: left">CashBack</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">{$ editBookingBillingCtrl.bookingBill.bill_details.discount_dict.cashback_discount|number:0 $}</td>
+
+                </tr>
+                </tbody>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;line-height: 1.3;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.discount_dict.advance_payment_received">
+                <tr> <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">Advance Payment</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">{$ editBookingBillingCtrl.bookingBill.bill_details.advance_payment_received|number:0$}</td>
+                </tr>
+                </tbody>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;line-height: 1.3;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.total_gst>0">
+                <tr> <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">Taxes</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">{$ editBookingBillingCtrl.bookingBill.bill_details.total_gst|number:0$}</td>
+                </tr>
+                </tbody>
+                <tbody style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;font-weight: bold;line-height: 1.3;color: #795ff9;">
+                <tr>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: left">Total(&#8377;)</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                    <td style="border:1px solid #f6f6f6;padding:15px;text-align: right">{$ editBookingBillingCtrl.bookingBill.bill_details.orig_payable_amt|number:0 $}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="width:100%;max-width:800px;display:block;margin-left:auto;margin-right:auto;">
+                <table style="width:50%;max-width:300px">
+
+                    <p style="font-family: Roboto;font-size: 16px;font-weight: 500;line-height: 1.2;color: #000000;margin-bottom:5px">Tax Breakup</p>
+                    <tr style="	font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.total_cgst>0"><td>CGST(&#8377;)</td><td>-</td></td><td style="float:right;font-weight:500; "> {$editBookingBillingCtrl.bookingBill.bill_details.total_cgst|number:0$}</td></tr>
+                    <tr style="	font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.total_sgst>0"><td>SGST(&#8377;) </td><td>-</td><td style="float:right;font-weight:500;">  {$editBookingBillingCtrl.bookingBill.bill_details.total_sgst|number:0$}</td></tr>
+                    <tr style="	font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;" ng-if="editBookingBillingCtrl.bookingBill.bill_details.total_igst>0"><td>IGST(&#8377;)</td><td>-</td><td style="float:right;font-weight:500;"> {$editBookingBillingCtrl.bookingBill.bill_details.total_igst|number:0$}</td></tr>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-lg-6"><h3>Payments Made by User</h3></div>
+                    <div class="col-lg-6">
+                        <button
+                                permission="['OpsAdmin','OpsManager']"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23 || !editBookingBillingCtrl.bookingBill.bill_details.invoice_id"
+                                type="button"
+                                class="btn btn-sm m-l-xs btn-primary pull-right"
+                                ng-click="editBookingBillingCtrl.generatePaymentLink()">Generate Payment Link</button>
+                        <button
+                                permission="['OpsAdmin','OpsManager']"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23 || !editBookingBillingCtrl.bookingBill.bill_details.invoice_id"
+                                type="button"
+                                class="btn btn-sm m-l-xs btn-primary pull-right"
+                                ng-click="editBookingBillingCtrl.collectPartialPayment()">Collect Partial Payment</button>
+
+                        <button
+                                permission="['OpsAdmin','OpsManager']"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23 || !editBookingBillingCtrl.bookingBill.bill_details.invoice_id"
+                                type="button"
+                                class="btn btn-sm btn-primary pull-right"
+                                ng-click="editBookingBillingCtrl.initiatePayment()">Initiate Payment</button>
+                        <button
+                                permission="['OpsAdmin','OpsManager']"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23 || !editBookingBillingCtrl.bookingBill.bill_details.invoice_id"
+                                type="button"
+                                class="btn btn-sm m-r-xs btn-primary pull-right"
+                                ui-sref="base.bookings.editBooking.addPayment()">Add Payment</button>
+                        <button
+                                permission="['OpsAdmin','OpsManager']"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23 || !editBookingBillingCtrl.bookingBill.bill_details.invoice_id"
+                                type="button"
+                                class="btn btn-sm m-r-xs btn-primary pull-right"
+                                ui-sref="base.bookings.editBooking.addRefund()">Add Refund</button>
+                    </div>
+                </div>
+
+                <table class="table table-stripped small table-responsive">
+                    <tbody>
+                    <tr>
+                        <th class="no-borders">Id</th>
+                        <th class="no-borders">Type</th>
+                        <th class="no-borders">Status</th>
+                        <th class="no-borders">Amount (<i class="fa fa-rupee"></i>)</th>
+                        <th class="no-borders">Mode</th>
+                        <th class="no-borders">Vendor</th>
+                        <th class="no-borders">Vendor Status</th>
+                        <th class="no-borders">Updated At</th>
+                        <th class="no-borders">Info</th>
+                        <th class="no-borders"></th>
+                    </tr>
+                    <tr ng-repeat="payment in editBookingBillingCtrl.payments" ng-if="payment.tx_type==1">
+                        <td class="no-borders">{$ payment.id $}</td>
+                        <td class="no-borders">
+                            <span ng-if="payment.payment_type==1">Now</span>
+                            <span ng-if="payment.payment_type==2">POD</span>
+                        </td>
+                        <td class="no-borders">
+                            <i class="fa fa-circle" ng-class="{ 'text-navy': payment.tx_status==1, 'text-danger': payment.tx_status !=1 }" title="Success"></i>
+                        </td>
+                        <td class="no-borders">{$ payment.amount $}</td>
+                        <td class="no-borders">
+                            <span ng-if="payment.mode==1">Cash</span>
+                            <span ng-if="payment.mode==2">Online</span>
+                            <span ng-if="payment.mode==3">Email Invoice</span>
+                            <span ng-if="payment.mode==4">SMS link</span>
+                            <span ng-if="payment.mode==5">Cheque</span>
+                            <span ng-if="payment.mode==6">POS</span>
+                        </td>
+                        <td class="no-borders">{$ payment.vendor $}</td>
+                        <td class="no-borders">{$ payment.vendor_status $}</td>
+                        <td class="no-borders">{$ payment.updated_at | date:'yyyy-MM-dd' $}</td>
+                        <td class="no-borders">
+                            <button ng-click="editBookingBillingCtrl.showPaymentDetails(payment.tx_data, payment.error_message)" class="btn btn-xs btn-info">
+                                <i class="fa fa-info"></i>
+                            </button>
+                        </td>
+                        <td class="no-borders">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4>Refund to User</h4>
+                <table class="table table-stripped small table-responsive">
+                    <tbody>
+                    <tr>
+                        <th class="no-borders">Id</th>
+                        <th class="no-borders">Type</th>
+                        <th class="no-borders">Status</th>
+                        <th class="no-borders">Amount (<i class="fa fa-rupee"></i>)</th>
+                        <th class="no-borders">Mode</th>
+                        <th class="no-borders">Vendor</th>
+                        <th class="no-borders">Vendor Status</th>
+                        <th class="no-borders">Updated At</th>
+                        <th class="no-borders"></th>
+                    </tr>
+                    <tr ng-repeat="payment in editBookingBillingCtrl.payments" ng-if="payment.tx_type==2">
+                        <td class="no-borders">{$ payment.id $}</td>
+                        <td class="no-borders">
+                            <span ng-if="payment.payment_type==1">Now</span>
+                            <span ng-if="payment.payment_type==2">POD</span>
+                        </td>
+                        <td class="no-borders">
+                            <i class="fa fa-circle" ng-class="{ 'text-navy': payment.tx_status==1, 'text-danger': payment.tx_status !=1 }" title="Success"></i>
+                        </td>
+                        <td class="no-borders">{$ payment.amount $}</td>
+                        <td class="no-borders">
+                            <span ng-if="payment.mode==1">Cash</span>
+                            <span ng-if="payment.mode==2">Online</span>
+                            <span ng-if="payment.mode==3">Email Invoice</span>
+                            <span ng-if="payment.mode==4">SMS link</span>
+                            <span ng-if="payment.mode==5">Cheque</span>
+                            <span ng-if="payment.mode==6">POS</span>
+                        </td>
+                        <td class="no-borders">{$ payment.vendor $}</td>
+                        <td class="no-borders">{$ payment.vendor_status $}</td>
+                        <td class="no-borders">{$ payment.updated_at | date:'yyyy-MM-dd' $}</td>
+                        <td class="no-borders">
+
+                        </td>
+                        <td class="no-borders">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4>Cash Discount Given</h4>
+                <table class="table table-stripped table-responsive">
+                    <tbody>
+                    <tr>
+                        <th>Part Discount Amount</th>
+                        <th>Material Discount Amount</th>
+                        <th>Labour Discount Amount</th>
+                        <th>Reason</th>
+                    </tr>
+                    <tr ng-repeat="item in editBookingBillingCtrl.cashDiscounts">
+                        <td class="no-borders">{$ item.part_discount $}</td>
+                        <td class="no-borders">{$ item.material_discount $}</td>
+                        <td class="no-borders">{$ item.labour_discount $}</td>
+                        <td class="no-borders">{$ item.reason $}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h4>Coupon Discount</h4>
+                <table class="table table-stripped table-responsive">
+                    <tbody>
+                    <tr>
+                        <th>Coupon Used</th>
+                        <th>Discount Amount</th>
+                        <th>Cashback Given</th>
+                    </tr>
+                    <tr ng-repeat="coup in editBookingCtrl.coupons_used">
+                        <td class="no-borders">{$ coup.coupon__code $}</td>
+                        <td class="no-borders">{$ coup.amount $}</td>
+                        <td class="no-borders">{$ coup.cashback $}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4>Referral Discount Used</h4>
+                <table class="table table-stripped small table-responsive">
+                    <tbody>
+                    <tr>
+                        <th>Amount</th>
+                    </tr>
+                    <tr ng-repeat="bonus in editBookingCtrl.referral_bonus_used">
+                        <td class="no-borders">{$ bonus.amount $}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

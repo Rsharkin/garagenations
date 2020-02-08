@@ -1,0 +1,94 @@
+,name,category
+2,Front wiper working,Electrical Checklist
+4,Rear wiper working,Electrical Checklist
+5,Right indicator light on headlight working,Electrical Checklist
+6,Left indicator light on headlight working,Electrical Checklist
+,Right indicator light on tailight working,Electrical Checklist
+,Left indicator light on tailight working,Electrical Checklist
+,Right indicator light on fender working,Electrical Checklist
+,Left indicator light on fender working,Electrical Checklist
+7,Right headlight working,Electrical Checklist
+8,Left headlight working,Electrical Checklist
+9,Right tail light working,Electrical Checklist
+10,Left tail light working,Electrical Checklist
+11,Rear sensor working,Electrical Checklist
+,Rear camera working,Electrical Checklist
+12,Horn is working,Electrical Checklist
+13,Stereo is working,Electrical Checklist
+14,Auto cops/ central lock is working,Electrical Checklist
+,Fog lamp right working,Electrical Checklist
+16,Fog lamp left working,Electrical Checklist
+17,Spoiler light working,Electrical Checklist
+18,Roof lights inside car working,Electrical Checklist
+19,Right side view mirror indicator lights is working,Electrical Checklist
+20,Left side view mirror indicator lights is working,Electrical Checklist
+21,Right side view mirror working,Electrical Checklist
+22,Left side view mirror working,Electrical Checklist
+23,Front right power window working,Electrical Checklist
+24,Rear right power window working,Electrical Checklist
+25,Front left power window working,Electrical Checklist
+26,Rear left power window working,Electrical Checklist
+27,Defogger working,Electrical Checklist
+,AC working,Electrical Checklist
+,Fender indicator light right working,Electrical Checklist
+,Fender indicator light left working,Electrical Checklist
+,Indicator light in tail light - right,Electrical Checklist
+,Indicator light in headlight - left,Electrical Checklist
+,Indicator light in headlight- right,Electrical Checklist
+93,Dashboard clean,Interior
+94,glove box clean,Interior
+95,gear area clean,Interior
+96,seats clean,Interior
+97,door trims clean,Interior
+98,Seats are  not torn,Interior
+99,Glove box lock working,Interior
+100,AC vents clean,Interior
+101,Seat belt is not broken,Interior
+102,Steering wheel has scratches,Interior
+103,Internal door handles are working,Interior
+104,Sun wizer working,Interior
+105,Mats clean,Interior
+28,Service Booklet,Inventory Checklist
+29,ToolKit,Inventory Checklist
+30,Spare Wheel,Inventory Checklist
+31,Stereo,Inventory Checklist
+32,Cigratte Lighter,Inventory Checklist
+33,Mud Flaps (set of 4),Inventory Checklist
+34,Mats (set of 4),Inventory Checklist
+35,Front wiper,Inventory Checklist
+36,Antenna,Inventory Checklist
+37,Foglight right,Inventory Checklist
+38,Jack & Handle,Inventory Checklist
+39,Wheel Covers (set of 4),Inventory Checklist
+40,Speakers,Inventory Checklist
+41,Ashtray,Inventory Checklist
+43,Rear wiper,Inventory Checklist
+44,Dicky tray,Inventory Checklist
+45,Front bumper grill,Inventory Checklist
+46,Steering Wheel Cover,Inventory Checklist
+,Stereo remote,Inventory Checklist
+,Foglight left,Inventory Checklist
+42,Rear Parking Sensor,Inventory Checklist
+,Rear camera,Inventory Checklist
+,Right side view mirror indicator lights,Inventory Checklist
+,Left side view mirror indicator lights,Inventory Checklist
+,Side view mirror manual,Inventory Checklist
+,Front windows manual,Inventory Checklist
+,Rear windows manual,Inventory Checklist
+,Defogger,Inventory Checklist
+,Fender indicator light right,Inventory Checklist
+,Fender indicator light left,Inventory Checklist
+,Idols,Inventory Checklist
+,key chain,Inventory Checklist
+,Mag wheels (set of 4),Inventory Checklist
+,Spoiler light,Inventory Checklist
+,Roof light inside car,Inventory Checklist
+47,Requested panels have been repaired,Quality Check - Panels Worked On
+48,Pin holes on panels worked on,Quality Check - Panels Worked On
+49,Paint drips on panels worked on,Quality Check - Panels Worked On
+50,Paint mismatch from neighbouring panels,Quality Check - Panels Worked On
+51,Paint chip off on panels worked on,Quality Check - Panels Worked On
+52,Paint waves on panels worked on,Quality Check - Panels Worked On
+53,Dust particles on panels worked on,Quality Check - Panels Worked On
+54,Polish marks on panels worked on,Quality Check - Panels Worked On
+55,All panels removed have proper alignment after refitting,Quality Check - Panels Worked On

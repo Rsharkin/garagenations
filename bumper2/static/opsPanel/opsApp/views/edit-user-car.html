@@ -1,0 +1,170 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>User Car</h5>
+                    <div ibox-tools>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" name="userCarForm" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Model</label>
+                            <div class="col-sm-9">
+                                {$ editUserCarCtrl.editedCar.car_model.name $}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Brand</label>
+                            <div class="col-sm-9">
+                                {$ editUserCarCtrl.editedCar.car_model.brand.name $}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Year</label>
+                            <div class="col-sm-9">
+                                {$ editUserCarCtrl.editedCar.year$}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Color</label>
+                            <div class="col-sm-9">
+                                <input ng-model="editUserCarCtrl.editedCar.color"
+                                       name="color"
+                                       maxlength="32"
+                                       placeholder="Color of vehicle"
+                                       class="form-control"
+                                >
+
+                                <div class="text-danger" ng-if="userCarForm.color.$touched && userCarForm.color.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                    <div ng-message="maxlength">Max length can be 32.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Registration Num.</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input ng-model="editUserCarCtrl.editedCar.registration_number1"
+                                               name="registration_number1"
+                                               maxlength="2"
+                                               placeholder="StateCode"
+                                               required
+                                               class="form-control col-sm-3"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input ng-model="editUserCarCtrl.editedCar.registration_number2"
+                                               name="registration_number2"
+                                               maxlength="2"
+                                               placeholder="DistrictCode"
+                                               required
+                                               class="form-control col-sm-3"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input ng-model="editUserCarCtrl.editedCar.registration_number3"
+                                               name="registration_number3"
+                                               maxlength="2"
+                                               placeholder="DistrictSeries"
+                                               required
+                                               class="form-control col-sm-3"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input ng-model="editUserCarCtrl.editedCar.registration_number4"
+                                               name="registration_number4"
+                                               maxlength="4"
+                                               placeholder="Reg. no."
+                                               required
+                                               class="form-control col-sm-3"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">Eg. KA</div>
+                                    <div class="col-sm-2">52</div>
+                                    <div class="col-sm-2">MD</div>
+                                    <div class="col-sm-2">2501</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Vehicle Identification Number</label>
+                            <div class="col-sm-6">
+                                <input ng-model="editUserCarCtrl.editedCar.vin_no"
+                                       name="Vin Number"
+                                       maxlength="32"
+                                       placeholder="VIN Number."
+                                       class="form-control"
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Insurer</label>
+                            <div class="col-sm-9">
+                                <input ng-model="editUserCarCtrl.editedCar.insurer"
+                                       name="insurer"
+                                       maxlength="128"
+                                       placeholder="Insurer of vehicle"
+                                       class="form-control"
+                                >
+
+                                <div class="text-danger" ng-if="userCarForm.insurer.$touched && userCarForm.insurer.$invalid">
+                                    <div ng-message="maxlength">Max length can be 128.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Insurance Due Date</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input ng-model="editUserCarCtrl.editedCar.insurer_due_date"
+                                           name="insurer_due_date"
+                                           placeholder="Insurance Due Date"
+                                           readonly="readonly"
+                                           class="input-sm form_datetime form-control"
+                                    >
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Purchased On</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input ng-model="editUserCarCtrl.editedCar.purchased_on"
+                                           name="purchased_on"
+                                           placeholder="Purchased On"
+                                           readonly="readonly"
+                                           class="input-sm form_datetime form-control"
+                                    >
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="text-center">
+                                <input class="btn btn-primary" type="submit"
+                                       ng-click="editUserCarCtrl.saveUserCar()"
+                                       ng-disabled="editUserCarCtrl.ajax_loading || userCarForm.$invalid || userCarForm.$pristine"
+                                       ng-value="editUserCarCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

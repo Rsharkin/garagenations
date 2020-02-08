@@ -1,0 +1,98 @@
+<div class="row" permission="['OpsAdmin']">
+    <div class="col-lg-9">
+        <h2>For Ops Admin</h2>
+        <form method="get" class="form-horizontal">
+            <div ng-show="editBookingStatusCtrl.errorMsg" ng-bind-html="editBookingStatusCtrl.errorMsg" class="alert alert-danger"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Status</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="editBookingStatusCtrl.selected_status"
+                            ng-options="item as item.status for item in editBookingStatusCtrl.bookingStatuses track by item.id"
+                            class="form-control input-sm">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Ops Status</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="editBookingStatusCtrl.selected_assigned_to"
+                            ng-options="item as item.name for item in editBookingStatusCtrl.bookingSubStatus track by item.id"
+                            class="form-control  input-sm">
+                    </select>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="col-sm-3 control-label">Comment</label>
+                <div class="col-sm-9">
+                    <textarea
+                            ng-model="editBookingStatusCtrl.editedBooking.comment"
+                            class="form-control"
+                            cols="20" rows="2"
+                            maxlength="2048"
+                            placeholder="Comment"
+                            title="about booking">
+                    </textarea>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <div class="text-center">
+                    <button class="btn btn-white" type="button" ng-click="editBookingStatusCtrl.cancelEditing()">Cancel</button>
+                    <input class="btn btn-primary" type="submit" ng-click="editBookingStatusCtrl.saveBooking(true)" ng-disabled="editBookingStatusCtrl.ajax_loading" ng-value="editBookingStatusCtrl.ajax_loading?'Please Wait..':'Save and continue editing'"/>
+                    <input class="btn btn-primary" type="submit" ng-click="editBookingStatusCtrl.saveBooking(false)" ng-disabled="editBookingStatusCtrl.ajax_loading" ng-value="editBookingStatusCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                    <small>(Direct status update Not working as API not ready)</small>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" permission="['Driver']">
+    <div class="col-lg-4">
+        <h2>For Drivers While Pickup</h2>
+        <div class="row">
+            <button
+                    type="button" ng-disabled="editBookingStatusCtrl.ajax_loading" class="btn btn-w-m btn-primary btn-block"
+                    ng-click="editBookingStatusCtrl.setAction(4)">
+                Started for Pickup
+            </button>
+        </div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(6)" class="btn btn-w-m btn-primary btn-block">At Pickup Place</button></div>
+        <div class="row">
+            <button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(8)" class="btn btn-w-m btn-primary btn-block">Job Card Created</button>
+            <!--<a ui-sref="base.bookings.editBooking.pickupJobCard()">Pickup Job Card</a>-->
+        </div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(9)" class="btn btn-w-m btn-primary btn-block">Car Picked Up</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(10)" class="btn btn-w-m btn-primary btn-block">Reached Workshop</button></div>
+    </div>
+</div>
+<div class="row" permission="['WorkshopManager', 'WorkshopAssistantManager']">
+    <div class="col-lg-4">
+        <h2>For Workshop Manager</h2>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(11)" class="btn btn-w-m btn-primary btn-block">Car Received at Workshop</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(12)" class="btn btn-w-m btn-primary btn-block">Car Job Scheduled</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(13)" class="btn btn-w-m btn-primary btn-block">Work in progress</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="" class="btn btn-w-m btn-primary btn-block">Quality Check Done</button><small>(Quality check Not working discussion pending)</small></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(15)" class="btn btn-w-m btn-primary btn-block">Work Completed</button></div>
+    </div>
+</div>
+<div class="row" permission="['Driver']">
+    <div class="col-lg-4">
+        <h2>For Drivers While Drop</h2>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(20)" class="btn btn-w-m btn-primary btn-block">Started from workshop</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(21)" class="btn btn-w-m btn-primary btn-block">Reached drop location</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(17)" class="btn btn-w-m btn-primary btn-block">Payment Received</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(22)" class="btn btn-w-m btn-primary btn-block">Car Delivered</button></div>
+    </div>
+</div>
+<div class="row" permission="['VASIncharge']">
+    <div class="col-lg-4">
+        <h2>For VAS In-Charge</h2>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(3)" class="btn btn-w-m btn-primary btn-block">Booking Scheduled</button><small>(is this same as pick_up_scheduled??)</small></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(5)" class="btn btn-w-m btn-primary btn-block">Task Team Started</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(7)" class="btn btn-w-m btn-primary btn-block">Task team at task location</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(13)" class="btn btn-w-m btn-primary btn-block">Work in progress</button></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="" class="btn btn-w-m btn-primary btn-block">Quality check Done</button><small>(Quality check ,Not working discussion pending)</small></div>
+        <div class="row"><button type="button"  ng-disabled="editBookingStatusCtrl.ajax_loading" ng-click="editBookingStatusCtrl.setAction(15)" class="btn btn-w-m btn-primary btn-block">Work completed</button></div>
+    </div>
+</div>

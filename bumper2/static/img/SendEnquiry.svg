@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="18px" viewBox="0 0 10 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>SendEnquiry</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chat_open" transform="translate(-1260.000000, -854.000000)">
+            <g id="Group-44" transform="translate(1098.000000, 747.000000)">
+                <g id="Group-46" transform="translate(135.000000, 0.000000)">
+                    <g id="SendEnquiry" transform="translate(17.000000, 101.000000)">
+                        <polygon id="Shape" points="0 0 30 0 30 30 0 30"></polygon>
+                        <g id="Group-43" transform="translate(10.000000, 6.000000)" fill="#FFFFFF">
+                            <polygon id="Shape" points="6.25 17.5 3.75 17.5 3.75 15 6.25 15"></polygon>
+                            <path d="M8.8375,7.8125 L7.7125,8.9625 C6.8125,9.875 6.25,10.625 6.25,12.5 L3.75,12.5 L3.75,11.875 C3.75,10.5 4.3125,9.25 5.2125,8.3375 L6.7625,6.7625 C7.225,6.3125 7.5,5.6875 7.5,5 C7.5,3.625 6.375,2.5 5,2.5 C3.625,2.5 2.5,3.625 2.5,5 L0,5 C0,2.2375 2.2375,0 5,0 C7.7625,0 10,2.2375 10,5 C10,6.1 9.55,7.1 8.8375,7.8125 L8.8375,7.8125 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

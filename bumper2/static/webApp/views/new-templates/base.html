@@ -1,0 +1,421 @@
+<section class="bm-header-mobile" id="headerTop" ng-if="base.isDeviceMobile">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="base.home" analytics-on analytics-event="click" analytics-category="header"
+                   analytics-label="Bumper Logo">
+                    <img src="img/logo_tagline.png" class="logo-header" alt="bumper logo" height="48" ng-if="!base.isDeviceMobile">
+                    <img src="img/logo_white.svg" class="logo-header" alt="bumper logo" height="48" ng-if="base.isDeviceMobile">
+                </a>
+
+                <a href="tel:+91 9108446586" class="pull-right phone-icon-mob"
+                   analytics-on analytics-event="Call button Click"
+                   analytics-category="header">
+                    <img src="img/phone_greyIcon.svg" ng-if="!base.isDeviceMobile">
+                    <img src="img/phone_greyIcon_white.svg" ng-if="base.isDeviceMobile">
+                </a>
+                <a href="#" >
+                    <i class="material-icons loc-icon" style="font-size: 22px;float: right;outline:none;color: white;padding: 20px 5px 15px 20px;" ng-click="base.showloc=!base.showloc">location_on</i>
+                    <div id="locPopup" ng-if="base.showloc" ng-class="{'location-card':$state.current.name == 'base.home','location-card-purple':$state.current.name!='base.home'}">
+                        <div  ng-class="{'triangle-loc':$state.current.name == 'base.home','triangle-loc-purple':$state.current.name!='base.home'}"></div>
+                        <p >CHOOSE CITY</p>
+                        <hr style="opacity: 0.3; color: #b7b7b7;">
+                        <a class="location-link" ng-click="base.setSelectedCity(base.cityBangalore);base.showloc=false;">Bengaluru <i class="material-icons" style="float:right;color: #7ed321;font-size:18px" ng-if="base.selectedCity.id==1">check_circle</i></a>
+                        <hr style="opacity: 0.3; color: #b7b7b7;">
+                        <a class="location-link" ng-click="base.setSelectedCity(base.cityDelhi);base.showloc=false;">Gurugram <i class="material-icons" style="float:right;color: #7ed321;font-size:18px" ng-if="base.selectedCity.id==2">check_circle</i></a>
+                    </div>
+                </a>
+                <!--
+                <a href="{$ ::base.appURL $}" class="pull-right call-icon-mob" analytics-on
+                   analytics-event="Get app button click" analytics-category="header">
+                    <img src="img/AppDownload_header.svg" ng-if="!base.isDeviceMobile">
+                    <img src="img/Download_app_white.svg" ng-if="base.isDeviceMobile">
+                </a>
+                -->
+                <a ng-if="base.numOfPackageInCart>0" href="" class="pull-right call-icon-mob"
+                   ui-sref="base.cart" analytics-on analytics-event="click"
+                   analytics-category="header" analytics-label="My Cart Button" >
+                    <img src="img/cart_header.svg"  class="image-menu" alt="cart image" ng-if="!base.isDeviceMobile">
+                    <img src="img/cart_icon_white.svg"  class="image-menu" alt="cart image" ng-if="base.isDeviceMobile">
+                    <span class="badge">
+                                {$ ::base.numOfPackageInCart $}
+                    </span>
+                </a>
+                <!-- <a href="#" ng-click="" class="pull-right call-icon-mob"><i class="material-icons">help_outline</i></a>-->
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown bm-header-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" ng-click="base.loadCity()"
+                           aria-haspopup="true" aria-expanded="false" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="Location Button" style="margin-bottom: 10px">
+                            <span class="location-header">
+                            <i class="material-icons loc-icon" style="font-size:16px">location_on</i><span>{$base.selectedCity.name |uppercase$}</span><i class="material-icons" style="font-size: 20px;color: grey;padding-right: 5px;">arrow_drop_down</i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="bm-header-menu-location" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+                                <a href="#" style="padding:10px;" ng-click="base.setSelectedCity(base.cityBangalore)">BENGALURU</a>
+                                <a href="#" style="padding:10px;" ng-click="base.setSelectedCity(base.cityDelhi)">GURUGRAM</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hide-on-collapse">
+                        <a  ng-if="base.openAppPopup" href="#" class="bm-header-menu text-menu"
+                            ng-click="base.getApp()" data-toggle="collapse"
+                            data-target="#myNavbar">
+                            GET APP
+                        </a>
+                        <a ng-if="!base.openAppPopup" class="bm-header-menu"
+                           href="{$ ::base.appURL $}" target="_blank" analytics-on
+                           analytics-event="click" analytics-category="header"
+                           analytics-label="Get App Button"> <span>
+                               <!--  <img src="img/getapp.svg" class="image-menu">-->
+                            </span>
+                            GET APP
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.referral" class="bm-header-menu text-menu" data-toggle="collapse"
+                           data-target="#myNavbar"
+                           analytics-on analytics-event="click" analytics-category="header">REFER & EARN
+                        </a>
+                    </li>
+
+                    <li class="hide-on-desktop">
+                        <a ui-sref="base.howItWorks" class="bm-header-menu text-menu"  data-toggle="collapse"
+                           data-target="#myNavbar" analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="how it works link dropdown">
+                            <!-- <span><img src="/static/img/about.svg" class="image-menu"></span>-->
+                            HOW IT WORKS
+                        </a>
+                    </li>
+                    <li class="hide-on-desktop">
+                        <a ui-sref="base.workshop" class="bm-header-menu text-menu"  data-toggle="collapse"
+                           data-target="#myNavbar" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="workshop link dropdown">
+                            <!-- <span><img src="/static/img/about.svg" class="image-menu"></span>-->
+                            BUMPER WORKSHOPS
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.contact" target="_blank" class="bm-header-menu text-menu" data-toggle="collapse"
+                           data-target="#myNavbar"
+                           analytics-on analytics-event="click" analytics-category="header" analytics-label="Help Button">
+                            <!-- <span>
+                                <img src="img/help.svg" class="image-menu">
+                            </span>-->
+                            FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a class="bm-header-menu text-menu"
+                           href="https://bumper.com/blogs/"
+                           target="_blank"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="Blogs">
+                            BLOG
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.about" class="bm-header-menu text-menu"  data-toggle="collapse"
+                           data-target="#myNavbar" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="about us Button">
+                            <!-- <span><img src="/static/img/about.svg" class="image-menu"></span>-->
+                            ABOUT
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.contactUs"  class="bm-header-menu text-menu"  data-toggle="collapse"
+                           data-target="#myNavbar"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="Help Button">
+                            <!-- <span>
+                                <img src="img/help.svg" class="image-menu">
+                            </span>-->
+                            CONTACT
+                        </a>
+                    </li>
+
+
+
+                    <!--<li>
+                        <a href=""  class="bm-header-menu" ng-click="base.logout()" ng-if="base.currentUser">
+                            <span>
+                                <img src="img/about.svg" class="image-menu" >
+                            </span>{$ base.currentUser.name | uppercase $}
+                        </a>
+                    </li>
+                    -->
+                    <li>
+                        <a href="" class="bm-header-menu text-menu"
+                           ng-click="base.showUserPopup(false,'Header login/signup button')"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="Login Button"
+                           ng-if="!base.currentUser" data-toggle="collapse" data-target="#myNavbar">
+                            LOGIN
+                        </a>
+                    </li>
+                    <li class="dropdown bm-header-menu text-menu" ng-if="base.currentUser">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false" analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="My Account Button">
+                            <span  class="bm-header-menu">
+                             BOOKINGS
+                            </span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="items in base.bookingList">
+                                <a href="#" ng-click="base.gotoStatusScreen(items.id)"
+                                   analytics-on analytics-event="click" analytics-category="header"
+                                   analytics-label="Current Bookings list" class="dropdown-list"
+                                   data-toggle="collapse" data-target="#myNavbar">
+                                    booking-Id :{$ ::items.id$}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown bm-header-menu text-menu" ng-if="base.currentUser">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="My Account Button">
+                            <span  class="bm-header-menu">
+                                {$ ::base.currentUser.name | uppercase $}
+                                </span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" ng-click="base.logout()"
+                                   analytics-on analytics-event="click" analytics-category="My Account Menu"
+                                   analytics-label="Logout Button" class="dropdown-list"
+                                   data-toggle="collapse" data-target="#myNavbar">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown bm-header-menu text-menu" ng-if="base.numOfPackageInCart>0" style="margin-top: 25px !important;margin-left: 10px">
+                            <span class="hide-on-collapse">
+                            <a href="" class="bm-header-menu" ui-sref="base.cart" analytics-on
+                               analytics-event="click" analytics-category="header"
+                               analytics-label="My Cart Button" data-toggle="collapse"
+                               data-target="#myNavbar">
+                            <img src="img/cart_header.svg"  class="image-menu" alt="cart image">
+                            <span class="badge">
+                                {$ ::base.numOfPackageInCart $}
+                            </span>
+                            </a>
+                            </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+<section class="bm-header" id="headerTop" ng-if="!base.isDeviceMobile">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="base.home" analytics-on analytics-event="click" analytics-category="header"
+                   analytics-label="Bumper Logo">
+                    <img src="img/logo_tagline.png" class="logo-header" alt="bumper logo" height="48" ng-if="!base.isDeviceMobile">
+                    <img src="img/logo_white.svg" class="logo-header" alt="bumper logo" height="48" ng-if="base.isDeviceMobile">
+                </a>
+                <a href="tel:+91 9108446586" class="pull-right phone-icon-mob"
+                   analytics-on analytics-event="Call button Click"
+                   analytics-category="header">
+                    <img src="img/phone_greyIcon.svg" ng-if="!base.isDeviceMobile">
+                    <img src="img/phone_greyIcon_white.svg" ng-if="base.isDeviceMobile">
+                </a>
+                <a href="{$ ::base.appURL $}" class="pull-right call-icon-mob" analytics-on
+                   analytics-event="Get app button click" analytics-category="header">
+                    <img src="img/AppDownload_header.svg" ng-if="!base.isDeviceMobile">
+                    <img src="img/Download_app_white.svg" ng-if="base.isDeviceMobile">
+                </a>
+                <a ng-if="base.numOfPackageInCart>0" href="" class="pull-right call-icon-mob"
+                   ui-sref="base.cart" analytics-on analytics-event="click"
+                   analytics-category="header" analytics-label="My Cart Button" >
+                    <img src="img/cart_header.svg"  class="image-menu" alt="cart image" ng-if="!base.isDeviceMobile">
+                    <img src="img/cart_icon_white.svg"  class="image-menu" alt="cart image" ng-if="base.isDeviceMobile">
+                    <span class="badge">
+                                {$ ::base.numOfPackageInCart $}
+                    </span>
+                </a>
+                <!-- <a href="#" ng-click="" class="pull-right call-icon-mob"><i class="material-icons">help_outline</i></a>-->
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown bm-header-menu">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" ng-click="base.loadCity()"
+                           aria-haspopup="true" aria-expanded="false" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="Location Button" style="margin-bottom: 10px">
+                            <span class="location-header">
+                            <i class="material-icons loc-icon" style="font-size:16px">location_on</i><span>{$base.selectedCity.name |uppercase$}</span><i class="material-icons" style="font-size: 20px;color: grey;padding-right: 5px;">arrow_drop_down</i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="bm-header-menu-location"  aria-expanded="false" aria-controls="navbar">
+                                <a href="#" style="padding:10px;" ng-click="base.setSelectedCity(base.cityBangalore)">BENGALURU</a>
+                                <a href="#" style="padding:10px;" ng-click="base.setSelectedCity(base.cityDelhi)">GURUGRAM</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hide-on-collapse">
+                        <a  ng-if="base.openAppPopup" href="#" class="bm-header-menu text-menu"
+                            ng-click="base.getApp()">
+                            GET APP
+                        </a>
+                        <a ng-if="!base.openAppPopup" class="bm-header-menu"
+                           href="{$ ::base.appURL $}" target="_blank" analytics-on
+                           analytics-event="click" analytics-category="header"
+                           analytics-label="Get App Button"> <span>
+                               <!--  <img src="img/getapp.svg" class="image-menu">-->
+                            </span>
+                            GET APP
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.referral" class="bm-header-menu text-menu"
+                           analytics-on analytics-event="click" analytics-category="header">REFER & EARN
+                        </a>
+                    </li>
+
+                    <li class="hide-on-desktop">
+                        <a ui-sref="base.howItWorks" class="bm-header-menu text-menu"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="how it works link dropdown">
+                            <!-- <span><img src="/static/img/about.svg" class="image-menu"></span>-->
+                            HOW IT WORKS
+                        </a>
+                    </li>
+                    <li class="hide-on-desktop">
+                        <a ui-sref="base.workshop" class="bm-header-menu text-menu"
+                           analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="workshop link dropdown">
+                            <!-- <span><img src="/static/img/about.svg" class="image-menu"></span>-->
+                            BUMPER WORKSHOPS
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.contact" target="_blank" class="bm-header-menu text-menu"
+                           analytics-on analytics-event="click" analytics-category="header" analytics-label="Help Button">
+                            <!-- <span>
+                                <img src="img/help.svg" class="image-menu">
+                            </span>-->
+                            FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a class="bm-header-menu text-menu"
+                           href="https://bumper.com/blogs/"
+                           target="_blank"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="Blogs">
+                            BLOG
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.about" class="bm-header-menu text-menu" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="about us Button">
+                            <!-- <span><img src="/static/img/about.svg" class="image-menu"></span>-->
+                            ABOUT
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="base.contactUs"  class="bm-header-menu text-menu"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="Help Button">
+                            <!-- <span>
+                                <img src="img/help.svg" class="image-menu">
+                            </span>-->
+                            CONTACT
+                        </a>
+                    </li>
+
+
+
+                    <!--<li>
+                        <a href=""  class="bm-header-menu" ng-click="base.logout()" ng-if="base.currentUser">
+                            <span>
+                                <img src="img/about.svg" class="image-menu" >
+                            </span>{$ base.currentUser.name | uppercase $}
+                        </a>
+                    </li>
+                    -->
+                    <li>
+                        <a href="" class="bm-header-menu text-menu"
+                           ng-click="base.showUserPopup(false,'Header login/signup button')"
+                           analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="Login Button"
+                           ng-if="!base.currentUser">
+                            LOGIN
+                        </a>
+                    </li>
+                    <li class="dropdown bm-header-menu text-menu" ng-if="base.currentUser">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false" analytics-on analytics-event="click" analytics-category="header"
+                           analytics-label="My Account Button">
+                            <span  class="bm-header-menu">
+                             BOOKINGS
+                            </span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="items in base.bookingList">
+                                <a href="#" ng-click="base.gotoStatusScreen(items.id)"
+                                   analytics-on analytics-event="click" analytics-category="header"
+                                   analytics-label="Current Bookings list" class="dropdown-list">
+                                    booking-Id :{$ ::items.id$}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown bm-header-menu text-menu" ng-if="base.currentUser">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false" analytics-on analytics-event="click"
+                           analytics-category="header" analytics-label="My Account Button">
+                            <span  class="bm-header-menu">
+                                {$ ::base.currentUser.name | uppercase $}
+                                </span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" ng-click="base.logout()"
+                                   analytics-on analytics-event="click" analytics-category="My Account Menu"
+                                   analytics-label="Logout Button" class="dropdown-list">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown bm-header-menu text-menu" ng-if="base.numOfPackageInCart>0" style="margin-top: 25px !important;margin-left: 10px">
+                            <span class="hide-on-collapse">
+                            <a href="" class="bm-header-menu" ui-sref="base.cart" analytics-on
+                               analytics-event="click" analytics-category="header"
+                               analytics-label="My Cart Button">
+                            <img src="img/cart_header.svg"  class="image-menu" alt="cart image">
+                            <span class="badge">
+                                {$ ::base.numOfPackageInCart $}
+                            </span>
+                            </a>
+                            </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+<div id="overlay" ui-view ></div>

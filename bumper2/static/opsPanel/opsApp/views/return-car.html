@@ -1,0 +1,55 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Return Car Booking Id:{$ returnCarCtrl.booking.id $}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning">
+            Use this only if we want to return car without doing any work!!
+            -- If any work is done by Bumper then this should not be used.
+        </div>
+        <ul ng-show="returnCarCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in returnCarCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="returnCarForm"  class="form-horizontal" role="form" method="post" >
+                    <div class="form-group">
+                        <label class="control-label no-padding-right">Reason for Return:</label>
+                        <select
+                                ng-model="returnCarCtrl.selectedReasonForReturn"
+                                ng-options="item as item.reason for item in returnCarCtrl.returnReasons track by item.id"
+                                required
+                                class="form-control  input-sm col-xs-10">
+                        </select>
+                    </div>
+                    <div class="form-group" ng-if="!returnCarCtrl.isProformaInvoicePaid">
+                        <label class="control-label no-padding-right" ng-if="returnCarCtrl.isProformaInvoicePending">Collect Payment <small>(Since advance payment invoice is pending.)</small>:</label>
+                        <label class="control-label no-padding-right" ng-if="!returnCarCtrl.isProformaInvoicePending">Collect Payment <small>(Since no advance payment invoice generated.)</small>:</label>
+                        <div class="col-sm-12">
+                            <div>
+                                <label ng-if="returnCarCtrl.isProformaInvoicePending"><input type="radio" value="1" name="collectPaymentRadios" ng-model="returnCarCtrl.needToCollectAnyAmount"> Collect Payment. <small>(Advance payment Invoice will be cancelled and Invoice will be generated. Booking will go into "Pending Payment" status.)</small> </label>
+                                <label ng-if="!returnCarCtrl.isProformaInvoicePending"><input type="radio" value="1" name="collectPaymentRadios" ng-model="returnCarCtrl.needToCollectAnyAmount"> Collect Payment. <small>(Invoice will be generated. Booking will go into "Pending Payment" status.)</small> </label>
+                            </div>
+                            <div>
+                                <label ng-if="returnCarCtrl.isProformaInvoicePending"><input type="radio" value="0" name="collectPaymentRadios" ng-model="returnCarCtrl.needToCollectAnyAmount"> Payment not needed. <small>(Advance payment Invoice will be cancelled. Booking will move to "Drop Schedule pending")</small></label>
+                                <label ng-if="!returnCarCtrl.isProformaInvoicePending"><input type="radio" value="0" name="collectPaymentRadios" ng-model="returnCarCtrl.needToCollectAnyAmount"> Payment not needed. <small>(Invoice will not be generated. Booking will move to "Drop Schedule pending")</small></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="returnCarCtrl.isProformaInvoicePaid">
+                        <label class="control-label no-padding-right">Adjust Refund <b>(Advance Payment was collected.)</b>:</label>
+                        <div class="col-sm-10">
+                            <p><b>Please send refund details to backend team for now.</b> Booking will be set to drop schedule pending.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="returnCarCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="returnCarCtrl.ajax_loading||  returnCarForm.$invalid "
+                ng-click="returnCarCtrl.scheduleDrop()">Return Car</button>
+    </div>
+</div>

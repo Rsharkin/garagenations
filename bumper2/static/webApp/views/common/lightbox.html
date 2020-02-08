@@ -1,0 +1,36 @@
+<div class=modal-body ng-swipe-left=Lightbox.nextImage() ng-swipe-right=Lightbox.prevImage()>
+    <div class="popup-heading">{$Lightbox.imageCaption$}</div>
+    <div class=lightbox-image-container>
+        <div class="loader"><img class="loading" ng-if=!Lightbox.isVideo(Lightbox.image) lightbox-src={$Lightbox.imageUrl$} width="650" height="305"></div>
+        <div ng-if=Lightbox.isVideo(Lightbox.image) class="embed-responsive embed-responsive-16by9">
+            <video ng-if=!Lightbox.isSharedVideo(Lightbox.image) lightbox-src={$Lightbox.imageUrl$} controls autoplay>
+            </video>
+            <embed-video ng-if=Lightbox.isSharedVideo(Lightbox.image) lightbox-src={$Lightbox.imageUrl$} ng-href={$Lightbox.imageUrl$} iframe-id=lightbox-video class=embed-responsive-item>
+                <a ng-href={$Lightbox.imageUrl$}>Watch video</a>
+            </embed-video>
+        </div>
+        <span ng-if="Lightbox.images.length > 1 && Lightbox.images.length==9">
+            <div class="round-nav-left">
+                <i class="material-icons" style="line-height:1.4;outline: none !important;" ng-click=Lightbox.prevImage()>navigate_before</i>
+             </div>
+             <div class="round-nav-right">
+                <i class="material-icons" style="line-height:1.4;outline: none !important;" ng-click=Lightbox.nextImage()>navigate_next</i>
+             </div>
+        </span>
+        <span ng-if="Lightbox.images.length > 1 && Lightbox.images.length==8">
+            <div class="round-nav-left top50">
+                <i class="material-icons" style="line-height:1.4;outline: none !important;" ng-click=Lightbox.prevImage()>navigate_before</i>
+             </div>
+             <div class="round-nav-right top50">
+                <i class="material-icons" style="line-height:1.4;outline: none !important;" ng-click=Lightbox.nextImage()>navigate_next</i>
+             </div>
+        </span>
+        <div class="user-review" ng-if="Lightbox.images.length > 8">
+            <p class="reivew-large">{$Lightbox.image.review$}</p>
+            <p class="reivew-small">{$Lightbox.image.author$}</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setTimeout(function(){$('.loader').css({"background":"#fff"}); }, 700);
+</script>

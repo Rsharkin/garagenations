@@ -1,0 +1,61 @@
+<section class="payment-section-template" >
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-4"></div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="payment-box" ng-if="!directPayCtrl.error" >
+                    <img src="img/logo_tagline.svg">
+                    <div class="heading-payment-amount">
+                        <p class="dp-amount-text">Amount</p>
+                        <p class="dp-amount">{$ directPayCtrl.amount $}</p>
+                    </div>
+                    <h2>
+                        Payment for booking ID -{$directPayCtrl.bookingData.id$}
+                    </h2>
+                    <md-input-container class="input-payment md-accent" md-autofocus="true">
+                        <input  name="name" ng-model="directPayCtrl.bookingData.user.name"  ng-change="directPayCtrl.errors=null" ng-disabled="true" required/>
+                    </md-input-container>
+                    <md-input-container class=" input-payment md-accent" md-autofocus="true">
+                        <input  name="name" ng-model="directPayCtrl.bookingData.user.email"  ng-change="loginCtrl.errors=null" ng-disabled="true" required/>
+                    </md-input-container>
+                    <md-input-container class=" input-payment md-accent" md-autofocus="true">
+                        <input  name="name" ng-model="directPayCtrl.bookingData.user.phone"  ng-change="directPayCtrl.errors=null" ng-disabled="true" required/>
+                    </md-input-container>
+                    <div layout="row"  class="sign-up-bottom-button" layout-align="center center">
+                        <md-button
+                                class="md-primary md-raised sign-up-button"
+                                ng-click="directPayCtrl.proceedToPayment()"
+                                analytics-on analytics-event="click"
+                                analytics-category="Direct Payment Button"
+                                analytics-label="Payment without Login(Pay Now)"
+                        >PAY {$directPayCtrl.amount $}</md-button>
+                    </div>
+                </div><div>
+                <div class="payment-box">
+                    <p ng-if="directPayCtrl.error" style="line-height:10;color:red;text-align:center">{$directPayCtrl.error$}</p>
+                </div>
+            </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4"></div>
+        </div>
+    </div>
+    <form align="center" method="post" action="{$ directPayCtrl.trustSrc(directPayCtrl.citrusFormData.formPostUrl) $}" style="display: none;" ng-if="directPayCtrl.paymentGateway==1">
+        <input type="hidden" id="merchantTxnId" name="merchantTxnId" value="{$ directPayCtrl.citrusFormData.merchantTxnId $}" />
+        <input type="hidden" id="orderAmount" name="orderAmount" value="{$ directPayCtrl.citrusFormData.orderAmount $}" />
+        <input type="hidden" id="currency" name="currency" value="{$ directPayCtrl.citrusFormData.currency $}" />
+        <input type="hidden" name="returnUrl" value="{$ directPayCtrl.citrusFormData.returnUrl $}" />
+        <input type="hidden" id="notifyUrl" name="notifyUrl" value="{$ directPayCtrl.citrusFormData.returnUrl $}" />
+        <input type="hidden" id="secSignature" name="secSignature" value="{$ directPayCtrl.citrusFormData.secSignature $}" />
+        <input type="hidden" id="name" name="firstName" value="{$ directPayCtrl.citrusFormData.name $}" />
+        <input type="hidden" id="email" name="email" value="{$ directPayCtrl.citrusFormData.email $}" />
+        <input type="hidden" id="phoneNumber" name="phoneNumber" value="{$ directPayCtrl.citrusFormData.phoneNumber $}" />
+        <input type="hidden" name="customParams[0].name" value="bookingId" />
+        <input type="hidden" name="customParams[0].value" value="{$ directPayCtrl.citrusFormData.customParameters.bookingId $}" />
+        <input type="hidden" name="customParams[1].name" value="paymentId" />
+        <input type="hidden" name="customParams[1].value" value="{$ directPayCtrl.citrusFormData.customParameters.paymentId $}" />
+        <input type="hidden" name="customParams[2].name" value="deviceType" />
+        <input type="hidden" name="customParams[2].value" value="{$ directPayCtrl.citrusFormData.customParameters.deviceType $}" />
+        <input type="Submit" id="submitToCitrusBtn" value="Pay Now" class="btn btn-success" />
+    </form>
+</section>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>

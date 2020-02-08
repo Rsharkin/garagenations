@@ -1,0 +1,127 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+    <title></title>
+    <!--[if !mso]><!-- -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        #outlook a { padding: 0; }
+        .ReadMsgBody { width: 100%; }
+        .ExternalClass { width: 100%; }
+        .ExternalClass * { line-height:100%; }
+        body { margin: 0; padding: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; }
+        table, td { border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+        p { display: block; margin: 13px 0; }
+    </style>
+    <!--[if !mso]><!-->
+    <style type="text/css">
+        @media only screen and (max-width:550px) {
+            .app-image{
+                width: 7%;
+            }
+            .social-image{
+                width: 8%;
+            }
+            .header-image{
+                width:80%;
+            }
+            @-ms-viewport { width:100%; }
+            @viewport { width:100% }
+        }
+    </style>
+    <!--<![endif]-->
+    <!--[if mso]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <!--[if lte mso 11]>
+    <style type="text/css">
+        .outlook-group-fix {
+            width:100% !important;
+        }
+    </style>
+    <![endif]-->
+
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+    <style type="text/css">
+
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+
+    </style>
+    <!--<![endif]--><style type="text/css">
+    @media only screen and (max-width: 550px) {
+        .mj-column-per-100 { width:100%!important; }
+    }
+</style>
+</head>
+<body>
+<div style=" width: 100%;max-width: 600px;margin-left: auto;margin-right: auto;"><div style="margin:0px auto;max-width:600px;"><table role="presentation" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;" align="center" border="0"><tbody><tr><td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:20px 0px;"><!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:600px;">
+    <![endif]--><div class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+        <tbody>
+        <tr>
+            <td style="word-break:break-word;font-size:0px;padding:10px 25px;" align="left">
+                <div class="" style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:22px;text-align:left;opacity: 0.8;">Hey {{name}},<br><br>
+                    I am Shonalee, heading customer experience at Bumper.com. I saw that you were about to schedule your car for free pick up and that you didn't get a chance to complete your booking.<br><br>
+                    I just wanted to see if there were any problems or anything at all I could help with. If so please let me know by responding to this email. Also, you can reach out to Bumper representatives for a quick call at 9108446586.<br><br>
+                    Explore the next steps once you schedule your car's free pick up. <a href="https://bumper.com/whats-next/?utm_source=email&utm_medium=organic&utm_campaign=add-to-cart">See whats next</a><br><br>
+                    Here is a reminder of what have you selected in the cart: <br><br>
+                    {% for item in booking_data.booking_package %}
+                    {% if item.package.package.category != 2 %}
+                    {{item.package.package.name}} - &#8377; {{item.price|floatformat:"0"}} <br>
+                    {% else %}
+                    {{item.package.package.name}} - &#8377; {{item.price|floatformat:"0"}} <br>
+                    {% for panel in item.booking_package_panel %}
+                    {{panel.panel_details.car_panel.name}}-{{panel.panel_details.type_of_work}} - {{panel.price_text|safe}}<br>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    <br><br>
+                    Click here to schedule your booking  <a href="https://bumper.com/schedule/pickup/?booking_id={{booking_id}}&utm_source=email&utm_medium=organic&utm_campaign=add-to-cart" style="background: rgb(113,71,230);padding:5px 20px; border-radius:2px; color:#fff; weight:500;font-family:Ubuntu; font-size:16px;">Schedule</a><br><br>
+
+                    Thanks again for visiting Bumper, and please let me know if you have thoughts on how can we improve your experience at Bumper!<br><br>
+
+                    Cheers,<br>
+                    <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-width: 0px; border: 0px; margin: 0; padding: 0;">
+                        <tr><td colspan="2" style="padding-bottom: 5px; color: #7147e6; font-size: 16px; font-family: Arial, Helvetica, sans-serif;">Shonalee Basu</td></tr>
+                        <tr><td colspan="2" style="color: #333333; font-size: 12px; font-family: Arial, Helvetica, sans-serif;"><i>Head - Customer Experience</i></td></tr>
+                        <tr><td width="20" valign="top" style="vertical-align: top; width: 20px; color: #7147e6; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">m:</td><td style="color: #333333; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">9108446586</td></tr>
+                        <tr><td width="20" valign="top" style="vertical-align: top; width: 20px; color: #7147e6; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">w:</td><td valign="top" style="vertical-align: top; color: #333333; font-size: 12px; font-family: Arial, Helvetica, sans-serif;"><a href="https://bumper.com" style=" color: #DB8F1D; text-decoration: none; font-weight: normal; font-size: 12px;">bumper.com</a>&nbsp;&nbsp;<span style="color: #7147e6;">e:&nbsp;</span><a href="mailto:shonalee@bumper.com" style="color: #DB8F1D; text-decoration: none; font-weight: normal; font-size: 12px;">shonalee@bumper.com</a></td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">
+                            <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-width: 0px; border: 0px; margin: 0; padding: 0;"><tr><td valign="middle" style="padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; background-color: #7147e6; color: #FFFFFF; font-size: 15px; font-weight: normal; font-style: normal; font-family: Arial, Helvetica, sans-serif;">
+                                <a style="background-color: #7147e6; color: #FFFFFF; font-size: 15px; line-height: 30px; font-weight: normal; font-style: normal; font-family: Arial, Helvetica, sans-serif; text-decoration: none;" href="https://bumper.com/customer-reviews/?utm_source=email&utm_medium=organic&utm_campaign=add-to-cart">Happy Customer Story</a>
+                            </td></tr></table>
+                        </td></tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div><!--[if mso | IE]>
+    </td></tr></table>
+    <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+    </td></tr></table>
+    <![endif]-->
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">
+        <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+    <![endif]--><div style="margin:0px auto;max-width:600px;"><table role="presentation" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;" align="center" border="0"><tbody><tr><td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:0px;"><!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:600px;">
+        <![endif]--><div class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0"><tbody><tr><td style="word-break:break-word;font-size:0px;padding-top: 30px" align="center"><table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;" align="center" border="0"><tbody><tr><td style="width:300px;"><!--<img alt="" title="" height="auto" src="https://unbox-bumper-static.s3.amazonaws.com/6c5ca06e-9c6b-4b07-ba3a-0709eae74ed1.png" style="border:none;border-radius:;display:block;outline:none;text-decoration:none;width:100%;height:auto;">--></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+    </td></tr></table>
+    <![endif]-->
+
+</body>
+</html>

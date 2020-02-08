@@ -1,0 +1,32 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Workshop Notes (Booking Id:{$ workshopNotesCtrl.modalItem.booking_id $})</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="workshopNotesCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in workshopNotesCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <div class="row" ng-if="workshopNotesCtrl.purpose == 'reason_allow_to_go_failed_qc' ">
+            <div class="col-sm-12">
+                <h3 class="text-danger">Crew Found more Issues in car than were reported by workshop Executive.
+                    Reason for allowing to go?</h3>
+            </div>
+        </div>
+        <form name="addWorkshopNoteForm" class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label no-padding-right">Note:</label>
+                <div class="col-sm-9">
+                    <textarea ng-model="workshopNotesCtrl.modalItem.notes"
+                              required class="input-sm col-xs-10" cols="20"
+                              placeholder="Notes" rows="4" title="Notes from FollowUp"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="workshopNotesCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="workshopNotesCtrl.ajax_loading|| addWorkshopNoteForm.$invalid "
+                ng-click="workshopNotesCtrl.ok()">Save changes</button>
+    </div>
+</div>

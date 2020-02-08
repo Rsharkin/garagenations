@@ -1,0 +1,58 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Raise Alert</h5>
+                    <div ibox-tools>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" name="raiseAlertForm" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Workshop</label>
+                            <div class="col-sm-9">
+                                <select ng-model="raiseAlertCtrl.selected_workshop"
+                                        ng-options="item as item.name for item in raiseAlertCtrl.workshops track by item.id"
+                                        required
+                                        class="form-control input-sm" title="Workshops">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Alert</label>
+                            <div class="col-sm-9">
+                                <select ng-model="raiseAlertCtrl.selected_team_alert_reason"
+                                        ng-options="item as item.reason for item in raiseAlertCtrl.teamAlertReasons track by item.id"
+                                        required
+                                        class="form-control input-sm" title="Alert Reasons">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Desc</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="raiseAlertCtrl.newAlert.reason_text"
+                                          name="desc"
+                                          placeholder="Desc of the issue."
+                                          class="form-control"
+                                          required
+                                          rows="4" cols="20"
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <input class="btn btn-primary" type="submit"
+                                       ng-click="raiseAlertCtrl.raiseAlert()"
+                                       ng-disabled="raiseAlertCtrl.ajax_loading || raiseAlertForm.$invalid || raiseAlertForm.$pristine"
+                                       ng-value="raiseAlertCtrl.ajax_loading?'Please Wait..':'Raise Alert'"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

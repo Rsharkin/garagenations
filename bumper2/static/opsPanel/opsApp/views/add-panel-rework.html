@@ -1,0 +1,39 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Add Rework for: {$ addReworkPanelModalInstanceCtrl.bookingPackagePanel.panel_details.car_panel.name $}</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="addReworkPanelModalInstanceCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in addReworkPanelModalInstanceCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <form name="addReworkForm" class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Work Being Redone:</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="addReworkPanelModalInstanceCtrl.rework.type_of_work"
+                            ng-options="key as value for (key, value) in addReworkPanelModalInstanceCtrl.typeOfWorks"
+                            class="form-control input-sm"
+                            required
+                            name="type_of_work"
+                            title="type_of_work">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label no-padding-right">Reason/ Details:</label>
+                <div class="col-sm-9">
+                    <textarea ng-model="addReworkPanelModalInstanceCtrl.rework.reason"
+                              required class="input-sm form-control" cols="20"
+                              placeholder="Hint: Reason for rework or details of it." rows="4" title="Reason for rework"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="addReworkPanelModalInstanceCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="addReworkPanelModalInstanceCtrl.ajax_loading || addReworkForm.$invalid "
+                ng-click="addReworkPanelModalInstanceCtrl.ok()">Add Rework</button>
+    </div>
+</div>

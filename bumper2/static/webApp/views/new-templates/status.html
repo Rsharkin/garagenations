@@ -1,0 +1,369 @@
+<!--<md-progress-circular ng-hide="!packagesController.showLoader"
+                      class="md-hue-2" md-diameter="60px" style="position: fixed; top:300px; left: 600px " ng-if="!statusCtrl.currentBooking"></md-progress-circular>-->
+<section class="section2 margin-top-status">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h1  class="bm-status-heading" ng-show="statusCtrl.currentBooking.status.id==3">
+                    Thank you! Your Booking has been scheduled. Our team will be at your place by the specified time.
+                </h1>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 hide-in-tab">
+                <div class="row grey-area" ng-if="statusCtrl.currentBooking">-</div>
+                <div class="row status-area" ng-if="statusCtrl.currentBooking">
+                    <div class="col-lg-2 col-sm-2 col-xs-2">
+                        <div class="circle-small-grey" ng-show="!statusCtrl.currentBooking || statusCtrl.currentBooking.status.flow_order_num<3"></div>
+                        <div class="circle-small" ng-show="statusCtrl.currentBooking.status.flow_order_num>3"></div>
+                        <div class="circle-large" ng-show="statusCtrl.currentBooking.status.flow_order_num==3"></div>
+                        <div class="vertical-line"></div>
+                        <div class="circle-small-grey" ng-show="!statusCtrl.currentBooking || statusCtrl.currentBooking.status.flow_order_num<9"></div>
+                        <div class="circle-small" ng-show="statusCtrl.currentBooking.status.flow_order_num>9"></div>
+                        <div class="circle-large" ng-show="statusCtrl.currentBooking.status.flow_order_num==9"></div>
+                        <div class="vertical-line"></div>
+                        <div class="circle-small-grey" ng-show="!statusCtrl.currentBooking || statusCtrl.currentBooking.status.flow_order_num<13"></div>
+                        <div class="circle-small" ng-show="statusCtrl.currentBooking.status.flow_order_num>13"></div>
+                        <div class="circle-large" ng-show="statusCtrl.currentBooking.status.flow_order_num==13"></div>
+                        <div class="vertical-line"></div>
+                        <div class="circle-small-grey" ng-show="!statusCtrl.currentBooking || statusCtrl.currentBooking.status.flow_order_num<15"></div>
+                        <div class="circle-small" ng-show="statusCtrl.currentBooking.status.flow_order_num>15"></div>
+                        <div class="circle-large" ng-show="statusCtrl.currentBooking.status.flow_order_num==15"></div>
+                        <div class="vertical-line"></div>
+                        <span ng-if="!statusCtrl.currentBooking.is_doorstep">
+                            <div class="circle-small-grey" ng-show="!statusCtrl.currentBooking || statusCtrl.currentBooking.status.flow_order_num<19"></div>
+                            <div class="circle-small" ng-show="statusCtrl.currentBooking.status.flow_order_num>19"></div>
+                            <div class="circle-large" ng-show="statusCtrl.currentBooking.status.flow_order_num==19"></div>
+                            <div class="vertical-line"></div>
+                        </span>
+                        <div class="circle-small-grey" ng-show="!statusCtrl.currentBooking || statusCtrl.currentBooking.status.flow_order_num<22"></div>
+                        <div class="circle-small" ng-show="statusCtrl.currentBooking.status.flow_order_num>22"></div>
+                        <div class="circle-large" ng-show="statusCtrl.currentBooking.status.flow_order_num==22"></div>
+                    </div>
+                    <div class="col-lg-10 no-padding col-sm-10 col-xs-10">
+                        <div class="booking-status-tracker-active"
+                             ng-show="statusCtrl.currentBooking.status.flow_order_num==3">
+                            <span ng-if="!statusCtrl.currentBooking.is_doorstep">Pick up scheduled<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></span>
+                            <span ng-if="statusCtrl.currentBooking.is_doorstep">Scheduled<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></span>
+                        </div>
+                        <div ng-class="{'booking-status-tracker-active':statusCtrl.currentBooking.status.flow_order_num>3&&statusCtrl.currentBooking.status.flow_order_num<9,'booking-status-tracker':statusCtrl.currentBooking.status.flow_order_num>=9||statusCtrl.currentBooking.status.flow_order_num<3}"
+                             ng-hide="statusCtrl.currentBooking.status.flow_order_num==3">
+                            <span ng-if="!statusCtrl.currentBooking.is_doorstep">Pick up scheduled<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>3&&statusCtrl.currentBooking.status.flow_order_num<9">What's next</a></span>
+                            <span ng-if="statusCtrl.currentBooking.is_doorstep">Scheduled<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>3&&statusCtrl.currentBooking.status.flow_order_num<9">What's next</a></span>
+                        </div>
+                        <div class="booking-status-tracker-active"
+                             ng-show="statusCtrl.currentBooking.status.flow_order_num==9">
+                            <span ng-if="!statusCtrl.currentBooking.is_doorstep">Car picked up<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></span>
+                            <span ng-if="statusCtrl.currentBooking.is_doorstep">Bumper team at doorstep<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></span>
+                        </div>
+                        <div ng-class="{'booking-status-tracker-active':statusCtrl.currentBooking.status.flow_order_num>9&&statusCtrl.currentBooking.status.flow_order_num<13,'booking-status-tracker':statusCtrl.currentBooking.status.flow_order_num>=13||statusCtrl.currentBooking.status.flow_order_num<9}"
+                             ng-hide="statusCtrl.currentBooking.status.flow_order_num==9">
+                            <span ng-if="!statusCtrl.currentBooking.is_doorstep">Car picked up<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>9&&statusCtrl.currentBooking.status.flow_order_num<13">What's next</a></span>
+                            <span ng-if="statusCtrl.currentBooking.is_doorstep">Bumper team at doorstep<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>9&&statusCtrl.currentBooking.status.flow_order_num<13">What's next</a></span>
+                        </div>
+                        <div class="booking-status-tracker-active"
+                             ng-show="statusCtrl.currentBooking.status.flow_order_num==13">Work in progress<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></div>
+                        <div ng-class="{'booking-status-tracker-active':statusCtrl.currentBooking.status.flow_order_num>13&&statusCtrl.currentBooking.status.flow_order_num<15,'booking-status-tracker':statusCtrl.currentBooking.status.flow_order_num>=15||statusCtrl.currentBooking.status.flow_order_num<13}"
+                             ng-hide="statusCtrl.currentBooking.status.flow_order_num==13">Work in progress<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>13&&statusCtrl.currentBooking.status.flow_order_num<15">What's next</a></div>
+                        <div class="booking-status-tracker-active"
+                             ng-show="statusCtrl.currentBooking.status.flow_order_num==15">Work completed <br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></div>
+                        <div ng-class="{'booking-status-tracker-active':statusCtrl.currentBooking.status.flow_order_num>15&&statusCtrl.currentBooking.status.flow_order_num<19,'booking-status-tracker':statusCtrl.currentBooking.status.flow_order_num>=19||statusCtrl.currentBooking.status.flow_order_num<15}"
+                             ng-hide="statusCtrl.currentBooking.status.flow_order_num==15">Work completed<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>15&&statusCtrl.currentBooking.status.flow_order_num<19">What's next</a></div>
+                        <span ng-if="!statusCtrl.currentBooking.is_doorstep">
+                            <div class="booking-status-tracker-active"
+                                 ng-show="statusCtrl.currentBooking.status.flow_order_num==19">
+                                Drop schedule<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a>
+                            </div>
+                            <div ng-class="{'booking-status-tracker-active':statusCtrl.currentBooking.status.flow_order_num>19&&statusCtrl.currentBooking.status.flow_order_num<22,'booking-status-tracker':statusCtrl.currentBooking.status.flow_order_num>=22||statusCtrl.currentBooking.status.flow_order_num<19}"
+                                 ng-hide="statusCtrl.currentBooking.status.flow_order_num==19">
+                                Drop schedule<br><a ui-sref="base.whatsNext" class="what-next-on-status" ng-if="statusCtrl.currentBooking.status.flow_order_num>19&&statusCtrl.currentBooking.status.flow_order_num<22">What's next</a>
+                            </div>
+                        </span>
+                        <div class="booking-status-tracker-active"
+                             ng-show="statusCtrl.currentBooking.status.flow_order_num==22">Car delivered<br><a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></div>
+                        <div class="booking-status-tracker" style="margin-bottom: 0px"
+                             ng-hide="statusCtrl.currentBooking.status.flow_order_num==22">Car delivered</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 ">
+                <h1 class="bm-booking-header">
+                    BOOKING ID - {$statusCtrl.currentBooking.id$}
+                    <span class="pull-right"> {$ statusCtrl.currentCar.car_model.brand.name|uppercase $} - {$ statusCtrl.currentCar.car_model.name|uppercase $}</span><img src="img/car_white.svg" height="25px" class="pull-right" style="margin-right: 4px; padding-bottom: 10px;height: 25px!important;";>
+                </h1>
+                <h2 class="row" style="margin-bottom: 10px" ng-if="statusCtrl.currentBooking && statusCtrl.currentBooking.status.flow_order_num<23">
+                    <div class="col-lg-5 col-sm-5 col-xs-12">
+                        <div class="bm-status">{$statusCtrl.currentBooking.status.status_desc$}<span ng-if="base.isDeviceMobile"> - <a ui-sref="base.whatsNext" class="what-next-on-status">What's next</a></span></span></div>
+                    </div>
+                    <div class="col-lg-7 col-sm-7 col-xs-7">
+                        <md-button class=" md-primary md-raised pull-right cancel-booking-btn"
+                                   analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Add pickup details"
+                                   ng-show="statusCtrl.currentBooking.status.flow_order_num<=2"
+                                   ng-click="statusCtrl.addPickupLocation()">ADD PICKUP DETAILS</md-button>
+                        <md-button class="md-raised pull-right cancel-booking-btn"
+                                   analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Cancel Booking Button"
+                                   ng-show="statusCtrl.currentBooking.status.flow_order_num<=3"
+                                   ng-click="statusCtrl.cancelBooking()"><span class="button-text-color">CANCEL BOOKING</span></md-button>
+
+                        <md-button class="md-primary md-raised pull-right pay-now-btn"
+                                   analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Pay Button"
+                                   ng-if="statusCtrl.showPaymentButton"
+                                   ng-click="statusCtrl.payNow()">PAY NOW</md-button>
+
+                        <md-button class="md-primary md-raised pull-right select-drop-btn"
+                                   analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Select Drop Button"
+                                   ng-if="statusCtrl.currentBooking.status.flow_order_num==18"
+                                   ng-click="statusCtrl.selectDropLocation()">SELECT DROP</md-button>
+
+                        <md-button class="md-primary md-raised pull-right confirm-delivery-btn"
+                                   analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Confirm Delivery Button"
+                                   ng-if="statusCtrl.currentBooking.status.flow_order_num==22"
+                                   ng-click="statusCtrl.markDeliveryconfirmed()">CONFIRM DELIVERY</md-button>
+                    </div>
+                </h2>
+                <div class=" row row-class" ng-if="statusCtrl.currentBooking && statusCtrl.currentBooking.status.flow_order_num<23">
+                    <div class="status-container" ng-if="statusCtrl.currentBooking.status.flow_order_num>=19">
+                        <p class="status-card-heading">DROP DATE & TIME</p>
+                        <p class="status-text">{$statusCtrl.currentBooking.drop_time | date:"shortTime"$}-{$statusCtrl.currentBooking.drop_slot_end_time| date:"shortTime"$}, {$statusCtrl.currentBooking.drop_time|date:"dd"$} {$statusCtrl.currentBooking.drop_time|date:"MMM"$}</p>
+                        <p class="status-card-heading">DROP ADDRESS</p>
+                        <p class="status-text">
+                            {$ statusCtrl.drop_address.address1 $}
+                            <span ng-if="statusCtrl.drop_address.address2">, {$ statusCtrl.drop_address.address2 $}</span>
+                            <span ng-if="statusCtrl.drop_address.area">, {$ statusCtrl.drop_address.area $}</span><br>
+                            {$ statusCtrl.drop_address.city $}, {$ statusCtrl.drop_address.pin_code $}
+                        </p>
+                    </div>
+                    <div class="status-container">
+                        <p class="status-card-heading">
+                            <span ng-if="!statusCtrl.currentBooking.is_doorstep">PICKUP DATE & TIME</span>
+                            <span ng-if="statusCtrl.currentBooking.is_doorstep">SCHEDULE DATE & TIME</span>
+                        </p>
+                        <p class="status-text">{$statusCtrl.currentBooking.pickup_time | date:"shortTime"$}, {$statusCtrl.currentBooking.pickup_time|date:"dd"$} {$statusCtrl.currentBooking.pickup_time|date:"MMM"$}</p>
+                        <p class="status-card-heading">
+                            <span ng-if="!statusCtrl.currentBooking.is_doorstep">PICKUP ADDRESS</span>
+                            <span ng-if="statusCtrl.currentBooking.is_doorstep">ADDRESS</span>
+                        </p>
+                        <p class="status-text">
+                            {$ statusCtrl.pickup_address.address1 $}
+                            <span ng-if="statusCtrl.pickup_address.address2">, {$ statusCtrl.pickup_address.address2 $}</span>
+                            <span ng-if="statusCtrl.pickup_address.area">, {$ statusCtrl.pickup_address.area $}</span><br>
+                            {$ statusCtrl.pickup_address.city $}, {$ statusCtrl.pickup_address.pin_code $}
+                        </p>
+                        <p class="status-card-heading" ng-if="statusCtrl.currentBooking.actual_pickup_time">PICKED UP TIME</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.actual_pickup_time">{$ statusCtrl.currentBooking.actual_pickup_time | date:"shortTime" $}, {$ statusCtrl.currentBooking.actual_pickup_time|date:"dd" $} {$ statusCtrl.currentBooking.actual_pickup_time|date:"MMM" $}</p>
+                    </div>
+
+                    <div class="status-container">
+                        <p class="status-card-heading">Sub Total</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.bill_details.total_amt>0"> &#8377; {$ statusCtrl.currentBooking.bill_details.total_amt| number:0 $}</p>
+                        <p class="status-card-heading" ng-if="statusCtrl.currentBooking.bill_details.total_gst>0">Taxes</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.bill_details.total_gst>0"> &#8377; {$ statusCtrl.currentBooking.bill_details.total_gst| number:0 $}</p>
+
+                        <p class="status-card-heading">TOTAL AMOUNT</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.bill_details.orig_payable_amt>0"> &#8377; {$ statusCtrl.currentBooking.bill_details.orig_payable_amt| number:0 $}</p>
+                        <span ng-if="statusCtrl.paymentStatus !='Paid'">
+                            <p class="status-card-heading">PAYABLE AMOUNT</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.bill_details.payable_amt>0"> &#8377; {$ statusCtrl.currentBooking.bill_details.payable_amt| number:0 $}</p>
+                       </span>
+                        <p class="status-card-heading">AMOUNT RECIEVED</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.bill_details.orig_payable_amt>0"> &#8377; {$ statusCtrl.currentBooking.bill_details.total_payment_received| number:0 $}</p>
+
+                        <span ng-if="statusCtrl.currentBooking.status.flow_order_num>=16">
+                            <p class="status-card-heading">PAYMENT STATUS</p>
+                            <p class="status-text" > {$ statusCtrl.paymentStatus $} </p>
+                        </span>
+                        <span ng-if="statusCtrl.currentBooking.status.flow_order_num>=16 && statusCtrl.paymentMode">
+                            <p class="status-card-heading">PAYMENT MODE</p>
+                            <p class="status-text">{$ statusCtrl.paymentMode $}</p>
+                        </span>
+                    </div>
+                    <div class="status-container">
+                        <p class="status-card-heading">ITEMS IN THE BOOKING<br></p>
+                        <p class="status-text">
+                        <div ng-repeat="item in statusCtrl.currentBooking.booking_package">
+                                <span ng-if="item.package.package.category==2">
+                                    <div ng-repeat="panel in item.booking_package_panel">
+                                        {$ panel.panel_details.car_panel.name $} - {$ panel.panel_details.type_of_work $}
+                                    </div>
+                                </span>
+                            <span ng-if="item.package.package.category!=2">
+                                    {$ item.package.package.name $}
+                                </span>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="status-container" ng-if="statusCtrl.currentBooking.status.flow_order_num>=10 && (statusCtrl.currentBooking.estimate_complete_time || statusCtrl.currentBooking.workshop_manager_details)">
+                        <p class="status-card-heading" ng-if="statusCtrl.currentBooking.estimate_complete_time">ESTIMATED DELIVERY TIME</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.estimate_complete_time">{$ statusCtrl.currentBooking.estimate_complete_time| date:"shortTime"$}, {$statusCtrl.currentBooking.estimate_complete_time|date:"dd"$} {$statusCtrl.currentBooking.estimate_complete_time|date:"MMM"$} </p>
+                        <p class="status-card-heading" ng-if="statusCtrl.currentBooking.workshop_manager_details">WORKSHOP ASSOCIATE NAME</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.workshop_manager_details">{$ statusCtrl.currentBooking.workshop_asst_mgr.name $}</p>
+                        <p class="status-card-heading" ng-if="statusCtrl.currentBooking.workshop_manager_details">PHONE NUMBER</p>
+                        <p class="status-text" ng-if="statusCtrl.currentBooking.workshop_manager_details">{$ statusCtrl.currentBooking.workshop_asst_mgr.ops_phone $}</p>
+                    </div>
+                </div>
+
+                <div class="row row-class" ng-if="!statusCtrl.currentBooking || (statusCtrl.currentBooking && statusCtrl.currentBooking.status.flow_order_num>=23)">
+                    <div class="text-center">
+                        No Open Booking -
+                        <a ui-sref="base.home">GET ESTIMATE AND BOOK NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="app-link-section">
+    <div class="container">
+        <div class="row">
+            <div class="app-link-block">
+                <p>Download Bumper App for detailed tracking</p>
+                <div class="app-link">
+                    <a analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Play Store Button"
+                       href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank"><img src="img/AndroidLink.png" width="44%" alt="bumper android app link image"></a>
+                    <a href="https://itunes.apple.com/in/app/bumper-car-body-repair-wash/id1134862260?mt=8/?utm_source=website&utm_medium=unknown&utm_campaign=apple" analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Apple Store Button"><img src="img/iosLink.svg" width="44%" alt="bumper android app link image"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="panel-price">
+    <div class="row">
+        <div class="col-xs-6">
+            <md-button class=" md-primary md-raised pull-right"
+                       analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Add pickup details"
+                       ng-show="statusCtrl.currentBooking.status.flow_order_num<=2"
+                       ng-click="statusCtrl.addPickupLocation()">ADD PICKUP DETAILS</md-button>
+            <md-button class="md-primary md-raised pull-right "
+                       analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Select Drop Button"
+                       ng-if="statusCtrl.currentBooking.status.flow_order_num==18"
+                       ng-click="statusCtrl.selectDropLocation()">SELECT DROP</md-button>
+
+            <md-button class="md-primary md-raised pull-right "
+                       analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Confirm Delivery Button"
+                       ng-if="statusCtrl.currentBooking.status.flow_order_num==22"
+                       ng-click="statusCtrl.markDeliveryconfirmed()">CONFIRM DELIVERY
+            </md-button>
+        </div>
+        <div class="col-xs-6 pull-right">
+            <md-button class="md-raised pull-right "
+                       analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Cancel Booking Button"
+                       ng-show="statusCtrl.currentBooking.status.flow_order_num<=3"
+                       ng-click="statusCtrl.cancelBooking()"><span class="button-text-color">CANCEL BOOKING</span></md-button>
+
+            <md-button class="md-primary md-raised pull-right "
+                       analytics-on analytics-event="Click" analytics-category="Current Booking Screen" analytics-label="Pay Button"
+                       ng-if="statusCtrl.showPaymentButton"
+                       ng-click="statusCtrl.payNow()">PAY NOW
+            </md-button>
+        </div>
+    </div>
+</div>
+<!--<md-fab-speed-dial ng-if="!base.isDeviceMobile" ng-cloak="" md-open="statusCtrl.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised"
+                   analytics-on analytics-event="close FAB icon clicked"
+                   analytics-category="Status Page">
+            <img src="img/TalkToUs.svg" ng-if="!statusCtrl.isOpen" style="margin-left:inherit;margin-bottom:inherit">
+            <i class="material-icons" style="margin-top: 18px;" ng-if="statusCtrl.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button ng-click="base.requestCallback();"
+                   analytics-on analytics-event="phone icon clicked"
+                   analytics-category="
+                    Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">phone</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   analytics-on analytics-event="inquiry icon clicked"
+                   analytics-category="Status Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg">
+        </md-button>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised "
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Status Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">chat_bubble</i>
+        </md-button>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+-->
+<section class="footer-strip1">
+    <div style="padding-left: 25px;padding-right: 25px">
+        <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                <a ui-sref="base.home" style="display: inline-block"><img class="lazy" data-original="img/footer_logo.svg" src="img/sample-loading.png" height="40" width="40">
+                    <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                <p style="text-align: center;">DOWNLOAD APP
+                    <a   analytics-on
+                         analytics-event="footer app link"
+                         analytics-category="footer" analytics-label="android app"
+                         href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                        <img src="img/Android_footer.svg" style="margin-left:8px">
+                    </a>
+                    <a analytics-on
+                       analytics-event="footer app link"
+                       analytics-category="footer" analytics-label="ios app"
+                       href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                <div class="footer-strip-sec2">
+                    <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                    <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                    <p style="padding-left: 5px">
+                        <a analytics-on analytics-event="Click- FB Button"
+                           analytics-category="Footer"
+                           href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                    </p>
+                    <p style="padding-left: 5px" >
+                        <a analytics-on analytics-event="Click- Twitter Button"
+                           analytics-category="Footer"
+                           href="https://www.twitter.com/HitBumper" target="_blank">
+                            <img src="img/footer_twit.svg">
+                        </a>
+                    </p >
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Linkedin Button"
+                            analytics-category="Footer"
+                            href="https://www.linkedin.com/company/bumper" target="_blank">
+                            <img src="img/footer_linked.svg">
+                        </a>
+                    </p>
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Youtube button"
+                            analytics-category="Footer"
+                            href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                            <img src="img/youtube.svg" width="22px">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,35 @@
+<section>
+    <div class="cross" ng-click="breakupCtrl.close()">X</div>
+    <div class="container" style="width: 100%;">
+        <div class="row">
+            <h1 style="font-family: Roboto;font-size: 16px;font-weight: 500;margin-top:30px;margin-bottom:20px;padding-left:30px;color:#795ff9;">Pricing Details for {$breakupCtrl.panel.name$}</h1>
+            <hr>
+        </div>
+        <div class="row" style="padding-left:15px;margin-top:10px">
+            <div class="col-xs-6" style="font-family: Roboto;font-size: 15px;font-weight: 500; line-height: 2.5;">
+                MRP of new {$breakupCtrl.panel.name$}
+                <span ng-if="breakupCtrl.panel.price_list[2].part_price">- &#8377;{$breakupCtrl.panel.price_list[2].part_price|number:0$}*</span>
+                <span ng-if="!breakupCtrl.panel.price_list[2].part_price">- on request</span>
+            </div>
+        </div>
+        <div classs="row" style="font-family: Roboto;font-size: 13px;font-style: italic;line-height: 2.5;">
+            <div class="col-xs-12">Total amount of replacement is MRP + Labour & Material Charges( mentioned below).</div></div>
+        <div class="row" style="padding-left:30px;padding-right:30px;padding-bottom:60px">
+            <table width="100%" class="break-up-table">
+                <thead style="border:solid 1px #f6f6f6">
+                <td style="border:solid 1px #f6f6f6;font-family: Montserrat;font-size: 14px;padding:20px">TYPE OF WORK</td>
+                <td style="border:solid 1px #f6f6f6;padding:20px">
+                    <p style="text-align: center">LABOUR AND MATERIAL CHARGES</p>
+                    <p style="font-family: Roboto;font-size: 13px;font-weight: 500;text-align: center;">(painting included)</p>
+                </td>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in breakupCtrl.panel.price_list">
+                    <td style="border-right:solid 1px #f6f6f6;font-family: Roboto;padding:10px;font-size: 15px;font-weight: 500;line-height: 2.4;">{$item.type_of_work$}</td>
+                    <td style="text-align: center;padding: 10px;font-family: Roboto;font-size: 15px;font-weight: 500;line-height: 2.4;">&#8377;{$item.labour_price--item.material_price|number:0$}*</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

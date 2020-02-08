@@ -1,0 +1,40 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">People Referred By {$ referredListCtrl.referrerName $}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Details</th>
+                        <th>Status</th>
+                        <th>Car</th>
+                        <th>Referred At</th>
+                        <th>Photo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in referredListCtrl.referredList">
+                        <td> {$ item.name $} {$ item.phone $} </td>
+                        <td> {$ item.details $} </td>
+                        <td> {$ referredListCtrl.sfStatuses[item.status] $} </td>
+                        <td> {$ item.car_model_details.brand.name $} - {$ item.car_model_details.name $} </td>
+                        <td> {$ item.created_at | date:'medium' : '+0530' $} </td>
+                        <td>
+                            <a href="{$ item.media.media_url $}" target="_blank">
+                                <img src="{$ item.media.media_url $}" height="100" width="100">
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="referredListCtrl.cancel()">Close</button>
+    </div>
+</div>

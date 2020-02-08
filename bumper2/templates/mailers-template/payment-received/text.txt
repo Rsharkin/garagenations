@@ -1,0 +1,5 @@
+Hi {{customer_name}},
+
+Thank you for using Bumper!
+
+We have received the payment of amount {{amt_paid}} for booking id {{booking_id}}. Thank you for using Bumper Services.

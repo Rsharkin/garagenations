@@ -1,0 +1,8 @@
+Hi {{customer_name}},
+
+Bumper Executive will be at your doorstep tomorrow to pick up the car at the scheduled time.
+Please keep a copy RC, Insurance and PUC ready for a quick and speedy pick up.
+
+Thanks,
+Team Bumper
+

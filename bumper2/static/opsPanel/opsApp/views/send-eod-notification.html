@@ -1,0 +1,86 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">EOD update for Booking Id:{$ sendEODModalInstanceCtrl.booking.id $}</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="sendEODModalInstanceCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in sendEODModalInstanceCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <div ng-repeat="item in sendEODModalInstanceCtrl.messagesToSend" ng-if="!sendEODModalInstanceCtrl.add_message_manually">
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right">Type:</label>
+                <div class="col-sm-9">
+                    <span>{$ item.type $}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right">Subject:</label>
+                <div class="col-sm-9">
+                    <span>{$ item.subject $}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right">Message:</label>
+                <div class="col-sm-9">
+                    <span>{$ item.template $}</span>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <hr>
+        <div class="row" permission="['OpsAdmin','CustomerRelations']">
+            <label class="col-sm-3 control-label no-padding-right">Save Manually Sent Message:</label>
+            <div class="col-sm-9">
+                <input ng-model="sendEODModalInstanceCtrl.add_message_manually"
+                       required class="input-sm form-control" type="checkbox"
+                       placeholder="Save Manually Sent Message" title="Save Manually Sent Message"/>
+            </div>
+        </div>
+    </div>
+    <div ng-if="sendEODModalInstanceCtrl.add_message_manually">
+        <hr>
+        <h4>Add Manually Sent EOD(<small>No system generated notification will go to customer.</small>):</h4>
+        <form name="addEODForm" class="form-horizontal" role="form" method="post" >
+            <div>
+                <ul ng-show="sendEODModalInstanceCtrl.subErrorMsgs.length>0" class="alert alert-danger">
+                    <li ng-repeat="item in sendEODModalInstanceCtrl.subErrorMsgs">{$ item $}</li>
+                </ul>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Communication:</label>
+                    <div class="col-sm-9">
+                        <select
+                                ng-model="sendEODModalInstanceCtrl.manual_eod.message_type"
+                                ng-options="key as value for (key, value) in sendEODModalInstanceCtrl.CommModes"
+                                class="form-control input-sm"
+                                required
+                                name="modes"
+                                title="Mode">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes" class="col-sm-3 control-label no-padding-right">Sent Message:</label>
+                    <div class="col-sm-9">
+                    <textarea ng-model="sendEODModalInstanceCtrl.manual_eod.message"
+                              required class="input-sm form-control" cols="20"
+                              placeholder="Sent Message" rows="4" title="Eod Message"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-white" ng-click="sendEODModalInstanceCtrl.cancel()">Close</button>
+    <button type="button" class="btn btn-primary"
+            ng-if="sendEODModalInstanceCtrl.messagesToSend.length>0 && !sendEODModalInstanceCtrl.add_message_manually"
+            ng-disabled="sendEODModalInstanceCtrl.ajax_loading"
+            ng-click="sendEODModalInstanceCtrl.ok()">Send EOD</button>
+
+    <button type="button" class="btn btn-primary"
+            ng-if="sendEODModalInstanceCtrl.add_message_manually"
+            ng-disabled="sendEODModalInstanceCtrl.ajax_loading || addEODForm.$invalid "
+            ng-click="sendEODModalInstanceCtrl.saveManualEOD()">Save EOD Sent</button>
+</div>
+</div>

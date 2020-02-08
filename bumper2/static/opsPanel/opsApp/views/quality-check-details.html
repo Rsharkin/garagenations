@@ -1,0 +1,44 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Quality Checks (Booking Id:{$ QCCtrl.bookingId $})</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Check</th>
+                        <th>Status</th>
+                        <th>Failure Reason</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in QCCtrl.testedQualityChecks" ng-if="QCCtrl.testedQualityChecks.length>0">
+                        <td>{$ item.created_at | date:'medium' : '+0530' $}</td>
+                        <td>{$ item.item.name $}</td>
+                        <td>
+                            <label ng-if="!item.has_issue" class="label label-primary">Pass</label>
+                            <label ng-if="item.has_issue" class="label label-danger">Fail</label>
+                        </td>
+                        <td>{$ item.reason_text$}</td>
+                    </tr>
+                    <tr ng-repeat="item in QCCtrl.testedQualityChecksOld" ng-if="!QCCtrl.testedQualityChecks">
+                        <td>{$ item.created_at | date:'medium' : '+0530' $}</td>
+                        <td>{$ item.quality_check.quality_check $}</td>
+                        <td>
+                            <label ng-if="item.is_passed" class="label label-primary">Pass</label>
+                            <label ng-if="!item.is_passed" class="label label-danger">Fail</label>
+                        </td>
+                        <td>{$ item.failure_reason$}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="QCCtrl.cancel()">Close</button>
+    </div>
+</div>

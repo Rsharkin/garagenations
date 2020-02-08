@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>next_ico</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing" transform="translate(-1057.000000, -609.000000)">
+            <g id="next_ico" transform="translate(1058.000000, 610.000000)">
+                <circle id="Oval-3" stroke="#FFFFFF" stroke-width="2" cx="11" cy="11" r="11"></circle>
+                <polygon id="Page-1" fill="#FFFFFF" points="11 5 9.9425 6.0575 14.1275 10.25 5 10.25 5 11.75 14.1275 11.75 9.9425 15.9425 11 17 17 11"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

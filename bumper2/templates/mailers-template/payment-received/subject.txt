@@ -1,0 +1,1 @@
+Received payment of booking id {{booking_id}}

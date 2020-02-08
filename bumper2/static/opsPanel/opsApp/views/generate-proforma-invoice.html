@@ -1,0 +1,39 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Advance Payment (Booking Id:{$ proformaInvoiceModalInstanceCtrl.booking.id $})</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="proformaInvoiceModalInstanceCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in proformaInvoiceModalInstanceCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <form name="advancePaymentForm" class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label no-padding-right">Detail to be shown on Invoice:</label>
+                <div class="col-sm-9">
+                    <textarea ng-model="proformaInvoiceModalInstanceCtrl.modalItem.note"
+                              required class="input-sm form-control" cols="20"
+                              placeholder="Hint Text: 50% Advance for the new part Rear bumper, 10% of advance for new part front bumper" rows="4" title="Notes for Invoice"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Amount:</label>
+                <div class="col-sm-9">
+                    <input
+                            ng-model="proformaInvoiceModalInstanceCtrl.modalItem.payable_amt"
+                            class="form-control input-sm"
+                            required
+                            type="number"
+                            name="payable_amt"
+                            title="payable_amt"
+                    />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="proformaInvoiceModalInstanceCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="proformaInvoiceModalInstanceCtrl.ajax_loading|| advancePaymentForm.$invalid "
+                ng-click="proformaInvoiceModalInstanceCtrl.ok()">Save changes</button>
+    </div>
+</div>

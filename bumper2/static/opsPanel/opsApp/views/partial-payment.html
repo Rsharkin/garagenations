@@ -1,0 +1,30 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Partial Payment (Booking Id:{$ partialPaymentModalInstanceCtrl.booking.id $})</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="partialPaymentModalInstanceCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in partialPaymentModalInstanceCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <form name="advancePaymentForm" class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Amount:</label>
+                <div class="col-sm-9">
+                    <input
+                            ng-model="partialPaymentModalInstanceCtrl.modalItem.payable_amt"
+                            class="form-control input-sm"
+                            required
+                            type="number"
+                            name="payable_amt"
+                            title="payable_amt" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="partialPaymentModalInstanceCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="partialPaymentModalInstanceCtrl.ajax_loading|| advancePaymentForm.$invalid "
+                ng-click="partialPaymentModalInstanceCtrl.ok()">Proceed</button>
+    </div>
+</div>

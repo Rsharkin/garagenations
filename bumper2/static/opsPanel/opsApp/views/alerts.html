@@ -1,0 +1,58 @@
+<style>
+    .ag-header-cell-label {
+        text-overflow: clip;
+        overflow: visible;
+        white-space: normal;
+    }
+</style>
+<div class="wrapper wrapper-content ng-scope">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Alerts <small>(Showing Active Alerts Only By Default)</small></h5>
+            <a ui-sref="base.alerts.raiseAlert()"
+               class="btn btn-xs btn-primary pull-right">Raise Alert</a>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-5 m-b-xs">
+                    <div class="form-group col-sm-6">
+                        <label class="control-label no-padding-right"> Alert Raised On: </label>
+                        <div class="input-group text-left">
+                            <input date-range-picker class="form-control date-picker input-sm " type="text" ng-model="alertsCtrl.filters.date"
+                                   options="alertsCtrl.date_range_options"/>
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label no-padding-right"> Show All Alerts: </label>
+                        <div class="input-group text-left">
+                            <input type="checkbox"
+                                   ng-model="alertsCtrl.removeResolved"
+                                   ng-change="alertsCtrl.loadAlerts(alertsCtrl.removeResolved?'':'open')">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 m-b-xs text-center">
+                    <h4>Rows: <b>{$ alertsCtrl.gridOptions.api.rowModel.rowsToDisplay.length $}</b></h4>
+                </div>
+                <div class="col-sm-5 m-b-xs">
+                    <div class="input-group pull-right">
+                        <input type="text" placeholder="Quick Search" class="input-sm form-control" ng-model="alertsCtrl.gridOptions.quickFilterText">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div style="margin-top: 4px;" class="full-height">
+                    <div ag-grid="alertsCtrl.gridOptions" style="height:100%; width:100%;" class="ag-fresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

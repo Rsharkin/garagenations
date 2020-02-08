@@ -1,0 +1,50 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Customer Communication (Booking Id:{$ callNotesCtrl.modalItem.booking_id $})</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="callNotesCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in callNotesCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <form name="addFollowupForm" class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label no-padding-right">Notes from Customer Talk:</label>
+                <div class="col-sm-9">
+                    <textarea ng-model="callNotesCtrl.modalItem.notes"
+                              required class="input-sm col-xs-10" cols="20"
+                              placeholder="Notes" rows="4" title="Notes from FollowUp"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Result:</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="callNotesCtrl.modalItem.result"
+                            ng-options="item as item.name for item in callNotesCtrl.followupResults track by item.id"
+                            class="form-control input-sm"
+                            required
+                            name="result"
+                            title="result">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" ng-show="callNotesCtrl.modalItem.result.action_type==1">
+                <label class="col-sm-3 control-label">Next Followup Dt:</label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input ng-model="callNotesCtrl.modalItem.nextFollowUpDt" type="text"
+                               ng-required="callNotesCtrl.modalItem.result.action_type==1"
+                               readonly="readonly" class=" input-sm form_datetime form-control">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="callNotesCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="callNotesCtrl.ajax_loading|| addFollowupForm.$invalid "
+                ng-click="callNotesCtrl.ok()">Save changes</button>
+    </div>
+</div>

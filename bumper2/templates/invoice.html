@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bumper invoice</title>
+</head>
+<body>
+{% load mathfilters %}
+<section>
+    <table style="width:100%;max-width:600px;margin-left:auto;margin-right:auto; padding-bottom:15px;border-bottom:1px solid #f6f6f6">
+        <tr style="width:100%">
+            <td>
+                <img src="https://d18qyvmj2t58jj.cloudfront.net/img/logo_tagline-dd592ca1fc.svg" style="display:block;float:left;margin-bottom:25px">
+            </td>
+        </tr>
+        <tr >
+            <td style ="opacity: 0.5;font-family: Roboto;font-size: 15px;font-weight: 500;line-height: 1.5;color: #000000;">
+                {% if booking_data.city == 1 %}
+                Unbox Technologies Private Limited<br>
+                2nd Floor, No. 11, 80 Ft Road,<br>
+                Koramangala, Bengaluru - 560034<br>
+                M: 910 844 6586
+                {% endif %}
+                {% if booking_data.city == 2 %}
+                Unbox Technologies Private Limited<br>
+                2nd Floor, SCO No-313, <br>
+                Sector- 29, Gurugram - 122002<br>
+                M: 910 844 6586
+                {% endif %}
+            </td>
+            <td style="font-family: Roboto;font-size: 13px;line-height: 1.7;color: #000000;text-align: right">
+                GSTIN Number -
+                {% if booking_data.city == 1 %}29AABCU6599C2ZW{% endif %}
+                {% if booking_data.city == 2 %}AA060717014213K{% endif %}
+                <br>
+                PAN - AABCU6599C<br>
+                {% if booking_data.city == 1 %}State - Karnataka, State Code  - 29{% endif %}
+                {% if booking_data.city == 2 %}State - Haryana, State Code - 06{% endif %}
+            </td>
+        </tr>
+    </table>
+    <table style="width:100%;max-width:600px;margin-left:auto;margin-right:auto; padding-top:15px;padding-bottom:15px">
+        <tr >
+            <td style="margin-top:8px" >
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">Booking Id</p>
+                <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;">{{ booking_id }}</p>
+            </td>
+            <td style="text-align: right">
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">Invoice No</p>
+                <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;">INV - {{ booking_data.bill_details.invoice_id }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-top:8px" >
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">Name</p>
+                <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;">{{customer_name }}</p>
+            </td>
+            <td style="text-align: right" >
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">Invoice Date</p>
+                <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;">{{booking_data.bill_details.invoice_creation_date|date:"d M Y"}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-top:8px" >
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">Car Reg No</p>
+                <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;">{{car_reg_no }}</p>
+            </td>
+            <td style="text-align: right">
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;">Total Amount</p>
+                <p style="	font-family: Roboto;font-size: 16px;font-weight: 500;color: #795ff9;"> &#8377; {{booking_data.bill_details.orig_payable_amt|floatformat:"0"}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left">
+                <p style="font-family: Roboto;font-size: 16px;font-weight: 500;color: #000000;margin-top:30px">Bill To Address</p>
+                <p style="opacity: 0.5;font-family: Roboto;font-size: 14px;font-weight: 500;line-height: 1.5;color: #000000;">{{ pickup_address }}</p>
+            </td>
+        </tr>
+    </table>
+    <table style="width:100%;max-width:600px;display:block;font-family: Roboto;margin-left:auto;margin-right:auto;margin-bottom:15px;border-collapse: collapse;">
+        <span style="border:1px solid #f6f6f6;background-color: rgba(248, 248, 248, 0.4);	opacity: 0.6;font-family: Roboto;font-size: 14px;font-weight: 500;color: #000000;">
+        <tr>
+            <td style="border:1px solid #f6f6f6;padding:15px">Package</td>
+            <td style="border:1px solid #f6f6f6;padding:15px">HSN/SAC</td>
+            <td style="border:1px solid #f6f6f6;padding:15px">Qty</td>
+            <td style="border:1px solid #f6f6f6;padding:15px">Part Price (&#8377;)</td>
+            <td style="border:1px solid #f6f6f6;padding:15px">Service Price (&#8377;)</td>
+            <td style="border:1px solid #f6f6f6;padding:15px">Amount (&#8377;)</td>
+        </tr>
+        </span>
+        {% for item in booking_data.booking_package %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 14px;line-height: 1.3;color: #000000;">
+            {% if item.package.package.category != 2 %}
+            <tr>
+                <td style="border:1px solid #f6f6f6;padding:15px">{{item.package.package.name}} </td>
+                <td style="border:1px solid #f6f6f6;padding:15px">9987</td>
+                <td style="border:1px solid #f6f6f6;padding:15px">1</td>
+                <td style="border:1px solid #f6f6f6;padding:15px" >{% if item.package.package.category != 2 %}{% endif %}</td>
+                <td style="border:1px solid #f6f6f6;padding:15px" ></td>
+                <td style="border:1px solid #f6f6f6;padding:15px" >{{ item.price|floatformat:"0" }}</td>
+            </tr>
+                {% endif %}
+        </span>
+        {% for panel in item.booking_package_panel %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 12px!important;opacity: 0.8;line-height: 1.3;color: #000000;">
+                <tr>
+                    <td style="border:1px solid #f6f6f6;padding:15px">{{panel.panel_details.car_panel.name}}-{{panel.panel_details.type_of_work}} </td>
+                    <td style="border:1px solid #f6f6f6;padding:15px">9987</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px">1</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" >{{panel.panel_details.part_price| floatformat:"0"}}</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" >{{panel.panel_details.material_price|addition:panel.panel_details.labour_price|floatformat:"0" }}</td>
+                    <td style="border:1px solid #f6f6f6;padding:15px" >{{ panel.price|floatformat:"0" }}</td>
+                </tr>
+                </span>
+        {% endfor %}
+        {% endfor %}
+        </span>
+        {% if booking_data.bill_details.discount_dict %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 14px;line-height: 1.3;color: #000000;">
+            <tr><td style="border:1px solid #f6f6f6;padding:15px">Coupon Discount</td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px">{{ booking_data.bill_details.discount_dict.coupon_discount|floatformat:"0" }}</td>
+            </tr>
+            </span>
+        {% endif %}
+        {% if booking_data.bill_details.total_discount > 0 %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 14px;line-height: 1.3;color: #000000;">
+            <tr> <td style="border:1px solid #f6f6f6;padding:15px">Total Discount</td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px">{{ booking_data.bill_details.total_discount|floatformat:"0" }}</td>
+            </tr>
+            </span>
+        {% endif %}
+        {% if booking_data.bill_details.discount_dict %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 14px;line-height: 1.3;color: #000000;">
+            <tr><td style="border:1px solid #f6f6f6;padding:15px">CashBack</td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px">{{ booking_data.bill_details.discount_dict.cashback_discount|floatformat:"0"}}</td>
+
+            </tr>
+            </span>
+        {% endif %}
+        {% if booking_data.bill_details.discount_dict.advance_payment_received %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 14px;line-height: 1.3;color: #000000;">
+            <tr> <td style="border:1px solid #f6f6f6;padding:15px">Advance Payment</td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px">{{ booking_data.bill_details.discount_dict.advance_payment_received|floatformat:"0" }}</td>
+            </tr>
+            </span>
+        {% endif %}
+        {% if booking_data.bill_details.total_gst %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 14px;line-height: 1.3;color: #000000;">
+            <tr> <td style="border:1px solid #f6f6f6;padding:15px">Taxes</td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px"></td>
+                <td style="border:1px solid #f6f6f6;padding:15px">{{ booking_data.bill_details.total_gst|floatformat:"0" }}</td>
+            </tr>
+            </span>
+        {% endif %}
+        <span style="border:1px solid #f6f6f6;font-family: Roboto;font-size: 15px;font-weight: bold;line-height: 1.3;color: #795ff9;">
+        <tr>
+            <td style="border:1px solid #f6f6f6;padding:15px">Total(&#8377;)</td>
+            <td style="border:1px solid #f6f6f6;padding:15px"></td>
+            <td style="border:1px solid #f6f6f6;padding:15px"></td>
+            <td style="border:1px solid #f6f6f6;padding:15px"></td>
+            <td style="border:1px solid #f6f6f6;padding:15px"></td>
+            <td style="border:1px solid #f6f6f6;padding:15px">{{booking_data.bill_details.orig_payable_amt|floatformat:"0"}}</td>
+        </tr>
+        </span>
+    </table>
+    <div style="width:100%;max-width:600px;display:block;margin-left:auto;margin-right:auto;margin-bottom: 40px">
+        <table style="width:70%;max-width:400px">
+            <p style="font-family: Roboto;font-size: 16px;font-weight: 500;line-height: 1.2;color: #000000;margin-bottom:5px">Tax Breakup</p>
+            {% if booking_data.bill_details.total_cgst > 0 %}  <tr style="	font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;"><td>CGST </td><td>-</td><td style="float:right;font-weight:500"> &#8377; {{ booking_data.bill_details.total_cgst|floatformat:"0" }}</td></tr> {% endif %}
+            {% if booking_data.bill_details.total_sgst > 0 %}  <tr style="	font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;"><td>SGST</td> <td>-</td><td style="float:right;font-weight:500"> &#8377; {{ booking_data.bill_details.total_sgst|floatformat:"0" }}</td></tr> {% endif %}
+            {% if booking_data.bill_details.total_igst > 0 %}  <tr style="	font-family: Roboto;font-size: 14px;line-height: 1.7;color: #000000;"><td>IGST</td><td>-</td><td style="float:right;font-weight:500"> &#8377; {{ booking_data.bill_details.total_igst|floatformat:"0" }}</td></tr>  {% endif %}
+        </table>
+
+    </div>
+</section>
+</body>
+</html>

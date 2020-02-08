@@ -1,0 +1,63 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Set ETA for Booking Id:{$ setETAModalInstanceCtrl.booking.id $}</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="setETAModalInstanceCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in setETAModalInstanceCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <form name="setEtaForm"  class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">Workshop ETA:</label>
+                <div class="col-sm-9">
+                    <span>{$ setETAModalInstanceCtrl.booking.workshop_eta | date:'medium' : '+0530' $}</span>
+                    <div class="input-group">
+                        <input ng-model="setETAModalInstanceCtrl.booking.workshop_eta" type="text"
+                               ng-change="setETAModalInstanceCtrl.etaChanged()"
+                               readonly="readonly" class=" input-sm form_datetime form-control">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">Customer ETA:</label>
+                <div class="col-sm-9">
+                    <span>{$ setETAModalInstanceCtrl.booking.estimate_complete_time | date:'medium' : '+0530' $}</span>
+                    <div class="input-group">
+                        <input ng-model="setETAModalInstanceCtrl.booking.estimate_complete_time" type="text"
+                               ng-change="setETAModalInstanceCtrl.etaChanged()"
+                               readonly="readonly" class=" input-sm form_datetime form-control">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-if="setETAModalInstanceCtrl.captureDelayReason">
+                <label class="col-sm-3 control-label">Delay Reason:</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="setETAModalInstanceCtrl.booking.delay_reason"
+                            ng-options="item as item.reason for item in setETAModalInstanceCtrl.delayReasons track by item.id"
+                            class="form-control input-sm"
+                            required
+                            name="delayReason"
+                            title="Delay Reason">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" ng-if="setETAModalInstanceCtrl.captureDelayReason">
+                <label class="col-sm-3 control-label no-padding-right">Delay Details:</label>
+                <div class="col-sm-9">
+                            <textarea ng-model="setETAModalInstanceCtrl.booking.reason_text"
+                                      rows="4" cols="20"
+                                      class=" input-sm col-xs-10"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="setETAModalInstanceCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="setETAModalInstanceCtrl.ajax_loading||  setEtaForm.$invalid "
+                ng-click="setETAModalInstanceCtrl.ok()">Save changes</button>
+    </div>
+</div>

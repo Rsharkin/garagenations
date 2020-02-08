@@ -1,0 +1,7 @@
+Hi {{customer_name}},
+
+Our team will be at your doorstep tomorrow for {{ package_details }} treatment at the scheduled time.
+
+Thanks,
+Team Bumper
+

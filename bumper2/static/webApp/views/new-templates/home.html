@@ -1,0 +1,78 @@
+<section class="home-section1">
+    <div class="container">
+        <h1 class="main-heading">Bumped your car? Don’t Worry!</h1>
+        <h2 class="main-heading-small">Fix any scratch @ &#8377; 1,699 and any dent @ &#8377; 2,499 only </h2>
+        <div class="row">
+          <!--  <img src="https://unbox-bumper-static.s3.amazonaws.com/124b42bf-86d3-4edc-93c6-3e4d5a0fbdd8.png" class="home-image-main-mobile" alt="Car Dent and Paint Repair - auto bodyshop"> -->
+            <img src="img/50841d60-a5d9-46b2-8d32-7caa42f8d06d.gif" class="home-image-main-desktop" alt="Car Dent and Paint Repair - auto bodyshop">
+            <img src="img/124b42bf-86d3-4edc-93c6-3e4d5a0fbdd8.png" class="home-image-main-mobile" alt="Car Dent and Paint Repair - auto bodyshop">
+            <md-button
+                    class="md-primary md-raised button-home"
+                    ng-click="$state.go('base.estimator')"
+                    analytics-on analytics-event="Click Get Estimate Button"
+                    analytics-category="Home Page"
+                    analytics-label="Get Estimate- Top of Home Page">GET ESTIMATE
+                <span>
+                        <img src="img/next_ico.svg" style="padding-left: 16px;padding-right: 16px">
+                    </span>
+            </md-button>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" analytics-on analytics-event="click"
+                 analytics-category="Home Page" analytics-label="Lowest Prices Icon">
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <img src="img/LowestPrices.svg"   alt="lowest prices icon" class="usp-icon"></div>
+                    <div class="col-xs-10 no-padding">
+                        <p>
+                            <span class="mini-heading1">Lowest prices</span>
+                            <br><span class="mini-heading2">Upto 60% less than market</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" analytics-on analytics-event="click"
+                 analytics-category="Home Page" analytics-label="One Year Paint Warranty Icon">
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <img src="img/BestQuality.svg"   alt="best quality icon" class="usp-icon3"></div>
+                    <div class="col-xs-10 no-padding">
+                        <p  style="padding-left: 8px"><span class="mini-heading1">Best in class quality</span>
+                            <br><span class="mini-heading2">No paint defects,1 year warranty</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" analytics-on analytics-event="click"
+                 analytics-category="Home Page" analytics-label="no visit to workshop icon">
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <img src="img/noVisit.svg" alt="no visit workshop icon" class="usp-icon2">
+                    </div>
+                    <div class="col-xs-10 no-padding">
+                        <p ><span class="mini-heading1">No visit to workshop</span>
+                            <br><span class="mini-heading2">Free pickup and drop</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" analytics-on analytics-event="click"
+                 analytics-category="Home Page" analytics-label="Online Damage Estimator Icon">
+                <div class="row">
+                    <a href="#" ui-sref="base.estimator">
+                        <div class="col-xs-2 no-padding">
+                            <img src="img/estimator.svg" alt="online damage estimator icon" class="usp-icon">
+                        </div>
+                        <div class="col-xs-10 no-padding">
+                            <p  style="padding-left: 8px">
+                                <span class="mini-heading1">Online estimator</span>
+                                <br><span class="mini-heading2">Online upfront pricing</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section ui-view="secondFold"></section>

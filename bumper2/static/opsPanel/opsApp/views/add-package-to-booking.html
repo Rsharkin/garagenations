@@ -1,0 +1,43 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Add Package to Booking Id:{$ addPackageCtrl.modalItem.booking_id $}</h4>
+    </div>
+    <div class="modal-body">
+        <div ng-show="addPackageCtrl.errorMsg" ng-bind-html="addPackageCtrl.errorMsg" class="alert alert-danger"></div>
+        <form id="addPackageForm"  class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label no-padding-right">Select Package:</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="addPackageCtrl.selected_package"
+                            ng-options="item as (item.package.name + ' - ' + item.price) for item in addPackageCtrl.package_list track by item.id"
+                            class="form-control  input-sm col-xs-10">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" ng-show="addPackageCtrl.selected_package.package.internal">
+                <label class="col-sm-3 control-label no-padding-right">Internal Package Price:</label>
+                <div class="col-sm-9">
+                    <!--<input ng-model="addPackageCtrl.internal_package_price" class="form-control  input-sm col-xs-10">-->
+
+                    <label>Since this is internal Package, Please provide the price.</label><br/>
+                    <label>Part Price</label>
+                    <input ng-model="addPackageCtrl.internal_package_price.part_price"
+                           class="form-control input-sm" placeholder="Part Price" type="number">
+
+                    <label>Labour Price</label>
+                    <input ng-model="addPackageCtrl.internal_package_price.labour_price"
+                           class="form-control input-sm" placeholder="Labour Price" type="number">
+
+                    <label>Material Price</label>
+                    <input ng-model="addPackageCtrl.internal_package_price.material_price"
+                           class="form-control input-sm" placeholder="Material Price" type="number">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="addPackageCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="addPackageCtrl.ajax_loading||  addPackageForm.$invalid " ng-click="addPackageCtrl.ok()">Save changes</button>
+    </div>
+</div>

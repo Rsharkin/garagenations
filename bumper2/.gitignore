@@ -1,0 +1,12 @@
+.idea/
+*.py[cod]
+src/
+user_media/
+node_modules/
+media/
+node_modules/
+bower_components/
+public/
+gulp_build/
+rev-manifest.json
+.DS_Store

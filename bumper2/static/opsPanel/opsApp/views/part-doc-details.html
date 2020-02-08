@@ -1,0 +1,394 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-7">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details Of Purchase Requisition Doc:</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-responsive">
+                        <tr>
+                            <td>Status</td>
+                            <td><strong>{$ partDocDetailsCtrl.editedPartDoc.status.name $}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Part</td>
+                            <td>{$ partDocDetailsCtrl.editedPartDoc.booking_part.panel_details.car_panel.name $}</td>
+                        </tr>
+                        <tr>
+                            <td>Booking</td>
+                            <td>
+                                <a ui-sref="base.bookings.editBooking.summary({bookingId:partDocDetailsCtrl.bookingId})" target="_blank">{$ partDocDetailsCtrl.bookingId $}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Vehicle Registration Number</td>
+                            <td>{$ partDocDetailsCtrl.userCar.registration_number $}</td>
+                        </tr>
+                        <tr>
+                            <td>Vehicle Identification Number</td>
+                            <td>{$ partDocDetailsCtrl.userCar.car_model.vin_no $}</td>
+                        </tr>
+                        <tr>
+                            <td>Brand</td>
+                            <td>{$ partDocDetailsCtrl.userCar.car_model.brand.name $}</td>
+                        </tr>
+                        <tr>
+                            <td>Model</td>
+                            <td>{$ partDocDetailsCtrl.userCar.car_model.name $}</td>
+                        </tr>
+                        <tr>
+                            <td>Variant</td>
+                            <td>{$ partDocDetailsCtrl.userCar.car_model.variant $}</td>
+                        </tr>
+                        <tr>
+                            <td>Year</td>
+                            <td>{$ partDocDetailsCtrl.userCar.car_model.year $}</td>
+                        </tr>
+                        <tr>
+                            <td>Quote ETA</td>
+                            <td>{$ partDocDetailsCtrl.editedPartDoc.quote_eta | date:'d MMMM yy HH:mm' : 'IST' $}</td>
+                        </tr>
+                        <tr>
+                            <td>Quote ETA Reason</td>
+                            <td>{$ partDocDetailsCtrl.editedPartDoc.quote_eta_reason $}</td>
+                        </tr>
+                        <tr>
+                            <td>Part Number</td>
+                            <td>{$ partDocDetailsCtrl.editedPartDoc.part_number $}</td>
+                        </tr>
+                        <tr>
+                            <td>NDP (Net Dealer Price)</td>
+                            <td>{$ partDocDetailsCtrl.editedPartDoc.net_dealer_price $}</td>
+                        </tr>
+                        <tr>
+                            <td>MRP</td>
+                            <td>{$ partDocDetailsCtrl.editedPartDoc.mrp $}</td>
+                        </tr>
+                    </table>
+                    <div class="row text-center">
+                        <div class="col-md-8">
+                            <form class="form-horizontal" role="form" method="post" name="updatePartDocForm" >
+
+                                <div ng-if="partDocDetailsCtrl.editedPartDoc.status.id==2">
+                                    <div class="form-group">
+                                        <label class="control-label">Expect Quote ETA By: <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input name="eta"
+                                                   data-ng-model="partDocDetailsCtrl.editedPartDoc.quote_eta"
+                                                   required
+                                                   type="text" title="ETA" readonly="readonly"
+                                                   class=" input-sm form_datetime form-control">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="notes" class="control-label">Reason Delay: <span class="text-danger">*</span></label>
+                                        <textarea ng-model="partDocDetailsCtrl.editedPartDoc.quote_eta_reason"
+                                                  ng-required="partDocDetailsCtrl.editedPartDoc.status.id==2"
+                                                  class="input-sm col-xs-12"
+                                                  cols="20" placeholder="Notes"
+                                                  rows="4" title="Notes"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit"
+                                               ng-click="partDocDetailsCtrl.markQuoteToBeExpectedBy()"
+                                               ng-disabled="partDocDetailsCtrl.ajax_loading || updatePartDocForm.$invalid || updatePartDocForm.$pristine"
+                                               ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'Quote ETA will take time'"/>
+                                    </div>
+                                </div>
+
+                                <div ng-if="partDocDetailsCtrl.editedPartDoc.status.id==1">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input class="btn btn-primary" type="submit"
+                                                   ng-click="partDocDetailsCtrl.markWillGetQuote()"
+                                                   ng-disabled="partDocDetailsCtrl.ajax_loading"
+                                                   ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'I will get price & ETA'"/>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center">
+                                        <h4>OR</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="notes" class="control-label">Reason for not being able to get quote: <span class="text-danger">*</span></label>
+                                                <textarea ng-model="partDocDetailsCtrl.editedPartDoc.quote_eta_reason"
+                                                          ng-required="partDocDetailsCtrl.editedPartDoc.status.id==1"
+                                                          class="input-sm col-xs-12"
+                                                          cols="20" placeholder="Notes"
+                                                          rows="4" title="Notes"></textarea>
+                                            </div>
+                                            <input class="btn btn-primary" type="submit"
+                                                   ng-click="partDocDetailsCtrl.markRequestDeclined()"
+                                                   ng-disabled="partDocDetailsCtrl.ajax_loading || updatePartDocForm.$invalid || updatePartDocForm.$pristine"
+                                                   ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'Will not be able to get price and ETA'"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div ng-if="partDocDetailsCtrl.editedPartDoc.status.id === 9">
+                                    <div class="form-group">
+                                        <label class="control-label">Part Number: <span class="text-danger">*</span></label>
+                                        <input
+                                                ng-model="partDocDetailsCtrl.editedPartDoc.part_number"
+                                                class="form-control input-sm"
+                                                required
+                                                title="Part Number"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">NDP (Net Dealer Price): <span class="text-danger">*</span></label>
+                                        <input
+                                                ng-model="partDocDetailsCtrl.editedPartDoc.net_dealer_price"
+                                                type="number"
+                                                class="form-control input-sm"
+                                                required
+                                                title="NDP (Net Dealer Price)"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">MRP: <span class="text-danger">*</span></label>
+                                        <input
+                                                ng-model="partDocDetailsCtrl.editedPartDoc.mrp"
+                                                type="number"
+                                                class="form-control input-sm"
+                                                required
+                                                title="MRP"/>
+                                        <div class="alert alert-danger" ng-if="partDocDetailsCtrl.editedPartDoc.mrp - self.selectedQuote.price >= 300">
+                                            Price differ by more than 300 Rs. Please communicate to customer if Bumper are not absorbing the price. Also update part price in booking summary.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <input class="btn btn-primary" type="button"
+                                               ng-click="partDocDetailsCtrl.markOrderPlaced()"
+                                               ng-if="partDocDetailsCtrl.editedPartDoc.status.id === 6"
+                                               ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'Order Placed'"/>
+
+                                        <input class="btn btn-primary" type="button"
+                                               ng-click="partDocDetailsCtrl.markInTransit()"
+                                               ng-if="partDocDetailsCtrl.editedPartDoc.status.id === 8"
+                                               ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'In Transit'"/>
+
+                                        <input class="btn btn-primary" type="button"
+                                               ng-click="partDocDetailsCtrl.markPartReceived()"
+                                               ng-if="partDocDetailsCtrl.editedPartDoc.status.id === 9"
+                                               ng-disabled="partDocDetailsCtrl.ajax_loading || updatePartDocForm.$invalid || updatePartDocForm.$pristine"
+                                               ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'Order Received'"/>
+                                        <div class="alert alert-danger" ng-if="partDocDetailsCtrl.selectedQuoteExpired">
+                                            Quote was added more than 3 days ago. Please Re-check price and ETA and communicate to customer if needed.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>Notes</h5>
+                                <a ng-click="partDocDetailsCtrl.addNote=true" class="btn btn-xs btn-primary pull-right">Add Note</a>
+                            </div>
+                            <div class="ibox-content" style="max-height: 450px;overflow-y: auto;">
+                                <ul class="list-group" >
+                                    <li class="list-group-item" ng-show="partDocDetailsCtrl.addNote">
+                                        <form id="addNoteForm"  class="form-horizontal" role="form" method="post" name="addNoteForm" >
+                                            <div class="form-group">
+                                                <label for="notes" class="control-label">Note:</label>
+                                                <textarea ng-model="partDocDetailsCtrl.newNote.note"
+                                                          required class="input-sm col-xs-12"
+                                                          cols="20" placeholder="Notes"
+                                                          rows="4" title="Notes"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <input class="btn btn-gray" type="button"
+                                                           ng-click="partDocDetailsCtrl.addNote=false"
+                                                           value="Cancel"/>
+                                                    <input class="btn btn-primary" type="submit"
+                                                           ng-click="partDocDetailsCtrl.saveNotes()"
+                                                           ng-disabled="partDocDetailsCtrl.ajax_loading || addNoteForm.$invalid || addNoteForm.$pristine"
+                                                           ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li class="list-group-item" ng-repeat="note in partDocDetailsCtrl.editedPartDoc.notes" >
+                                        <p>{$ note.created_at | date:'d MMMM yy HH:mm' : 'IST' $} by
+                                            <small><strong>{$ note.updated_by.name $}</strong> </small>
+                                        </p>
+                                        <p>{$ note.note $}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Quotes</h5>
+                    <button ng-click="partDocDetailsCtrl.showAddQuote=true"
+                            ng-disabled="partDocDetailsCtrl.editedPartDoc.status.id >=5 || partDocDetailsCtrl.editedPartDoc.status.id ===1 || partDocDetailsCtrl.editedPartDoc.status.id ===3"
+                            class="btn btn-xs btn-primary pull-right">Add Quote</button>
+                </div>
+                <div class="ibox-content">
+                    <ul class="list-group" >
+                        <li class="list-group-item" ng-show="partDocDetailsCtrl.showAddQuote">
+                            <form id="addQuoteForm"  class="form-horizontal" role="form" method="post" name="addQuoteForm" >
+                                <div class="form-group">
+                                    <label class="control-label">Quoted Price: <span class="text-danger">*</span></label>
+                                    <input
+                                            ng-model="partDocDetailsCtrl.newQuote.price"
+                                            class="form-control input-sm"
+                                            required
+                                            type="number"
+                                            title="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">ETA: <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input name="eta"
+                                               data-ng-model="partDocDetailsCtrl.newQuote.eta"
+                                               required
+                                               type="text" title="ETA" readonly="readonly"
+                                               class=" input-sm form_datetime form-control">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Quote Type: <span class="text-danger">*</span></label>
+                                    <select
+                                            ng-model="partDocDetailsCtrl.newQuote.quote_type"
+                                            class="form-control input-sm"
+                                            required
+                                            title="Quote Type">
+                                        <option value="1">OEM</option>
+                                        <option value="2">After Market</option>
+                                        <option value="3">Refurbished</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Vendor: <span class="text-danger">*</span></label>
+                                    <select
+                                            ng-model="partDocDetailsCtrl.newQuote.vendor"
+                                            class="form-control input-sm"
+                                            required
+                                            title="Vendor">
+                                        <option ng-repeat="option in partDocDetailsCtrl.partVendors" value="{$ option.id $}">{$ option.name $}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="notes" class="control-label">notes:</label>
+                                    <textarea ng-model="partDocDetailsCtrl.newQuote.notes"
+                                              class="input-sm col-xs-12" cols="20"
+                                              placeholder="Notes" rows="4"
+                                              title="Notes"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <input class="btn btn-gray" type="button"
+                                               ng-click="partDocDetailsCtrl.showAddQuote=false"
+                                               value="Cancel"/>
+                                        <input class="btn btn-primary" type="submit"
+                                               ng-click="partDocDetailsCtrl.addQuote()"
+                                               ng-disabled="partDocDetailsCtrl.ajax_loading || addQuoteForm.$invalid || addQuoteForm.$pristine"
+                                               ng-value="partDocDetailsCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="list-group-item" ng-repeat="quote in partDocDetailsCtrl.quotes" >
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>Selected:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    <label ng-if="quote.selected" class="label label-primary"> True </label>
+                                    <label ng-if="!quote.selected" class="label label-warning-light">False</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>Price:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    {$ quote.price $}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>ETA:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    {$ quote.eta | date:'d MMMM yy HH:mm' : 'IST'$}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>Quote Type:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    <span ng-if="quote.quote_type === 1">OEM</span>
+                                    <span ng-if="quote.quote_type === 2">After Market</span>
+                                    <span ng-if="quote.quote_type === 3">Refurbished</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>Vendor:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    {$ quote.vendor.name $}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>Added at:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    {$ quote.created_at | date:'d MMMM yy HH:mm' : 'IST' $}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><strong>Notes:</strong></div>
+                                <div class="col-md-8">
+                                   <span ng-repeat="item in quote.notes">
+                                       {$ item.note $}
+                                    (<strong>By: </strong>{$ item.updated_by.name $}
+                                    <strong> At: </strong> {$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $})
+                                    </span>
+                                </div>
+                            </div>
+                            <hr class="hr-line-dashed">
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <input type="button" class="btn btn-xs btn-warning"
+                                           ng-disabled="partDocDetailsCtrl.editedPartDoc.status.id >=5"
+                                           ng-click="partDocDetailsCtrl.deleteQuote(quote.id)"
+                                           value="Delete Quote">
+                                    <input type="button" class="btn btn-xs btn-primary"
+                                           ng-disabled="partDocDetailsCtrl.editedPartDoc.status.id >=5"
+                                           ng-click="partDocDetailsCtrl.markQuoteSelected(quote.id)"
+                                           value="Mark selected">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

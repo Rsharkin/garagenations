@@ -1,0 +1,20 @@
+<div class="row text-left">
+    <div class="col-xs-12">
+        <div class=" m-l-md">
+            <table class="table table-hover margin bottom table-responsive">
+                <thead>
+                <tr>
+                    <th >Status</th>
+                    <th >Num. of Inquiry</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in reportInquiryStatusSummaryCtrl.InquiryStatusdata">
+                    <td >{$ item.status $}</td>
+                    <td ><span class="label label-primary">{$ item.num_of_inquiry $}</span> </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

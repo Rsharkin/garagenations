@@ -1,0 +1,213 @@
+<div class="row">
+    <div class="col-lg-4" permission="['OpsAdmin','OpsManager','DriverManager']">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Quick Actions</h5>
+            </div>
+            <div class="ibox-content">
+                <ul class="list-group" ng-if="!editBookingCtrl.booking.workshop">
+                    <li class="list-group-item">
+                        <div class="row">
+                            Assign workshop(from workshop tab) to see all Action.
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list-group" ng-if="editBookingCtrl.booking.workshop">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>=19 ||
+                                    editBookingCtrl.booking.status.flow_order_num<18 ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingDropCtrl.setDropScheduled(19)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Drop Scheduled</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="
+                                    editBookingCtrl.booking.status.flow_order_num>=20 ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingDropCtrl.assignDriver()"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Assign Driver</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num!=19 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==19 && editBookingCtrl.booking.ops_status.flow_order_num>=3) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(106)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Driver Ready to Go</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id !==47">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>=20 ||
+                                    editBookingCtrl.booking.status.flow_order_num<19 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==19 && (!editBookingCtrl.booking.ops_status.flow_order_num || editBookingCtrl.booking.ops_status.flow_order_num<3)) ||
+                                    !editBookingCtrl.booking.drop_driver ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(156)"
+                                    class="btn btn-sm btn-w-m btn-warning col-lg-8 col-lg-offset-2">
+                                Crew Found Extra Issues</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id==47">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingDropCtrl.markReadyToGoWithFailedQC()"
+                                    class="btn btn-sm btn-w-m btn-danger col-lg-8 col-lg-offset-2">
+                                Allow Delivery</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id==47">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingDropCtrl.startReworkOnThisBooking()"
+                                    class="btn btn-sm btn-w-m btn-warning col-lg-8 col-lg-offset-2">
+                                Start Rework</button>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id !==47 ">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>=20 ||
+                                    editBookingCtrl.booking.status.flow_order_num<19 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==19 && (!editBookingCtrl.booking.ops_status.flow_order_num || editBookingCtrl.booking.ops_status.flow_order_num<3)) ||
+                                    !editBookingCtrl.booking.drop_driver ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(20)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Started from workshop</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id !==47 ">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=21)||
+                                    editBookingCtrl.booking.status.flow_order_num<20 ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(21)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Reached drop location</button>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id !==47 ">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=22)||
+                                    editBookingCtrl.booking.status.flow_order_num<21 ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingDropCtrl.markCarDelivered(22)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Car Delivered</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.ops_status.id !==47 ">
+                        <div class="row">
+                            <button type="button"
+                                    permission="['OpsAdmin','OpsManager']"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=22)||
+                                    editBookingCtrl.booking.status.flow_order_num<21 ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingDropCtrl.markCarDeliveredCreateRework()"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Delivered But Rework</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <form method="get" class="form-horizontal">
+            <h3>Drop Details</h3>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Drop Driver</label>
+                <div class="col-sm-9">
+                    <p>{$ editBookingDropCtrl.booking.drop_driver_details.name  $}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">User Selected Drop-Time</label>
+                <div class="col-sm-6">
+                    <span ng-show="!editBookingDropCtrl.booking.showEditDropTime">
+                        {$ editBookingDropCtrl.booking.drop_time | date:'medium' : '+0530' $} - {$ editBookingDropCtrl.booking.drop_slot_end_time | date:'medium' : '+0530' $}
+                        <button
+                                permission="['OpsAdmin','OpsManager','DriverManager']"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23"
+                                ng-click="editBookingDropCtrl.booking.showEditDropTime=1;editBookingDropCtrl.booking.newDropTime=null"
+                                class="btn btn-outline btn-link btn-success btn-xs" >Edit</button>
+                    </span>
+
+                    <div class="input-group" ng-show="editBookingDropCtrl.booking.showEditDropTime">
+                        <input data-ng-model="editBookingDropCtrl.booking.newDropTime" type="text" title="Time of drop" readonly="readonly" class=" input-sm form_datetime form-control">
+                        <input name="drop_slot_end_time" data-ng-model="editBookingDropCtrl.booking.newDropSlotEndTime" type="text" title="Slot end time" readonly="readonly" class=" input-sm form_datetime form-control">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <div class="form-group" ng-show="editBookingDropCtrl.booking.showEditDropTime">
+                        <div class="text-center">
+                            <button class="btn btn-outline btn-link btn-default btn-xs" type="button" ng-click="editBookingDropCtrl.booking.showEditDropTime=null">Cancel</button>
+                            <input class="btn btn-outline btn-link btn-primary btn-xs" type="submit" ng-click="editBookingCtrl.updateBooking({'drop_time':editBookingDropCtrl.booking.newDropTime, 'drop_slot_end_time':editBookingDropCtrl.booking.newDropSlotEndTime})" ng-disabled="editBookingDropCtrl.ajax_loading" ng-value="editBookingDropCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button"
+                            ng-click="editBookingDropCtrl.rescheduleDropBooking()"
+                            permission="['OpsAdmin','OpsManager','DriverManager']"
+                            ng-if="editBookingCtrl.booking.status.flow_order_num>=18 && editBookingCtrl.booking.status.flow_order_num<22"
+                            class="btn btn-sm btn-primary">
+                       Reschedule Drop</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Drop Location</label>
+                <div class="col-sm-6">
+                    <address>
+                        <strong>{$ editBookingDropCtrl.drop_address.address1 $}</strong><br>
+                        <strong>{$ editBookingDropCtrl.drop_address.address2 $}</strong><br>
+                        {$ editBookingDropCtrl.drop_address.city $}, {$ editBookingDropCtrl.drop_address.pin_code $}<br>
+                        <abbr title="Map" ng-if="editBookingDropCtrl.drop_address.latitude"><i class="fa fa-map-marker btn-lg"></i>:</abbr> <a ng-if="editBookingDropCtrl.drop_address.latitude" href="http://maps.google.com/maps?t=m&q=loc:{$ editBookingDropCtrl.drop_address.latitude $}+{$ editBookingDropCtrl.drop_address.longitude $}" target="_blank" title="Map Location"><small>(click to see on map)</small></a><br>
+                        <button
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23"
+                                ng-click="editBookingDropCtrl.updateDropAddress()"
+                                permission="['OpsAdmin','OpsManager','DriverManager']"
+                                class="btn btn-outline btn-link btn-success btn-xs">Edit</button>
+                    </address>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Started from workshop At</label>
+                <div class="col-sm-6">
+                    <span>{$ editBookingDropCtrl.booking.drop_driver_start_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Driver at drop location</label>
+                <div class="col-sm-6">
+                    <span>{$ editBookingDropCtrl.booking.driver_arrived_drop_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Car delivered At</label>
+                <div class="col-sm-6">
+                    <span>{$ editBookingDropCtrl.booking.actual_drop_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

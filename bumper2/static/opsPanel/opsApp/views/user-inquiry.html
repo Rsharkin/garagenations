@@ -1,0 +1,77 @@
+<div class="wrapper wrapper-content ng-scope">
+    <div class="ibox float-e-margins" id="">
+        <div class="ibox-title text-center">
+            <h5 class="pull-left">User Inquiries</h5>
+            <button class="btn btn-primary btn-xs" ng-click="userInquiryCtrl.loadData()"><i class="fa fa-refresh"></i></button>
+            <a ui-sref="base.createUser({flow:'inquiry'})" class="btn btn-xs btn-primary pull-right">Add User Inquiry</a>
+            <a permission="['OpsAdmin','OpsManager','MarketingTeam','CityCallCenterManager']" ng-click="userInquiryCtrl.exportInCsv()" class="btn btn-xs btn-info pull-right m-r-sm">Download in CSV</a>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-4 m-b-xs">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input id="showAllInquiry" type="checkbox" ng-model="userInquiryCtrl.showAllInquiry" ng-change="userInquiryCtrl.loadData()">
+                            <label for="showAllInquiry"> Show All Inquiry </label>
+                            <br>
+                            <input id="removeInternalCheck" type="checkbox" ng-model="userInquiryCtrl.extraFilters.removeInternal" ng-change="userInquiryCtrl.externalFilterChanged()">
+                            <label for="removeInternalCheck"> Remove Internal Accounts </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 text-right">Status: </div>
+                        <div class="col-sm-10">
+                            <select
+                                    multiple
+                                    chosen
+                                    data-placeholder="Filter By Status"
+                                    ng-model="userInquiryCtrl.extraFilters.status"
+                                    ng-options="v for (k,v) in  userInquiryCtrl.inquiryStatus"
+                                    ng-change="userInquiryCtrl.externalFilterChanged()"
+                                    class="form-control input-sm">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 m-b-xs text-center">
+                    <h4>Rows: <b>{$ userInquiryCtrl.gridOptions.api.rowModel.rowsToDisplay.length $}</b></h4>
+                    <div class="row">
+                        <!--<span style="padding-bottom: 4px; display: inline-block;">
+                            Active Filters: {$ userInquiryCtrl.savedFilters $}
+                        </span>-->
+                        <span style="padding-bottom: 4px; display: inline-block;">
+                            <button ng-click="userInquiryCtrl.clearFilters()">Clear Filters</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3 m-b-xs text-center">
+                    <div class="input-group text-left">
+                        <input date-range-picker class="form-control date-picker input-sm " type="text" ng-model="userInquiryCtrl.filters.date"
+                               options="userInquiryCtrl.date_range_options"/>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-3 m-b-xs">
+                    <div class="row">
+                        <div class="input-group pull-right">
+                            <input type="text" placeholder="Quick Search" class="input-sm form-control" ng-model="userInquiryCtrl.gridOptions.quickFilterText">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div style="margin-top: 4px;" class="full-height">
+                    <div ag-grid="userInquiryCtrl.gridOptions" style="height:100%; width:100%;" class="ag-fresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

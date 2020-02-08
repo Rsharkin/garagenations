@@ -1,0 +1,204 @@
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-container">
+            <h1>Contact us</h1>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div>
+                        <h2>Write us your query</h2>
+                        <div class="query-box">
+                            <md-input-container class="md-block" style="margin-right:30px;margin-left:25px; margin-top: 50px">
+                                <label>Add Comments</label>
+                                <textarea  ng-model="contactCtrl.comments"  ng-blur="contactCtrl.updateComments()" ng-change="contactCtrl.error=null" rows="10" md-select-on-focus placeholder="If any queries, let us know…we are here to help!"></textarea>
+                                <div class="reason-empty-error">{$contactCtrl.error$}</div>
+                            </md-input-container>
+                            <a href="#" ng-click="contactCtrl.userInquiry(contactCtrl.comments)"
+                               analytics-on analytics-event="Click" analytics-category="Contact Page" analytics-label="Submit Inquiry"
+                               class="contact-button-send">
+                                SEND
+                            </a>
+                        </div>
+                        <a href="#" ng-click="contactCtrl.userInquiry(1)"
+                           analytics-on analytics-event="Click" analytics-category="Contact Page" analytics-label="Request a call back"
+                           class="call-back-button-contact">
+                            <span style="color: #a5a1b2;">Or</span> REQUEST CALLBACK
+                        </a>
+                        <hr>
+                        <h2>Reach out to us</h2>
+                        <p><img src="img/phone_contact.svg" style="margin-right:6px">+91 9108446586<span class="timing"> (Monday - Saturday, 9 AM to  6 PM)</span></p>
+                        <p><img src="img/mail.svg" style="margin-right:6px">support@bumper.com</p>
+                        <p>
+                            <a analytics-on analytics-event="Click- FB Button"
+                               analytics-category="Footer"
+                               href="https://www.facebook.com/HitBumper" target="_blank">
+                                <img src="img/fb_contact.svg" style="margin-right:22px;margin-left:5px"></a>
+                            <a analytics-on analytics-event="Click- Twitter Button"
+                               analytics-category="Contact us"
+                               href="https://www.twitter.com/HitBumper" target="_blank"><img src="img/twit_contact.svg" style="margin-right:22px"></a>
+                            <a analytics-on analytics-event="Click- Linkedin Button"
+                               analytics-category="Contact us"
+                               href="https://www.linkedin.com/company/bumper" target="_blank">
+                                <img src="img/linkedin_contact.svg">
+                            </a>
+                        </p>
+                    </div>
+                    <hr class="hide-on-desktop">
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div style="margin-bottom: 40px">
+                        <h2>Corporate Office</h2>
+                        <p>Bengaluru - 2nd Floor, No 11, 80 ft Road, Koramangala, Bengaluru - 560034</p>
+                        <p>Gurugram - 2nd Floor, SCO No-313, Sector- 29, Gurugram - 122002</p>
+                    </div>
+                    <div>
+                        <h2>Our Workshops</h2>
+                        <p>Our workshops are located at</p>
+                        <ul>
+                            <li><span>Kudlu Gate 1, Bengaluru</span></li>
+                            <li><span>Kudlu Gate 2, Bengaluru</span></li>
+                            <li><span>Horamavu, Bengaluru</span></li>
+                            <li><span>Sector 6, Gurugram</span></li>
+                            <li><span>Sector 39, Gurugram</span></li>
+                        </ul>
+                        <div class="info">Don’t worry ! We provide free and safe pickup and drop so that you dont have to visit our workshops!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--<md-fab-speed-dial analytics-on analytics-event="FAB icon clicked"
+                   analytics-category="Contact Page"
+                   ng-if="!base.isDeviceMobile" ng-cloak="" md-open="contactCtrl.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised"
+                   analytics-on analytics-event="close FAB icon clicked"
+                   analytics-category="Contact Page">
+            <img src="img/TalkToUs.svg" ng-if="!contactCtrl.isOpen" style="margin-left:inherit;margin-bottom:inherit">
+            <i class="material-icons" style="margin-top: 18px;" ng-if="contactCtrl.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button ng-click="base.requestCallback();"
+                   analytics-on analytics-event="phone icon clicked"
+                   analytics-category="CART Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">phone</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   analytics-on analytics-event="inquiry icon clicked"
+                   analytics-category="CART Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg">
+        </md-button>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised "
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Cart Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">chat_bubble</i>
+        </md-button>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+<md-fab-speed-dial ng-if="base.isDeviceMobile" ng-cloak="" md-open="packagesController.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised md-mini" >
+            <img src="img/TalkToUs.svg" ng-if="!base.isOpen" style="margin-left:inherit;margin-bottom:inherit;width:18px">
+            <i class="material-icons" style="margin-top:8px;" ng-if="base.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button ng-click="base.requestCallback();"
+                   href="#" class="md-fab md-raised md-mini"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top:10px;color:#fff;font-size:18px">phone</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   href="#" class="md-fab md-raised md-mini"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg" style="margin-top:6px;margin-bottom: inherit;left: inherit;width:10px" >
+        </md-button>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised md-mini"
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Home Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top:13px;color:#fff;font-size: 16px">chat_bubble</i>
+        </md-button>
+    </md-fab-actions>
+
+</md-fab-speed-dial>
+-->
+<section class="footer-strip1">
+    <div style="padding-left: 25px;padding-right: 25px">
+        <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                <a ui-sref="base.home" style="display: inline-block"><img class="lazy" data-original="img/footer_logo.svg" src="img/sample-loading.png" height="40" width="40">
+                    <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                <p style="text-align: center;">DOWNLOAD APP
+                    <a   analytics-on
+                         analytics-event="footer app link"
+                         analytics-category="footer" analytics-label="android app"
+                         href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                        <img src="img/Android_footer.svg" style="margin-left:8px">
+                    </a>
+                    <a analytics-on
+                       analytics-event="footer app link"
+                       analytics-category="footer" analytics-label="ios app"
+                       href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                <div class="footer-strip-sec2">
+                    <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                    <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                    <p style="padding-left: 5px">
+                        <a analytics-on analytics-event="Click- FB Button"
+                           analytics-category="Footer"
+                           href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                    </p>
+                    <p style="padding-left: 5px" >
+                        <a analytics-on analytics-event="Click- Twitter Button"
+                           analytics-category="Footer"
+                           href="https://www.twitter.com/HitBumper" target="_blank">
+                            <img src="img/footer_twit.svg">
+                        </a>
+                    </p >
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Linkedin Button"
+                            analytics-category="Footer"
+                            href="https://www.linkedin.com/company/bumper" target="_blank">
+                            <img src="img/footer_linked.svg">
+                        </a>
+                    </p>
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Youtube button"
+                            analytics-category="Footer"
+                            href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                            <img src="img/youtube.svg" width="22px">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+            </div>
+        </div>
+    </div>
+</section>

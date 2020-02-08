@@ -1,0 +1,23 @@
+<section class="main-section">
+    <div class="container">
+        <h1>Bumped your car? Don’t Worry!</h1>
+        <h2>Fix scratches @ &#8377; 1,699 & dents @ &#8377; 2,499</h2>
+        <md-button
+                class="md-primary md-raised button-home"
+                ng-click="$state.go('base.estimator')"
+                analytics-on analytics-event="Click Get Estimate Button"
+                analytics-category="Home Page"
+                analytics-label="Get Estimate- Top of Home Page">GET ESTIMATE
+            <span><img src="img/next_ico.svg" style="padding-left: 16px;padding-right: 16px"></span>
+        </md-button>
+        <div class="row" style="margin-top:35px">
+            <div class="col-xs-6 no-margin no-padding"><div class="tiles"><p>Save upto 60%</p></div></div>
+            <div class="col-xs-6 no-margin no-padding"><div class="tiles"><p>1 year warranty</p></div></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 no-margin no-padding"><div class="tiles"><p>Free pickup and drop</p></div></div>
+            <div class="col-xs-6 no-margin no-padding"><div class="tiles"><p>Upfront online pricing</p></div></div>
+        </div>
+    </div>
+</section>
+<section ui-view="secondFold" ></section>

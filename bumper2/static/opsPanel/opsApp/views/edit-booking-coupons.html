@@ -1,0 +1,214 @@
+<div class="row">
+    <div class="col-lg-9">
+        <form method="get" class="form-horizontal">
+            <h3>Check Coupon Details</h3>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Coupon</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input
+                                type="text"
+                                ng-model="editBookingCouponCtrl.checkCouponCode"
+                                class="form-control">
+                        <span class="input-group-btn">
+                            <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    ng-click="editBookingCouponCtrl.checkCoupon()">
+                                Check Coupon
+                            </button>
+                        </span>
+                    </div>
+                    <div ng-show="editBookingCouponCtrl.couponDetails">
+                        <div class="row"><div class="col-sm-6">Coupon Description</div><div class="col-sm-6">{$ editBookingCouponCtrl.couponDetails.coupon_detail.desc $}</div></div>
+                        <div class="row"><div class="col-sm-6">Coupon Validity</div><div class="col-sm-6">{$ editBookingCouponCtrl.couponDetails.coupon_detail.valid_until |date : 'dd/MM/yyyy' $}</div></div>
+                        <div class="row"><div class="col-sm-6">Total Amount</div><div class="col-sm-6">{$ editBookingCouponCtrl.couponDetails.bill.total_amt $}</div></div>
+                        <div class="row"><div class="col-sm-6">Payable Amount</div><div class="col-sm-6">{$ editBookingCouponCtrl.couponDetails.bill.payable_amt $}</div></div>
+                        <div class="row"><div class="col-sm-6">Total Discount</div><div class="col-sm-6">(discount:{$ editBookingCouponCtrl.couponDetails.bill.discount_dict.coupon_discount $}, cashback:{$ editBookingCouponCtrl.couponDetails.discount_dict.cashback_discount $})</div></div>
+                        <div class="row"><div class="col-sm-6">Total Service Tax</div><div class="col-sm-6">{$ editBookingCouponCtrl.couponDetails.bill.total_service_tax $}</div></div>
+                        <div class="row"><div class="col-sm-6">Total VAT</div><div class="col-sm-6">{$ editBookingCouponCtrl.couponDetails.bill.total_vat $}</div></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" permission="['OpsAdmin','OpsManager']">
+    <div class="col-lg-9">
+        <form method="get" class="form-horizontal">
+            <h3>Apply Coupon</h3>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Coupon</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input
+                                type="text"
+                                ng-model="editBookingCouponCtrl.applyCouponCode"
+                                class="form-control">
+                        <span class="input-group-btn">
+                            <button
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23"
+                                    type="button"
+                                    class="btn btn-primary"
+                                    ng-click="editBookingCouponCtrl.applyCoupon()">
+                                Apply Coupon
+                            </button>
+                        </span>
+                    </div>
+                    <div ng-show="editBookingCouponCtrl.applyCouponDetails">
+                        <div class="row"><div class="col-sm-6">Total Amount</div><div class="col-sm-6">{$ editBookingCouponCtrl.applyCouponDetails.total_amt $}</div></div>
+                        <div class="row"><div class="col-sm-6">Payable Amount</div><div class="col-sm-6">{$ editBookingCouponCtrl.applyCouponDetails.payable_amt $}</div></div>
+                        <div class="row"><div class="col-sm-6">Total Discount</div><div class="col-sm-6">(discount:{$ editBookingCouponCtrl.applyCouponDetails.discount_dict.coupon_discount $}, cashback:{$ editBookingCouponCtrl.applyCouponDetails.discount_dict.cashback_discount $})</div></div>
+                        <div class="row"><div class="col-sm-6">Total Service Tax</div><div class="col-sm-6">{$ editBookingCouponCtrl.applyCouponDetails.total_service_tax $}</div></div>
+                        <div class="row"><div class="col-sm-6">Total VAT</div><div class="col-sm-6">{$ editBookingCouponCtrl.applyCouponDetails.total_vat $}</div></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" permission="['OpsAdmin','OpsManager']">
+    <div class="col-lg-5">
+        <form name="discountForm" method="post" class="form-horizontal" novalidate>
+            <h3>Price Adjustment</h3>
+            <div class="form-group">
+                <label class="col-sm-5 control-label"> Part Amount Adjustment</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <input
+                                type="number"
+                                required
+                                ng-model="editBookingCouponCtrl.discountAmounts.part_discount"
+                                class="form-control"
+                                name="part_discount"
+                        >
+                        <p class="text-danger" ng-if="discountForm.discountAmounts.part_discount.$touched && discountForm.discountAmounts.part_discount.$invalid">Enter a valid Amount, like 100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Material Amount Adjustment</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <input
+                                type="number"
+                                required
+                                ng-model="editBookingCouponCtrl.discountAmounts.material_discount"
+                                class="form-control"
+                                name="material_discount"
+                        >
+                        <p class="text-danger" ng-if="discountForm.discountAmounts.material_discount.$touched && discountForm.discountAmounts.material_discount.$invalid">Enter a valid Amount, like 100</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Labour Amount Adjustment</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <input
+                                type="number"
+                                required
+                                ng-model="editBookingCouponCtrl.discountAmounts.labour_discount"
+                                class="form-control"
+                                name="labour_discount"
+                        >
+                        <p class="text-danger" ng-if="discountForm.discountAmounts.labour_discount.$touched && discountForm.discountAmounts.labour_discount.$invalid">Enter a valid Amount, like 100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Reason</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <select required
+                                ng-model="editBookingCouponCtrl.discountReasonDD"
+                                ng-options="item.id as item.reason for item in editBookingCouponCtrl.discountReasons track by item.id "
+                                class="form-control"
+                                name="discountReasonDD">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Reason Details</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <input
+                                type="text"
+                                required
+                                ng-model="editBookingCouponCtrl.discountReason"
+                                class="form-control"
+                                name="discountReason">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 text-center">
+                    <button
+                            ng-disabled="editBookingCtrl.booking.status.flow_order_num>=22 || discountForm.$invalid"
+                            type="button"
+                            class="btn btn-primary"
+                            ng-click="editBookingCouponCtrl.applyCashDiscount()">
+                        Adjust Price
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-7">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5> Total Discounts Applied on Booking - Rs {$editBookingCouponCtrl.booking.bill_details.total_discount$}</h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                Coupon Discount
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Coupon Id</th>
+                        <th>Coupon Code</th>
+                        <th>Coupon Discount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{$editBookingCouponCtrl.booking.bill_details.discount_dict.coupon_id$}</td>
+                        <td>{$editBookingCouponCtrl.booking.bill_details.discount_dict.coupon_code$}</td>
+                        <td>{$editBookingCouponCtrl.booking.bill_details.discount_dict.coupon_discount$}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                Price Adjustments
+                 <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Discount Id</th>
+                        <th>Part Discount</th>
+                        <th>Material Discount</th>
+                        <th>Labour Discount</th>
+                        <th>Total Discount</th>
+                        <th>Discount Reason</th>
+                        <th>Comments</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="discount in editBookingCouponCtrl.discountInfo">
+                        <td>{$discount.id$}</td>
+                        <td>{$discount.part_discount$}</td>
+                        <td>{$discount.material_discount$}</td>
+                        <td>{$discount.labour_discount$}</td>
+                        <td>{$discount.part_discount -- discount.labour_discount -- discount.material_discount$}</td>
+                        <td>{$ discount.reason_dd_details.reason $}</td>
+                        <td>{$ discount.reason $}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

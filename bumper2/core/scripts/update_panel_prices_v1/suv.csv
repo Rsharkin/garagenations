@@ -1,0 +1,79 @@
+Panel  / Part,Internal,Part / Panel Id,Part / Panel,Car Type,Part MRP,Material Charges,Labour Charges,"Total Labour + Material Charges",Remove Dents Price
+Front Bumper,N,4,Panel,SUV,0,929.7,2169.3,3099,3099
+Rear Bumper,N,5,Panel,SUV,0,929.7,2169.3,3099,3099
+Left Fender,N,1,Panel,SUV,0,929.7,2169.3,3099,3099
+Right Fender,N,2,Panel,SUV,0,929.7,2169.3,3099,3099
+Trunk,N,10,Panel,SUV,0,2929.7,2669.3,5599,3099
+Bonnet,N,3,Panel,SUV,0,929.7,2169.3,3099,3099
+Left Front Door,N,6,Panel,SUV,0,929.7,2669.3,3599,3099
+Right Front Door,N,7,Panel,SUV,0,929.7,2669.3,3599,3099
+Left Rear Door,N,8,Panel,SUV,0,929.7,2669.3,3599,3099
+Right Rear Door,N,9,Panel,SUV,0,929.7,2669.3,3599,3099
+Left Running Board,N,13,Panel,SUV,0,929.7,4169.3,5099,3099
+Right Running Board,N,14,Panel,SUV,0,929.7,4169.3,5099,3099
+Left Quarter Panel,N,11,Panel,SUV,0,929.7,4169.3,5099,3099
+Right Quarter Panel,N,12,Panel,SUV,0,929.7,4169.3,5099,3099
+Tow Cap,Y,33,Part,SUV,0,89.7,209.3,299,0
+Door Handel,Y,27,Part,SUV,0,254.7,594.3,849,0
+Side view mirror,Y,18,Part,SUV,0,389.7,909.3,1299,0
+Bumper Mount,Y,60,Part,SUV,0,0,149,149,0
+Bumper Lining,Y,21,Part,SUV,0,0,149,149,0
+Bumper Upper Grill,Y,42,Part,SUV,0,0,149,149,0
+Bumper Lower Grill,N,43,Part,SUV,0,0,149,149,0
+Fog Lamp Right,N,32,Part,SUV,0,0,149,149,0
+Fog Lamp Left,N,39,Part,SUV,0,0,149,149,0
+Fog Lamp Cover with fog lamp Cut,Y,61,Part,SUV,0,0,149,149,0
+Fog Lamp Cover without fog lamp Cut,Y,62,Part,SUV,0,0,149,149,0
+Fog lamp Mount,Y,63,Part,SUV,0,0,149,149,0
+Front Monogram ,Y,31,Part,SUV,0,0,149,149,0
+Headlight Right,N,38,Part,SUV,0,0,199,199,0
+Headlight Left,N,16,Part,SUV,0,0,199,199,0
+Taillight Right,N,19,Part,SUV,0,0,199,199,0
+Taillight Left,N,20,Part,SUV,0,0,199,199,0
+Sensors/Camera,Y,64,Part,SUV,0,0,199,199,0
+Bumper Guard/Beading,Y,65,Part,SUV,0,0,149,149,0
+Wheel Arch Lining,Y,66,Part,SUV,0,0,149,149,0
+Indicator,Y,67,Part,SUV,0,0,99,99,0
+Right Fender Indicator,N,40,Part,SUV,0,0,99,99,0
+Front Logo,N,41,Part,SUV,0,0,99,99,0
+Right Fender Monogram,N,44,Part,SUV,0,0,99,99,0
+Lock & Latch,Y,68,Part,SUV,0,0,349,349,0
+Bonnet lining,Y,69,Part,SUV,0,0,149,149,0
+Bonnet Mounts,Y,70,Part,SUV,0,179.7,419.3,599,0
+Door beading,Y,30,Part,SUV,0,0,149,149,0
+Door inner beading,Y,71,Part,SUV,0,0,149,149,0
+Window beading,Y,72,Part,SUV,0,0,149,149,0
+Window Glass,Y,45,Part,SUV,0,0,149,149,0
+Window Glass Rubber Channel,Y,73,Part,SUV,0,0,149,149,0
+Glass Beading,Y,74,Part,SUV,0,0,149,149,0
+Window Glass Lift Channel,Y,75,Part,SUV,0,0,599,599,0
+Power Window Switch,Y,76,Part,SUV,0,0,349,349,0
+Window Manual Switch,Y,77,Part,SUV,0,0,149,149,0
+Power Window Motor,Y,78,Part,SUV,0,0,349,349,0
+Door Lock Mechanism,Y,79,Part,SUV,0,0,1199,1199,0
+Central Locking Mechanism,Y,80,Part,SUV,0,0,1199,1199,0
+Door Mounts,Y,81,Part,SUV,0,359.7,839.3,1199,0
+Fuel Cap,Y,82,Part,SUV,0,119.7,279.3,399,0
+Wheel Arch Lining,Y,83,Part,SUV,0,0,149,149,0
+Quarter glass,Y,84,Part,SUV,0,979.7,419.3,1399,0
+Quarter glass Beading,Y,85,Part,SUV,0,44.7,104.3,149,0
+Trunk Door Lining,Y,86,Part,SUV,0,0,149,149,0
+Trunk Door Beading,Y,87,Part,SUV,0,0,149,149,0
+Back Logo,Y,88,Part,SUV,0,0,99,99,0
+Trunk Door Glass,Y,89,Part,SUV,0,2359.7,839.3,3199,0
+Number Plate,N,22,Part,SUV,0,44.7,104.3,149,0
+Number plate Light,Y,90,Part,SUV,0,44.7,104.3,149,0
+Inner Rubber Beading,Y,91,Part,SUV,0,0,149,149,0
+Wiper,Y,36,Part,SUV,0,0,349,349,0
+Wiper Blades,Y,92,Part,SUV,0,0,149,149,0
+Wiper Scuffing,Y,93,Part,SUV,0,0,349,349,0
+Mud Flaps,Y,55,Part,SUV,0,0,149,149,0
+Wheel Caps,Y,94,Part,SUV,0,0,149,149,0
+Alloy Wheels,Y,95,Part,SUV,0,0,1199,1199,0
+Tires,Y,96,Part,SUV,0,0,1199,1199,0
+After Market Fog Lamp,Y,97,Part,SUV,0,0,1199,1199,0
+Interior Ambient Light,Y,98,Part,SUV,0,0,1199,1199,0
+Bull Guard,Y,99,Part,SUV,0,0,1199,1199,0
+After Market Antenna,Y,100,Part,SUV,0,44.7,104.3,149,0
+Laser Cut Number Plates,Y,101,Part,SUV,0,0,99,99,0
+Windshield,N,46,Part,SUV,0,2359.7,839.3,3199,0

@@ -1,0 +1,14 @@
+<div class="margin15">
+    <div  class="sign-up-heading" >
+        Write us your query
+    </div>
+    <form>
+        <md-input-container class="input-fields md-accent" >
+            <textarea  rows="4"  ng-model="queryCtrl.reason" ng-change="queryCtrl.error=null"  md-select-on-focus placeholder="If any queries, let us know..we are here to help!"></textarea>
+            <div class="reason-empty-error">
+                <div>{$ queryCtrl.error$}</div>
+            </div>
+        </md-input-container>
+    </form>
+    <md-button ng-click="queryCtrl.postQuery()"  class="md-primary md-raised sign-up-button" style="display: block;margin-left: auto;margin-right: auto; margin-bottom: 30px;">next</md-button>
+</div>

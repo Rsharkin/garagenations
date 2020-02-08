@@ -1,0 +1,249 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Initiate Call</h5>
+                    <a id="call-status" permission="['Caller']" ng-click="editUserInquiryCtrl.xmpp_connect(true)" class="btn btn-xs btn-info pull-right">Connecting...</a>
+                </div>
+            </div>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Customer Comm. Details</h5>
+                    <a permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager','VASIncharge']" ng-click="editUserInquiryCtrl.showfollowup=true" class="btn btn-xs btn-primary pull-right">Add Cust. Followup</a>
+                </div>
+                <div class="ibox-content" style="max-height: 450px;overflow-y: auto;">
+                    <ul class="list-group" >
+                        <li class="list-group-item" ng-show="editUserInquiryCtrl.showfollowup">
+                            <form id="addFollowupForm"  class="form-horizontal" role="form" method="post" name="addFollowupForm" >
+                                <div class="form-group">
+                                    <label for="notes" class="control-label">Notes from Customer Communication:</label>
+                                    <textarea ng-model="editUserInquiryCtrl.newFollowup.notes" required class="input-sm col-xs-12" cols="20" placeholder="Notes" rows="4" title="Notes from FollowUp"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Communication:</label>
+                                    <select
+                                            ng-model="editUserInquiryCtrl.newFollowup.comm_mode"
+                                            ng-options="key as value for (key, value) in editUserInquiryCtrl.followupCommModes"
+                                            class="form-control input-sm"
+                                            required
+                                            name="modes"
+                                            title="Mode">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Result:</label>
+                                    <select
+                                            ng-model="editUserInquiryCtrl.newFollowup.result"
+                                            ng-options="item as item.name for item in editUserInquiryCtrl.followupResults track by item.id"
+                                            class="form-control input-sm"
+                                            required
+                                            name="result"
+                                            title="result">
+                                    </select>
+                                </div>
+                                <div class="form-group" ng-show="editUserInquiryCtrl.newFollowup.result.action_type==1">
+                                    <label class="control-label">Next Followup Dt</label>
+                                    <div class="input-group">
+                                        <input name="next_followup"
+                                               data-ng-model="editUserInquiryCtrl.newFollowup.next_followup_dt"
+                                               ng-required="editUserInquiryCtrl.newFollowup.result.action_type==1"
+                                               type="text" title="Next followup on" readonly="readonly"
+                                               class=" input-sm form_datetime form-control">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <input class="btn btn-gray" type="button"
+                                               ng-click="editUserInquiryCtrl.showfollowup=false"
+                                               value="Cancel"/>
+                                        <input class="btn btn-primary" type="submit"
+                                               ng-click="editUserInquiryCtrl.addFollowup()"
+                                               ng-disabled="editUserInquiryCtrl.ajax_loading || addFollowupForm.$invalid || addFollowupForm.$pristine"
+                                               ng-value="editUserInquiryCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="list-group-item" ng-repeat="followup in editUserInquiryCtrl.followups" >
+                            <p>{$ followup.created_at | date:'d MMMM yy HH:mm' : 'IST' $} by
+                                <small><strong>{$ followup.updated_by.name $}</strong> </small>
+                                <small><strong ng-if="followup.comm_mode"><label class="badge badge-info">{$ followup.comm_mode $}</label></strong>
+                                    <strong ng-if="followup.result_details.name">,<label class="badge badge-info">{$ followup.result_details.name $}</label></strong></small>
+                            </p>
+                            <p>{$ followup.note $}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Edit User Inquiry [ID: {$ editUserInquiryCtrl.userInquiryId$}]</h5>
+                    <div ibox-tools>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" name="userInquiryForm" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">User</label>
+                            <div class="col-sm-9">
+                                {$ editUserInquiryCtrl.editedInquiry.user.name $}, {$ editUserInquiryCtrl.editedInquiry.user.formatedPhone $}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">City</label>
+                            <div class="col-sm-9">
+                                <select ng-model="editUserInquiryCtrl.editedInquiry.city" class="form-control  input-sm" title="City">
+                                    <option ng-repeat="option in editUserInquiryCtrl.cities" value="{$ option.id $}">{$ option.name $}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Lead Quality</label>
+                            <div class="col-sm-9">
+                                <select ng-model="editUserInquiryCtrl.editedInquiry.lead_quality" class="form-control  input-sm" title="Lead Quality">
+                                    <option value="1">Hot</option>
+                                    <option value="4">Red Hot</option>
+                                    <option value="2">Warm</option>
+                                    <option value="3">Cold</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Next Followup - On</label>
+                            <div class="col-sm-9">
+                                <label>{$ editUserInquiryCtrl.next_followup_dt | date:'d MMMM yyyy HH:mm' : 'IST' $}</label>
+                                <small>( can be set by adding followup.)</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Assigned To</label>
+                            <div class="col-sm-9">
+                                <select ng-model="editUserInquiryCtrl.selected_assigned_to" ng-options="item as item.name for item in editUserInquiryCtrl.opsAgents track by item.id" class="form-control  input-sm" title="Assigned To">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Inquiry</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="editUserInquiryCtrl.editedInquiry.inquiry"
+                                          name="inquiry"
+                                          maxlength="2048"
+                                          placeholder="Inquiry"
+                                          class="form-control"
+                                          rows="4" cols="20"
+                                ></textarea>
+
+                                <div class="text-danger" ng-if="userInquiryForm.inquiry.$touched && userInquiryForm.inquiry.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                    <div ng-message="maxlength">Max length can be 2048.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Reference</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="editUserInquiryCtrl.editedInquiry.reference"
+                                          name="reference"
+                                          maxlength="1024"
+                                          placeholder="Reference"
+                                          class="form-control"
+                                          rows="2" cols="20"
+                                ></textarea>
+
+                                <div class="text-danger" ng-if="userInquiryForm.reference.$touched && userInquiryForm.reference.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                    <div ng-message="maxlength">Max length can be 1024.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Source</label>
+                            <div class="col-sm-9">
+                                <select
+                                        ng-model="editUserInquiryCtrl.editedInquiry.source"
+                                        class="form-control  input-sm"
+                                        required
+                                        name="source"
+                                        title="Sources">
+                                    <option ng-repeat="option in editUserInquiryCtrl.userSources" value="{$ option.source $}">{$ option.source_desc $}</option>
+                                </select>
+
+                                <div class="text-danger" ng-if="userInquiryForm.source.$touched && userInquiryForm.source.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ad Campaign</label>
+                            <div class="col-sm-9">
+                                <input
+                                        ng-model="editUserInquiryCtrl.editedInquiry.utm_campaign"
+                                        name="utm_campaign"
+                                        maxlength="128"
+                                        placeholder="Ad Campaign"
+                                        class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Status</label>
+                            <div class="col-sm-9">
+                                <select
+                                        ng-model="editUserInquiryCtrl.editedInquiry.status"
+                                        ng-options=" key as value for (key, value) in editUserInquiryCtrl.inquiryStatuses"
+                                        class="form-control input-sm"
+                                        required
+                                        name="status"
+                                        title="Status">
+                                </select>
+
+                                <div class="text-danger" ng-if="userInquiryForm.status.$touched && userInquiryForm.status.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Car Model</label>
+                            <div class="col-sm-9">
+                                <div class="">
+                                    <div class="col-sm-4">
+                                        <label>{$ editUserInquiryCtrl.editedInquiry.car_model.brand.name $}, {$ editUserInquiryCtrl.editedInquiry.car_model.name $}</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input
+                                                id ="search_car_text"
+                                                type="text"
+                                                placeholder="Search car by brand or model name, to change car model"
+                                                name="search"
+                                                class="form-control input-sm"
+                                                ng-model="searchText"
+                                                ng-change="editUserInquiryCtrl.getModel(searchText)">
+                                        <div class="search-result" ng-repeat="item in editUserInquiryCtrl.models" ng-if="!editUserInquiryCtrl.selectedCar">
+                                            <h3><a ng-click="editUserInquiryCtrl.setSelectedCar(item)">{$item.brand.name$}-{$item.name$}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <input class="btn btn-primary" type="submit"
+                                       ng-click="editUserInquiryCtrl.updateUserInquiry()"
+                                       ng-disabled="editUserInquiryCtrl.ajax_loading || userInquiryForm.$invalid || userInquiryForm.$pristine"
+                                       ng-value="editUserInquiryCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

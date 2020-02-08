@@ -1,0 +1,402 @@
+<div ng-init="template='slots'">
+    <div class="confirm-booking-box">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="savings-back" ng-click="data.showinfo=!data.showinfo;"
+                     analytics-on analytics-event="schedule price (Mobile)"
+                     analytics-category="Schedule price">&#8377; {$scheduleCtrl.currentBooking.bill_details.orig_payable_amt$}<i class="material-icons" style="float: right; font-size: 18px ;opacity: 0.7;color: #535353; margin-left: 6px; margin-top:1px">info_outline</i>
+                </div>
+                <div ng-show="data.showinfo">
+                    <div class="container" style=" height: 400px;/* overflow-y: scroll; */overflow-y: auto;">
+                        <p><img src="img/Piggybank.svg"> <span style="font-size:15px;font-weight: 500;margin-left: 8px">Your Price and Savings</span></p>
+                        <p style="opacity: 0.4;font-family: Roboto;font-size: 12px;font-weight: bold;">PRICE BREAKUP</p>
+                        <div class="row schedule-panels" ng-repeat="item in scheduleCtrl.currentBooking.booking_package">
+                            <div ng-if="item.package.package.category !=2">
+                                <div class="col-xs-8">
+                                    <p style="text-align: left">{$item.package.package.name$}</p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p style="text-align:right">&#8377; {$item.price|number:0$}</p>
+                                </div>
+                            </div>
+                            <div ng-repeat="panel in item.booking_package_panel" ng-if="item.package.package.category ==2">
+                                <div class="col-xs-8" >
+                                    <p style="text-align:left">{$panel.panel_details.car_panel.name$} - {$panel.panel_details.type_of_work$}</p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p style="text-align:right">&#8377; {$panel.price |number:0$}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tax-breakup-schedule" style="padding:10px">
+                            <div class="row">
+                                <div class="col-xs-8"><p style="opacity: 0.6;text-align: left">SubTotal</p></div>
+                                <div class="col-xs-4"><p style="text-align:right;opacity: 0.6;">&#8377; {$scheduleCtrl.currentBooking.bill_details.total_amt|number:0 $}</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8"><p style="opacity: 0.6;text-align: left">Taxes</p></div>
+                                <div class="col-xs-4"><p style="text-align:right;opacity: 0.6;">&#8377; {$scheduleCtrl.currentBooking.bill_details.total_gst|number:0$}</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8"><p style="text-align: left">Total</p></div>
+                                <div class="col-xs-4"><p style="text-align:right">&#8377; {$scheduleCtrl.currentBooking.bill_details.orig_payable_amt|number:0$}</p></div>
+                            </div>
+                        </div>
+                        <p style="font-size: 12px;font-weight: 500;opacity:0.4;text-align:left;margin-bottom:30px !important">*Part cost , labour charges and material cost may be extra if not already added.</p>
+                        <p ng-if="carPanelSearchCtrl.savings" style="display: flex; font-size: 12px;text-align:left;line-height: 1.6;font-weight: 500;"><i class="material-icons" style="font-size:13px; color:#7ed321;margin-top: 3px">check_circle</i><span style="opacity: 0.6;margin-left:12px"> Enjoy Savings! Total price is &#8377; {$carPanelSearchCtrl.savings |number:0$} lesser than the market price.</span></p>
+                        <hr style="opacity:0.3;margin-left:40px;margin-top: 10px;margin-bottom: 10px" ng-if="carPanelSearchCtrl.savings">
+                        <p  style="display: flex; text-align:left;font-size: 12px;line-height: 1.6;font-weight: 500;"><i class="material-icons" style="font-size:13px; color:#7ed321;margin-top: 3px">check_circle</i><span style="opacity: 0.6;margin-left:12px"> Painting charges are included in price.</span></p>
+                        <p  style="display: flex;text-align:left; font-size: 12px;line-height: 1.6;font-weight: 500;"><i class="material-icons" style="font-size:13px; color:#7ed321;margin-top: 3px">check_circle</i> <span style="opacity: 0.6;margin-left:12px">Pickup & drop is absolutely free.</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <md-button ng-click="template='slots'; onAddressScreen=false" class="no-margin" style="margin-top: 3px" ng-show="onAddressScreen">BACK TO SLOTS</md-button>
+            <md-button style="width: 100%;margin: 0 !important;"
+                       ng-click="template='address';onAddressScreen=true;"
+                       ng-show="scheduleCtrl.type==1&&!onAddressScreen"
+                       class="md-primary md-raised pull-right confirm-booking"
+                       ng-disabled="!scheduleCtrl.slotForBooking">
+                CHOOSE PICKUP ADDRESS
+            </md-button>
+            <md-button style="width: 100%;margin: 0 !important;"
+                       ng-click="template='address';onAddressScreen=true;"
+                       ng-show="scheduleCtrl.type!=1&&!onAddressScreen"
+                       class="md-primary md-raised pull-right confirm-booking"
+                       ng-disabled="!scheduleCtrl.slotForBooking">
+                CHOOSE DROP ADDRESS
+            </md-button>
+            <md-button
+                    ng-click="scheduleCtrl.updateBooking()"
+                    ng-show="scheduleCtrl.type==1&&onAddressScreen"
+                    class="md-primary md-raised pull-right confirm-booking"
+                    analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Confirm Booking Button"
+                    ng-disabled="!scheduleCtrl.addNewAddress&&!scheduleCtrl.userAddressId||!scheduleCtrl.slotForBooking"">
+            CONFIRM BOOKING
+            </md-button>
+            <md-button
+                    ng-click="scheduleCtrl.updateBooking()"
+                    ng-show="scheduleCtrl.type!=1&&onAddressScreen"
+                    class="md-primary md-raised pull-right confirm-booking"
+                    analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Confirm Booking Button"
+                    ng-disabled="!scheduleCtrl.addNewAddress&&!scheduleCtrl.userAddressId||!scheduleCtrl.slotForBooking"">
+            SCHEDULE DROP
+            </md-button>
+        </div>
+    </div>
+</div>
+<ng-include src="template"></ng-include>
+<script type="text/ng-template" id="slots">
+    <div class=" bm-panels-container" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row" ng-if="scheduleCtrl.type==1">
+                <h1 class="bm-title-text-large margin15">ADD PICKUP DETAILS</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 ">
+                    <md-radio-group ng-model="scheduleCtrl.is_doorstep" ng-if="scheduleCtrl.type==1">
+                        <div class="radio-buttons-inline " >
+                            <md-radio-button value="true" class="radio"  ng-disabled="scheduleCtrl.isPickupOnly" analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Service at Doorstep Button">Service at doorstep</md-radio-button>
+                            <md-tooltip ng-if="scheduleCtrl.isPickupOnly" md-direction="bottom">
+                                Doorstep service is not available for this package.
+                            </md-tooltip>
+                        </div>
+                        <div class="radio-buttons-inline">
+                            <md-radio-button value="false" class="inline" analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Pick up My Car Button" checked="checked">Pickup my car</md-radio-button>
+                        </div>
+                    </md-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section2 margin-negative" ng-if="scheduleCtrl.type==2">
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 margin-top18"><a class="payment-back-button" ui-sref="base.status">
+                    <span>
+                        <img src="img/back_arrow2.svg" style="color: #47289e;margin-right: 5px" height="12" width="12" alt="back-arrow">
+                    </span>BACK</a></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                    <h1 class="payment-heading">ADD DROP DETAILS</h1>
+                    <h2 class="payment-heading-booking">BOOKING ID - {$ scheduleCtrl.currentBooking.id $}</h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 "></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="time-block">
+                            <div class="row">
+                                <h1 class="date-box-heading">Choose service date</h1>
+                            </div>
+                            <div class="row">
+                                <a class="date-block-small"
+                                   ng-repeat="date in scheduleCtrl.slots"
+                                   ng-class="{'date-block-small-active':$index == scheduleCtrl.selectedDateIndex,'date-block-small-gray':date.slots.length==0}"
+                                   href=""
+                                   ng-click="scheduleCtrl.dateClicked($index);scheduleCtrl.slotsAgainstDate(date.date)"
+                                   analytics-on analytics-event="Click"
+                                   analytics-category="Schedule Booking Page"
+                                   analytics-label="{$date.date | date:'EEE'$} Button">
+                                    <span ng-class="{'date-block-small-gray':date.slots.length==0,'date-time-text':date.slots.length!=0}"> {$date.date | date:'EEE'$}
+                                    <br>{$date.date| date:'dd-MMM'$}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div  class=" time-block" ng-show="scheduleCtrl.isDateSelected">
+                            <div class="row">
+                                <h1  ng-if="scheduleCtrl.slotTime.length!=0" class="date-box-heading">Choose service time</h1>
+                            </div>
+                            <div class="row">
+                                <a class="time-block-small"
+                                   ng-repeat="time in scheduleCtrl.slotTime"
+                                   ng-class="{'time-block-small-active':$index == scheduleCtrl.selectedTimeIndex}"
+                                   href="#"
+                                   analytics-on analytics-event="Click"
+                                   analytics-category="Schedule Booking Page"
+                                   analytics-label="{$ '2016-03-28T'+time.start_time | date:'shortTime'$} - {$ '2016-03-28T'+time.end_time | date: 'shortTime'$}"
+                                   ng-click="scheduleCtrl.timeClicked($index);scheduleCtrl.chooseSlot(time)">
+                                   <span class="date-time-text">
+                                       {$ "2016-03-28T"+time.start_time | date:'shortTime'$} - {$"2016-03-28T"+time.end_time | date: 'shortTime'$}
+                                   </span>
+                                </a>
+                                <div  class="date-time-text" ng-if="scheduleCtrl.slotTime.length==0">
+                                    Sorry, no slots available on this day
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="total-price-coupon-box" style="margin-bottom: 30px">
+                            <form name="userForm" ng-hide="scheduleCtrl.success">
+                                <md-input-container  class="md-accent coupon-input">
+                                    <label class="">Coupon Code</label>
+                                    <input name="coupon" ng-model="scheduleCtrl.couponCode"  ng-change="scheduleCtrl.errors=null;scheduleCtrl.success=null" />
+                                    <div ng-messages="userForm.coupon.$error">
+                                        <div>{$ scheduleCtrl.errors $}</div>
+                                    </div>
+                                </md-input-container>
+                                <md-button class="md-raised md-accent pull-right" ng-click="scheduleCtrl.applyCoupon()">APPLY</md-button>
+                            </form>
+                            <div ng-if="scheduleCtrl.success" style="font-size: 12px;font-weight: 500;color: #44db5e;padding-bottom: 30px">
+                                Coupon is added successfully. Its benefits will be applied automatically in the final bill during car delivery
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="footer-strip1">
+        <div style="padding-left: 25px;padding-right: 25px">
+            <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                    <a ui-sref="base.home" style="display: inline-block"><img  src="img/footer_logo.svg" height="40" width="40">
+                        <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                    <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+                    <p style="text-align: center;">DOWNLOAD APP
+                        <a   analytics-on
+                             analytics-event="footer app link"
+                             analytics-category="footer" analytics-label="android app"
+                             href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                            <img src="img/Android_footer.svg" style="margin-left:8px">
+                        </a>
+                        <a analytics-on
+                           analytics-event="footer app link"
+                           analytics-category="footer" analytics-label="ios app"
+                           href="https://itunes.apple.com/in/app/bumper-car-body-repair-wash/id1134862260?mt=8/?utm_source=website&utm_medium=unknown&utm_campaign=apple"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                    <div class="footer-strip-sec2">
+                        <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                        <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                        <p style="padding-left: 5px">
+                            <a analytics-on analytics-event="Click- FB Button"
+                               analytics-category="Footer"
+                               href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                        </p>
+                        <p style="padding-left: 5px" >
+                            <a analytics-on analytics-event="Click- Twitter Button"
+                               analytics-category="Footer"
+                               href="https://www.twitter.com/HitBumper" target="_blank">
+                                <img src="img/footer_twit.svg">
+                            </a>
+                        </p >
+                        <p style="padding-left: 5px">
+                            <a  analytics-on analytics-event="Click- Linkedin Button"
+                                analytics-category="Footer"
+                                href="https://www.linkedin.com/company/bumper" target="_blank">
+                                <img src="img/footer_linked.svg">
+                            </a>
+                        </p>
+                        <p style="padding-left: 5px">
+                            <a  analytics-on analytics-event="Click- Youtube button"
+                                analytics-category="Footer"
+                                href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                                <img src="img/youtube.svg" width="22px">
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer-strip2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+<script type="text/ng-template" id="address">
+    <div class="col-lg-4 col-md-4" style="padding-bottom: 30px">
+        <div class="address-block" style="margin-top: 30px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="date-box-heading">Choose Address</h1>
+                    <md-radio-group ng-model="data.address">
+                        <div class="">
+                            <md-radio-button value="{$ address.id $}"
+                                             ng-click="scheduleCtrl.addNewAddress=false;scheduleCtrl.getUserAddressId(address.id)"
+                                             class=" input-address"
+                                             analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Saved Address radio button"
+                                             ng-repeat="address in scheduleCtrl.addressList">
+
+                                {$address.address.address1$},
+                                {$address.address.address2$}<br>
+                                {$address.address.pin_code$},
+                                {$address.address.city$}
+                            </md-radio-button>
+                        </div>
+                    </md-radio-group>
+                    <md-button class="button-no-ink pull-right"
+                               ng-click="data.address=null;scheduleCtrl.addNewAddress=true;scheduleCtrl.scrollToAddress()"
+                               analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Add New Adress Button"
+                               ng-disabled="scheduleCtrl.addNewAddress">ADD NEW ADDRESS</md-button>
+                </div>
+            </div>
+        </div>
+        <div class="address-block-new addressScroll" id="addressScroll"  ng-show="scheduleCtrl.addNewAddress" >
+            <h1 class="date-box-heading" >Add Address</h1>
+            <form name="userForm">
+                <div>
+                    <md-input-container class="md-accent input-address no-margin">
+                        <label>House/ Flat No </label>
+                        <input name="address1" ng-model="scheduleCtrl.userAddress.address.address1" />
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-accent input-address no-margin">
+                        <bumper-google-autocomplete
+                                ng-model="scheduleCtrl.userAddress.address.area"
+                                google-model="scheduleCtrl.googleAddress"
+                                on-select="scheduleCtrl.onSelectGoogleAddress($item)"
+                                autocomplete="off"
+                                required>
+                        </bumper-google-autocomplete>
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-accent input-address no-margin">
+                        <label>PIN code</label>
+                        <input  name="pincode"  ng-model="scheduleCtrl.userAddress.address.pin_code" />
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-accent input-address no-margin">
+                        <label>City</label>
+                        <input  name="email"  ng-model="scheduleCtrl.userAddress.address.city"/>
+                    </md-input-container>
+                </div>
+            </form>
+        </div>
+    </div>
+    <section class="footer-strip1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                    <a ui-sref="base.home" style="display: inline-block"><img src="img/footer_logo.svg" height="40" width="40">
+                        <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                    <p style="text-align: center;">DOWNLOAD APP
+                        <a   analytics-on
+                             analytics-event="footer app link"
+                             analytics-category="footer" analytics-label="android app"
+                             href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                            <img src="img/Android_footer.svg" style="margin-left:8px">
+                        </a>
+                        <a analytics-on
+                           analytics-event="footer app link"
+                           analytics-category="footer" analytics-label="ios app"
+                           href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                    <div class="footer-strip-sec2">
+                        <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                        <p style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px">support@bumper.com</p>
+                        <p style="padding-left: 5px">
+                            <a analytics-on analytics-event="Click- FB Button"
+                               analytics-category="Footer"
+                               href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                        </p>
+                        <p style="padding-left: 5px" >
+                            <a analytics-on analytics-event="Click- Twitter Button"
+                               analytics-category="Footer"
+                               href="https://www.twitter.com/HitBumper" target="_blank">
+                                <img src="img/footer_twit.svg">
+                            </a>
+                        </p >
+                        <p style="padding-left: 5px">
+                            <a  analytics-on analytics-event="Click- Linkedin Button"
+                                analytics-category="Footer"
+                                href="https://www.linkedin.com/company/bumper" target="_blank">
+                                <img src="img/footer_linked.svg">
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="footer-strip2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+
+
+
+
+
+

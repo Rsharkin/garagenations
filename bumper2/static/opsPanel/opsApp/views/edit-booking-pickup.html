@@ -1,0 +1,315 @@
+<div class="row">
+    <div class="col-lg-3" permission="['OpsAdmin','OpsManager','DriverManager','CityCallCenterManager','Caller']">
+        <div class="ibox" >
+            <div class="ibox-title">
+                <h5>Quick Actions</h5>
+            </div>
+            <div class="ibox-content">
+                <ul class="list-group" ng-if="!editBookingCtrl.booking.workshop">
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            Assign workshop(from workshop tab) to see all Action.
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>=3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingPickupCtrl.setPickupScheduled(3)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Pickup Scheduled</button>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list-group" ng-if="editBookingCtrl.booking.workshop">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>=3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingPickupCtrl.setPickupScheduled(3)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Pickup Scheduled</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="editBookingCtrl.booking.status.flow_order_num>3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.booking.ops_status ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingPickupCtrl.setPickupScheduled(124)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Pickup Confirmed</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num>=1)) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingPickupCtrl.assignDriver(101)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Assign Driver</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && !editBookingCtrl.booking.ops_status.flow_order_num) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num>1)) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.assignWorkshopManager('WorkshopManager')"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-10 col-lg-offset-1">
+                                Assign Workshop Manager</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num != 3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && !editBookingCtrl.booking.ops_status.flow_order_num) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num>1)) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.assignWorkshopManager('WorkshopAssistantManager')"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-10 col-lg-offset-1">
+                                Assign Workshop Associate</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num !=3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num>=3) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && !editBookingCtrl.booking.ops_status.flow_order_num) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num<1)) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(103)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Driver Ready to Go</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=4 || editBookingCtrl.booking.status.flow_order_num<3 ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && !editBookingCtrl.booking.ops_status.flow_order_num) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num<3)) ||
+                                    (editBookingCtrl.booking.status.flow_order_num==3 && editBookingCtrl.booking.ops_status.flow_order_num==8) ||
+                                    editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(4)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Started for Pickup</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=6 || editBookingCtrl.booking.status.flow_order_num<4) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(6)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                At Pickup Place</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=8 || editBookingCtrl.booking.status.flow_order_num<6) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingPickupCtrl.setJobCardUploaded(8)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Job Card Created</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=9 || editBookingCtrl.booking.status.flow_order_num<8) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(9)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Car Picked Up</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" ng-if="editBookingCtrl.booking.status.id == 27" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.id != 27
+                                    || (editBookingCtrl.booking.status.id == 27 && editBookingCtrl.booking.ops_status.id == 44))
+                                    || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(144)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-12">
+                                Start Return from Customer Loc</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item" permission="['OpsAdmin','OpsManager','DriverManager']">
+                        <div class="row">
+                            <button type="button"
+                                    ng-disabled="(editBookingCtrl.booking.status.flow_order_num>=10 || editBookingCtrl.booking.status.flow_order_num<9) || editBookingCtrl.ajax_loading"
+                                    ng-click="editBookingCtrl.setAction(10)"
+                                    class="btn btn-sm btn-w-m btn-primary col-lg-8 col-lg-offset-2">
+                                Reached Workshop</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <form method="get" class="form-horizontal">
+            <h3>Pickup Details</h3>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Pickup Driver</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>{$ editBookingPickupCtrl.booking.pickup_driver_details.name $}</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button"
+                                    ng-click="editBookingPickupCtrl.assignDriver()"
+                                    permission="['OpsAdmin','OpsManager','DriverManager']"
+                                    class="btn btn-sm btn-primary">
+                                Change Driver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop Manager</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>{$ editBookingPickupCtrl.booking.workshop_manager_details.name  $}</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button"
+                                    ng-click="editBookingCtrl.assignWorkshopManager('WorkshopManager')"
+                                    permission="['OpsAdmin','OpsManager','DriverManager']"
+                                    class="btn btn-sm btn-primary">
+                                Change Manager</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop Associate Manager</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p>{$ editBookingPickupCtrl.booking.workshop_asst_mgr.name  $}</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button"
+                                    ng-click="editBookingCtrl.assignWorkshopManager('WorkshopAssistantManager')"
+                                    permission="['OpsAdmin','OpsManager','DriverManager']"
+                                    class="btn btn-sm btn-primary">
+                                Change Associate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">User Selected Pickup-Time</label>
+                <div class="col-sm-6">
+                    <span ng-show="!editBookingPickupCtrl.booking.showEditPickupTime">
+                        {$ editBookingPickupCtrl.booking.pickup_time | date:'medium' : '+0530' $} - {$ editBookingPickupCtrl.booking.pickup_slot_end_time | date:'medium' : '+0530' $}
+                        <button
+                                ng-if="editBookingCtrl.booking.status.flow_order_num < 4"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=9"
+                                ng-click="editBookingPickupCtrl.booking.showEditPickupTime=1;editBookingPickupCtrl.booking.newPickupTime=null"
+                                permission="['OpsAdmin','OpsManager','DriverManager','CityCallCenterManager','Caller']"
+                                class="btn btn-link btn-primary btn-xs" >Edit</button>
+                        <button
+                                ng-if="editBookingCtrl.booking.status.flow_order_num >= 4"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=9"
+                                ng-click="editBookingPickupCtrl.booking.showEditPickupTime=1;editBookingPickupCtrl.booking.newPickupTime=null"
+                                permission="['OpsAdmin','OpsManager','DriverManager','CityCallCenterManager']"
+                                class="btn btn-link btn-primary btn-xs" >Edit</button>
+                    </span>
+
+                    <div class="input-group" ng-show="editBookingPickupCtrl.booking.showEditPickupTime">
+                        <input name="pickup_time" data-ng-model="editBookingPickupCtrl.booking.newPickupTime" type="text" title="Time of pickup" readonly="readonly" class=" input-sm form_datetime form-control">
+                        <input name="pickup_slot_end_time" data-ng-model="editBookingPickupCtrl.booking.newPickupSlotEndTime" type="text" title="Slot end time" readonly="readonly" class=" input-sm form_datetime form-control">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <div class="form-group" ng-show="editBookingPickupCtrl.booking.showEditPickupTime">
+                        <div class="text-center">
+                            <button class="btn btn-outline btn-link btn-default btn-xs" type="button" ng-click="editBookingPickupCtrl.booking.showEditPickupTime=null">Cancel</button>
+                            <input class="btn btn-outline btn-link btn-primary btn-xs" type="submit" ng-click="editBookingCtrl.updateBooking({'pickup_time':editBookingPickupCtrl.booking.newPickupTime,'pickup_slot_end_time':editBookingPickupCtrl.booking.newPickupSlotEndTime})" ng-disabled="editBookingPickupCtrl.ajax_loading" ng-value="editBookingPickupCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button"
+                            ng-click="editBookingCtrl.rescheduleBooking()"
+                            permission="['OpsAdmin','OpsManager','DriverManager','CityCallCenterManager']"
+                            ng-if="editBookingCtrl.booking.status.flow_order_num>=3 && editBookingCtrl.booking.status.flow_order_num<9"
+                            class="btn btn-sm btn-primary">
+                       Reschedule</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Pickup Location</label>
+                <div class="col-sm-9">
+                    <address>
+                        <strong>{$ editBookingPickupCtrl.pickup_address.address1 $}</strong><br>
+                        <strong>{$ editBookingPickupCtrl.pickup_address.address2 $}</strong><br>
+                        {$ editBookingPickupCtrl.pickup_address.city $}, {$ editBookingPickupCtrl.pickup_address.pin_code $}<br>
+                        <abbr title="Map" ng-if="editBookingPickupCtrl.pickup_address.latitude"><i class="fa fa-map-marker btn-lg"></i>:</abbr> <a ng-if="editBookingPickupCtrl.pickup_address.latitude" href="http://maps.google.com/maps?t=m&q=loc:{$ editBookingPickupCtrl.pickup_address.latitude $}+{$ editBookingPickupCtrl.pickup_address.longitude $}" target="_blank" title="Map Location"><small>(click to see on map)</small></a><br>
+                        <button
+                                ng-if="editBookingCtrl.booking.status.flow_order_num < 4"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23"
+                                ng-click="editBookingPickupCtrl.updatePickUpAddress()"
+                                permission="['OpsAdmin','OpsManager','DriverManager','CityCallCenterManager','Caller']"
+                                class="btn btn-outline btn-link btn-primary btn-xs">Edit</button>
+                        <button
+                                ng-if="editBookingCtrl.booking.status.flow_order_num >= 4"
+                                ng-disabled="editBookingCtrl.booking.status.flow_order_num>=23"
+                                ng-click="editBookingPickupCtrl.updatePickUpAddress()"
+                                permission="['OpsAdmin','OpsManager','DriverManager','CityCallCenterManager']"
+                                class="btn btn-outline btn-link btn-primary btn-xs">Edit</button>
+                    </address>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="col-sm-3 control-label">Pickup Location(Manual Entry)</label>
+                <div class="col-sm-9">
+                    <input ng-model="editBookingPickupCtrl.booking.pickup_address2" type="text" title="Pickup location - for manual entry" class=" input-sm form-control" placeholder="Pickup location - for manual entry">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Pickup Driver Start At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingPickupCtrl.booking.pickup_driver_start_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Pickup Driver Reached At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingPickupCtrl.booking.driver_arrived_pickup_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Car Pickup At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingPickupCtrl.booking.actual_pickup_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Workshop Reached At</label>
+                <div class="col-sm-9">
+                    <span>{$ editBookingPickupCtrl.booking.workshop_reached_time | date:'medium' : '+0530' $}</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

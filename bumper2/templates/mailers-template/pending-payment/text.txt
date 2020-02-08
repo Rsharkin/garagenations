@@ -1,0 +1,7 @@
+Hi {{customer_name}},
+
+Thank you for using Bumper!
+
+The amount payable for the services availed is Rs. {{payable_amt}}.
+
+You are requested to pay the outstanding amount at the earliest and select drop details for us to bring back your shining car.

@@ -1,0 +1,7 @@
+Hi {{name}},
+
+Thank you for using Bumper!
+
+We know you are waiting to see you your {{car_model}}. Please select your drop address on the Bumper app!
+
+Do not hesitate to contact us in case of any queries. Write to us at {{cutomer_care_id}} or call us on our customer care number {{customer_care_number}}.

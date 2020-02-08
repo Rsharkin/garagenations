@@ -1,0 +1,27 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title text-danger">Car can not go out of workshop !!</h4>
+    </div>
+    <div class="modal-body">
+        <form name="deliveryrReasonForm" class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label no-padding-right">Delivery Reason:</label>
+                <div class="col-sm-9">
+                    <textarea ng-model="reasonQcFailCtrl.deliveryReason"
+                              required class="input-sm col-xs-10" cols="20"
+                              placeholder="Enter delivery reason here to allow Qc failed status" rows="4" title="delivery reason"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="reasonQcFailCtrl.cancel()">Close</button>
+        <button ng-if="!reasonQcFailCtrl.isQCDone" permission="['OpsAdmin']" type="button" class="btn btn-primary"
+                ng-disabled="reasonQcFailCtrl.ajax_loading|| deliveryrReasonForm.$invalid "
+                ng-click="reasonQcFailCtrl.ok()">Save changes</button>
+        <span class="text-danger" ng-if="!reasonQcFailCtrl.isQCDone">Only Ops Admin can mark this "Ready for Delivery"</span>
+        <button ng-if="reasonQcFailCtrl.isQCDone" type="button" class="btn btn-primary"
+                ng-disabled="reasonQcFailCtrl.ajax_loading|| deliveryrReasonForm.$invalid "
+                ng-click="reasonQcFailCtrl.ok()">Save changes</button>
+    </div>
+</div>

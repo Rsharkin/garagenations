@@ -1,0 +1,170 @@
+<span ng-if="!paymentCtrl.paymentSuccess">
+<section class="section2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 margin-top18"><a class="payment-back-button" ui-sref="base.status"><span><img src="img/back_arrow2.svg" style="color: #47289e;margin-right: 5px" height="12" width="12"></span>BACK</a></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h1 class="payment-heading">PAY NOW</h1>
+                <h2 class="payment-heading-booking">BOOKING ID - {$ paymentCtrl.currentBooking.id $}</h2>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+        </div>
+    </div>
+</section>
+<section class="section3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="payment-details-box">
+                    <div ng-repeat="item in paymentCtrl.currentBooking.booking_package">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <ul>
+                                    <li class="package-list-payment">{$ item.package.package.name $}</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <p class="pull-right">&#8377; {$ item.price $}</p>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="item.package.package.category==2">
+                            <div ng-repeat="panel in item.booking_package_panel">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                    <div class="list-panels-heading">{$ panel.panel_details.car_panel.name $} </div>
+                                    <div class="list-panels-desc">{$ panel.panel_details.type_of_work $}</div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <div class=" list-panels-heading pull-right">&#8377; {$ panel.price $}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="payment-price-box">
+                    <div class="row">
+                        <div class="payment-price">
+                            <span>Sub Total </span>
+                            <span class="pull-right" style="margin-right: 10px">&#8377; {$ paymentCtrl.bill.total_amt $}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="paymentCtrl.currentBooking.bill_details.total_discount>0">
+                        <div class="payment-price">
+                            <span> Total Discount  </span>
+                            <span class="pull-right" style="margin-right: 10px">- &#8377; {$ paymentCtrl.bill.total_discount $}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="paymentCtrl.bill.total_gst > 0">
+                        <div class="payment-price">
+                            <span> Taxes </span>
+                            <span class="pull-right" style="margin-right: 10px">{$ paymentCtrl.bill.total_gst|number:0 $}</span>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="payment-price">
+                            <span> Total Amount </span>
+                            <span class="pull-right" style="margin-right: 10px">&#8377; {$ paymentCtrl.bill.orig_payable_amt|number:0 $}</span>
+                        </div>
+                    </div>
+                     <div class="row" ng-if="paymentCtrl.currentBooking.bill.advance_payment_received>0">
+                        <div class="payment-price">
+                            <span> Advance Payment </span>
+                            <span class="pull-right" style="margin-right: 10px">- &#8377; {$ paymentCtrl.bill.advance_payment_received $}</span>
+                        </div>
+                    </div>
+                     <div class="row" ng-if="paymentCtrl.bill.used_credits > 0">
+                        <div class="payment-price">
+                            <span> Used Credits </span>
+                            <span class="pull-right" style="margin-right: 10px">- {$ paymentCtrl.bill.used_credits $}</span>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="payment-price">
+                            <span> Payable Amount </span>
+                            <span class="pull-right" style="margin-right: 10px">&#8377; {$ paymentCtrl.bill.payable_amt $}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <md-button class="md-primary md-raised pull-right confirm-booking" ng-click="paymentCtrl.checkIfCouponEntered()">
+                            PROCEED TO PAYMENT
+                        </md-button>
+                    </div>
+                </div>
+                <div class="total-price-coupon-box">
+                    <form name="userForm">
+                        <md-input-container  class="md-accent coupon-input">
+                            <label class="">Coupon Code</label>
+                            <input name="coupon" ng-model="paymentCtrl.couponCode"  ng-change="paymentCtrl.errors=null;paymentCtrl.success=null" />
+                            <div ng-messages="userForm.coupon.$error">
+                                <div>{$ paymentCtrl.errors $}</div>
+                            </div>
+                            <div ng-if="paymentCtrl.success" style="font-size: 12px;font-weight: 500;color: #44db5e;">
+                                {$paymentCtrl.success$}
+                            </div>
+                        </md-input-container>
+                        <md-button class="md-raised md-accent pull-right" ng-click="paymentCtrl.applyCoupon()">APPLY</md-button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<form align="center" method="post" action="{$ paymentCtrl.trustSrc(paymentCtrl.citrusFormData.formPostUrl) $}" style="display: none;" ng-if="paymentCtrl.paymentGateway==1">
+    <input type="hidden" id="merchantTxnId" name="merchantTxnId" value="{$ paymentCtrl.citrusFormData.merchantTxnId $}" />
+    <input type="hidden" id="orderAmount" name="orderAmount" value="{$ paymentCtrl.citrusFormData.orderAmount $}" />
+    <input type="hidden" id="currency" name="currency" value="{$ paymentCtrl.citrusFormData.currency $}" />
+    <input type="hidden" name="returnUrl" value="{$ paymentCtrl.citrusFormData.returnUrl $}" />
+    <input type="hidden" id="notifyUrl" name="notifyUrl" value="{$ paymentCtrl.citrusFormData.returnUrl $}" />
+    <input type="hidden" id="secSignature" name="secSignature" value="{$ paymentCtrl.citrusFormData.secSignature $}" />
+    <input type="hidden" id="name" name="firstName" value="{$ paymentCtrl.citrusFormData.name $}" />
+    <input type="hidden" id="email" name="email" value="{$ paymentCtrl.citrusFormData.email $}" />
+    <input type="hidden" id="phoneNumber" name="phoneNumber" value="{$ paymentCtrl.citrusFormData.phoneNumber $}" />
+    <input type="hidden" name="customParams[0].name" value="bookingId" />
+    <input type="hidden" name="customParams[0].value" value="{$ paymentCtrl.citrusFormData.customParameters.bookingId $}" />
+    <input type="hidden" name="customParams[1].name" value="paymentId" />
+    <input type="hidden" name="customParams[1].value" value="{$ paymentCtrl.citrusFormData.customParameters.paymentId $}" />
+    <input type="hidden" name="customParams[2].name" value="deviceType" />
+    <input type="hidden" name="customParams[2].value" value="{$ paymentCtrl.citrusFormData.customParameters.deviceType $}" />
+    <input type="Submit" id="submitToCitrusBtn" value="Pay Now" class="btn btn-success" />
+</form>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</span>
+<span ng-if="paymentCtrl.paymentSuccess">
+    payment success
+</span>
+<!-- <md-fab-speed-dial ng-if="!base.isDeviceMobile" ng-cloak="" md-open="paymentCtrl.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised"
+                   analytics-on analytics-event="close FAB icon clicked"
+                   analytics-category="Payment Page">
+            <img src="img/TalkToUs.svg" ng-if="!paymentCtrl.isOpen" style="margin-left:inherit;margin-bottom:inherit">
+            <i class="material-icons" style="margin-top: 18px;" ng-if="paymentCtrl.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button ng-click="base.requestCallback();"
+                   analytics-on analytics-event="phone icon clicked"
+                   analytics-category="Payment Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">phone</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   analytics-on analytics-event="inquiry icon clicked"
+                   analytics-category="Payment Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg">
+        </md-button>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised "
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Cart Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">chat_bubble</i>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+-->

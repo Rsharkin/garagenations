@@ -1,0 +1,130 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Profile Detail</h5>
+                </div>
+                <div>
+                    <div class="ibox-content profile-content">
+                        <form method="get" class="form-horizontal">
+                            <h4><strong>{$ editUserCtrl.user.name $}</strong></h4>
+                            <p><i class="fa fa-phone"></i> {$ editUserCtrl.user.formatedPhone $}</p>
+                            <p><i class="fa fa-envelope"></i> {$ editUserCtrl.user.email $}</p>
+                            <p>Email Verified: {$ editUserCtrl.user.is_email_verified $}</p>
+                            <p>Source: <b>{$ editUserCtrl.user.source $}</b></p>
+                            <p>Source: <b>{$ editUserCtrl.user.city.name $}</b></p>
+                            <p>Credits: <i class="fa fa-rupee"></i>
+                                <span ng-if="!editUserCtrl.user.user_credit">0</span>
+                                <span ng-if="editUserCtrl.user.user_credit">{$ editUserCtrl.user.user_credit $}</span>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>User Credits Detail</h5>
+                </div>
+                <div>
+                    <div class="ibox-content profile-content">
+                        <form method="get" class="form-horizontal">
+                            <p>Total Earned Credits:
+                                <span ng-if="!editUserCtrl.userCredits.total_earned_credits">0</span>
+                                <span ng-if="editUserCtrl.userCredits.total_earned_credits">{$ editUserCtrl.userCredits.total_earned_credits $}</span>
+                            </p>
+                            <p>Total Used Credits:
+                                <span ng-if="!editUserCtrl.userCredits.total_used_credits">0</span>
+                                <span ng-if="editUserCtrl.userCredits.total_earned_credits">{$ editUserCtrl.userCredits.total_used_credits $}</span>
+                            </p>
+                            <br>
+                            <h5>Credits History</h5>
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Transaction Type</th>
+                                    <th>Amount</th>
+                                    <th>Entity</th>
+                                    <th>Reason</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in editUserCtrl.userCredits.results">
+                                    <td>
+                                        <span ng-if="item.trans_type ==1">CREDIT</span>
+                                        <span ng-if="item.trans_type ==2">DEBIT</span>
+                                    </td>
+                                    <td>{$item.amount$}</td>
+                                    <td>{$item.entity$}</td>
+                                    <td>{$item.reason$}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>User Cars</h5>
+                    <div ibox-tools>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <div class="contact-box">
+                            <a ui-sref="profile">
+                                <div class="col-sm-4" ng-repeat="car in editUserCtrl.userCars">
+                                    <div class="row">
+                                        <h4>
+                                            <span ng-if="car.active" class="text-info"> Active</span>
+                                            <span ng-if="!car.active" class="text-warning"> In-Active</span>
+                                        </h4>
+                                    </div>
+                                    <div class="row">
+                                        <address>
+                                            <strong>{$ car.car_model.brand.name $}, {$ car.car_model.name $}</strong><a target="_blank" class="btn btn-xs btn-primary" ui-sref="base.users.editUserCar({userCarId:{$ car.id $}})">Edit</a><br>
+                                            {$ car.car_model.purchased_on $}<br>
+                                            {$ car.car_model.registration_number $}<br>
+                                        </address>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </div>
+                        <!--<button class="btn btn-primary btn-block m"><i class="fa fa-arrow-down"></i> Show More</button>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Addresses</h5>
+                    <div ibox-tools>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <div class="contact-box">
+                            <a ui-sref="profile">
+                                <div class="col-sm-4" ng-repeat="address in editUserCtrl.userAddresses">
+                                    <address>
+                                        <strong>{$ address.address.address1 $}</strong><br>
+                                        {$ address.address.address2 $}<br>
+                                        {$ address.address.area $}, {$ address.address.city $}, {$ address.address.pin_code $}<br>
+                                    </address>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </div>
+                        <!--<button class="btn btn-primary btn-block m"><i class="fa fa-arrow-down"></i> Show More</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

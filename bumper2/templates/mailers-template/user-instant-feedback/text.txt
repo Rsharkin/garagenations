@@ -1,0 +1,13 @@
+Hi {{ customer_name }},
+
+Thank you for choosing Bumper. I'm Shonalee, Head of Customer Service. Your experience with Bumper is important. If there is anything that is
+
+bugging you, even the smallest thing that could have been done better, I want to know about it, so please feel free
+
+to drop few lines to me.
+
+We promise to make good use of your thoughts and feedback.
+
+Best regards,
+Shonalee Basu
++91 96862 07009

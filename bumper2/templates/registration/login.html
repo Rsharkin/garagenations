@@ -1,0 +1,29 @@
+{% extends 'registration/base.html' %}
+
+{% block container %}
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">B</h1>
+        </div>
+        <h3>Welcome to Bumper</h3>
+        <p>Login in. To see it in action.</p>
+        <form class="m-t" role="form" method="post" action="{% url 'auth_login' %}">
+            {% csrf_token %}
+            {% if form.errors %}
+                <p class="alert alert-warning" role="alert">Please enter a correct username and password. Note that both fields may be case-sensitive.</p>
+            {% endif %}
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="" name="username" autofocus>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+            <a href="{% url 'forgot_password' %}"><small>Forgot password?</small></a>
+            <input type="hidden"  name="next" value="{% url 'ops_dashboard' %}">
+        </form>
+        <p class="m-t"> <small>Bumper &copy; 2016</small> </p>
+    </div>
+</div>
+{% endblock %}

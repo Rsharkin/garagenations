@@ -1,0 +1,31 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Lead Id {$ sfModalCtrl.leadId $}</h4>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="sfModalCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in sfModalCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <form id="editLeadForm" class="form-horizontal" role="form" method="post" >
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Status:</label>
+                    <div class="col-sm-9">
+                        <select
+                                ng-model="sfModalCtrl.modalItem.status"
+                                ng-options="key as value for (key, value) in sfModalCtrl.sfStatuses"
+                                class="form-control input-sm"
+                                required
+                                name="Status"
+                                title="Status">
+                        </select>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="sfModalCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="sfModalCtrl.ajax_loading|| editLeadForm.$invalid "
+                ng-click="sfModalCtrl.ok()">Save changes</button>
+    </div>
+</div>

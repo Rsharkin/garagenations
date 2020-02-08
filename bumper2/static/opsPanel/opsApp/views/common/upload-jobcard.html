@@ -1,0 +1,57 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Upload File for Booking Id:{$ uploadBookingFileCtrl.bookingId $}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning">It will replace the existing file for same type if any already uploaded.</div>
+        <div ng-show="uploadBookingFileCtrl.errorMsg"
+             ng-bind-html="uploadBookingFileCtrl.errorMsg" class="alert alert-danger"></div>
+        <form id="uploadJobCardForm"  class="form-horizontal" role="form" method="post" >
+            <div ng-if="uploadBookingFileCtrl.bookingImageType == 1">
+                <div class="row">
+                    <div class="form-group" ng-form="uploadJobCardForm">
+                        <label class="col-sm-3 control-label no-padding-right">Type of Job Card:</label>
+                        <div class="col-sm-9">
+                            <select
+                                    ng-model="uploadBookingFileCtrl.selected_item"
+                                    class="form-control  input-sm col-xs-10">
+                                <option value="1">While Pickup</option>
+                                <option value="2">After Inspection</option>
+                                <option value="3">By Workshop</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="uploadBookingFileCtrl.bookingImageType == 3">
+                <div class="row">
+                    <div class="form-group" ng-form="uploadJobCardForm">
+                        <label class="col-sm-3 control-label no-padding-right">Select Panel:</label>
+                        <div class="col-sm-9">
+                            <select
+                                    ng-model="uploadBookingFileCtrl.selected_panel"
+                                    class="form-control  input-sm col-xs-10">
+                                <option value="{$panels.id$}" ng-repeat="panels in uploadBookingFileCtrl.panelList">{$panels.name$}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">File to Upload</label>
+                    <input type="file" ngf-select ng-model="uploadBookingFileCtrl.picFile"
+                           name="file" accept="image/*,application/pdf" required>
+                    <i ng-show="billForm.file.$error.required">*required</i><br>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="uploadBookingFileCtrl.cancel()">Close</button>
+        <button type="button"
+                class="btn btn-primary"
+                ng-disabled="uploadBookingFileCtrl.ajax_loading||  uploadJobCardForm.$invalid "
+                ng-click="uploadBookingFileCtrl.uploadJobCard(uploadBookingFileCtrl.picFile)">Upload</button>
+    </div>
+</div>

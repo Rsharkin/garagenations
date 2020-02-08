@@ -1,0 +1,216 @@
+<style>
+    .ag-header-cell-label {
+        text-overflow: clip;
+        overflow: visible;
+        white-space: normal;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                        <span class="label label-success pull-right">
+                            Today
+                        </span>
+                <h5>In Workshop</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.summary.num_of_cars $}</h1>
+                        <div class="font-bold text-navy"><b>Cars</b> <i class="fa fa-car"></i></div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.summary.num_of_panels $}</h1>
+                        <div class="font-bold text-navy"><b>Panels</b> <i class="fa fa-credit-card"></i></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="hr-line-dashed"></div>
+                    <div class="col-md-4">
+                        <div>Repair: <br>{$ reportWorkshopLiveCtrl.summary.num_of_repair $}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>Replace: <br>{$ reportWorkshopLiveCtrl.summary.num_of_replace $}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>Spare: <br>{$ reportWorkshopLiveCtrl.summary.num_of_spare $}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                        <span class="label label-danger pull-right">
+                            Delay
+                        </span>
+                <h5>ETA Missed</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.summary.num_of_workshop_eta_miss $}</h1>
+                        <div class="font-bold text-navy"><b>Workshop</b> <i class="fa fa-heartbeat"></i></div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.summary.num_of_cust_eta_miss $}</h1>
+                        <div class="font-bold text-navy"><b>Customer</b> <i class="fa fa-frown-o"></i></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                        <span class="label label-success pull-right">
+                            {$ reportWorkshopLiveCtrl.thisWeekSummary.start_dt $}
+                            - {$ reportWorkshopLiveCtrl.thisWeekSummary.end_dt $}
+                        </span>
+                <h5>This Week</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.thisWeekSummary.num_of_cars $}</h1>
+                        <div class="font-bold text-navy"><b>Cars</b> <i class="fa fa-car"></i></div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.thisWeekSummary.num_of_panels $}</h1>
+                        <div class="font-bold text-navy"><b>Panels</b> <i class="fa fa-credit-card"></i></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="hr-line-dashed"></div>
+                    <div class="col-md-4">
+                        <div>Repair: <br>{$ reportWorkshopLiveCtrl.thisWeekSummary.num_of_repair_panels $}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>Replace: <br>{$ reportWorkshopLiveCtrl.thisWeekSummary.num_of_replace_panels $}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>Spare: <br>{$ reportWorkshopLiveCtrl.thisWeekSummary.num_of_spare $}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                        <span class="label label-primary pull-right">
+                            {$ reportWorkshopLiveCtrl.remaningThisWeekSummary.start_dt $}<br>
+                            - {$ reportWorkshopLiveCtrl.remaningThisWeekSummary.end_dt $}
+                        </span>
+                <h5>Remaining Week</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.remaningThisWeekSummary.num_of_cars $}</h1>
+                        <div class="font-bold text-navy"><b>Cars</b> <i class="fa fa-car"></i></div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="no-margins">{$ reportWorkshopLiveCtrl.remaningThisWeekSummary.num_of_panels $}</h1>
+                        <div class="font-bold text-navy"><b>Panels</b> <i class="fa fa-credit-card"></i></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ibox" style="margin-bottom: 0px !important;">
+    <div class="ibox-title">
+        <div class="col-md-4">
+            <h5>Live Workshop</h5>
+        </div>
+        <div class="col-md-4">
+            <div class="row" ng-if="reportWorkshopLiveCtrl.summary.alert_ceta_less_weta">
+                <span>
+                    <a class="btn btn-sm text-danger"
+                       ng-click="reportWorkshopLiveCtrl.showAlertBookings()"
+                    >
+                        <i class="fa fa-warning"></i>
+                        Customer ETA less than Workshop ETA: {$ reportWorkshopLiveCtrl.summary.alert_ceta_less_weta $}
+                        <i class="fa fa-warning"></i>
+                    </a>
+                </span>
+            </div>
+            <div class="row" ng-if="reportWorkshopLiveCtrl.summary.alerts.crew_failed_qc">
+                <span>
+                    <a class="btn btn-sm text-danger"
+                       ng-click="reportWorkshopLiveCtrl.showCrewFailedQCAlertBookings()"
+                    >
+                        <i class="fa fa-warning"></i>
+                        Crew Failed QC (Car Cannot go out of workshop): {$ reportWorkshopLiveCtrl.summary.alerts.crew_failed_qc $}
+                        <i class="fa fa-warning"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <a permission="['OpsAdmin','OpsManager','WorkshopManager','WorkshopWorkManager']"
+               ng-click="reportWorkshopLiveCtrl.exportInCsv()"
+               class="btn btn-xs btn-info pull-right m-r-sm">Download in CSV</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-sm-4 m-b-xs">
+                <div class="row">
+                    <span style="padding-bottom: 4px; display: inline-block;">
+                        Active Filters: <span>{$ reportWorkshopLiveCtrl.savedFilters $}</span>
+                    </span>
+                    <span style="padding-bottom: 4px; display: inline-block;">
+                        <button ng-click="reportWorkshopLiveCtrl.clearFilters()">Clear Filters</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-2 m-b-xs text-center">
+                <h4>Rows: <b>{$ reportWorkshopLiveCtrl.gridOptions.api.rowModel.rowsToDisplay.length $}</b></h4>
+            </div>
+            <div class="col-sm-3 m-b-xs">
+                <div class="row">
+                    <div class="col-sm-4"> Asst. Manager</div>
+                    <div class="col-sm-8">
+                        <select
+                                multiple
+                                chosen
+                                ng-model="reportWorkshopLiveCtrl.extraFilters.assisstantManagers"
+                                ng-options="item as item.name for item in reportWorkshopLiveCtrl.assisstantManagers track by item.id"
+                                ng-change="reportWorkshopLiveCtrl.externalFilterChanged()"
+                                class="form-control input-sm">
+                            <option value="">Filter Asst. Manager</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 m-b-xs">
+                <div class="input-group pull-right">
+                    <input type="text" placeholder="Quick Search" class="input-sm form-control" ng-model="reportWorkshopLiveCtrl.gridOptions.quickFilterText">
+                    <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="table-responsive">
+                <div style="margin-top: 4px;"
+                     ng-style="reportWorkshopLiveCtrl.getTableHeight()">
+                    <div ag-grid="reportWorkshopLiveCtrl.gridOptions"
+                         style="height:100%; width:100%;" class="ag-fresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

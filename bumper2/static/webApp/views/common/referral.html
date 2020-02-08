@@ -1,0 +1,132 @@
+<section class="referral-section">
+    <div class="container">
+        <h1>
+            Refer as many friends as possible and get <span>300 </span>credits for each friend!
+        </h1>
+        <div ng-if="refCtrl.currentUser">
+            <h2>
+                Code: {$refCtrl.referralCode|uppercase$}
+            </h2>
+            <div class="strike">
+                <span>Invite friends</span>
+            </div>
+            <div class="row referral-share-row">
+                <div class="col-xs-4 referral-share-column" ng-if="!base.isDeviceMobile">
+                    <div class="referral-share-box">
+                        <p>Copy Your Code</p>
+                        <a ng-click="refCtrl.copy('code');hideLink = true" href="#" ng-show="!hideLink"><img class="img-center" src="img/referal-link.svg"></a>
+                        <div class="copied-div">
+                            <h3 id="code" ng-show="hideLink">{$refCtrl.referralCode|uppercase$}</h3>
+                            <span style="color: darkgrey;" ng-show="hideLink">copied</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 referral-share-column" ng-if="base.isDeviceMobile">
+                    <div class="referral-share-box">
+                        <a href="https://api.whatsapp.com/send?text={$refCtrl.whatsAppText$}"><img class="img-center" src="img/whatsapp.svg"></a>
+                    </div>
+                    <p ng-if="base.isDeviceMobile">Share on WhatsApp</p>
+                </div>
+
+                <div class="col-xs-4 referral-share-column">
+                    <div class="referral-share-box" ng-click="refCtrl.facebookShare()">
+                        <p>Share on Facebook</p>
+                        <img class="img-center" src="img/referal-fb.svg">
+                    </div>
+                    <p ng-if="base.isDeviceMobile">Share on Facebook</p>
+                </div>
+                <div class="col-xs-4 referral-share-column">
+                    <div class="referral-share-box" ng-click="refCtrl.twitterShare()">
+                        <p>Share on Twitter</p>
+                        <img class="img-center" src="img/referal-twitter.svg">
+                    </div>
+                    <p ng-if="base.isDeviceMobile">Share on Twitter</p>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!refCtrl.currentUser" class="refer-login-line"><a href="#" ng-click="refCtrl.login()" style="text-decoration: none;color:inherit">Login to use the code</a></div>
+    </div>
+</section>
+<section class="referral-terms-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Terms and Conditions</h1>
+                <div class="term-box">
+                    <ul>
+                        <li>Credits received to account the minute your friend schedules a booking.</li>
+                        <li>Credits can be availed on any Bumper bookings you make in the future.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip1">
+    <div style="padding-left: 25px;padding-right: 25px">
+        <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                <a ui-sref="base.home" style="display: inline-block"><img class="lazy" data-original="img/footer_logo.svg" src="img/sample-loading.png" height="40" width="40">
+                    <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                <p style="text-align: center;">DOWNLOAD APP
+                    <a   analytics-on
+                         analytics-event="footer app link"
+                         analytics-category="footer" analytics-label="android app"
+                         href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                        <img src="img/Android_footer.svg" style="margin-left:8px">
+                    </a>
+                    <a analytics-on
+                       analytics-event="footer app link"
+                       analytics-category="footer" analytics-label="ios app"
+                       href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                <div class="footer-strip-sec2">
+                    <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                    <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                    <p style="padding-left: 5px">
+                        <a analytics-on analytics-event="Click- FB Button"
+                           analytics-category="Footer"
+                           href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                    </p>
+                    <p style="padding-left: 5px" >
+                        <a analytics-on analytics-event="Click- Twitter Button"
+                           analytics-category="Footer"
+                           href="https://www.twitter.com/HitBumper" target="_blank">
+                            <img src="img/footer_twit.svg">
+                        </a>
+                    </p >
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Linkedin Button"
+                            analytics-category="Footer"
+                            href="https://www.linkedin.com/company/bumper" target="_blank">
+                            <img src="img/footer_linked.svg">
+                        </a>
+                    </p>
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Youtube button"
+                            analytics-category="Footer"
+                            href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                            <img src="img/youtube.svg" width="22px">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+            </div>
+        </div>
+    </div>
+</section>

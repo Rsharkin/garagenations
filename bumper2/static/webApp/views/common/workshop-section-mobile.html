@@ -1,0 +1,154 @@
+<section class="network-section">
+    <div class="container">
+        <h1>India’s first network of body repair garages</h1>
+        <div class="row padding-mobile">
+            <div class="col-xs-12 no-margin" style="padding-left:0px;padding-bottom:2px;padding-top:0px;padding-right:3px">
+                <div id="frameWrap">
+                    <md-progress-circular id="loader1" md-mode="indeterminate" md-diameter="32"></md-progress-circular>
+                    <div class="youtube" data-embed="xX-fE_Ez8kg">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-6 no-margin no-padding" ng-repeat="image in base.images">
+                        <a href="#" ng-click="base.openLightboxModal($index)">
+                            <img ng-src="{$image.thumbUrl$}" class="img-thumbnail">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a  class="estimate-button-mobile"analytics-on analytics-event="Get Estimate Button"
+           analytics-category="Workshop Mobile"
+           href="#" ui-sref="base.estimator">GET ESTIMATE</a>
+    </div>
+</section>
+<!--<md-fab-speed-dial ng-if="!base.isDeviceMobile" ng-cloak="" md-open="base.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised" >
+            <img src="img/TalkToUs.svg" ng-if="!base.isOpen" style="margin-left:inherit;margin-bottom:inherit">
+            <i class="material-icons" style="margin-top: 18px;" ng-if="base.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised "
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Home Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">chat_bubble</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg">
+        </md-button>
+        <md-button ng-click="base.requestCallback();"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">phone</i>
+        </md-button>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+<md-fab-speed-dial ng-if="base.isDeviceMobile" ng-cloak="" md-open="contactCtrl.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised md-mini" >
+            <img src="img/TalkToUs.svg" ng-if="!contactCtrl.isOpen" style="margin-left:inherit;margin-bottom:inherit;width:18px">
+            <i class="material-icons" style="margin-top:8px;" ng-if="contactCtrl.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised md-mini"
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Home Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top:13px;color:#fff;font-size: 16px">chat_bubble</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   href="#" class="md-fab md-raised md-mini"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg" style="margin-top:6px;margin-bottom: inherit;left: inherit;width:10px" >
+        </md-button>
+        <md-button ng-click="base.requestCallback();"
+                   href="#" class="md-fab md-raised md-mini"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top:10px;color:#fff;font-size:18px">phone</i>
+        </md-button>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+-->
+<section class="footer-strip1">
+    <div style="padding-left: 25px;padding-right: 25px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                <a ui-sref="base.home" style="display: inline-block"><img class="lazy" data-original="img/footer_logo.svg" src="img/sample-loading.png" height="40" width="40">
+                    <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+                <p style="text-align: center;">DOWNLOAD APP
+                    <a   analytics-on
+                         analytics-event="footer app link"
+                         analytics-category="footer" analytics-label="android app"
+                         href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                        <img src="img/Android_footer.svg" style="margin-left:8px">
+                    </a>
+                    <a analytics-on
+                       analytics-event="footer app link"
+                       analytics-category="footer" analytics-label="ios app"
+                       href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                <div class="footer-strip-sec2">
+                    <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                    <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                    <p style="padding-left: 5px">
+                        <a analytics-on analytics-event="Click- FB Button"
+                           analytics-category="Footer"
+                           href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                    </p>
+                    <p style="padding-left: 5px" >
+                        <a analytics-on analytics-event="Click- Twitter Button"
+                           analytics-category="Footer"
+                           href="https://www.twitter.com/HitBumper" target="_blank">
+                            <img src="img/footer_twit.svg">
+                        </a>
+                    </p >
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Linkedin Button"
+                            analytics-category="Footer"
+                            href="https://www.linkedin.com/company/bumper" target="_blank">
+                            <img src="img/footer_linked.svg">
+                        </a>
+                    </p>
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Youtube button"
+                            analytics-category="Footer"
+                            href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                            <img src="img/youtube.svg" width="22px">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+            </div>
+        </div>
+    </div>
+</section>

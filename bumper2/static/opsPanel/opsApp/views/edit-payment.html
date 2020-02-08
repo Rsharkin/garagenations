@@ -1,0 +1,138 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Payment For Booking ID: <b>{$ editPaymentCtrl.booking.id $}</b></h5>
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <form method="get" class="form-horizontal" name="editPaymentForm">
+                                <div ng-show="editPaymentCtrl.errorMsg" ng-bind-html="editPaymentCtrl.errorMsg" class="alert alert-danger"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Amount</label>
+                                    <div class="col-sm-9">
+                                        <input ng-model="editPaymentCtrl.editedPayment.net_amount_debit"
+                                               required
+                                               class="form-control input-sm"
+                                               title="Amount"
+                                               type="number"
+                                               placeholder="Amount"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Credits Used</label>
+                                    <div class="col-sm-9">
+                                        <input ng-model="editPaymentCtrl.editedPayment.used_credits"
+                                               class="form-control input-sm"
+                                               title="used_credits"
+                                               type="number"
+                                               placeholder="used_credits"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Status</label>
+                                    <div class="col-sm-9">
+                                        Success
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Mode</label>
+                                    <div class="col-sm-9">
+                                        <select ng-model="editPaymentCtrl.editedPayment.mode"
+                                                ng-options="key as value for (key , value) in editPaymentCtrl.paymentModes"
+                                                class="form-control input-sm"
+                                                required
+                                                title="Mode">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Vendor</label>
+                                    <div class="col-sm-9">
+                                        <select ng-model="editPaymentCtrl.editedPayment.vendor"
+                                                ng-options="key as value for (key , value) in editPaymentCtrl.paymentVendors"
+                                                required
+                                                class="form-control input-sm"
+                                                title="Vendor">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Vendor ID</label>
+                                    <div class="col-sm-9">
+                                        <input
+                                                type="text"
+                                                ng-model="editPaymentCtrl.editedPayment.vendor_id"
+                                                class="form-control input-sm"
+                                                required
+                                                placeholder="Vendor Id, if cash then let bumperBookingId be there."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Notes</label>
+                                    <div class="col-sm-9">
+                                        <textarea
+                                                ng-model="editPaymentCtrl.editedPayment.tx_data"
+                                                class="form-control input-sm"
+                                                required
+                                                placeholder="Notes on transaction. Why is this beeing added from ops panel?"
+                                        >
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Vendor Status</label>
+                                    <div class="col-sm-9">
+                                        <input
+                                                type="text"
+                                                ng-model="editPaymentCtrl.editedPayment.vendor_status"
+                                                class="form-control input-sm"
+                                                placeholder="Vendor Status for online payments only"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Error Message</label>
+                                    <div class="col-sm-9">
+                                        <textarea
+                                                ng-model="editPaymentCtrl.editedPayment.error_message"
+                                                class="form-control input-sm"
+                                                placeholder="Error Message from vendor if any">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <input class="btn btn-default" type="button"
+                                               ng-click="editPaymentCtrl.cancel()"
+                                               value="Cancel"/>
+
+                                        <input type="submit"
+                                               ng-value="editPaymentCtrl.ajax_loading ? 'Please Wait..':'Save'"
+                                               class="btn btn-primary"
+                                               ng-disabled="editPaymentCtrl.ajax_loading || editPaymentForm.$invalid || editPaymentForm.$pristine"
+                                               ng-click="editPaymentCtrl.savePayment(1)"
+                                        />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

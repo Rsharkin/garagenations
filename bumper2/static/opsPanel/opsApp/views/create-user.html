@@ -1,0 +1,104 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Create New User</h5>
+                    <div class="ibox-tools">
+                    </div>
+                    <div class="ibox-content" ui-view="contentView">
+                        <div class="row" ng-if="createUserCtrl.flow !== 'inquiry'">
+                            <div class="col-md-6 col-md-offset-3">
+                                <form class="m-t text-center" role="form" name="userSearchForm">
+                                    <div class="form-group" ng-class="{ 'has-error' : userSearchForm.phone.$invalid && !userSearchForm.phone.$pristine }">
+                                        <input type="number"  name="phone" class="form-control" placeholder="Phone" ng-model="createUserCtrl.searchUserPhone" required minlength="10" maxlength="10">
+                                        <p ng-show="userSearchForm.phone.$invalid && !userSearchForm.phone.$pristine" class="help-block">Phone is required and should have 10 digits</p>
+                                    </div>
+                                    <button type="submit"
+                                            ng-click="createUserCtrl.searchUser()"
+                                            ng-disabled="createUserCtrl.ajax_loading || userSearchForm.$invalid || userSearchForm.$pristine"
+                                            ng-value="createUserCtrl.ajax_loading?'Please Wait..':'Search'"
+                                            class="btn btn-primary">Search User</button>
+                                </form>
+                                <!--<div class="ibox-content" ng-if="createUserCtrl.userDetails">
+                                    <div class="row">
+                                        <div class="col-sm-6">Name</div>
+                                        <div class="col-sm-6">{$ createUserCtrl.userDetails.name $}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">Email</div>
+                                        <div class="col-sm-6">{$ createUserCtrl.userDetails.email $}</div>
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-sm-12">
+                                            <input type="button"
+                                                    ng-click="createUserCtrl.userSelection()"
+                                                    ng-value="createUserCtrl.ajax_loading?'Please Wait..':'Select This User'"
+                                                    class="btn btn-primary btn-sm"/>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="animated pulse" ng-if="createUserCtrl.allowCreateUser || createUserCtrl.flow == 'inquiry'" >
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <h2 class="font-bold">Step 1: Create User</h2>
+                                    <div class="ibox-content">
+                                        <form class="m-t text-center" role="form" name="userForm" novalidate>
+                                            <div class="form-group m-t" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                                                <input type=text" name="name" class="form-control" placeholder="Name"  ng-model="createUserCtrl.newUser.name" required>
+                                                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Name is required.</p>
+                                            </div>
+                                            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                                                <input ng-if="createUserCtrl.flow == 'inquiry'" type="email" name="email" class="form-control" placeholder="Email"  ng-model="createUserCtrl.newUser.email">
+                                                <input ng-if="createUserCtrl.flow != 'inquiry'" type="email" name="email" class="form-control" placeholder="Email"  ng-model="createUserCtrl.newUser.email" required>
+                                                <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Email format is in valid.</p>
+                                            </div>
+                                            <div class="form-group" ng-class="{ 'has-error' : userForm.phone.$invalid && !userForm.phone.$pristine }">
+                                                <input ng-if="createUserCtrl.flow == 'inquiry'" type="number"  name="phone" class="form-control" placeholder="Phone" ng-model="createUserCtrl.newUser.phone" minlength="10" maxlength="10">
+                                                <input ng-if="createUserCtrl.flow != 'inquiry'" type="number"  name="phone" class="form-control" placeholder="Phone" ng-model="createUserCtrl.newUser.phone" required minlength="10" maxlength="10">
+                                                <p ng-show="userForm.phone.$invalid && !userForm.phone.$pristine" class="help-block">Phone is required and should have 10 digits</p>
+                                            </div>
+                                            <div class="form-group row" ng-class="{ 'has-error' : userForm.source.$invalid && !userForm.source.$pristine }">
+                                                <label class="col-sm-2 control-label">Source</label>
+                                                <div class="col-sm-10">
+                                                    <select
+                                                            name="source"
+                                                            ng-model="createUserCtrl.newUser.source"
+                                                            class="form-control" title="User Sources"
+                                                            required>
+                                                        <option ng-repeat="option in createUserCtrl.userSources" value="{$ option.source $}">{$ option.source_desc $}</option>
+                                                    </select>
+                                                </div>
+                                                <p ng-show="userForm.source.$invalid && !userForm.source.$pristine" class="help-block">User Source is required.</p>
+                                            </div>
+                                            <div class="form-group row" ng-class="{ 'has-error' : userForm.city.$invalid && !userForm.city.$pristine }">
+                                                <label class="col-sm-2 control-label">City</label>
+                                                <div class="col-sm-10">
+                                                    <select ng-model="createUserCtrl.newUser.city"
+                                                            name="city"
+                                                            class="form-control"
+                                                            required
+                                                            title="City">
+                                                        <option ng-repeat="option in createUserCtrl.cities" value="{$ option.id $}">{$ option.name $}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit"
+                                                    ng-click="createUserCtrl.submitForm(userForm)"
+                                                    ng-disabled="createUserCtrl.ajax_loading || userForm.$invalid"
+                                                    ng-value="createUserCtrl.ajax_loading?'Please Wait..':'Save'"
+                                                    class="btn btn-primary">Create User</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

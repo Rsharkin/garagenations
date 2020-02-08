@@ -1,0 +1,114 @@
+Django==1.8.1
+MySQL-python
+ujson
+requests
+django-push-notifications==1.4.1
+pytz
+django-multiupload
+boto>=2.38.0
+## using for cognito, boto 2.* and boto3 are non conflicting, todo move older to newer
+boto3
+python-dateutil>=2.4.0
+redis
+celery==3.1.18
+django-celery==3.1.16
+mandrill
+django-simple-history
+django-multiselectfield>=0.1.6
+djangorestframework
+djangorestframework-jwt
+python-social-auth==0.2.19
+django-filter==0.15.3
+drfdocs
+django-rest-multiple-models
+django-passwords
+django-ses
+django-rest-swagger
+djangorestframework-bulk
+opbeat
+s3cmd
+beautifulsoup4
+Pillow
+django-imagekit
+pyfcm
+googlemaps
+django-mathfilters
+## To Install qeasyprint for PDF generation.
+## http://weasyprint.readthedocs.io/en/latest/install.html
+## OS X install these before pip install: brew install python3 cairo pango gdk-pixbuf libxml2 libxslt libffi
+## For WeasyPrint libs on ubuntu:
+## sudo apt-get install python-dev libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info
+## For ubuntu 16.04
+## sudo apt-get install build-essential python3-dev python3-pip python3-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+
+
+######
+# NON Python Stuff
+######
+# sudo apt-get install git
+# sudo apt-get install python-pip
+# sudo apt-get install mysql-server-5.6
+# sudo apt-get install python-dev
+# sudo apt-get install libmysqlclient-dev
+# sudo apt-get install nginx
+# sudo apt-get install uwsgi
+# sudo apt-get install uwsgi-plugin-python
+
+# sudo apt-get install redis-server
+# sudo pip install -U celery[redis]
+# sudo apt-get install supervisor
+# cp deployment/supervisord/bumper-celery.conf /etc/supervisor/conf.d/bumper-celery.conf
+###
+# Best guide to install celery with supervisor: http://michal.karzynski.pl/blog/2014/05/18/setting-up-an-asynchronous-task-queue-for-django-using-celery-redis/
+# sudo supervisorctl reread; sudo supervisorctl update
+#
+## check status of celery tasks
+# $ /webapps/hello_django/bin/celery --app=hello.celery:app control enable_events
+# $ /webapps/hello_django/bin/celery --app=hello.celery:app events
+# sudo supervisorctl status bumper-celery
+# sudo supervisorctl restart bumper-celery
+# sudo apt-get install libjpeg8-dev
+###
+
+###
+# CREATE USER 'ninja'@'localhost' IDENTIFIED BY 'BumPer@(!!';
+# GRANT ALL PRIVILEGES ON * . * TO 'ninja'@'localhost';
+
+### EnvironmentError: mysql_config not found
+## Add lines to virtualEnv/bin/activate file, below "export PATH" statement
+#_OLD_VIRTUAL_PATH="$PATH"
+#  PATH="$VIRTUAL_ENV/bin:$PATH"
+#  PATH="$PATH:/usr/local/mysql/bin"
+#  export PATH
+
+
+#Install npm, gulp and bower.
+# Install NPM.(https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+# curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+# sudo apt-get install -y nodejs
+
+# Install Gulp(https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+# npm install --global gulp-cli
+# Cd /srv/www/bumper2/static/
+# Npm install
+
+# npm install --save-dev gulp-strip-comments
+
+# local setup for ubuntu:
+# sudo locale-gen en_IN
+# sudo dpkg-reconfigure locales
+
+# local setup for mac:
+#1. Reboot your system in recovery mode using 'CMD + R' while booting.
+#2. Open Terminal (Utilities->Terminal).
+#3. Enter following commands:
+#   csrutil disable
+#   reboot
+#4. Go to /usr/share/locale/
+#5. cp -R en_US en_IN
+#6. in ~/.bash_profile add following lines:
+#   export LC_ALL=en_IN
+#   export LANG=en_IN
+#7. Restart terminal.
+
+# GRANT EXECUTE ON FUNCTION bumper2.get_week_start_date TO `ops`@`%`;

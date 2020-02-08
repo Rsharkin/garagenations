@@ -1,0 +1,74 @@
+{
+  "name": "bumper",
+  "version": "0.1",
+  "dependencies": {
+    "angular": "1.5.3",
+    "bootstrap": "3.3.6",
+    "jquery": "2.2.2",
+    "animate.css": "3.5.1",
+    "angular-animate": "1.5.9",
+    "angular-aria": "1.5.9",
+    "angular-ui-router": "0.2.18",
+    "angular-bootstrap": "1.2.5",
+    "angular-sanitize": "1.5.5",
+    "lodash": "4.11.1",
+    "angular-material": "1.0.9",
+    "satellizer": "0.14.0",
+    "angulartics": "^1.1.2",
+    "angulartics-google-analytics": "0.2.0",
+    "angular-bootstrap-lightbox": "0.12.0",
+    "angular-update-meta":"1.9.0",
+    "jquery_lazyload":"1.9.1"
+  },
+  "install": {
+    "path": {
+      "css": "libs/css",
+      "map": "libs/css",
+      "png": "libs/css",
+      "js": "libs/js",
+      "otf": "libs/fonts",
+      "eot": "libs/fonts",
+      "svg": "libs/fonts",
+      "ttf": "libs/fonts",
+      "woff": "libs/fonts",
+      "woff2": "libs/fonts",
+      "/[sc|le]ss$/": "libs/css"
+    },
+    "sources": {
+      "angular": "bower_components/angular/angular.min.js",
+      "angular-animate": "bower_components/angular-animate/angular-animate.js",
+      "angular-aria": "bower_components/angular-aria/angular-aria.js",
+      "angular-bootstrap": "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+      "angular-bootstrap-lightbox": [
+        "bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js",
+        "bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css"
+      ],
+      "angular-update-meta":"bower_components/angular-update-meta/dist/update-meta.min.js",
+      "angular-ui-router": "bower_components/angular-ui-router/release/angular-ui-router.min.js",
+      "animate.css": "bower_components/animate.css/animate.min.css",
+      "jquery": "bower_components/jquery/dist/jquery.min.js",
+      "jquery_lazyload":[
+        "bower_components/jquery_lazyload/jquery.lazyload.js",
+        "bower_components/jquery_lazyload/jquery.scrollstop.js"
+      ],
+      "lodash": "bower_components/lodash/dist/lodash.min.js",
+      "bootstrap": [
+        "bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "bower_components/bootstrap/dist/css/bootstrap-theme.min.css",
+        "bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "bower_components/bootstrap/dist/fonts/*.*"
+      ],
+      "angular-material": [
+        "bower_components/angular-material/angular-material.min.css",
+        "bower_components/angular-material/angular-material.min.js"
+      ],
+      "satellizer": "bower_components/satellizer/satellizer.min.js",
+      "angulartics": "bower_components/angulartics/dist/angulartics.min.js",
+      "angulartics-google-analytics": "bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js"
+    }
+  },
+  "resolutions": {
+    "angulartics": "^1.1.2",
+    "angular": "1.5.8"
+  }
+}

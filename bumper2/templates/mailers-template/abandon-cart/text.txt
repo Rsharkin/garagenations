@@ -1,0 +1,8 @@
+Hi {{name}},
+THE QUALITY OF A DEALER THE PRICE OF A LOCAL GARAGE
+Does it all seem too good to be true? Well, what can we say, that's the service we look to bring you every single time.
+{% if not user_has_app %}
+Download from here for detailed tracking of booking
+Android app - http://bit.ly/hitbumper
+{% endif %}
+

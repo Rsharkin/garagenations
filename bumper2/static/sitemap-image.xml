@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>http://bumper.com/</loc>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/dentpaintillo.svg</image:loc>
+            <image:title>Car Dent and Paint Repair - auto bodyshop</image:title>
+            <image:caption>Car Dent and Paint Repair</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/howitworks1.svg</image:loc>
+            <image:title>Car Accident Damage Estimator - Dent and Paint repair</image:title>
+            <image:caption>Car Accident Damage Estimator</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/howitworks2.svg</image:loc>
+            <image:title>Free Pick Up and Drop - Bumper</image:title>
+            <image:caption>Free Pick Up and Drop</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/howitworks3.svg</image:loc>
+            <image:title>Tracking on Bumper App - Dent and Paint repair</image:title>
+            <image:caption>Tracking on Bumper App</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/howitworks4.svg</image:loc>
+            <image:title>Online Payment - Bumper.com</image:title>
+            <image:caption>Online Payment</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/7.svg</image:loc>
+            <image:title>Doorstep Car Detailing and Washing - Bumper</image:title>
+            <image:caption>Doorstep Car Detailing and Washing</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/8.svg</image:loc>
+            <image:title>Bumper logo white</image:title>
+            <image:caption>Bumper logo white</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/Facebook_icon.svg</image:loc>
+            <image:title>Follow Bumper on Facebook</image:title>
+            <image:caption>Follow Bumper on Facebook</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/Twitter_icn.svg</image:loc>
+            <image:title>Follow Bumper on Twitter</image:title>
+            <image:caption>Follow Bumper on Twitter</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+        <image:image>
+            <image:loc>http://bumper.com/static/img/Linkedin_icn.svg</image:loc>
+            <image:title>Follow Bumper on Linkedin</image:title>
+            <image:caption>Follow Bumper on Linkedin</image:caption>
+            <image:geo_location>Bangalore, India</image:geo_location>
+        </image:image>
+    </url>
+</urlset>

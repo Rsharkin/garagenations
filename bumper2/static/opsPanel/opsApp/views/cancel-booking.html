@@ -1,0 +1,33 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Why Cancel Booking Id:{$ setCRCtrl.bookingId $} ?</h4>
+    </div>
+    <div class="modal-body">
+        <div ng-show="setCRCtrl.errorMsg" ng-bind-html="setCRCtrl.errorMsg" class="alert alert-danger"></div>
+        <form id="assignCRForm"  class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">Select Reason:</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="setCRCtrl.selected_item"
+                            ng-options="item as item.reason for item in setCRCtrl.item_list track by item.id"
+                            class="form-control  input-sm col-xs-10">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">Extra Details:</label>
+                <div class="col-sm-9">
+                    <textarea
+                            ng-model="setCRCtrl.otherReasonText"
+                            class="form-control col-xs-10">
+                    </textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="setCRCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="setCRCtrl.ajax_loading||  assignCRForm.$invalid " ng-click="setCRCtrl.ok()">Save changes</button>
+    </div>
+</div>

@@ -1,0 +1,164 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Edit User Inquiry [ID: {$ createUserInquiryCtrl.userInquiryId$}]</h5>
+                    <div ibox-tools>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" name="userInquiryForm" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">User</label>
+                            <div class="col-sm-9">
+                                {$ createUserInquiryCtrl.user.name $}, {$ createUserInquiryCtrl.user.phone $}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">City</label>
+                            <div class="col-sm-9">
+                                <select ng-model="createUserInquiryCtrl.editedInquiry.city" class="form-control  input-sm" title="City">
+                                    <option ng-repeat="option in createUserInquiryCtrl.cities" value="{$ option.id $}">{$ option.name $}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Lead Quality</label>
+                            <div class="col-sm-9">
+                                <select ng-model="createUserInquiryCtrl.editedInquiry.lead_quality" class="form-control  input-sm" title="Lead Quality">
+                                    <option value="1">Hot</option>
+                                    <option value="4">Red Hot</option>
+                                    <option value="2">Warm</option>
+                                    <option value="3">Cold</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Assigned To</label>
+                            <div class="col-sm-9">
+                                <select ng-model="createUserInquiryCtrl.editedInquiry.assigned_to" ng-options="item.id as item.name for item in createUserInquiryCtrl.opsAgents track by item.id" class="form-control  input-sm" title="Assigned To">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Inquiry</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="createUserInquiryCtrl.editedInquiry.inquiry"
+                                          name="inquiry"
+                                          maxlength="2048"
+                                          placeholder="Inquiry"
+                                          class="form-control"
+                                          rows="4" cols="20"
+                                ></textarea>
+
+                                <div class="text-danger" ng-if="userInquiryForm.inquiry.$touched && userInquiryForm.inquiry.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                    <div ng-message="maxlength">Max length can be 2048.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Reference</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="createUserInquiryCtrl.editedInquiry.reference"
+                                          name="reference"
+                                          maxlength="1024"
+                                          placeholder="Reference"
+                                          class="form-control"
+                                          rows="2" cols="20"
+                                ></textarea>
+
+                                <div class="text-danger" ng-if="userInquiryForm.reference.$touched && userInquiryForm.reference.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                    <div ng-message="maxlength">Max length can be 1024.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Source</label>
+                            <div class="col-sm-9">
+                                <select
+                                        ng-model="createUserInquiryCtrl.editedInquiry.source"
+                                        class="form-control  input-sm"
+                                        required
+                                        name="source"
+                                        title="Sources">
+                                    <option ng-repeat="option in createUserInquiryCtrl.userSources" value="{$ option.source $}">{$ option.source_desc $}</option>
+                                </select>
+
+                                <div class="text-danger" ng-if="userInquiryForm.source.$touched && userInquiryForm.source.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ad Campaign</label>
+                            <div class="col-sm-9">
+                                <input
+                                        ng-model="createUserInquiryCtrl.editedInquiry.utm_campaign"
+                                        name="utm_campaign"
+                                        maxlength="128"
+                                        placeholder="Ad Campaign"
+                                        class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Status</label>
+                            <div class="col-sm-9">
+                                <select
+                                        ng-model="createUserInquiryCtrl.editedInquiry.status"
+                                        ng-options=" key as value for (key, value) in createUserInquiryCtrl.inquiryStatuses"
+                                        class="form-control input-sm"
+                                        required
+                                        name="status"
+                                        title="Status">
+                                </select>
+
+                                <div class="text-danger" ng-if="userInquiryForm.status.$touched && userInquiryForm.status.$invalid">
+                                    <div ng-message="required">This is required!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Car Model</label>
+                            <div class="col-sm-9">
+                                <div class="">
+                                    <div class="col-sm-4">
+                                        <label>{$ createUserInquiryCtrl.editedInquiry.car_model.brand.name $}, {$ createUserInquiryCtrl.editedInquiry.car_model.name $}</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input
+                                                id ="search_car_text"
+                                                type="text"
+                                                placeholder="Search car by brand or model name, to change car model"
+                                                name="search"
+                                                class="form-control input-sm"
+                                                ng-model="searchText"
+                                                ng-change="createUserInquiryCtrl.getModel(searchText)">
+                                        <div class="search-result" ng-repeat="item in createUserInquiryCtrl.models" ng-if="!createUserInquiryCtrl.selectedCar">
+                                            <h3><a ng-click="createUserInquiryCtrl.setSelectedCar(item)">{$item.brand.name$}-{$item.name$}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <input class="btn btn-primary" type="submit"
+                                       ng-click="createUserInquiryCtrl.createUserInquiry()"
+                                       ng-disabled="createUserInquiryCtrl.ajax_loading || userInquiryForm.$invalid || userInquiryForm.$pristine"
+                                       ng-value="createUserInquiryCtrl.ajax_loading?'Please Wait..':'Save'"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

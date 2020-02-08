@@ -1,0 +1,18 @@
+Hi {{customer_name}},
+
+Thank you for booking with with Bumper. This is an email confirmation for your booking with id-{{booking_id}}
+Packages in the booking:
+{{package_details}}
+
+Pick up details:
+{{ pickup_details }}
+
+{{pickup_address}}
+
+You will receive a call from our Bumper Executive prior for car pick up on {{ pickup_details }}.
+
+{% if not user_has_app %}
+Download from here for detailed tracking of booking
+Android app - http://bit.ly/hitbumper
+{% endif %}
+

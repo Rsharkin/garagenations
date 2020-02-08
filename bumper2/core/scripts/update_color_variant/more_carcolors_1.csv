@@ -1,0 +1,100 @@
+Brand ID,Brand ,model id,Model,Car Type,start_year,end_year,car color,car variant
+3,Hyundai,12,Elite i20,,2014,,Red Passion|Sleek Silver|Polar White|Star Dust|Marina Blue|Red passion/Phantom Black|Polar White/Phantom Black,|Era 1.2|Magna Executive 1.2|Sportz 1.2|Era 1.4 CRDI|Asta 1.2|Magna Executive 1.4 CRDI|Asta 1.2 Dual Tone|Sportz 1.4 CRDI|Asta 1.2 (O)|Asta 1.4 CRDI|Asta 1.4 CRDI Dual Tone|Asta 1.4 CRDI (O)|Magna 1.4 AT
+2,Maruti Suzuki,185,New Baleno,,2016,,Ray Blue|Fire Red|Premium Silver|Premium Urban Blue|Autumn Orange|Granite Grey|Pearl Arctic White,|Sigma 1.2|Delta 1.2|Sigma 1.3|Zeta 1.2|Delta 1.2 AT|Delta 1.3|Alpha 1.2|Zeta 1.2 AT|Zeta 1.3|Alpha 1.3|RS 1.0
+1,Toyota,, Platinum Etios,9,2016,,Vermilion Red|Classic grey|Silver mica Metallic|Harmoney Biege|Pearl white with crystal shine|celestial black|white,GX|V|VX|GXD|VD|VXD
+8,Mercedes-Benz,216,S Class,4,,,Polar White|Obsidian Black|Iridium Silver|Cavansite Blue|Diamond White|Ruby Black|Diamond Silver,S 350 CDI|S 350 CDI Connoisseurâ€™s Edition|S 400|S 400 Connoisseurâ€™s Edition|S 500|Maybach S 500|S 63 AMG|Maybach S 600|S Guard|Maybach S 600 Guard
+21,Isuzu,,MU-X,13,,,Silky White Pearl|Orchid Brown Mica|Cosmic Black Mica|Titanium Silver Metallic,4x2|4x4
+31,Aston Martin,,Vanquish,4,,,Jet Black|Midnight Blue|Silver Fox|Meteorite Silver|China Grey|Stratus White|Silver Blonde|Mariana Blue|Appletree Green|Selene Bronze|Onyx Black|Tungsten Silver|Marron Black|Madagascar Orange|Mako Blue|Cinnabar Orange|Volcano Red|Viridian Green|Grey Bull|Hardly Green|Hammerhead Silver|Cobalt Blue|Arizona Bronze|Sea Storm|Concours Blue|Lightning Silver|Quantum Silver|Ocellus Teal|Divine Red|Sunburst Yellow|Skyfall Silver|Storm Black|Diavolo Red|Kopi Bronze|Morning Frost White|Yellow Tang,V12
+25,Mini,,Countryman,4,,,Blazing Red|Royal Grey|Absolute Black|Crystal Silver|Cosmic Blue|Jungle Green|Starlight Blue|Midnight Grey,Cooper D
+12,Mahindra,,TUV300,12,,,Bold Black|Molten Orange|Majestic Silver|Dynamo Red|Verve Blue|Glacier White|Majestic Silver/Black,T4|T4 Plus|T6|T6 Plus|T8|T8 mHAWK100|T6 Plus AMT|T8 mHAWK100 Dual Tone|T8 AMT|T8 AMT mHAWK100
+8,Mercedes-Benz,,GLC,4,,,Obsidian Black|Iridium Silver|Citrine Brown|Cavansite Blue|Selenite Grey|Polar White,220 d|300
+23,Jaguar,,F-Type,4,,,Firesand Metallic|Black Amethyst Metallic|Ebony Black|Polaris White|Salsa Red|Rhodium Silver Metallic|Lunar Grey Metallic|Stratus Grey Metallic|Indigo Blue Metallic|Ultimate Black Metallic|Satellite Grey Metallic|British Racing Green Metallic|Italian Racing Red Metallic,Coupe|S Coupe|S Convertible|R Coupe|R Convertible|SVR Coupe|SVR Convertible
+4,Volkswagen,,GTI,4,,,Reflex Silver|Pure White|Black|Flash Red,1.8 TSI
+7,BMW,,5 Series,4,,,Black Sapphire Metallic|Alpine White|Imperial Blue Brilliant Effect|Sophisto Grey Brilliant Effect Metallic|Carbon Black Metallic|Jatoba Metallic|Callisto Grey Metallic|Mediterranean Blue Metallic,520d Luxury Line|520d M Sport|530d M Sport|M5
+11,Datsun,,Redi-GO,5,,,Lime|White|Ruby|Silver|Grey,D|A|T|T (O)|S|Sport
+10,Chevrolet,,Sail,8,,,Switch Blade Silver|Caviar Black|Summit White|Sand Drift Grey,1.2 Base|1.2 LS|1.2 LS ABS|1.3 Base|1.3 LS|1.2 LT ABS|1.3 LS ABS|1.3 LT ABS
+8,Mercedes-Benz,,E-Class,4,,,Obsidian Black|Iridium Silver|Citrine Brown|Selenite Grey|Polar White,E 200|E 220 d|E 350 d
+2,Maruti Suzuki,29,Wagon R,,1999,,Silky Silver|Glistening Grey|Superior White|Breeze Blue|Bakers Chocolate|Passion Red|Midnight Blue,LXi|VXi|LXi ABS|LXi CNG|VXI+|VXi ABS|VXi AMT|LXi CNG (O)|VXI+ (O)|VXI+ AMT|VXi AMT (O)|VXI+ AMT (O)
+22,Volvo,,V40 Cross Country,4,,,Raw Copper|Passion Red Solid|Crystal White Pearl|Osmium Grey|Onyx Black|Denim Blue|Rich Java,T4 Momentum|D3 Inscription
+33,Rolls Royce,,Wraith,4,,,Black|Sea Green|Madeira Red|Arctic White,Sedan
+7,BMW,,M3,4,,,Alpine White|Black Sapphire|Silver Stone|Mineral Grey|Yas Marina Blue|Austin Yellow|Mineral White|Sakhir Orange,Sedan
+7,BMW,,3 Series GT,4,,,Alpine White|Galcier Silver|Imperial Blue Brilliant Effect|Black Sapphire|Melbourne Red|Jatoba|Arctic Grey Brilliant Effect,320d Sport Line|320d Luxury Line|330i Luxury Line
+7,BMW,,X3,4,,,Black Sapphire|Deep Sea Blue|Melbourne Red|Alpine White|Carbon Black|Sparking Brown,xDrive 20d Expedition|xDrive-20d xLine|xDrive 28i xLine
+8,Mercedes-Benz,,GLE Coupe,4,,,Obsidian Black|Polar White|Cavansite Blue|Tenorite Grey,43 4MATIC
+3,Hyundai,,Verna,9,,,Sleek Silver|Pure White|Phantom Black|Red Passion|Star Dust,1.4 VTVT|1.6 VTVT S|1.4 CRDI|1.6 VTVT SX|1.6 VTVT S AT|1.6 CRDI S|1.6 VTVT SX AT|1.6 VTVT SX (O)|1.6 CRDI SX|1.6 CRDI S AT|1.6 CRDI SX (O)|1.6 CRDI SX (O) AT
+7,BMW,,M6,4,,,Alpine White|Silver Stone|Space Grey|Black Sapphire|Jatoba|Imperial Blue Brilliant Effect|Singapore Grey|Sakhir Orange|San Marino Blue,Gran Coupe
+7,BMW,,M4,4,,,Alpine White|Black Sapphire|Silver Stone|Mineral Grey|Yas Marin Blue|Austin Yellow|Mineral White|Sakhir Orange,Coupe
+7,BMW,,6 Series,4,,,Alpine White|Black Sapphire|Space Grey|Glacier Silver|Mineral White|Jatoba|Mediterranean Blue|Melbourne Red|Cashmere Silver,640d Eminence|640d Design Pure Experience
+#N/A,Lexus,,RX,4,,,Mercury Gray Mica|White Nova Glass Flake|Platinum Silver Metallic|Sonic Quartz|Sonic Titanium|Black|Sleek Ecru Metallic|Graphite Black Glass Flake|Amber Crystal Shine|Red Mica Crystal Shine|Heat Blue Contrast Layer|Deep Blue Mica,Luxury|F Sport
+8,Mercedes-Benz,,AMG GT,4,,,Magnetite Black|Iridium Silver|Brilliant Blue|Selerite Grey|AMG Solarbeam|Designo Hyacinth Red Metallic,S
+14,Renault,,Lodgy,12,,,Royal Orchid|Planet Grey|Pearl White|Moonlight Silver|Slate Grey|Fiery Red,85 PS STD 8 STR|85 PS RxE 7 STR|85 PS RxE 8 STR|85 PS World Edition 8 STR|85 PS RXL Stepway 8 STR|110 PS RXL Stepway 8 STR|110 PS World Edition 8 STR|85 PS RXZ Stepway 8 STR|110 PS RXZ Stepway 8 STR|110 PS RXZ Stepway 7 STR
+#N/A,Maserati,,GranTurismo,4,,,Nero|Bianco Eldorado|Grigio Touring|Grigio Alfieri|Grigio Granito|Nero Carbonio|Blu Oceano|Blu Nettuno|Blu Sofisticato|Rosso Trionfale|Bordeaux Pontevecchio|Bianco Fugi|Ble Mediterraneo|Giallo Granturismo|Rosso Mondiale|Bianco Birdcage|Grigio Lava,4.2 V8
+8,Mercedes-Benz,,S-Class Cabriolet,4,,,Selenite grey metallic|Magnetite black metallic|Iridium silver metallic|Cavansite blue metallic|Ruby black metallic|Emerald green metallic|Anthracite blue metallic|Designo diamond white bright|Designo mocha black metallic,S 500 Cabriolet
+8,Mercedes-Benz,,G-Class,4,,,Obsidian Black|Periclase Green|Polar White|Indium Grey|Citrine Brown|Magnetite Black|Iridium Silver|Diamond Silver,G 63 AMG|G 63 Edition 463|G 63  AMG Crazy Colour Edition
+4,Volkswagen,,Beetle,4,,,Oryx white|Tornado Red|Habanero orange|Blue Silk,1.4 TSI
+12,Mahindra,,e2o Plus,6,,,Coral Blue|Wine Red|Arctic Silver|Solid White,P4|P6|P8
+2,Maruti Suzuki,,S-Cross,12,,,Urban Blue|Caffeine Brown|Granite Grey|Premium Silky Silver|Pearl Arctic White,Sigma 1.3|Delta 1.3|Zeta 1.3|Alpha 1.3|Alpha 1.6
+9,Audi,,A6,4,,,Ibis White|Mysthos Black Metallic|Dakota Grey Metallic|Garnet Red|Floret Silver Metallic|Moonlight Blue Metallic,35 TFSI Matrix|35 TDI Matrix
+33,Rolls Royce,,Dawn,4,,,Stone Grey|Ensine Red|Emerald Green|Black Kirsch|Jubilee Silver|Anthracite|Smokey Quartz,Convertible
+5,Tata,,Indica V2,5,,,Mint White|Jet Silver,LS|LX
+6,Ford,,Mustang,4,,,Absolute Black|Ingot Silver|Oxford White|Race Red|Triple Yellow Tricoat|Magnetic,GT Fastback 5.0L v8
+#N/A,Jeep,,Wrangler,4,,,Black|Bright White|Billet Silver Metallic|Granite Crystal|Firecracker Red|Rhino,Unlimited 4x4 Petrol|Unlimited 4x4 Diesel
+9,Audi,,A3 Cabriolet,4,,,Brilliant Black|Amalfi White|Brilliant Red|Phantom Black|Beluga Brown Metallic|Ice Silver|Daytona Grey|Scuba Blue Metallic|Dakota Grey|Monsoon Grey|Lotus Grey|Glacier White Metallic|Shiraz Red|Misano Red Pearl,40 TFSI|1.4 TFSI
+21,Isuzu,,D-Max V-Cross,12,,,Splash White|Cosmic Black|Obsidian Grey|Titanium Silver|Orchid Brown,4x4
+9,Audi,,A3,4,,,Glacier White Metallic|Cosmos Blue|Florett Silver Metallic|Tango Red|Brilliant Black,35 TFSI Premium Plus|35 TDI Premium Plus|35 TFSI Technology|35 TDI Technology
+33,Rolls Royce,,Phantom Coupe,4,,,Black|Diamond Black|Anthracite|Jubliee Silver|Silver|Midnight Blue|Darkest Tungsten|Blue Velvet|Metropolitan Blue|Woodland Green|New Sable|Madeira Red|Ensign Red|Cornish White|English white|Arctic White,6.8 L
+12,Mahindra,,Scorpio Getaway,12,,,Fiery Black|Rocky Beige|Mist Silver,2WD BS IV|4WD BS IV
+12,Mahindra,,Verito Vibe CS,6,,,Aqua Rush|Toreador Red|Dolphin Grey|Diamond White|Java Brown|Fiery Black|Mist Silver,1.5 D2|1.5 D4|1.5 D6
+17,Honda,,WR-V,12,,,Premium Amber Metallic|Modern Steel Metallic|Alabaster Silver Metallic|Carnelian Red Pearl|Golden Brown Metallic|White Orchid Pearl,Honda WR-V S MT Petrol|Honda WR-V S MT Diesel|Honda WR-V VX MT Petrol|Honda WR-V VX MT Diesel
+5,Tata,,Safari,12,,,Arctic Silver|Pearl White|Cycus Grey|Arctic White|Quartz Black,4x2 LX DICOR BS IV|4x2 EX DICOR BS IV
+#N/A,DC,,Avanti,4,,,Red|White|Silver,Standard
+2,Maruti Suzuki,,Dzire,8,,,Oxford Blue|Gallant Red|Sherwood Brown|Magma Grey|Silky Silver|Pearl Arctic White,LXI|VXI|VXI AMT|LDI|ZXI|VDI|ZXI AMT|VDI AMT|ZXI Plus|ZDI|ZXI Plus AMT|ZDI AMT|ZDI Plus|ZDI Plus AMT
+29,Ferrari,,488,4,,,Blu Tour De France|Blu Pozi|Blu Scozia|Nero Daytona|Nero|Blue Abu Dhabi|Grigio Alloy|Vinaccia|Rosso Mugello|Grigio Medio|Grigio Silverstone|Grigio Titanio|Blu Mirabeau|Azzurro|Azzurro (Metallic)|Rosso Corsa|Rosso Suderio|Grigio Ingrid|Bianco Avus|Giallo Modena,GTB|Spider
+9,Audi,,TT,4,,,Ibis white|Glacier White|Floret Silver|Mythos Black|Monsoon Grey|Scuba Blue|Nano Grey|Tango Red,45 TFSI
+7,BMW,,Z4,4,,,Alpine White|Black Sapphire|Melbourne Red|Sparking Brown|Glacier Silver|Mineral Grey|Mineral White|Valencia Orange,sDrive 35i|sDrive 35i DPT
+9,Audi,,RS7 Sportback,4,,,Ibis White|Nardo Grey|Suzuka Grey Metallic|Estoril Blue Crystal Effect|Panther Black|Daytona Grey Pearl Effect|Misano Red|Phantom Black|Daytona grey Matt Effect|Ascari Blue,4.0 TFSI Performance
+22,Volvo,,XC60,4,,,Power Blue|Rich Java|Flemenco Red Pearl|Caspian Blue|Chrystal White Pearl|Black Metallic|Bright Silver Metallic|Passion Red Silver|Twilight Bronze Metallic|Savile Grey Pearl,Kinetic|Momentum|Inscription
+22,Volvo,,S90,4,,,Magic Blue Metallic|Crystal White pearl|Black Black metallic|Mussel Blue metallic,Inscription Luxury
+32,Bentley,,Continental Flying Spur,4,,,White|Porcelain White|Breeze|Citric|Silver|Burnt Oak,V8|W12
+9,Audi,,R8,4,,,Vegas Yellow|Ibis White|Dynamite Red|Floret Silver|Camouflage Green|Daytona Grey|Ara Blue Crystal Effect|Suzuka Grey|Mythos Black,5.2 V10 Plus
+#N/A,Maserati,,Quattroporte,4,,,Nero|Bianco|Nero Ribelle|Grigio Maratea|Grigio|Grigio Metallo|Bronzo Siena|Champagne|Blu Passione|Rosso Folgore|Bianco Alpi,Diesel|GTS
+6,Ford,,Aspire,8,,,Ruby Red|Sparkling Gold|Oxford White|Absolute Black|Deep Impact Blue|Moondust Silver|Smoke Grey,Ambiente 1.2 Ti-VCT|Ambiente 1.2 Ti-VCT ABS|Trend 1.2 Ti-VCT|Titanium 1.2 Ti-VCT|Titanium 1.2 Ti-VCT Opt|Titanium 1.2 Ti-VCT Sports Edition|Ambiente 1.5 TDCi|Ambiente 1.5 TDCi ABS|Titanium Plus 1.2 Ti-VCT|Trend 1.5 TDCi|Titanium1.5 TDCi|Titanium 1.5 TDCi Opt|Titanium 1.5 TDCi Sports Edition|Titanium Plus 1.5 TDCi|Titanium 1.5 Ti-VCT AT
+3,Hyundai,,Tucson,13,,,Star Dust|Pure White|Sleek Silver|Phantom Black|Wine Red,2WD MT Petrol|2WD MT Diesel|2WD AT GL Petrol|2WD AT GL Diesel|2WD AT GLS Diesel
+31,Aston Martin,,V8 Vantage,4,,,China Grey|Stratus White|Silver Blonde|Mariana Blue|Appletree Green|Selene Bronze|Onyx Black|Tungsten Silver|Marron Black|Madagascar Orange|Mako Blue|Jet Black|Midnight Blue|Silver Fox|Meteorite Silver|Cinnabar Orange|Volcano Red|Viridian Green|Grey Bull|Hardly Green|Hammerhead Silver|Cobalt Blue|Arizona Bronze,Coupe|Roadster|S Coupe
+#N/A,Jeep,,Grand Cherokee,4,,,Deep Cherry Red Crystal Pearl|Brilliant Black Crystal Pearl|Bright White|True Blue Pearl|Granite Crystal|Billet Silver,Limited|Summit|SRT
+33,Rolls Royce,,Ghost Series II,4,,,Salamanca Blue|Darkest Tungsten|Black Krisch|Midnight Sapphire|Metropolitan Blue|Diamond Black|Madeira Red|Sea Green|Ensign Red|Silver Sand|Jubilee Silver|Smoky Quartz|Silver|English White,6.6|EWB
+8,Mercedes-Benz,,E-Class Cabriolet,4,,,Polar White|Fire Opal|Dolomite Brown|Cavansite Blue,E 400 Cabriolet
+24,Land Rover,,Discovery,4,,,Baltic Blue|Bali Blue|Santorini Black|Nara Bronze|Marmaris Teal|Indus Silver|Ipanema Sand|Firenze Red|Siberian Silver|Fuji White,SE|HSE
+#N/A,Lexus,,LX,4,,,White Pearl Crystal Shine|Mercury Gray Mica|Sonic Titanium|Black|Starlight Black Glass Flake|Sleek Ecru Metallic|Deep Blue Mica,450d
+31,Aston Martin,,DB11,4,,,Magnetic Silver|Frosted Glass Blue|Ultramarine Blue|Lightning Silver|Cinnabar Orange|Arden Green,Evolution
+22,Volvo,,V40,4,,,Ice White Solid|Bright Silver Metallic|Passion Red Solid|Osmium Grey Metallic|Crystal White Pearl|Onyx Black|Bursting Blue Metallic,D3 Kinetic|D3 R-Design
+33,Rolls Royce,,Phantom,4,,,Black|Diamond Black|Anthracite|Jubliee Silver|Silver|Midnight Blue|Darkest Tungsten|Blue Velvet|Metropolitan Blue|Woodland Green|New sable|Madeira Red|Ensign Red|Cornish White|English White|Arctic White,Sedan|EWB
+24,Land Rover,,Range Rover,4,,,Barolo Black|Barossa|Mariana Black|Causeway Grey|Orkney Grey|Nara Bronze|Aintree Green|Baltic Blue|Santorini Black|Marmaris Teal|Firenze Red|Ipanema Sand|Siberian Silver|Indus Silver|Fuji White,3.0 V6 Diesel Vogue LWB|3.0 V6 Petrol Vogue|3.0 V6 Diesel Vogue|4.4 SDV8 Vogue SE LWB|4.4 SDV8 Vogue SE|4.4 SDV8 Autobiography LWB|4.4 SDV8 Autobiography|5.0 V8 Autobiography LWB|5.0 V8 Autobiography|4.4 SDV8 SV Autobiography LWB|5.0 V8 SV Autobiography LWB
+9,Audi,,A4,4,,,Ibis White|Mythos Black Metallic|Floret Silver Metallic|Moonshine Blue Metallic|Tango Red Metallic,30 TFSI Premium Plus|35 TDI|30 TFSI Technology Pack
+29,Ferrari,,California,4,,,Nero Pastello|Blu Pozzi|Blu Tour De France|Rosso Mugello|Rosso California|Grigio Ingrid|Grigio Alloy|Rosso Corsa|Rosso Scuderia|Rosso Dino|Bianco Avus|Giallo Modena,T
+8,Mercedes-Benz,,GLS,4,,,Obsidian Black|Cavansite Blue|Citrine Brown|Iridium Silver|Selenite Grey,350 d|400 4MATIC|63 AMG
+#N/A,Bugatti,,Veyron,4,,,Titanium Grey Metallic|Italian Red|White Silver|Black Carbon,16.4 Grand Sport
+#N/A,Maserati,,GranCabrio,4,,,Bianco Eldorado|Nero|Grigio Touring|Grigio Alfieri|Grigio Granito|Nero Carbonio|Blu Oceano|Blu Nettuno|Blu Sofisticato|Rosso Trionfale|Bordeaux Pontevecchio|Bianco Fugi|Ble Mediterraneo|Giallo Granturismo|Rosso Mondiale|Bianco Birdcage|Grigio Lava,4.7 V8
+7,BMW,,X5,4,,,Alpine White|Black Sapphire|Impherial Blue Brilliant Effect|Sparkling Brown|Space Grey|Carbon Black|Long Beach Blue|Donington Grey|Silver Stone|Melbourne Red|Mineral White,xDrive 30d Expedition|xDrive30d Pure Experience (5 Seater)|xDrive35i Pure Experience (5 seater)|xDrive30d Pure Experience (7 Seater)|xDrive 30d M Sport|M
+9,Audi,,RS6,4,,,Glacier White|Daytona Grey|Prisma Silver|Floret Silver|Misano Red|Panther Black|Sepang Blue|Mythos Black,Avant
+8,Mercedes-Benz,,SLC,4,,,Polar White|Obsidian Black|Brilliant Blue|Designo Hyacinth Red Metallic,43 AMG
+#N/A,Maserati,,Ghibli,4,,,Nero|Bianco|Grigio|Grigio Metallo|Bronzo Siena|Champagen|Grigio Maratea,Diesel
+23,Jaguar,,F-Pace,4,,,Polaris White|Ebony Black|Glacier White|Quartzite|Ammonite Grey|Dark Sapphire Blue|British Racing Green|Ultimate Black,Pure|Prestige|R-SPORT|First Edition
+25,Mini,,Cooper,4,,,Midnight Black|Deep Blue Metallic|Thundder Grey Metallic|Blazing Red|Volcanic Orange|British Racing Green Metallic|Moonwalk Grey|Pepper White|White Silver Metallic|Electric Blue Metallic|Iced Chocolate Metallic|Chili Red|Lapisluxury Blue,D 3 Door|S|D 5 Door
+25,Mini,,Clubman,4,,,Pepper White|Pure Burgundy|Melting Silver|Midnight Black|British Racing Green II|Moonwalk Grey|Blazing Red|Lapisluxury Blue|Digital Blue,Cooper S
+8,Mercedes-Benz,,S-Coupe,4,,,Metallic Obsidian Black|Polar White,S 500|S 63 AMG
+25,Mini,,Cooper Convertible,4,,,Carbon Black|Satellite Grey|Shadow Grey|Glowing Red,2
+33,Rolls Royce,,Drophead Coupe,4,,,Black|Diamond Black|Anthracite|Jubliee Silver|Silver|Midnight Blue|Darkest Tungsten|Blue Velvet|Metropolitan Blue|Woodland Green|New sable|Madeira Red|Ensign Red|Cornish White|English White|Arctic White,Convertible
+22,Volvo,,S60,4,,,Bright Silver Metallic|Power Blue Metallic|Passion Red Solid|Inscription Crystal White Pearl|Rebel Blue|Onyx Black metallic|Inscription Electric Silver Metallic|Osmium Grey,Kinetic|Momentum|Cross Country Inscription|T6|Polestar
+19,Mitsubishi,,Pajero Sport,13,,,Storm Grey|Himalayan White|Iceberg Silver|Pure Black|Deep Blue Mica,2.5 AT|2.5 MT|Limited Edition
+8,Mercedes-Benz,,CLS,4,,,Magnetite Black|Cavensite Blue|Designo Diamond White Bright|Citrine Brown|Designo Hyacinth Red Metallic|Diamond Silver,250 CDI
+11,Datsun,,GO Plus,6,,,Ruby|Gold|Silver|Grey|White|Blue,D|A|A EPS|T|Anniversary Edition|T (O)
+22,Volvo,,XC90,4,,,Magic Blue|Luminous Sand Metallic|Crystal White Pearl|Onyx Black,Momentum Luxury|Inscription Luxury|Excellence
+#N/A,Lexus,,ES,4,,,Sonic Quartz|Sonic Titanium|Mercury Gray Mica|Black|Platinum Silver Metallic|Graphite Black Glass Flake|Red Mica Crystal Shine|Deep Blue Mica|Sleek Ecru Metallic|Amber Crystal Shine,300h
+8,Mercedes-Benz,,C-Class Cabriolet,4,,,Polar White|Obsidian Black|Brilliant Blue|Designo Hyacinth Red Metallic,C 300
+7,BMW,,3 Series,4,,,Alpine White|Black Sapphire|Melbourne Red|Imperial Blue Brilliant Effect|Platinum Silver|Jatoba|Estoril Blue|Mediterranean Blue,320d Prestige|320d Sport Line|320d Luxury Line|330i Sport Line|330i M Sport Edition|320d M Sport
+7,BMW,,7 Series,4,,,Alpine White|Arctic Grey Brilliant Effect|Black Sapphire|Carbon Black|Cashmere Silver|Glacier Silver|Imperial Blue Brilliant Effect|Jatoba|Magellan Grey|Mineral White|Singapore Grey|Sophisto Grey Brilliant Effect|Black|Moonstone metallic|Almandine Brown metallic|Ruby Black metallic|Azurite Black metallic|Brilliant White metallic|Pure metal Silver|Aventurine Red metallic|Frozen Dark Brown metallic|Frozen Arctic Grey metallic,730Ld DPE|730Ld M Sport|730Ld DPE Signature|740Li DPE Signature|730Ld M Sport Plus|730Ld DPE (CBU)|750Li DPE|750Li M Sport|M760Li xDrive
+8,Mercedes-Benz,,GLE,4,,,Obsidian Black|Tenorite Grey|Citrine Brown|Cavansite Blue|Iridium Silver|Polar White,250 d|350 d|400 4MATIC
+29,Ferrari,,F12berlinetta,4,,,Rosso Scuderia|Azzurro California|Nero Daytone|Grigio Scuro|Grigio Ingrid|Blu Scozia|Nero Pastello|Blu tour de France|Rosso Corsa|Rosso Mugello|Argento Nurburgring|Grigio Alloy|Giallo Modena,V12
+12,Mahindra,89,XUV500,12,,,Sunset Orange|Pearl White|Opulent Purple|Volcano Black|Coral Red|Dolphin Grey|Moondust Silver|Lake Side Brown,W4 1.99|W4|W6 1.99|W6|W6 AT 1.99|W6 AT|W8 1.99|W8|W8 AWD|W10 1.99|W10|W8 AT 1.99|W8 AT|W10 AT 1.99|W10 AT|W10 AWD|W10 AWD AT
+6,Ford,149,Figo Aspire,,,,Ruby Red|Sparkling Gold|Oxford White|Absolute Black|Deep Impact Blue|Moondust Silver|Smoke Grey,Ambiente 1.2 Ti-VCT|Ambiente 1.2 Ti-VCT ABS|Trend 1.2 Ti-VCT|Titanium 1.2 Ti-VCT|Titanium 1.2 Ti-VCT Opt|Titanium 1.2 Ti-VCT Sports Edition|Ambiente 1.5 TDCi|Ambiente 1.5 TDCi ABS|Titanium Plus 1.2 Ti-VCT|Trend 1.5 TDCi|Titanium1.5 TDCi|Titanium 1.5 TDCi Opt|Titanium 1.5 TDCi Sports Edition|Titanium Plus 1.5 TDCi|Titanium 1.5 Ti-VCT AT

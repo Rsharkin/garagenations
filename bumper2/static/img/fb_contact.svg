@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="7px" height="15px" viewBox="0 0 7 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>fb_contact</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ContactUs_desktop" transform="translate(-189.000000, -313.000000)" fill="#3B5998">
+            <g id="Group-12" transform="translate(187.000000, 208.000000)">
+                <g id="Group-26">
+                    <g id="Group-11" transform="translate(1.000000, 0.000000)">
+                        <g id="Group-17" transform="translate(1.000000, 105.206612)">
+                            <g id="fb_contact">
+                                <path d="M1.41216706,4.60054225 L0,4.60054225 L0,6.93804912 L1.41216706,6.93804912 L1.41216706,13.8842975 L4.31305799,13.8842975 L4.31305799,6.9382428 L6.2596905,6.9382428 C6.2596905,6.9382428 6.44200115,5.81742614 6.53037348,4.59192332 L4.32402723,4.59192332 L4.32402723,2.99367576 C4.32402723,2.7547989 4.64031229,2.43347725 4.95291924,2.43347725 L6.53343315,2.43347725 L6.53343315,0 L4.38447195,0 C1.34046016,-0.00016140328 1.41216706,2.33966967 1.41216706,2.68894637 L1.41216706,4.60054225 Z" id="footer_fb"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

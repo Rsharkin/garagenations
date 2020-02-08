@@ -1,0 +1,8 @@
+Hello {{name}},
+
+Welcome to Bumper!
+
+Congratulations! You are one step closer to setting yourself free from all your car worries. Verify your account by clicking on the link {{ verification_link }}.
+
+Thanks,
+Team Bumper

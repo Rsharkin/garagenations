@@ -1,0 +1,13 @@
+Hi {{customer_name}},
+
+Thank you for connecting with Bumper. Here is an update for you.
+
+Our prices have been revised from 22nd October 2016. Do not worry though, we would offer the same prices for all pick up scheduled on or before 31st October 2016.
+
+For any inquiries and concerns regarding your booking and our services, do not hesitate to call our helpline number +91-9108446586.
+
+Thank you for your continuing support. Look forward to make your car beautiful!
+
+Regards,
+Team Bumper
+

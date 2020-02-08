@@ -1,0 +1,32 @@
+<md-dialog aria-label="Autocomplete Dialog Example" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <p style="font-size: 14px; margin-bottom: 0px">CANCEL BOOKING</p>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form ng-submit="$event.preventDefault()">
+                <p>Please select below the reason of cancellation:</p>
+                <md-select placeholder="Select Reason" ng-change="ctrl.reasonIsEmpty=null" ng-model="item.reason" style="min-width: 200px;">
+                    <md-option ng-value="item.reason"  ng-repeat="item in ctrl.cancellationReasons" ng-click="ctrl.setSelectedReason(item)" required>{$item.reason$}</md-option>
+                </md-select>
+                <div class="reason-empty-error">
+                    <div>{$ ctrl.reasonIsEmpty $}</div>
+                </div>
+                <md-input-container class="md-block" style=" margin-top: 50px" ng-if="ctrl.selectedReason.Id==3">
+                    <label>Specify Reason</label>
+                    <textarea  rows="4"  ng-model="reason" ng-blur="ctrl.setOtherReason(reason)" ng-change="ctrl.textEmpty=null" md-select-on-focus placeholder="Please specify your reason here"></textarea>
+                    <div class="reason-empty-error">
+                    <div>{$ ctrl.textEmpty $}</div>
+                </div>
+                </md-input-container>
+            </form>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="ctrl.cancel()">Later</md-button>
+        <md-button aria-label="Finished" ng-click="ctrl.finish()">Cancel</md-button>
+    </md-dialog-actions>
+</md-dialog>

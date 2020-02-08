@@ -1,0 +1,8 @@
+Hello,
+
+Welcome to Bumper!
+
+Alerts raised during the day today.
+
+Thanks,
+Team Bumper

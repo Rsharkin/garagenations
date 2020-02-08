@@ -1,0 +1,1 @@
+Pending payment for Bumper booking {{booking_id}}

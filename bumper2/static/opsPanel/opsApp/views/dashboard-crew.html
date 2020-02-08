@@ -1,0 +1,99 @@
+<style>
+    .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+    }
+    .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+    }
+</style>
+<div class="wrapper">
+    <div class="ibox" style="margin-bottom: 0px !important;">
+        <div class="ibox-title">
+            <h5>Crew Management</h5>
+            <a
+                    permission="['OpsAdmin','OpsManager','DriverManager']"
+                    ng-click="crewDashCtrl.requestUserLocation()"
+                    class="btn btn-xs btn-info pull-right m-r-sm">Request Location Update of all Crew</a>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="ibox">
+                        <div class="ibox-content crew-job-list-box">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       uib-datepicker-popup="yyyy-MM-dd"
+                                       ng-model="crewDashCtrl.dt"
+                                       is-open="crewDashCtrl.popup1.opened"
+                                       datepicker-options="crewDashCtrl.dateOptions"
+                                       show-button-bar="false"
+                                       readonly
+                                       ng-change="crewDashCtrl.dateChanged()"
+                                />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="crewDashCtrl.open1()" ><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                            <h3 class="text-center">Pick - {$ crewDashCtrl.pickup_count $}| Drop - {$ crewDashCtrl.drop_count $}</h3>
+                            <ul class="agile-list sortable-list">
+                                <li class="info-element" ng-repeat="item in crewDashCtrl.bookings">
+                                    <div ng-if="item.action==='Pick' || item.action==='Both'">
+                                        <div>
+                                            <span class="label label-info">Pick</span>
+                                            <b><a href="/core/bookings/editBooking/{$ item.booking_id $}/" target="_blank">{$ item.booking_id $}</a></b>
+                                            |
+                                            <b><i class="fa fa-clock-o"></i> {$ item.pickup_time $} - {$ item.pickup_slot_end_time $}</b>
+                                        </div>
+                                        <div>
+                                            <b>From:</b> {$ item.address1 $}, {$ item.address2 $}
+                                            <br>
+                                            <b>To:</b> {$ item.workshop $}
+                                        </div>
+                                        <div class="agile-detail" ng-if="item.pickup_time && item.workshop">
+                                            By: <a ng-if="!item.pickup_driver_id" permission="['OpsAdmin','OpsManager','DriverManager']" ng-click="crewDashCtrl.assignDriver(item.booking_id, 'Pickup')" class=" btn btn-xs btn-primary pull-right">Assign Crew</a>
+                                            <span ng-if="item.pickup_driver_id">{$ item.pickup_driver $}</span>
+                                            <a ng-if="item.pickup_driver_id" permission="['OpsAdmin','OpsManager','DriverManager']" ng-click="crewDashCtrl.assignDriver(item.booking_id, 'Pickup')" class=" btn btn-xs btn-primary pull-right">Change Crew</a>
+                                        </div>
+                                        <div class="agile-detail" ng-if="!item.pickup_time || !item.workshop">
+                                            <span class="label-danger">Update Pickup Address & Workshop</span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed" ng-if="item.action==='Both'"></div>
+                                    <div ng-if="item.action==='Drop' || item.action==='Both'">
+                                        <div>
+                                            <span class="label label-warning-light">Drop</span>
+                                            <b><a href="/core/bookings/editBooking/{$ item.booking_id $}/" target="_blank">{$ item.booking_id $}</a></b>
+                                            |
+                                            <b><i class="fa fa-clock-o"></i> {$ item.drop_time $} - {$ item.drop_slot_end_time $}</b>
+                                        </div>
+                                        <div>
+                                            <b>From:</b> {$ item.workshop $}
+                                            <br>
+                                            <b>To:</b> {$ item.drop_address1 $}, {$ item.drop_address2 $}
+                                        </div>
+                                        <div class="agile-detail" ng-if="item.drop_time && item.drop_address1">
+                                            By: <a ng-if="!item.drop_driver_id" permission="['OpsAdmin','OpsManager','DriverManager']" ng-click="crewDashCtrl.assignDriver(item.booking_id, 'Drop')" class=" btn btn-xs btn-primary pull-right">Assign Crew</a>
+                                            <span ng-if="item.drop_driver_id">{$ item.drop_driver $}</span>
+                                            <a ng-if="item.drop_driver_id" permission="['OpsAdmin','OpsManager','DriverManager']" ng-click="crewDashCtrl.assignDriver(item.booking_id, 'Drop')" class=" btn btn-xs btn-primary pull-right">Change Crew</a>
+                                        </div>
+                                        <div class="agile-detail" ng-if="!item.drop_time || !item.drop_address1">
+                                            <span class="label-danger">Update Drop Address & Workshop</span>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div id="visualization"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

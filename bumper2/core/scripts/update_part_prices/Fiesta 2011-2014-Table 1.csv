@@ -1,0 +1,89 @@
+car_id,102,,,
+Part ID in Bumper,Part Name,Type,Price,Model year
+4,Front Bumper,C,2500,2011- 2014
+5,Rear Bumper,C,3000,2011- 2014
+1,Left Fender,C,3950,2011- 2014
+2,Right Fender,C,3950,2011- 2014
+10,Trunk,C,4891,2011- 2014
+3,Bonnet,C,5220,2011- 2014
+6,Left Front Door,C,8242,2011- 2014
+7,Right Front Door,C,8242,2011- 2014
+8,Left Rear Door,C,7856,2011- 2014
+9,Right Rear Door,C,7856,2011- 2014
+13,Left Running Board,C,11500,2011- 2014
+14,Right Running Board,C,11500,2011- 2014
+11,Left Quarter Panel,C,13122,2011- 2014
+12,Right Quarter Panel,C,13122,2011- 2014
+15,Roof,C,,
+33,Tow Cap,C,2000,2011- 2014
+27,Door Handel,C,410,2011- 2014
+18,Side view mirror,MANAUAL,1700,2011- 2014
+18,Side view mirror,ELECTRICAL,2950,2011- 2014
+18,Side view mirror,ELECTRICAL WITH INDICATOR,6300,2011- 2014
+60,Bumper Mount,,,
+21,Bumper Lining,C,960,2011- 2014
+42,Bumper Upper Grill,TYP 2,1400,2011- 2014
+42,Bumper Upper Grill,TYP 2 BLACK,2500,2011- 2014
+42,Bumper Upper Grill,TYP 2 SLIVER,3500,2011- 2014
+42,Bumper Upper Grill,TYP 2 CHROM,5600,2011- 2014
+43,Bumper Lower Grill,TYP 2,600,2011- 2014
+32,Fog Lamp Right,TYP 2,2200,2011- 2014
+39,Fog Lamp Left,TYP 2,2500,2011- 2014
+61,Fog Lamp Cover with fog lamp Cut,C,310,2011- 2014
+62,Fog Lamp Cover without fog lamp Cut,C,310,2011- 2014
+63,Fog lamp Mount,,,
+31,Front Monogram,C,1650,2011- 2014
+38,Headlight Right,TYP 2 WHITE,6400,2011- 2014
+38,Headlight Right,TYP 2 BLACK,4800,2011- 2014
+16,Headlight Left,TYP 2 WHITE,6400,2011- 2014
+16,Headlight Left,TYP 2 BLACK,4800,2011- 2014
+19,Taillight Right,C,1700,2011- 2014
+20,Taillight Left,C,1700,2011- 2014
+64,Sensors/Camera,,,
+65,Bumper Guard/Beading,,,
+66,Wheel Arch Lining,C,,
+67,Indicator,C,,
+40,Right Fender Indicator,C,300,2011- 2014
+41,Front Logo,C,1600,2011- 2014
+44,Right Fender Monogram,C,300,2011- 2014
+68,Lock & Latch,C,,
+69,Bonnet lining,C,,
+70,Bonnet Mounts,,,
+30,Door beading,plain,1000,2011- 2014
+30,Door beading,with chrom,3500,2011- 2014
+71,Door inner beading,,,
+72,Window beading,C,4800,2011- 2014
+45,Window Glass,C,1300,2011- 2014
+73,Window Glass Rubber Channel,C,2600,2011- 2014
+74,Glass Beading,C,4800,2011- 2014
+75,Window Glass Lift Channel,C,2800,2011- 2014
+76,Power Window Switch,C,1800,2011- 2014
+77,Window Manual Switch,C,750,2011- 2014
+78,Power Window Motor,C,4800,2011- 2014
+79,Door Lock Mechanism,C,3700,2011- 2014
+80,Central Locking Mechanism,,,
+81,Door Mounts,,,
+82,Fuel Cap Outer,,450,2011- 2014
+83,Wheel Arch Lining,C,1300,2011- 2014
+84,Quarter glass,C,900,2011- 2014
+85,Quarter glass Beading,C,700,2011- 2014
+86,Trunk Door Lining,,,
+87,Trunk Door Beading,,,
+88,Back Logo,C,480,2011- 2014
+89,Trunk Door Glass,,3500,2011- 2014
+22,Number Plate,C,,
+90,Number plate Light,C,2150,2011- 2014
+91,Inner Rubber Beading,,,
+36,Wiper,,,
+92,Wiper Blades,C,850,2011- 2014
+93,Wiper Scuffing,,,
+55,Mud Flaps,C,1100,2011- 2014
+94,Wheel Caps,C,each 1200,2011- 2014
+95,Alloy Wheels,,,
+96,Tires,,,
+97,After Market Fog Lamp,,,
+98,Interior Ambient Light,,,
+99,Bull Guard,,,
+100,After Market Antenna,C,1500,2011- 2014
+101,Laser Cut Number Plates,,,
+46,Windshield,C,4200,2011- 2014

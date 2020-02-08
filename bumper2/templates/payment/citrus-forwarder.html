@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bumper Payment</title>
+</head>
+<body>
+   <form id="paymentForm" align="center" method="post" action="https://sandbox.citruspay.com/mvw7nadn8e">
+             <input type="hidden" id="merchantTxnId" name="merchantTxnId" value="{{ merchantTxnId }}" />
+             <input type="hidden" id="orderAmount" name="orderAmount" value="{{ orderAmount }}" />
+             <input type="hidden" id="currency" name="currency" value="{{ currency }}" />
+             <input type="hidden" name="returnUrl" value="{{ returnUrl }}" />
+             <input type="hidden" id="notifyUrl" name="notifyUrl" value="{{ notifyUrl }}" />
+             <input type="hidden" id="secSignature" name="secSignature" value="{{ secSignature }}" />
+             <input type="hidden" name="customParams[0].name" value="bookingId" />
+             <input type="hidden" name="customParams[0].value" value="{{ customParameters.bookingId }}" />
+             <input type="hidden" name="customParams[1].name" value="paymentId" />
+             <input type="hidden" name="customParams[1].value" value="{{ customParameters.paymentId }}" />
+    </form>
+    <script type="text/javascript">
+        document.getElementById("paymentForm").submit();
+    </script>
+</body>
+</html>

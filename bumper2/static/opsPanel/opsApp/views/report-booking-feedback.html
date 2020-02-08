@@ -1,0 +1,19 @@
+<div class="wrapper animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="tabs-container">
+                    <uib-tabset>
+                        <uib-tab heading="Customer Through App" ui-sref="base.reports.feedback.customer"  ui-sref-active="active">
+                            <div class="panel-body" ui-view="customer"></div>
+                        </uib-tab>
+
+                        <uib-tab heading="Offline By Ops Team" ui-sref="base.reports.feedback.ops">
+                            <div class="panel-body" ui-view="ops"></div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

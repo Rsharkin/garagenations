@@ -1,0 +1,6 @@
+Hello {{name}},
+
+{{ otp }} is your OTP for logging into Bumper.
+
+Thanks,
+Team Bumper

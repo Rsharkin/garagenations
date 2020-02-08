@@ -1,0 +1,111 @@
+
+<div class="ibox" style="margin-bottom: 0px !important;">
+    <div class="ibox-title">
+        <div class="row">
+            <div class="col-sm-4">
+                <h5>Users & their Bookings<br/><small class="m-l-sm">Report shows bookings of users created during specific period.</small></h5>
+            </div>
+            <div class="col-sm-8">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-3 m-r-sm">
+                            <a href="#" ng-model="reportBookingByUsersCtrl.collapsed" ng-click="reportBookingByUsersCtrl.collapsed=!reportBookingByUsersCtrl.collapsed"><h4>Extra Filters</h4></a>
+                            <div class="form-group" ng-show="reportBookingByUsersCtrl.collapsed">
+                                <label class="control-label">UTM Source: </label>
+                                <div class="text-left">
+                                    <select ng-model="reportBookingByUsersCtrl.filters.utm_source"
+                                            ng-change="reportBookingByUsersCtrl.apply_filters()"
+                                            ng-options="option.utm_source for option in reportBookingByUsersCtrl.utm_source_list track by option.utm_source" class="form-control input-sm" title="UTM Source">
+                                        <option value="" >All</option>
+                                    </select>
+                                </div>
+                                <label class="control-label">UTM Medium: </label>
+                                <select ng-model="reportBookingByUsersCtrl.filters.utm_medium"
+                                        ng-change="reportBookingByUsersCtrl.apply_filters()"
+                                        ng-options="option.utm_medium for option in reportBookingByUsersCtrl.utm_medium_list track by option.utm_medium" class="form-control input-sm" title="UTM Medium">
+                                    <option value="" >All</option>
+                                </select>
+                                <label class="control-label">UTM Campaign: </label>
+                                <select ng-model="reportBookingByUsersCtrl.filters.utm_campaign"
+                                        ng-change="reportBookingByUsersCtrl.apply_filters()"
+                                        ng-options="option.utm_campaign for option in reportBookingByUsersCtrl.utm_campaign_list track by option.utm_campaign" class="form-control input-sm" title="UTM Campaign">
+                                    <option value="" >All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label">Booking Type: </label>
+                                <div class="text-left">
+                                    <select ng-model="reportBookingByUsersCtrl.filters.booking_type" ng-change="reportBookingByUsersCtrl.apply_filters()" class="form-control  input-sm"  name="type"  title="Type of booking">
+                                        <option value="" >All</option>
+                                        <option value="service" >Service</option>
+                                        <option value="denting">Denting</option>
+                                        <option value="washing">VAS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-l-xs pull-right">
+                            <div class="form-group">
+                                <label class="control-label no-padding-right"> Users<small>(not booking)</small> Created On: </label>
+                                <div class="input-group text-left">
+                                    <input date-range-picker class="form-control date-picker input-sm " type="text" ng-model="reportBookingByUsersCtrl.filters.date"
+                                           options="reportBookingByUsersCtrl.date_range_options"/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <small ng-if="!reportBookingByUsersCtrl.past_start_dt" class="text-navy">** Select date range to compare</small>
+                                <h4 ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">
+                                    Compared with: {$ reportBookingByUsersCtrl.past_start_dt $} - {$ reportBookingByUsersCtrl.past_end_dt $}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-sm-3 text-center">
+                <h4> Users Added <small>(Not leads)</small></h4>
+                <h2 class="font-bold">{$ reportBookingByUsersCtrl.users_bookings_data.users $} <span ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">/ {$ reportBookingByUsersCtrl.past_users_bookings_data.users $}</span> </h2>
+            </div>
+            <div class="col-sm-1 text-center"><h2><i class="fa fa-angle-right m-t-lg"></i></h2> </div>
+            <div class="col-sm-3 text-center">
+                <h4> Bookings Created <small>From these users</small>  </h4>
+                <h2 class="font-bold">{$ reportBookingByUsersCtrl.users_bookings_data.bookings $} <span ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">/ {$ reportBookingByUsersCtrl.past_users_bookings_data.bookings $}</span></h2>
+            </div>
+            <div class="col-sm-1 text-center"><h2><i class="fa fa-angle-right m-t-lg"></i></h2> </div>
+            <div class="col-sm-3 text-center">
+                <h4> Details </h4>
+                <div class="row">
+                    <div class="col-sm-6"><h5 class="font-bold pull-right">Un-Confirmed:</h5></div>
+                    <div class="col-sm-6">
+                        <strong class="pull-left"> {$ reportBookingByUsersCtrl.users_bookings_data.bookings - (reportBookingByUsersCtrl.users_bookings_data.converted +reportBookingByUsersCtrl.users_bookings_data.cancelled) $}
+                            <span ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">/ {$ reportBookingByUsersCtrl.past_users_bookings_data.bookings - (reportBookingByUsersCtrl.past_users_bookings_data.converted +reportBookingByUsersCtrl.past_users_bookings_data.cancelled) $}</span>
+                        </strong>
+                        <a tooltip-placement="top" tooltip="Booking Status less than 'Car picked up'" class="pull-left m-l-sm"><i class="fa fa-info-circle"></i></a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6"><h5 class="font-bold pull-right">Converted:</h5></div>
+                    <div class="col-sm-6">
+                        <strong class="pull-left"> {$ reportBookingByUsersCtrl.users_bookings_data.converted $} <span ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">/ {$ reportBookingByUsersCtrl.past_users_bookings_data.converted $}</span></strong>
+                        <a tooltip-placement="top" tooltip="Booking Status >= 'Car picked up', includes closed" class="pull-left m-l-sm"><i class="fa fa-info-circle"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6"><h5 class="font-bold pull-right">Closed:</h5></div>
+                    <div class="col-sm-6"><strong class="pull-left"> {$ reportBookingByUsersCtrl.users_bookings_data.closed $} <span ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">/ {$ reportBookingByUsersCtrl.past_users_bookings_data.closed $}</span></strong></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6"><h5 class="font-bold pull-right">Cancelled:</h5></div>
+                    <div class="col-sm-6"><strong class="pull-left"> {$ reportBookingByUsersCtrl.users_bookings_data.cancelled $} <span ng-if="reportBookingByUsersCtrl.past_start_dt" class="text-warning">/ {$ reportBookingByUsersCtrl.past_users_bookings_data.cancelled $}</span></strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

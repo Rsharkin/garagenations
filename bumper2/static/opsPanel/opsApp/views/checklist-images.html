@@ -1,0 +1,28 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Detail List</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Uploaded At</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in checklistCtrl.items">
+                        <td> <span ng-repeat="m in item.media"><a href="{$ m.media_url $}" target="_blank">Open</a></span></td>
+                        <td><small>{$ item.created_at | date:'medium' : '+0530' $} By: <b>{$ item.updated_by_details.name $}</b>, {$ item.updated_by_details.ops_phone $}</small></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="checklistCtrl.cancel()">Close</button>
+    </div>
+</div>

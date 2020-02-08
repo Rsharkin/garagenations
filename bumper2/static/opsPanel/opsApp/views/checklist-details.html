@@ -1,0 +1,55 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Checklist Details</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Check</th>
+                        <th>Status</th>
+                        <th>Failure Reason</th>
+                        <th>Images</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in checklistCtrl.items">
+                        <td>{$ item.item.name $}</td>
+                        <td>
+                            <span ng-if="item.is_applicable && checklistCtrl.typeOfChecklist !== 'inventory' && item.is_applicable && checklistCtrl.typeOfChecklist !== 'electrical'">
+                                <label ng-if="!item.has_issue" class="label label-primary">Pass</label>
+                                <label ng-if="item.has_issue" class="label label-danger">Fail</label>
+                            </span>
+                            <span ng-if="item.is_applicable && checklistCtrl.typeOfChecklist === 'electrical' ">
+                                <label ng-if="!item.has_issue" class="label label-primary">Working</label>
+                                <label ng-if="item.has_issue" class="label label-warning-light">Not Working</label>
+                            </span>
+                            <span ng-if="item.is_applicable && checklistCtrl.typeOfChecklist === 'inventory' ">
+                                <label ng-if="!item.has_issue" class="label label-primary">In Car</label>
+                                <label ng-if="item.has_issue" class="label label-warning-light">Not In Car</label>
+                            </span>
+                            <span ng-if="!item.is_applicable">
+                                <label class="label">NA</label>
+                            </span>
+                            <span><label ng-if="item.mismatch" class="label label-danger">Mismatch</label></span>
+                        </td>
+                        <td>{$ item.reason_text $}</td>
+                        <td>
+                            <div class="row" ng-repeat="pic in item.media">
+                                <div class="col-sm-12">
+                                    <a href="{$ pic.media_url $}" target="_blank">Link</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="checklistCtrl.cancel()">Close</button>
+    </div>
+</div>

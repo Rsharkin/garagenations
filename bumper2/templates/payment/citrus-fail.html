@@ -1,0 +1,46 @@
+{% extends 'payment/payment-base.html' %}
+
+{% block container %}
+    <script type="text/javascript">
+        var globaldata;
+        function setdata(data) {
+            globaldata = data;
+        }
+        function postResponseiOS() {
+            return globaldata;
+        }
+        function postResponse(data) {
+            CitrusResponse.pgResponse(data);
+        }
+    </script>
+    <body>
+    <section style="padding-top: 124px; margin: 20px">
+        <div class="container ">
+            <div class="row">
+                <div class="col-xs-4">
+                    <img src="/static/img/payment_failed.png" class="pull-right">
+                </div>
+                <div class="col-xs-8">
+                    <p class="payment-failure-heading">Oops..Payment failed</p>
+                    {% if booking_id %}
+                        <p class="payment-bookingId">BOOKING ID - {{ booking_id }}</p>
+                    {% endif %}
+                    {% if booking_id %}
+                        <p class="payment-amount">Amount Paid - Rs {{ amount }}</p>
+                    {% endif %}
+                    {% ifequal redirect_to_website  "1" %}
+                        <p class="payment-text">You will be automatically redirected to Booking Status in 5 seconds.</p>
+                    {% endifequal %}
+                </div>
+            </div>
+        </div>
+    </section>
+    </body>
+    <script type="text/javascript">
+        if("{{ redirect_to_website|safe  }}" == "1"){
+            setTimeout(function(){ window.location='https://bumper.com/booking-status/' }, 5000);
+        }
+        postResponse('{{ json_dump|safe  }}');
+        setdata('{{ json_dump|safe  }}');
+    </script>
+{% endblock %}

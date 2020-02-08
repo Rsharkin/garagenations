@@ -1,0 +1,138 @@
+<div class="margin15" ng-if="loginCtrl.signUp">
+    <span style="float: right;margin-top: -20px;margin-right: 20px;" ng-click="loginCtrl.close()">X</span>
+    <div  class="sign-up-heading" >
+        Sign up with Bumper
+    </div>
+    <form name="userForm">
+        <div>
+            <md-input-container class="input-fields md-accent" md-autofocus="true">
+                <label>Name</label>
+                <input  name="name" ng-model="loginCtrl.signUpDetails.name"  ng-change="loginCtrl.errors=null" required/>
+                <div ng-messages="userForm.name.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="input-fields md-accent">
+                <label>Email</label>
+                <input  name="email"  ng-pattern="/^.+@.+\..+$/" md-autofocus="true" ng-model="loginCtrl.signUpDetails.email" ng-change="loginCtrl.errors=null" required  />
+                <div ng-messages="userForm.email.$error">
+                    <div ng-message="required">This is required!</div>
+                    <div ng-message="pattern">This does not looks like an email</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container  class="input-fields md-accent">
+                <label class="md-primary">Phone</label>
+                <input name="phone"   ng-pattern="/^[0-9]{10}$/"  ng-model="loginCtrl.signUpDetails.phone" required ng-change="loginCtrl.errors=null" />
+                <div ng-messages="userForm.phone.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container  class="input-fields md-accent">
+                <label class="md-primary">Referral Code (Optional)</label>
+                <input name="referral"   ng-model="loginCtrl.signUpDetails.referral_code"  ng-change="loginCtrl.errors=null" />
+                <div ng-messages="userForm.referral.$error">
+                    <div>{$ loginCtrl.errors $}</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row"  class="sign-up-bottom-button" layout-align="center center">
+            <md-button
+                    ng-disabled="userForm.$invalid"
+                    class="md-primary md-raised sign-up-button"
+                    ng-click="loginCtrl.otpSignup()"
+                    analytics-on analytics-event="click"
+                    analytics-category="Login/Sign Up Popup"
+                    analytics-label="SignUp Button Click"
+            >SIGN UP</md-button>
+        </div>
+        <div layout="row" class="sign-up-bottom-text" layout-align="center center">
+            <p class="bottom-text">Already an User?
+                <a href=""
+                   analytics-on analytics-event="click" analytics-category="Login/Sign Up Popup"
+                   analytics-label="Signup To Login Screen Button Click" ng-click="loginCtrl.showLoginScreen()"> Login</a></p>
+        </div>
+    </form>
+</div>
+<div class="" ng-if="loginCtrl.signIn">
+    <div  class="sign-up-heading" >
+        Login to Bumper
+    </div>
+    <form name="loginForm">
+        <div>
+
+            <md-input-container  class="input-fields md-accent">
+                <input name="phone"
+                       ng-model="loginCtrl.loginOtpPhone"
+                       placeholder="Phone"
+                       ng-pattern="/^[0-9]{10}$/" ng-change="loginCtrl.errors=null" required/>
+                <div ng-messages="loginForm.phone.$error">
+                    <div ng-message="required">This is required!</div>
+                    <div ng-message="pattern">Phone number must be of 10 digits</div>
+                    <div>{$ loginCtrl.errors $}</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row"  class="sign-up-bottom-button" layout-align="center center">
+            <md-button class="md-primary md-raised sign-up-button"
+                       ng-click="loginCtrl.requestLoginOtp()"
+                       analytics-on analytics-event="click"
+                       analytics-category="Login/Sign Up Popup"
+                       analytics-label="Login Button Click"
+                       ng-disabled="loginForm.$invalid">LOGIN</md-button>
+        </div>
+        <div layout="row" class="sign-up-bottom-text" layout-align="center center">
+            <p class="bottom-text">New User?<a
+                    href=""
+                    ng-click="loginCtrl.showSignUpScreen()"
+                    analytics-on analytics-event="click"
+                    analytics-category="Login/Sign Up Popup"
+                    analytics-label="Login To SignUp Screen Button Click"> Sign Up</a></p>
+        </div>
+    </form>
+</div>
+
+<div class="" ng-if="loginCtrl.showOTP">
+    <div class="sign-up-heading">
+        Verify OTP
+    </div>
+    <p class="otp-text">Please enter 4-digit verification code sent to
+        <br><span style="font-weight: 400">{$loginCtrl.userPhone$}</span></p>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3 "></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+                    <md-input-container class="md-accent">
+                        <input name="otp-text"
+                               ng-model="loginCtrl.validatePhoneOTP"
+                               class="otp-input" ng-keyup="loginCtrl.checkOTPEntered()" ng-change="loginCtrl.errors=null"/>
+                        <div ng-messages>
+                            <div>{$ loginCtrl.errors $}</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-6">
+                            <img src="img/arrow_forward.svg"  ng-hide="loginCtrl.validatePhoneOTP.length >=4" class="forward-arrow">
+                        </div>
+                        <div class="col-lg-6 col-xs-6 forward-arrow" style="padding-bottom: 20px">
+                            <md-progress-circular
+                                    ng-if="loginCtrl.validatePhoneOTP.length >=4"  md-diameter="20px">
+                            </md-progress-circular>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3"></div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+    </div>
+    <div class="timer">{$ loginCtrl.timeToShow $} <br>{$ loginCtrl.timeToShow_message2 $}</div>
+</div>

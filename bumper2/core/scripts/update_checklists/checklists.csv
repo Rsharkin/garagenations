@@ -1,0 +1,140 @@
+id,name,category,
+1,Front wiper is present,Electrical Checklist,1
+2,Front wiper,Electrical Checklist,
+3,Rear wiper is present,Electrical Checklist,1
+4,Rear wiper,Electrical Checklist,
+5,Right indicator light on headlight,Electrical Checklist,
+6,Left indicator light on headlight,Electrical Checklist,
+7,Right headlight,Electrical Checklist,
+8,Left headlight,Electrical Checklist,
+9,Right tail light ,Electrical Checklist,
+10,Left tail light,Electrical Checklist,
+11,Rear sensor ,Electrical Checklist,
+,Rear sensor camera,Electrical Checklist,
+,Reverse Siren,Electrical Checklist,
+12,Horn,Electrical Checklist,
+13,Stereo,Electrical Checklist,
+14,Auto cops/ central lock,Electrical Checklist,
+15,Fog lamp right,Electrical Checklist,
+16,Fog lamp left,Electrical Checklist,
+17,Spoiler light,Electrical Checklist,
+18,Roof lights inside car,Electrical Checklist,
+19,Right side view mirror indicator lights,Electrical Checklist,
+20,Left side view mirror indicator lights,Electrical Checklist,
+21,Right side view mirror (electrical),Electrical Checklist,
+22,Left side view mirror (electrical),Electrical Checklist,
+,Right side view mirror (manual) ,Electrical Checklist,
+,Left side view mirror (manual) ,Electrical Checklist,
+23,Front right power window,Electrical Checklist,
+24,Rear right power window,Electrical Checklist,
+25,Front left power window,Electrical Checklist,
+26,Rear left power window,Electrical Checklist,
+27,Defogger,Electrical Checklist,
+,Speakers,Electrical Checklist,
+108,Right indicator light on tailight,Electrical Checklist,
+109,Left indicator light on tailight,Electrical Checklist,
+110,Right indicator light on fender,Electrical Checklist,
+111,Left indicator light on fender,Electrical Checklist,
+112,Rear camera working,Electrical Checklist,1
+113,Fog lamp right working,Electrical Checklist,1
+114,AC,Electrical Checklist,
+115,Fender indicator light right working,Electrical Checklist,1
+116,Fender indicator light left working,Electrical Checklist,1
+117,Indicator light in tail light - right,Electrical Checklist,1
+118,Indicator light in headlight - left,Electrical Checklist,1
+119,Indicator light in headlight- right,Electrical Checklist,1
+28,Service Booklet,Inventory Checklist,
+29,ToolKit,Inventory Checklist,
+30,Spare Wheel,Inventory Checklist,
+31,Stereo,Inventory Checklist,1
+32,Cigratte Lighter,Inventory Checklist,
+33,Mud Flaps (set of 4),Inventory Checklist,
+34,Mats (set of 4),Inventory Checklist,
+35,Front wiper,Inventory Checklist,1
+36,Antenna,Inventory Checklist,
+37,Foglight right,Inventory Checklist,1
+38,Jack & Handle,Inventory Checklist,
+39,Wheel Covers (set of 4),Inventory Checklist,
+40,Speakers,Inventory Checklist,
+41,Ashtray,Inventory Checklist,
+42,Rear Parking Sensor,Inventory Checklist,1
+43,Rear wiper,Inventory Checklist,1
+44,Dicky tray,Inventory Checklist,
+45,Front bumper grill,Inventory Checklist,1
+46,Steering Wheel Cover,Inventory Checklist,
+120,Stereo remote,Inventory Checklist,
+121,Foglight left,Inventory Checklist,1
+122,Rear camera,Inventory Checklist,1
+123,Right side view mirror indicator lights,Inventory Checklist,1
+124,Left side view mirror indicator lights,Inventory Checklist,1
+125,Side view mirror manual,Inventory Checklist,1
+126,Front windows manual,Inventory Checklist,1
+127,Rear windows manual,Inventory Checklist,1
+128,Defogger,Inventory Checklist,1
+129,Fender indicator light right,Inventory Checklist,1
+130,Fender indicator light left,Inventory Checklist,1
+131,Idols,Inventory Checklist,
+132,key chain,Inventory Checklist,
+133,Mag wheels (set of 4),Inventory Checklist,
+134,Spoiler light,Inventory Checklist,1
+135,Roof light inside car,Inventory Checklist,1
+66,Front wiper is present,Quality Check - Electrical,1
+67,Front wiper is working,Quality Check - Electrical,1
+68,Rear wiper is present,Quality Check - Electrical,1
+69,If rear wiper present it is working,Quality Check - Electrical,1
+70,Right indicator light is working,Quality Check - Electrical,1
+71,Left indicator light is working,Quality Check - Electrical,1
+72,Right headlight is working,Quality Check - Electrical,1
+73,Left headlight is working,Quality Check - Electrical,1
+74,Right tail light is working,Quality Check - Electrical,1
+75,Left tail light is working,Quality Check - Electrical,1
+76,Rear sensor  (with camera) is working,Quality Check - Electrical,1
+77,Horn is working,Quality Check - Electrical,1
+78,Stereo is working,Quality Check - Electrical,1
+79,Auto cops/ central lock is working,Quality Check - Electrical,1
+80,fog lamp right is working,Quality Check - Electrical,1
+81,Fog lamp left is working,Quality Check - Electrical,1
+82,Spoiler light is working,Quality Check - Electrical,1
+83,Internal lights in car are working,Quality Check - Electrical,1
+84,Right side view mirror indicator lights is working,Quality Check - Electrical,1
+85,Left side view mirror indicator lights is working,Quality Check - Electrical,1
+86,Right side view mirror is working,Quality Check - Electrical,1
+87,Left side view mirror is working,Quality Check - Electrical,1
+88,Front right power window is working,Quality Check - Electrical,1
+89,Rear right power window is working,Quality Check - Electrical,1
+90,Front left power window is working,Quality Check - Electrical,1
+91,Rear left power window is working,Quality Check - Electrical,1
+92,Defogger is present,Quality Check - Electrical,1
+62,Car has been washed clean,Quality Check - Car interiors,1
+63,Car interiors are clean,Quality Check - Car interiors,1
+64,Odometer reading with a picture: numeric value,Quality Check - Car interiors,1
+65,No audio error code is there,Quality Check - Car interiors,1
+60,Key chain/ remote is there with the car keys,Quality Check - Accessories,1
+61,Accessories as per job sheet there or not like floor mat, tool box, jack, antenna, stereo, service booklet, others (needed), per,Quality Check - Accessories,1
+56,No new scratch/ dent on panels not worked on ,Quality Check - Other car exterior,
+57,Fuel cap has been installed,Quality Check - Other car exterior,
+58,Alloys of the wheels have been put back,Quality Check - Other car exterior,
+59,Door locks are working,Quality Check - Other car exterior,
+47,Requested panels have been repaired,Quality Check - Panels Worked On,
+48,Pin holes,Quality Check - Panels Worked On,
+49,Paint drips,Quality Check - Panels Worked On,
+50,Paint mismatch,Quality Check - Panels Worked On,
+51,Paint chip off,Quality Check - Panels Worked On,
+52,Paint waves,Quality Check - Panels Worked On,
+53,Dust particles,Quality Check - Panels Worked On,
+54,Polish marks,Quality Check - Panels Worked On,
+55,All panels aligned properly,Quality Check - Panels Worked On,
+93,1,Interior,
+94,2,Interior,
+95,3,Interior,
+96,4,Interior,
+97,5,Interior,
+98,6,Interior,
+99,7,Interior,
+100,8,Interior,
+101,9,Interior,
+102,10,Interior,
+103,11,Interior,
+104,12,Interior,
+105,13,Interior,
+106,14,Interior,

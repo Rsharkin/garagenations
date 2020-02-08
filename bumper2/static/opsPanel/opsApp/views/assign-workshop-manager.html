@@ -1,0 +1,25 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h5 class="modal-title">Assignment for Booking Id:{$ assignWorkshopManagerCtrl.bookingId $}</h5>
+    </div>
+    <div class="modal-body">
+        <div ng-show="assignWorkshopManagerCtrl.errorMsg" ng-bind-html="assignWorkshopManagerCtrl.errorMsg" class="alert alert-danger"></div>
+        <form name="assignWorkshopManagerForm"  class="form-horizontal" role="form" method="post" >
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">Select Manager:</label>
+                <div class="col-sm-9">
+                    <select
+                            ng-model="assignWorkshopManagerCtrl.selectedItem"
+                            ng-options="item.id as item.name for item in assignWorkshopManagerCtrl.item_list track by item.id"
+                            required
+                            class="form-control  input-sm col-xs-10">
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="assignWorkshopManagerCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="assignWorkshopManagerCtrl.ajax_loading||  assignWorkshopManagerForm.$invalid " ng-click="assignWorkshopManagerCtrl.ok()">Save changes</button>
+    </div>
+</div>

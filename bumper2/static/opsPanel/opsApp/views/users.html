@@ -1,0 +1,61 @@
+<div ui-view="" class="wrapper wrapper-content ng-scope">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Users </h5>
+            <div class="pull-right">
+                <!--<a class="btn btn-primary btn-xs" href="/core/users-in-csv" target="_blank"><i class="fa fa-download"></i> Download CSV</a>-->
+                <a permission="['OpsAdmin','MarketingTeam']" ng-click="usersCtrl.exportInCsv()" class="btn btn-xs btn-info pull-right m-r-sm">Download in CSV</a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-4 m-b-xs">
+                    <div class="row">
+                        <div class="col-sm-2">Source</div>
+                        <div class="col-sm-10">
+                            <select
+                                    multiple
+                                    chosen
+                                    data-placeholder="Filter By Source"
+                                    ng-model="usersCtrl.extraFilters.source"
+                                    ng-change="usersCtrl.externalFilterChanged()"
+                                    class="form-control input-sm">
+                                <option value=""></option>
+                                <option ng-repeat="option in usersCtrl.userSources" value="{$ option.source $}">{$ option.source_desc $}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 m-b-xs text-center">
+                    <h4>Rows: <b>{$ usersCtrl.gridOptions.api.rowModel.rowsToDisplay.length $}</b></h4>
+                </div>
+                <div class="col-sm-3 m-b-xs text-center">
+                    <div class="input-group text-left">
+                        <input date-range-picker class="form-control date-picker input-sm " type="text" ng-model="usersCtrl.filters.date"
+                               options="usersCtrl.date_range_options"/>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-3 m-b-xs">
+                    <div class="row">
+                        <div class="input-group pull-right">
+                            <input type="text" placeholder="Quick Search" class="input-sm form-control" ng-model="usersCtrl.gridOptions.quickFilterText">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="removeInternalCheck">Remove Internal Accounts: </label>
+                        <input id="removeInternalCheck" type="checkbox" ng-model="usersCtrl.extraFilters.removeInternal" ng-change="usersCtrl.externalFilterChanged()">
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div style="margin-top: 4px;" class="full-height">
+                    <div ag-grid="usersCtrl.gridOptions" style="height:100%; width:100%;" class="ag-fresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

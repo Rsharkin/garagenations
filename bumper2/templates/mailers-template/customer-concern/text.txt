@@ -1,0 +1,12 @@
+Dear {{customer_name}},
+
+Thank you for taking the time to tell us about your experience with Bumper.com
+Apologies for the inconvenience. I will personally call you tomorrow to understand the concern and try our best to resolve the same.
+
+We at Bumper, aim to exceed our customer's expectations through good quality work and by providing a memorable experience.
+
+Best regards,
+Shonalee Basu
+Head Customer Experience
+Mob: +91 96862 07009
+

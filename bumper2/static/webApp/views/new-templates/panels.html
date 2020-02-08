@@ -1,0 +1,1315 @@
+<section style="background-color: #ffffff"  xmlns="http://www.w3.org/1999/html" ng-show="!carPanelSearchCtrl.showHelp">
+    <div class="container bm-panels-container">
+        <!-- <a href="#"  ng-show="carPanelSearchCtrl.isCarModelSelected" ng-click="carPanelSearchCtrl.showHelp=true; carPanelSearchCtrl.scrollTop()"
+            class="help-button" analytics-on analytics-event="Chat button Click (Mobile Only)" analytics-category="BODE">
+             <i class="material-icons" style="opacity:1">help_outline</i>
+         </a>
+         -->
+        <div class="tracker hide-in-mob">
+            <div layout="row">
+                <div flex>
+                    <div layout="column">
+                        <div style="margin-left:20px ">
+                            <div flex>
+                                <span ng-class="{'circle-empty':base.progress==0,'circle-filled':base.progress>0}" style="margin-left: 20px"></span>
+                                <span ng-class="{'connector-empty':base.progress==0,'connector':base.progress>0}"></span>
+                                <span ng-class="{'circle-empty':base.progress<=1,'circle-filled':base.progress>1}"></span>
+                                <span ng-class="{'connector-empty':base.progress<=1,'connector':base.progress>1}"></span>
+                                <span ng-class="{'circle-empty':base.progress<=3,'circle-filled':base.progress>3}"></span>
+                                <span ng-class="{'connector-empty':base.progress<=3,'connector':base.progress>3}"></span>
+                                <span ng-class="{'circle-empty':base.progress<=4,'circle-filled':base.progress>4}"></span>
+                                <span ng-class="{'connector-empty':base.progress<=4,'connector':base.progress>4}" class=" hide-in-mob"></span>
+                                <span ng-class="{'circle-empty':base.progress<=4,'circle-filled':base.progress>4}" class="hide-in-mob"></span>
+                            </div>
+                        </div>
+                        <div flex>
+                            <div layout="row">
+                                <div flex ng-class="{'tracker-text':base.progress==0,'tracker-text-completed':base.progress>0}">Search Car</div>
+                                <div flex ng-class="{'tracker-text':base.progress<=1,'tracker-text-completed':base.progress>1}">Select Work</div>
+                                <div flex ng-class="{'tracker-text':base.progress<=2,'tracker-text-completed':base.progress>2}">Confirm Booking</div>
+                                <div flex ng-class="{'tracker-text':base.progress<=3,'tracker-text-completed':base.progress>3}">Add Pickup details</div>
+                                <div flex ng-class="{'tracker-text':base.progress<=4,'tracker-text-completed':base.progress>4}" class="hide-in-mob">Free Pickup & Drop</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="cost-estimator-heading">Get cost estimate for car body work </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-12 " ng-show="!carPanelSearchCtrl.isCarModelSelected">
+                <form ng-submit="" class="input-search-car" >
+                    <md-autocomplete
+                            analytics-on analytics-event="Searched Car" analytics-category="BODE"
+                            analytic-label="base.searchText"
+                            placeholder="Search car by model or brand"
+                            md-delay="10"
+                            md-selected-item-change=""
+                            md-selected-item="base.selectedCarModel"
+                            md-search-text="base.searchText"
+                            md-items="item in base.searchCarModel(base.searchText)"
+                            md-item-text="item.brand.name+' '+item.name"
+                            md-match-case-insensitive="true"
+                    <!--ng-keypress="base.keyPressInSearchCar($event)"-->
+                    >
+                    <md-item-template>
+                        <span>{$item.brand.name$}{$" "$}{$item.name$}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No matches found.
+                    </md-not-found>
+                    </md-autocomplete>
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 " ng-show="!carPanelSearchCtrl.isCarModelSelected">
+                <form ng-submit="" class="input-search-car" ng-if="base.selectedCarModel">
+                    <md-autocomplete
+                            ng-disabled="base.isDisabled"
+                            md-no-cache="base.noCache"
+                            md-selected-item="base.selectedYear"
+                            md-search-text-change="base.searchTextChange(base.searchYear)"
+                            md-search-text="base.searchYear"
+                            md-selected-item-change="base.selectedYearChange(item)"
+                            md-items="item in base.querySearch(base.searchYear)"
+                            md-item-text="item.value"
+                            md-min-length="0"
+                            placeholder="Select year of make">
+                        <md-item-template>
+                            <span md-highlight-text="base.searchYear" md-highlight-flags="^i">{$item.display$}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No year matching "{$base.searchYear$}" is found.
+                        </md-not-found>
+                    </md-autocomplete>
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12" ng-show="!carPanelSearchCtrl.isCarModelSelected">
+                <md-button ng-if="base.selectedCarModel"
+                           ng-click="base.selectedCarModelChanged('panelScreen')"
+                           analytics-on analytics-event="Show Panel Button Click" analytics-category="BODE"
+                           class="md-raised md-primary button-custom panel-button" style ="margin:5px">
+                    SHOW PANELS
+                </md-button>
+            </div>
+        </div>
+        <div class="row popular-cars" ng-if="!carPanelSearchCtrl.isCarModelSelected">
+            <div class="col-lg-6" style="margin-left: 15px" ng-if="!carPanelSearchCtrl.isCarModelSelected">
+                <span ng-if="base.selectedCarModel" style="width:150px"></span>
+                <span  ng-if="!base.selectedCarModel">
+                <p style="opacity: 0.4;font-family: Montserrat;font-size: 14px;color: #000000;">Popular Cars</p>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="padding-bottom:10px;padding-top:10px" ng-repeat="item in base.popularCars track by $id(item)" ng-if="!base.selectedCarModel">
+                        <a href="#" ng-click="base.selectedCarModel=item"
+                           analytics-on analytics-event="popular car clicked" analytics-category="BODE" analytics-label=" {$item.brand.name+' '+item.name$}">{$item.brand.name+' '+item.name$}
+                        </a>
+                    </div>
+                </div>
+                </span>
+            </div>
+        </div>
+        <div uk-sticky style="background-color:#fff">
+            <div class="row panel-price-top"  ng-show="carPanelSearchCtrl.isCarModelSelected">
+                <div class="col-lg-12">
+                    <div class="panel-car">
+                        <img src="img/car.svg" height="25px"  style="margin-right: 4px; padding-bottom: 6px"; alt="car-icon">
+                        {$ base.selectedCarModel.brand.name $} - {$ base.selectedCarModel.name $}<span ng-if="base.selectedYear.value">-  {$base.selectedYear.value$}</span>
+                        </span>
+                        <a href="#headerTop" ng-click="base.removeSelectedCarModel()"  class="change-car-link"
+                           analytics-on analytics-event="Change Car Click" analytics-category="BODE" uk-scroll>(Change Car)
+                        </a>
+                    </div>
+                    <div class="price-booknow-group">
+                        <!--
+                        <div class="call-back-float panel-price-mobile">
+                                                <md-button
+                                                        ng-click="carPanelSearchCtrl.userInquiry(1)"
+                                                        analytics-on analytics-event="Click" analytics-category="BODE" analytics-label="Request a call back"
+                                                        class="md-raised call-back-button no-margin pull-right">
+                                                    REQUEST CALLBACK
+                                                </md-button>
+                                      </div>
+                          -->
+                        <div class="book-now-button panel-price-mobile" >
+                            <md-button
+                                    ng-disabled="carPanelSearchCtrl.cartValue == null || !carPanelSearchCtrl.isCarModelSelected"
+                                    ng-click="carPanelSearchCtrl.moveToCart()"
+                                    class="md-raised md-primary button-custom no-margin  pull-right"
+                                    analytics-on analytics-event="Click" analytics-category="BODE" analytics-label="Proceed To Cart Button">
+                                BOOK NOW
+                            </md-button>
+                        </div>
+                        <div class="amount-panel panel-price-mobile" style ="width: 242px;text-align: right" ng-if="carPanelSearchCtrl.cartValue != null && carPanelSearchCtrl.isCarModelSelected" >
+                            <a href="#" id="link-price" ng-mouseover="carPanelSearchCtrl.showPanelPricePopup()" ng-mouseleave="carPanelSearchCtrl.hidePanelPricePopup()" style="text-decoration:none;color:#000">Total Amount -
+                                <span ng-if="carPanelSearchCtrl.cartValue>0">&#8377; {$ carPanelSearchCtrl.cartValue | number:0 $}<span ng-if="carPanelSearchCtrl.replaceSelected">*</span></span>
+                                <span ng-if="carPanelSearchCtrl.cartValue==0.00">Part MRP*</span>
+                            </a>
+                            <a href= "#" ng-click="data.showPopup=!data.showPopup" ng-blur="data.showPopup = false" style="text-decoration: none;">
+                                <p class="savings-panel" ng-if="carPanelSearchCtrl.savings>0" style="padding-right: 15px;" ng-click="carPanelSearchCtrl.showPricePopup=true" ng-blur="carPanelSearchCtrl.showPricePopup=!carPanelSearchCtrl.showPricePopup">Your Savings - &#8377; {$carPanelSearchCtrl.savings|number:0$}<i class="material-icons" style="position: absolute;top:25px;opacity: 0.6;color: #7147e5;">arrow_drop_down</i></p></a>
+                            <div class="saving-popup" ng-if="carPanelSearchCtrl.showPricePopup">
+                                <p><img src="img/Piggybank.svg"> <span style="font-size:15px;font-weight: 500;margin-left: 8px">Your Price and Savings</span></p>
+                                <hr style="opacity:0.3;margin-bottom: 10px">
+                                <p ng-if="carPanelSearchCtrl.savings" style="display: flex;"><i class="material-icons" style="font-size:13px; color:#7ed321;margin-top: 3px">check_circle</i><span style="opacity: 0.6;margin-left:12px"> Enjoy Savings! Total price is &#8377; {$carPanelSearchCtrl.savings |number:0$} lesser than the market price.</span></p>
+                                <hr style="opacity:0.3;margin-left:40px;margin-top: 10px;margin-bottom: 10px" ng-if="carPanelSearchCtrl.savings">
+                                <p  style="display: flex;"><i class="material-icons" style="font-size:13px; color:#7ed321;margin-top: 3px">check_circle</i><span style="opacity: 0.6;margin-left:12px"> Painting charges are included in price.</span></p>
+                                <hr style="opacity:0.3;margin-left: 40px;margin-top: 10px;margin-bottom: 10px">
+                                <p  style="display: flex;"><i class="material-icons" style="font-size:13px; color:#7ed321;margin-top: 3px">check_circle</i> <span style="opacity: 0.6;margin-left:12px">Pickup & drop is absolutely free.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-cloak style="margin-top: 20px" ng-show="carPanelSearchCtrl.isCarModelSelected">
+            <md-content>
+                <md-tabs md-dynamic-height md-border-bottom  md-selected="carPanelSearchCtrl.selectedIndex">
+                    <md-tab label="PANELS {$ carPanelSearchCtrl.selectedPanel $}" analytics-on analytics-event="Tab Click" analytics-category="BODE" analytics-label="Panel">
+                        <md-content class="md-padding" style="background-color: #f6f6f6">
+                            <!--<div ng-if="carPanelSearchCtrl.isCarModelSelected">
+                                <div class="row" style="margin-left: 0px;margin-right: 0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 price-table-header-mobile">
+                                        PRICE PER PANEL (same for each panel)
+                                    </div>
+                                </div>
+                                <div class="mobile-price-panel">
+                                    <div class="row" style="margin-bottom: 8px">
+                                        <div class="col-xs-6">{$carPanelSearchCtrl.carPanels[0].price_list[0].type_of_work$}</div>
+                                        <div class="col-xs-6"><span class="pull-right">Rs. {$carPanelSearchCtrl.carPanels[0].price_list[0].new_price_text|number:0$}</span></div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 8px">
+                                        <div class="col-xs-6">{$carPanelSearchCtrl.carPanels[0].price_list[1].type_of_work$}</div>
+                                        <div class="col-xs-6"> <span class="pull-right">Rs. {$carPanelSearchCtrl.carPanels[0].price_list[1].new_price_text|number:0$}</span></div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 8px" ng-if="carPanelSearchCtrl.carPanels[0].price_list[2].type_of_work">
+                                        <div class="col-xs-6"> {$carPanelSearchCtrl.carPanels[0].price_list[2].type_of_work$}</div>
+                                        <div class="col-xs-6"> <span class="pull-right">{$carPanelSearchCtrl.carPanels[0].price_list[2].new_price_text$}</span></div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row" ng-if="carPanelSearchCtrl.isCarModelSelected">
+                                <div class="col-xs-9 col-sm-6 col-md-8 col-lg-9">
+                                    <div class="price-of-panel">
+                                        <div class="background-chip ">{$carPanelSearchCtrl.carPanels[0].price_list[0].type_of_work$} - <span ng-bind-html="carPanelSearchCtrl.carPanels[0].price_list[0].new_price_text| html"></span></div>
+                                        <div class="background-chip">{$carPanelSearchCtrl.carPanels[0].price_list[1].type_of_work$} - <span ng-bind-html="carPanelSearchCtrl.carPanels[0].price_list[1].new_price_text| html"></span></div>
+                                        <div ng-if="carPanelSearchCtrl.carPanels[0].price_list[2].type_of_work" class="background-chip">{$carPanelSearchCtrl.carPanels[0].price_list[2].type_of_work$} - Labour & Material charges + Part MRP <!--$carPanelSearchCtrl.carPanels[0].price_list[0].price$}--></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <a ui-sref="base.dentOrScratch" class="dent-scratch-link hide-in-mob" target="_blank"  analytics-on analytics-event="Is there also a dent on the panel -Click(Desktop)" analytics-category="BODE">
+                                        Is there also a dent on the panel?
+                                        <span class="ripple"><img src="img/25pxIcon-01.svg" class="ripple-img" width="20"></span>
+                                    </a>
+                                    <a ui-sref="base.dentOrScratch" class="dent-scratch-link hide-on-desktop" analytics-on analytics-event="Is there also a dent on the panel -Click(Mobile)" analytics-category="BODE">
+                                        Is there also a dent on the panel?
+                                        <span class="ripple"><img src="img/25pxIcon-01.svg" class="ripple-img" width="20"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="carPanelSearchCtrl.isCarModelSelected">
+                                <p class="same-price"><img src="img/info.svg" height="20px"  style="margin-right: 6px; padding-bottom: 2px; height:20px !important;" alt="info-icon">prices are same for each panel</p>
+                            </div>
+                            <div class="row" style="padding-bottom: 20px">
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                    <div ng-repeat="panel in carPanelSearchCtrl.carPanels.slice(0,4)  track by $id(panel)" class=" bm-panels">
+                                        <div class="bm-panel-card panelContainer" ng-mouseenter="showOptions=1" ng-mouseleave="showOptions=null">
+                                            <div class="row panel-row">
+                                                <a href="#" ng-click="data.showOption=!data.showOption">
+                                                    <div  class=" col-lg-6 col-xs-6 ">
+                                                        <img ng-src="{$ panel.price_list[0].sized_photo $}"  alt="{$ panel.name $}+' '+Dent and Scratch Repair" height="1000px" width="1000px" class="bm-panel-image">
+                                                    </div>
+                                                    <div class="col-lg-6 col-xs-6 no-padding no-margin">
+                                                        <img src="img/panel_selectedIcon.svg" height="20px" width="20px" ng-if="panel.selectedTypeOfWork" style="float: right;;margin-right: 15px" alt="selected icon">
+                                                        <div class="bm-panel-text" ng-init="data.showOption=false">
+                                                            {$ panel.name $}
+                                                            <div class="row" style="margin-left: 0px">
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;margin-top:5px;margin-right: 3px;float: left;color: #a3a3a3;" ng-show="data.showOption==false&&!panel.selectedTypeOfWork">add_circle_outline</i>
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;margin-right: 3px;float: left;margin-top:5px; color: #a3a3a3;" ng-show="data.showOption==true&&!panel.selectedTypeOfWork">remove_circle_outline</i>
+                                                                <span style="display:inline-block;font-size: 11px;color: #a3a3a3;margin-right:25px; margin-top: 3px" ng-if="!panel.selectedTypeOfWork">Select type of work</span>
+                                                                <span style="display:inline-block;font-size: 11px;color:#000000;margin-right:25px;" ng-if="panel.selectedTypeOfWork">{$ panel.selectedTypeOfWork $}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="col-lg-12 col-xs-12"  style="padding-bottom: 10px" ng-show="data.showOption">
+                                                    <md-radio-group ng-model="panel.selectedTypeOfWork">
+                                                        <md-radio-button
+                                                                ng-disabled="carPanelSearchCtrl.isFullBodySelected && item.type_of_work != 'Replace'"
+                                                                value="{$ item.type_of_work $}"
+                                                                ng-click="carPanelSearchCtrl.setPanelSelection(panel.name, item);data.showOption=false;"
+                                                                class="md-accent radio-buttons radio-text"
+                                                                analytics-on analytics-event="{$ item.type_of_work $} Checklist Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                                ng-repeat="item in panel.price_list track by $id(item)">{$ item.type_of_work $} -&nbsp; <span class="new-price-text"><span ng-bind-html="item.new_price_text | html"></span></span>
+                                                            <!-- <span class="pull-right" ng-if="item.price==0.00" style="padding-left: 3px;">Part Cost*</span>
+                                                             <span class="pull-right" ng-if="item.price!=0.00" style="padding-left: 3px;">Rs. {$ item.price| number:0 $}</span>-->
+                                                            <!-- cost - {$ item.price>0? item.price.toString().slice(0, -3):'Part Cost*'  $}-->
+                                                        </md-radio-button>
+                                                        <div class="part-price-label">
+                                                            <a href="#" class="tag" ng-click="carPanelSearchCtrl.openBreakupPopup(panel)">Check Price Breakup</span></a>
+                                                        </div>
+                                                    </md-radio-group>
+                                                    <a href="#"
+                                                       ng-show="panel.selectedTypeOfWork"
+                                                       analytics-on analytics-event="Clear Panel Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                       class="clear-button"
+                                                       ng-click="panel.selectedTypeOfWork=null; carPanelSearchCtrl.removePanelFromSelection(panel.name);data.showOption=false;">
+                                                        CLEAR SELECTION
+                                                    </a>
+                                                    <p class="panel-info-text" ng-if="carPanelSearchCtrl.isFullBodySelected">All scratches and Dents will be removed as part of Full Body Paint package</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                    <div ng-repeat="panel in carPanelSearchCtrl.carPanels.slice(4,8) track by $id(panel)" class=" bm-panels">
+                                        <div class="bm-panel-card panelContainer" ng-mouseenter="showOptions=1" ng-mouseleave="showOptions=null">
+                                            <div class="row panel-row">
+                                                <a href="#" ng-click="data.showOption=!data.showOption">
+                                                    <div  class=" col-lg-6 col-xs-6">
+                                                        <img ng-src="{$ panel.price_list[0].sized_photo $}"  alt="{$ panel.name $}+' '+Dent and Scratch Repair" height="1000px" width="1000px" class="bm-panel-image">
+                                                    </div>
+                                                    <div class="col-lg-6 col-xs-6 no-padding no-margin">
+                                                        <img src="img/panel_selectedIcon.svg" height="20px" width="20px" ng-if="panel.selectedTypeOfWork" style="float: right;;margin-right: 15px" alt="selected icon">
+                                                        <div class="bm-panel-text" ng-init="data.showOption=false">
+                                                            {$ panel.name $}
+                                                            <div class="row" style="margin-left: 0px">
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;margin-top:5px;margin-right: 3px;float: left;color: #a3a3a3;" ng-show="data.showOption==false&&!panel.selectedTypeOfWork">add_circle_outline</i>
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;float: left;margin-right: 3px;margin-top:5px; color: #a3a3a3;" ng-show="data.showOption==true&&!panel.selectedTypeOfWork">remove_circle_outline</i>
+                                                                <span style="display:inline-block;font-size: 11px;color: #a3a3a3;margin-right:25px;" ng-if="!panel.selectedTypeOfWork">Select type of work</span>
+                                                                <span style="display:inline-block;font-size: 11px;color:#000000;margin-right:25px;" ng-if="panel.selectedTypeOfWork">{$ panel.selectedTypeOfWork $}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="col-lg-12 col-xs-12"  style="padding-bottom: 10px" ng-show="data.showOption">
+                                                    <md-radio-group ng-model="panel.selectedTypeOfWork">
+                                                        <md-radio-button
+                                                                ng-disabled="carPanelSearchCtrl.isFullBodySelected && item.type_of_work != 'Replace'"
+                                                                value="{$ item.type_of_work $}"
+                                                                ng-click="carPanelSearchCtrl.setPanelSelection(panel.name, item);data.showOption=false;"
+                                                                class="md-accent radio-buttons radio-text"
+                                                                analytics-on analytics-event="{$ item.type_of_work $} Checklist Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                                ng-repeat="item in panel.price_list track by $id(item)">{$ item.type_of_work $} -&nbsp; <span class="new-price-text"><span ng-bind-html="item.new_price_text| html"></span></span>
+                                                            <!-- <span class="pull-right" ng-if="item.price==0.00" style="padding-left: 3px;">Part Cost*</span>
+                                                             <span class="pull-right" ng-if="item.price!=0.00" style="padding-left: 3px;">Rs. {$ item.price| number:0 $}</span>-->
+                                                            <!-- cost - {$ item.price>0? item.price.toString().slice(0, -3):'Part Cost*'  $}-->
+                                                        </md-radio-button>
+                                                        <div class="part-price-label">
+                                                            <a href="#" class="tag" ng-click="carPanelSearchCtrl.openBreakupPopup(panel)">Check Price Breakup</span></a>
+                                                        </div>
+                                                    </md-radio-group>
+
+                                                    <a href="#"
+                                                       ng-show="panel.selectedTypeOfWork"
+                                                       analytics-on analytics-event="Clear Panel Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                       class="clear-button"
+                                                       ng-click="panel.selectedTypeOfWork=null; carPanelSearchCtrl.removePanelFromSelection(panel.name);data.showOption=false;">
+                                                        CLEAR SELECTION
+                                                    </a>
+                                                    <p class="panel-info-text" ng-if="carPanelSearchCtrl.isFullBodySelected">All scratches and Dents will be removed as part of Full Body Paint package</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                    <div ng-repeat="panel in carPanelSearchCtrl.carPanels.slice(8,12) track by $id(panel)" class=" bm-panels">
+                                        <div class="bm-panel-card panelContainer" ng-mouseenter="showOptions=1" ng-mouseleave="showOptions=null">
+                                            <div class="row panel-row">
+                                                <a href="#" ng-click="data.showOption=!data.showOption">
+                                                    <div  class=" col-lg-6 col-md-6 col-xs-6">
+                                                        <img ng-src="{$ panel.price_list[0].sized_photo $}" height="1000px" width="1000px" alt="{$ panel.name $}+' '+Dent and Scratch Repair" class="bm-panel-image">
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-xs-6 no-padding no-margin">
+                                                        <img src="img/panel_selectedIcon.svg" height="20px" width="20px" ng-if="panel.selectedTypeOfWork" style="float: right;;margin-right: 15px" alt="selected-icon">
+                                                        <div class="bm-panel-text" ng-init="data.showOption=false">
+                                                            {$ panel.name $}
+                                                            <div class="row" style="margin-left: 0px">
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;margin-top:5px;margin-right: 3px;float: left;color: #a3a3a3;" ng-show="data.showOption==false&&!panel.selectedTypeOfWork">add_circle_outline</i>
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;float: left;margin-right: 3px;margin-top:5px; color: #a3a3a3;" ng-show="data.showOption==true&&!panel.selectedTypeOfWork">remove_circle_outline</i>
+                                                                <span style="display:inline-block;font-size: 11px;color: #a3a3a3;margin-right:25px;margin-top: 2px" ng-if="!panel.selectedTypeOfWork">Select type of work</span>
+                                                                <span style="display:inline-block;font-size: 11px;color:#000000;margin-right:25px;" ng-if="panel.selectedTypeOfWork">{$ panel.selectedTypeOfWork $}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="col-lg-12 col-xs-12"  style="padding-bottom: 10px" ng-show="data.showOption">
+                                                    <md-radio-group ng-model="panel.selectedTypeOfWork">
+                                                        <md-radio-button
+                                                                ng-disabled="carPanelSearchCtrl.isFullBodySelected && item.type_of_work != 'Replace'"
+                                                                value="{$ item.type_of_work $}"
+                                                                ng-click="carPanelSearchCtrl.setPanelSelection(panel.name, item);data.showOption=false;"
+                                                                class="md-accent radio-buttons radio-text"
+                                                                analytics-on analytics-event="{$ item.type_of_work $} Checklist Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                                ng-repeat="item in panel.price_list track by $id(item)">{$ item.type_of_work $} -&nbsp;  <span class="new-price-text"><span ng-bind-html="item.new_price_text|html"></span></span>
+                                                            <!-- <span class="pull-right" ng-if="item.price==0.00" style="padding-left: 3px;">Part Cost*</span>
+                                                             <span class="pull-right" ng-if="item.price!=0.00" style="padding-left: 3px;">Rs. {$ item.price| number:0 $}</span>-->
+                                                            <!-- cost - {$ item.price>0? item.price.toString().slice(0, -3):'Part Cost*'  $}-->
+                                                        </md-radio-button>
+                                                        <div class="part-price-label">
+                                                            <a href="#" class="tag" ng-click="carPanelSearchCtrl.openBreakupPopup(panel)">Check Price Breakup</span></a>
+                                                        </div>
+                                                    </md-radio-group>
+                                                    <a href="#"
+                                                       ng-show="panel.selectedTypeOfWork"
+                                                       analytics-on analytics-event="Clear Panel Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                       class="clear-button"
+                                                       ng-click="panel.selectedTypeOfWork=null; carPanelSearchCtrl.removePanelFromSelection(panel.name);data.showOption=false;">
+                                                        CLEAR SELECTION
+                                                    </a>
+                                                    <p class="panel-info-text" ng-if="carPanelSearchCtrl.isFullBodySelected">All scratches and Dents will be removed as part of Full Body Paint package</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                    <div ng-repeat="panel in carPanelSearchCtrl.carPanels.slice(12,carPanelSearchCtrl.carPanels.length) track by $id(panel)" class=" bm-panels">
+                                        <div class="bm-panel-card panelContainer" ng-mouseenter="showOptions=1" ng-mouseleave="showOptions=null">
+                                            <div class="row panel-row">
+                                                <a href="#" ng-click="data.showOption=!data.showOption">
+                                                    <div  class=" col-lg-6 col-md-6 col-xs-6">
+                                                        <img ng-src="{$ panel.price_list[0].sized_photo $}" height="1000px" width="1000px" alt="{$ panel.name $}+' '+Dent and Scratch Repair" class="bm-panel-image">
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-xs-6 no-padding no-margin">
+                                                        <img src="img/panel_selectedIcon.svg" height="20px" width="20px" ng-if="panel.selectedTypeOfWork" style="float: right;;margin-right: 15px" alt="selected-icon">
+                                                        <div class="bm-panel-text" ng-init="data.showOption=false">
+                                                            {$ panel.name $}
+                                                            <div class="row" style="margin-left: 0px">
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;margin-top:5px;margin-right: 3px;float: left;color: #a3a3a3;" ng-show="data.showOption==false&&!panel.selectedTypeOfWork">add_circle_outline</i>
+                                                                <i class="material-icons" style="display:inline-block;font-size: 13px;float: left;margin-right: 3px;margin-top:5px; color: #a3a3a3;" ng-show="data.showOption==true&&!panel.selectedTypeOfWork">remove_circle_outline</i>
+                                                                <span style="display:inline-block;font-size: 11px;color: #a3a3a3;margin-right:25px;margin-top: 2px" ng-if="!panel.selectedTypeOfWork">Select type of work</span>
+                                                                <span style="display:inline-block;font-size: 11px;color:#000000;margin-right:25px;" ng-if="panel.selectedTypeOfWork">{$ panel.selectedTypeOfWork $}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="col-lg-12 col-xs-12"  style="padding-bottom: 10px" ng-show="data.showOption">
+                                                    <md-radio-group ng-model="panel.selectedTypeOfWork">
+                                                        <md-radio-button
+                                                                ng-disabled="carPanelSearchCtrl.isFullBodySelected && item.type_of_work != 'Replace'"
+                                                                value="{$ item.type_of_work $}"
+                                                                ng-click="carPanelSearchCtrl.setPanelSelection(panel.name, item);data.showOption=false;"
+                                                                class="md-accent radio-buttons radio-text"
+                                                                analytics-on analytics-event="{$ item.type_of_work $} Checklist Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                                ng-repeat="item in panel.price_list track by $id(item)">{$ item.type_of_work $} -&nbsp;  <span class="new-price-text"><span ng-bind-html="item.new_price_text|html"></span></span>
+                                                            <!-- <span class="pull-right" ng-if="item.price==0.00" style="padding-left: 3px;">Part Cost*</span>
+                                                             <span class="pull-right" ng-if="item.price!=0.00" style="padding-left: 3px;">Rs. {$ item.price| number:0 $}</span>-->
+                                                            <!-- cost - {$ item.price>0? item.price.toString().slice(0, -3):'Part Cost*'  $}-->
+                                                        </md-radio-button>
+                                                        <div class="part-price-label">
+                                                            <a href="#" class="tag" ng-click="carPanelSearchCtrl.openBreakupPopup(panel)">Check Price Breakup</span></a>
+                                                        </div>
+                                                    </md-radio-group>
+                                                    <a href="#"
+                                                       ng-show="panel.selectedTypeOfWork"
+                                                       analytics-on analytics-event="Clear Panel Button" analytics-category="BODE" analytics-label="{$ panel.name $}"
+                                                       class="clear-button"
+                                                       ng-click="panel.selectedTypeOfWork=null; carPanelSearchCtrl.removePanelFromSelection(panel.name);data.showOption=false;">
+                                                        CLEAR SELECTION
+                                                    </a>
+                                                    <p class="panel-info-text" ng-if="carPanelSearchCtrl.isFullBodySelected">All scratches and Dents will be removed as part of Full Body Paint package</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="PARTS {$carPanelSearchCtrl.selectedPart $}"  analytics-on analytics-event="Tab Click" analytics-category="BODE" analytics-label="Part" ng-click="carPanelSearchCtrl.loadParts();">
+                        <md-content class="md-padding" style="background-color: #f6f6f6">
+                            <div class="row">
+                                <div class="col-xs-10  price-of-panel-spare">SELECT THE SPARE PARTS TO BE REPLACED</div>
+                                <div class="col-xs-2">
+
+                                    <a href="#know"  class="hide-in-mob"  uk-scroll>
+                                        <i style="font-size:18px;color:#7147e5" class="material-icons pull-right"
+                                           ng-if="carPanelSearchCtrl.isCarModelSelected"
+                                           analytics-on analytics-event="Click"
+                                           analytics-category="BODE"
+                                           analytics-label="help question mark clicked">
+                                            help_outline
+                                        </i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="carPanelSearchCtrl.isCarModelSelected">
+                                <p class="same-price">* Total amount of part replacement is MRP + Labour & Material Charges( mentioned below)</p>
+                            </div>
+                            <div class="row" style="margin-top: 5px">
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="part in carPanelSearchCtrl.parts track by $id(part)">
+                                    <div class="parts-card">
+                                        <span class="part-heading">{$part.name$}</span>
+                                        <md-checkbox style="padding-left:25px; float:right"
+                                                     analytics-on analytics-event="Parts clicked"
+                                                     analytics-category="BODE"
+                                                     analytics-label="{$part.name$}"
+                                                     ng-model="part.selectedTypeOfWork"
+                                                     style="padding-left:30px;"
+                                                     ng-change="part.selectedTypeOfWork?carPanelSearchCtrl.setPanelSelection(part.name, part.price_list[0]):carPanelSearchCtrl.removePanelFromSelection(part.name);">
+
+                                        </md-checkbox>
+                                        <div class="part-price-label">
+                                            <p style="font-size: 14px;opacity: 0.5;margin-bottom: 0px!important;"><span ng-bind-html="part.price_list[0].new_price_text"></span><span ng-if="!part.price_list[0].part_price">*</span></p>
+                                        </div>
+                                        <!-- <div class="part-breakup" ng-if="data.open">
+                                             <hr>
+                                             <div class="row">
+                                                 <div class="col-xs-6">
+                                                     <p class="part-breakup-heading">Part MRP</p>
+                                                 </div>
+                                                 <div class="col-xs-6">
+                                                     <p class="part-breakup-heading-price">
+                                                         <span ng-if="part.price_list[0].part_price">&#8377;{$part.price_list[0].part_price$}</span>
+                                                         <span ng-if="!part.price_list[0].part_price">On request</span>
+                                                     </p>
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-xs-8">
+                                                     <p class="part-breakup-heading">Labour and Material charges</p>
+                                                 </div>
+                                                 <div class="col-xs-4">
+                                                     <p class="part-breakup-heading-price">&#8377;{$part.price_list[0].labour_price--part.price_list[0].material_price$}</p>
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-xs-6">
+                                                     <p class="part-breakup-total">Total Price</p>
+                                                 </div>
+                                                 <div class="col-xs-6">
+                                                     <p class="part-breakup-total-price">&#8377;{$part.price_list[0].new_price$}*</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         -->
+                                    </div>
+                                </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="FULL BODY PAINT" analytics-on analytics-event="Tab Click" analytics-category="BODE" analytics-label="FBP" ng-click="carPanelSearchCtrl.loadFullBody();">
+                        <md-content class="md-padding" style="background-color: #f6f6f6">
+                            <div class="row">
+                                <div class="col-xs-10  price-of-panel-spare"> Package Includes removal of all dents & scratches from all panels except roof</div>
+                                <div class="col-xs-2">
+
+                                    <a href="#know"  class="hide-in-mob" ng-click="carPanelSearchCtrl.gotoKnowMore()" uk-scroll>
+                                        <i style="font-size:18px;color:#7147e5" class="material-icons pull-right"
+                                           ng-if="carPanelSearchCtrl.isCarModelSelected"
+                                           analytics-on analytics-event="Click"
+                                           analytics-category="BODE"
+                                           analytics-label="help question mark clicked">
+                                            help_outline
+                                        </i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="item in carPanelSearchCtrl.fullBodyPackage track by $id(item)">
+                                    <div class="package-container">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-5 ">
+                                                <div class="package-image-container">
+                                                    <img ng-src="{$item.package.photo$}"
+                                                         class="bm-package-image" alt="Car Paint Workshop - bumper.com">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-5  ">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="package-main-heading">
+                                                            {$item.package.name$}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12  ">
+                                                        <div class="heading-text-option-small">
+                                                            Availability at doorstep
+                                                            <span ng-if="item.package.is_doorstep">- Yes</span>
+                                                            <span ng-if="!item.package.is_doorstep">- No</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 ">
+                                                        <p class="package-desc" style="font-size: 12px">
+                                                            <span ng-bind-html="item.package.desc | limitTo: 200"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 " style="height: 30px;">
+                                                        <md-button class=" md-accent button-no-ink  read-more no-margin no-padding"
+                                                                   ng-hide="showDetails||item.package.long_desc.length==0"
+                                                                   ng-click="showDetails = ! showDetails">READ MORE
+                                                        </md-button>
+                                                        <md-button
+                                                                class="md-accent button-no-ink no-margin  no-padding"
+                                                                ng-show="showDetails"
+                                                                ng-click="showDetails = ! showDetails">READ LESS
+                                                        </md-button>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p class="price-text-package ">&#8377; {$item.price | number:0$}</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <md-button
+                                                                analytics-on analytics-event="Added To Cart"
+                                                                analytics-category="BODE"
+                                                                analytics-label="FBP"
+                                                                ng-hide="item.id==carPanelSearchCtrl.fullBody.id"
+                                                                class="md-primary button-no-ink no-margin pull-right"
+                                                                ng-click="carPanelSearchCtrl.selectFullBody(item)">ADD TO CART</md-button>
+                                                        <md-button
+                                                                analytics-on analytics-event="Removed From Cart"
+                                                                analytics-category="BODE"
+                                                                analytics-label="FBP"
+                                                                ng-show="item.id==carPanelSearchCtrl.fullBody.id"
+                                                                class="md-primary button-no-ink no-margin pull-right"
+                                                                ng-click="carPanelSearchCtrl.removeFullBodyPackage()">
+                                                            <i class="material-icons" style="color: #ff6666;font-size: 12px;margin-right:6px">check_circle</i>IN CART</md-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div  ng-if="showDetails" class="margin15" ng-bind-html="item.package.long_desc">
+                                                    <span ng-bind-html="item.package.long_desc"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="package-container-mobile" style="margin-bottom: 20px">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-5 ">
+                                                <div class="package-image-container">
+                                                    <img ng-src="{$item.package.photo$}"
+                                                         class="bm-package-image" alt="Car Paint Workshop - bumper.com">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-5  ">
+                                                <a ng-href="{$item.package.desc_url$}">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="package-main-heading">
+                                                                {$item.package.name$}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 ">
+                                                            <div class="heading-text-option-small" ng-if="item.package.is_doorstep">
+                                                                Available at doorstep
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 ">
+                                                            <p class="package-desc" style="font-size: 12px">
+                                                                <span ng-bind-html="item.package.desc | limitTo: 200"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 ">
+                                                            <md-button class=" md-accent button-no-ink  read-more no-margin no-padding"
+                                                                       analytics-on analytics-event="Read More"
+                                                                       analytics-category="BODE"
+                                                                       analytics-label="FBP"
+                                                                       ng-hide="showDetails"
+                                                                       ng-click="showDetails = ! showDetails">READ MORE
+                                                            </md-button>
+                                                            <md-button
+                                                                    class="md-accent button-no-ink no-margin  no-padding"
+                                                                    analytics-on analytics-event="Read Less"
+                                                                    analytics-category="BODE"
+                                                                    analytics-label="FBP"
+                                                                    ng-show="showDetails"
+                                                                    ng-click="showDetails = ! showDetails">READ LESS
+                                                            </md-button>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p class="price-text-package">&#8377; {$item.price | number:0$}</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <md-button analytics-on analytics-event="Added To Cart"
+                                                                   analytics-category="BODE"
+                                                                   analytics-label="FBP"
+                                                                   ng-hide="item.id==carPanelSearchCtrl.fullBody.id"
+                                                                   class="md-primary button-no-ink no-margin pull-right"
+                                                                   ng-click="carPanelSearchCtrl.selectFullBody(item)">ADD TO CART</md-button>
+                                                        <md-button
+                                                                analytics-on analytics-event="Removed From Cart"
+                                                                analytics-category="BODE"
+                                                                analytics-label="FBP"
+                                                                ng-show="item.id==carPanelSearchCtrl.fullBody.id"
+                                                                class="md-primary button-no-ink no-margin pull-right"
+                                                                ng-click="carPanelSearchCtrl.removeFullBodyPackage()">
+                                                            <i class="material-icons" style="color: #ff6666;font-size: 12px;margin-right:6px">check_circle</i>IN CART</md-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div  ng-if="showDetails" class="margin15" ng-bind-html="item.package.long_desc">
+                                                    <span ng-bind-html="item.package.long_desc"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-content>
+        </div>
+        <!-- <div class="text-container" ng-show="carPanelSearchCtrl.isCarModelSelected">
+             <div class="row" style="margin-left: 0px;margin-right: 0px">
+                 <div class="col-lg-7 col-md-7 col-sm-8 col-xs-9">
+                     <md-input-container class="md-block md-accent" style="margin-bottom: 0px;margin-top: 0px"  md-no-float>
+                         <textarea  ng-model="carPanelSearchCtrl.comments" ng-change="carPanelSearchCtrl.error=null"  rows="10" md-select-on-focus placeholder="Have a query ? Send us"></textarea>
+                         <div class="reason-empty-error">{$carPanelSearchCtrl.error$}</div>
+                     </md-input-container>
+                 </div>
+                 <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3" >
+                     <md-button  href="#"
+                                 class="option-button pull-right"
+                                 analytics-on analytics-event="Submit Query Button Click" analytics-category="BODE"
+                                 ng-click="carPanelSearchCtrl.userInquiry(carPanelSearchCtrl.comments)">SUBMIT</md-button>
+                 </div>
+             </div>
+         </div> -->
+        <!--  <div class="pricing-table">
+              <div class="row" style="margin-left: 0px;margin-right: 0px">
+                  <div class="col-lg-12 col-md-12 col-sm-12 price-table-header">
+                      Pricing Guideline
+                  </div>
+              </div>
+              <div class="row price-text-header">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">TYPE OF WORK</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">HATCHBACK</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">SEDAN</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">SUV</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">LUXURY</div>
+              </div>
+              <div class="row price-table-data-row">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 price-table-data" style="font-weight: 500">Remove scratches</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 1,699</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 1,999</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 2,399</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 5,599</div>
+              </div>
+              <div class="row price-table-data-row">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 price-table-data" style="font-weight: 500">Remove scratches and dents</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 2,499</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 2,699</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 3,099</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 7,999</div>
+              </div>
+              <div class="row price-table-data-row">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 price-table-data" style="font-weight: 500">Full body paint</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 21,999</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 24,999</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 29,999</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">&#8377; 84,999</div>
+              </div>
+              <div class="row price-table-data-row">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 price-table-data" style="font-weight: 500">Replace panel</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">Part cost + Labour charges</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">Part cost + Labour charges</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">Part cost + Labour charges</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price-table-data">Part cost + Labour charges</div>
+              </div>
+          </div>
+      -->
+        <div>
+            <div class="row" id="know">
+                <div class="col-xs-12" >
+                    <div class="know-more-header" style="display: block">
+                        Know More
+                    </div>
+                </div>
+            </div>
+            <div class="row know-more-question" ng-click="knowMore1=!knowMore1;"  ng-init="knowMore1=false"
+                 analytics-on analytics-event="FAQ Expansion Button Click"
+                 analytics-category="BODE"
+                 analytic-label=" What is included in the pricing">
+                <div class="col-xs-10">Included in Pricing</div>
+                <div class="col-xs-2">
+                    <span style="display: inline-block;float: right;">
+                         <i class="material-icons" ng-if="!knowMore1" style="font-size: 16px">keyboard_arrow_down</i>
+                        <i class="material-icons" ng-if="knowMore1" style="font-size: 16px">keyboard_arrow_up</i>
+                    </span>
+                </div>
+            </div>
+            <div class="know-more-answer" ng-show="knowMore1">
+                <p>1. Pick up & drop is absolutely free anywhere within city limits.</p>
+                <p>2. Part Price will depend on the year and model of the car as mentioned in the RC Book. If the year of make and the model you selected doesn't match with RC book then we will change the price after your approval for the same</p>
+            </div>
+            <div class="row know-more-question" ng-click="knowMore2=!knowMore2;"  ng-init="knowMore2=false"
+                 analytics-on analytics-event="FAQ Expansion Button Click"
+                 analytics-category="BODE"
+                 analytic-label=" Is the amount quoted by online estimator (BODE) final or can it change?">
+                <div class="col-xs-10">
+                    Insurance Claim Process
+                </div>
+                <div class="col-xs-2">
+                    <span style="display: inline-block;float: right;">
+                         <i class="material-icons" ng-if="!knowMore2" style="font-size: 16px">keyboard_arrow_down</i>
+                        <i class="material-icons" ng-if="knowMore2" style="font-size: 16px">keyboard_arrow_up</i>
+                    </span>
+                </div>
+            </div>
+            <div class="know-more-answer" ng-show="knowMore2">
+                <p> Our workshops are recognized by all the major insurance company, so claiming insurance is easy as it comes. As of now, we provide cashless insurance with Iffco Tokio and Future Generali. For other insurers we provide cash claims.</p>
+                <p>Here is process - </p>
+                <p>1. Our team would call to collect the insurance details.</p>
+                <p>2. We would coordinate with the insurance inspector and schedule the inspection at our workshop.</p>
+                <p>3. Once approved by the insurance company (full or partial), we will call you to get your approval.</p>
+                <p>4. Only when you approve it, we will start any work on your car.</p>
+                <p>5. If any internal damage is identified we would call the inspector to take necessary approvals.</p>
+                <p>6. You will be kept in the loop during the entire process.</p>
+                <p>7. If cashless claim, we will send you the invoice with the amount to be paid.</p>
+                <p>8. If cash claim, we will send the invoice with the full amount to be paid by you. You can get the claimed amount from the insurance company.</p>
+
+
+            </div>
+            <div class="row know-more-question" ng-click="knowMore3=!knowMore3;"  ng-init="knowMore3=false"
+                 analytics-on analytics-event="FAQ Expansion Button Click"
+                 analytics-category="BODE"
+                 analytic-label="what’s the difference between a scratch and a dent?">
+                <div class="col-xs-10">
+                    Days to Delivery
+                </div>
+                <div class="col-xs-2">
+                    <span style="display: inline-block;float: right;">
+                         <i class="material-icons" ng-if="!knowMore3" style="font-size: 16px">keyboard_arrow_down</i>
+                        <i class="material-icons" ng-if="knowMore3" style="font-size: 16px">keyboard_arrow_up</i>
+                    </span>
+                </div>
+            </div>
+            <div class="know-more-answer" ng-show="knowMore3">
+                <p> We understand that your car is an integral part of your life,  so we do our best to deliver the car back to you at the earliest. We never compromise on quality. Hence, we don't commit to any delivery date until we inspect the car thoroughly at the workshop. We have created our own benchmarks for quality. Only on passing these checks would the car be cleared for delivery. </p>
+                <br><br>For instance -
+                <ul>
+                    <li>Repairs or Replacement of 1 to 3 Panels will take around 3 Days.</li>
+                    <li>Repairs or Replacement of 4 to 6 Panels will take around 5 Days.</li>
+                    <li>Repairs or Replacement of 7 to 8 Panels will take around 6 days to a week.</li>
+                    <li>Full Body Paint will require a maximum of 10 Days.</li>
+                </ul>
+                <br>
+                <p>Please note that actual delivery date is purely based on the condition of your car and the number of jobs that need to carried out.</p>
+
+            </div>
+            <div class="row know-more-question" ng-click="knowMore4=!knowMore4;"  ng-init="knowMore4=false"
+                 analytics-on analytics-event="FAQ Expansion Button Click"
+                 analytics-category="BODE"
+                 analytic-label=" What is the estimated delivery date?">
+                <div class="col-xs-10">
+                    Pick and Drop is Absolutely Free
+                </div>
+                <div class="col-xs-2">
+                    <span style="display: inline-block;float: right;">
+                         <i class="material-icons" ng-if="!knowMore4" style="font-size: 16px;margin-left: 20px">keyboard_arrow_down</i>
+                        <i class="material-icons" ng-if="knowMore4" style="font-size: 16px;margin-left: 20px">keyboard_arrow_up</i>
+                    </span>
+                </div>
+            </div>
+            <div class="know-more-answer animate-show" ng-show="knowMore4">
+                <p> Yes, pick up & drop is free. Quick & easy.
+                    When you book our service we take care of everything from picking up the car and dropping it back.
+                    And don’t worry, Our drivers are well trained to drive any car in heavy traffic and tough weather conditions.
+                    Once the driver has picked up the car, its Bumper's responsibility then onwards till we hand over the keys back to you after the work</p>
+            </div>
+            <div class="row know-more-question" ng-click="knowMore5=!knowMore5;"  ng-init="knowMore5=false"
+                 analytics-on analytics-event="FAQ Expansion Button Click"
+                 analytics-category="BODE"
+                 analytic-label="Is Pick Up & Drop Free?">
+                <div class="col-xs-10">
+                    Not able to find damage
+                </div>
+                <div class="col-xs-2">
+                    <span style="display: inline-block;float: right;">
+                         <i class="material-icons" ng-if="!knowMore5" style="font-size: 16px;margin-left: 20px">keyboard_arrow_down</i>
+                        <i class="material-icons" ng-if="knowMore5" style="font-size: 16px;margin-left: 20px">keyboard_arrow_up</i>
+                    </span>
+                </div>
+            </div>
+            <div class="know-more-answer animate-show" ng-show="knowMore5">
+                <p>Call us at  +91 9108446586</p>
+                <p>Email us at support@bumper.com </p>
+                <p><a ui-sref="base.contactUs">Request a call back </a></p>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a ui-sref="base.contact" target="_blank" class="faq"
+                       analytics-on analytics-event="See Frequently Asked Question button click"
+                       analytics-category="BODE">See Frequently Asked Questions</a>
+                </div>
+            </div>
+        </div>
+        <!--
+           < <div class="mobile-price-table">
+                <div class="how-do-we-price-m">
+                    <div class="row">
+                        Pricing Guideline
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0px;margin-right: 0px" ng-init="showData1=false">
+                    <div ng-click="showData1=!showData1;showData2=false;showData3=false;showData4=false" class="col-xs-12 price-table-header-mobile" style="background-color: #ffffff;color: #000000;font-size: 13px; border: solid 1px #e7e7e7;">
+                        <div style="color:#000000;text-decoration: none ">HATCHBACK
+                            <span style="display: inline-block;float: right;">
+                             <i class="material-icons" ng-if="!showData1" style="font-size: 16px">keyboard_arrow_down</i>
+                            <i class="material-icons" ng-if="showData1" style="font-size: 16px">keyboard_arrow_up</i>
+                        </span> </div>
+                    </div>
+                </div>
+                <div class="mobile-price-panel" style="border: solid 1px #e7e7e7;" ng-show="showData1">
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Scratches</div>
+                        <div class="col-xs-6"><span class="pull-right">&#8377; 1,699</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Dents and Scratches</div>
+                        <div class="col-xs-6"> <span class="pull-right">&#8377; 2,499</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Replace Panel</div>
+                        <div class="col-xs-6"> <span class="pull-right">Part Cost + Labour charges</span></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0px;margin-right: 0px" ng-init="showData2=false">
+                    <div ng-click="showData2=!showData2;showData1=false;showData3=false;showData4=false" class="col-xs-12 price-table-header-mobile" style="background-color: #ffffff;color: #000000;font-size: 13px; border: solid 1px #e7e7e7;">
+                        <div  style="color:#000000;text-decoration: none ">SEDAN
+                            <span style="display: inline-block;float: right;">
+                             <i class="material-icons" ng-if="!showData2" style="font-size: 16px">keyboard_arrow_down</i>
+                            <i class="material-icons" ng-if="showData2" style="font-size: 16px">keyboard_arrow_up</i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-price-panel" style="border: solid 1px #e7e7e7;" ng-show="showData2">
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Scratches</div>
+                        <div class="col-xs-6"><span class="pull-right">&#8377; 1,999</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Dents and Scratches</div>
+                        <div class="col-xs-6"> <span class="pull-right">&#8377; 2,699</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Replace Panel</div>
+                        <div class="col-xs-6"> <span class="pull-right">Part Cost + Labour charges</span></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0px;margin-right: 0px" ng-init="showData3=false">
+                    <div ng-click="showData3=!showData3;showData1=false;showData2=false;showData4=false"  class="col-xs-12 price-table-header-mobile" style="background-color: #ffffff;color: #000000;font-size: 13px; border: solid 1px #e7e7e7;">
+                        <div style="color:#000000;text-decoration: none ">SUV
+                            <span style="display: inline-block;float: right;">
+                             <i class="material-icons" ng-if="!showData3" style="font-size: 16px">keyboard_arrow_down</i>
+                            <i class="material-icons" ng-if="showData3" style="font-size: 16px">keyboard_arrow_up</i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-price-panel" style="border: solid 1px #e7e7e7;" ng-show="showData3">
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Scratches</div>
+                        <div class="col-xs-6"><span class="pull-right">&#8377; 2,399</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Dents and Scratches</div>
+                        <div class="col-xs-6"> <span class="pull-right">&#8377; 3,099</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Replace Panel</div>
+                        <div class="col-xs-6"> <span class="pull-right">Part Cost + Labour charges</span></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0px;margin-right: 0px" ng-init="showData4=false">
+                    <div ng-click="showData4=!showData4;showData1=false;showData3=false;showData2=false" class="col-xs-12 price-table-header-mobile" style="background-color: #ffffff;color: #000000;font-size: 13px; border: solid 1px #e7e7e7;">
+                        <div  style="color:#000000;text-decoration: none ">LUXURY
+                            <span style="display: inline-block;float: right;">
+                            <i class="material-icons" ng-if="!showData4" style="font-size: 16px">keyboard_arrow_down</i>
+                            <i class="material-icons" ng-if="showData4" style="font-size: 16px">keyboard_arrow_up</i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-price-panel" style="border: solid 1px #e7e7e7;" ng-show="showData4">
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Scratches</div>
+                        <div class="col-xs-6"><span class="pull-right">&#8377; 5,599</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Remove Dents and Scratches</div>
+                        <div class="col-xs-6"> <span class="pull-right">&#8377; 7,999</span></div>
+                    </div>
+                    <div class="row" style="margin-bottom: 8px">
+                        <div class="col-xs-6">Replace Panel</div>
+                        <div class="col-xs-6"> <span class="pull-right">Part Cost + Labour charges</span></div>
+                    </div>
+                </div>
+            </div>
+        -->
+    </div>
+</section>
+<section class="bm-benefits-section" ng-show="!carPanelSearchCtrl.showHelp">
+    <div class="container bm-benefits-container">
+        <div class="row" style="margin-left: 0px;margin-right: 0px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 price-table-header">
+                Bumper Benefits
+            </div>
+        </div>
+        <div class="how-do-we-price-m" style="margin-bottom: 50px">
+            <div class="row">
+                Bumper Benefits
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items" >
+                <div class="row">
+                    <div class="col-xs-2 ">
+                        <img src="img/paint_icn.svg" class="bm-benefits-image" alt="best quality paint image">
+                    </div>
+                    <div class="col-xs-9 bm-title-text-small margin-icons">
+                        Best quality paints and materials
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items">
+                <div class="row">
+                    <div class="col-xs-2 ">
+                        <img src="img/pricing_icn.svg" alt="transparent pricing image" class="bm-benefits-image">
+                    </div>
+                    <div class="col-xs-9 bm-title-text-small margin-icons">
+                        Upfront and transparent pricing
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items">
+                <div class="row">
+                    <div class="col-xs-2 ">
+                        <img src="img/warranty_icn.svg" alt="paint waranty image" class="bm-benefits-image">
+                    </div>
+                    <div class="col-xs-8 bm-title-text-small margin-icons">
+                        One year paint warranty
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="img/authentic_icn.svg" alt="authentic products image" class="bm-benefits-image">
+                    </div>
+                    <div class="col-xs-8 bm-title-text-small margin-icons">
+                        Authentic and new products for part replacement
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items">
+                <div class="row">
+                    <div class="col-xs-2 ">
+                        <img src="img/cards_icn.svg" alt="cod delivery image" class="bm-benefits-image">
+                    </div>
+                    <div class="col-xs-8 bm-title-text-small margin-icons">
+                        Pay online, Card swipe on delivery or COD
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12  bm-benefits-items">
+                <div class="row">
+                    <div class="col-xs-2 ">
+                        <img src="img/pickup_icn.svg" alt="free pickup drop image" class="bm-benefits-image">
+                    </div>
+                    <div class="col-xs-8 bm-title-text-small margin-icons">
+                        Free Car pickup and drop
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="img/workshops_icn.svg" alt="multiple workshop image" class="bm-benefits-image">
+                    </div>
+                    <div class="col-xs-8 bm-title-text-small margin-icons">
+                        Workshops at multiple locations
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items"></div>
+            <div class="col-lg-4 col-md-6 col-sm-12 bm-benefits-items"></div>
+        </div>
+    </div>
+    <div class="row" ng-if="carPanelSearchCtrl.replaceSelected" style="margin-top: 20px; padding-left:20px;">
+        <span>*<small>Part cost + labour charges</small> </span>
+    </div>
+</section>
+<!--<section class="inquiry-section" ng-show="carPanelSearchCtrl.showHelp">
+   <div class="container">
+       <div class="row" style="margin-top: 30px">
+           <div class="col-xs-6 help-header">Help</div>
+           <div class="col-xs-6"><a  href="#" ng-click="carPanelSearchCtrl.showHelp=false"><i class="material-icons pull-right" style="color: #3d3d3d">close</i></a> </div>
+       </div>
+   </div>
+   <hr>
+   <div class="container">
+       <div class="row">
+           <div class="col-xs-12 help-question-heading"> Have any Question?</div>
+       </div>
+       <div class="row">
+           <div class="col-xs-12">
+               <md-input-container class="md-block md-accent" style="margin-top: 50px">
+                   <textarea  ng-model="carPanelSearchCtrl.comments" ng-change="carPanelSearchCtrl.error=null"  rows="10" md-select-on-focus placeholder="Send us your queries"></textarea>
+                   <div class="reason-empty-error">{$carPanelSearchCtrl.error$}</div>
+               </md-input-container>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-xs-10"></div>
+           <div class="col-xs-2">
+               <md-button
+                       ng-click="carPanelSearchCtrl.userInquiry(carPanelSearchCtrl.comments)"
+                       analytics-on analytics-event="Click" analytics-category="BODE" analytics-label="user inquiry clicked"
+                       class="md-raised md-primary  pull-right">
+                   SUBMIT
+               </md-button>
+           </div>
+       </div>
+       <div class="row" style="margin-top: 50px">
+           <div class="col-xs-12">
+               <span>or</span> <a href="#" class="request-call-text"
+                                  ng-click="carPanelSearchCtrl.userInquiry(1)"
+                                  analytics-on analytics-event="Click" analytics-category="BODE" analytics-label="Request a call back">
+               Request callback
+           </a>
+           </div>
+       </div>
+       <div style="padding-bottom: 40px;padding-top: 20px">
+           <div class="row" id="know">
+               <div class="col-xs-12" >
+                   <div class="know-more-header" style="display: block">
+                       Know More
+                   </div>
+               </div>
+           </div>
+           <div class="row know-more-question" ng-click="knowMore1=!knowMore1;"  ng-init="knowMore1=false">
+               <div class="col-xs-10"> What is included in the pricing</div>
+               <div class="col-xs-2">
+                   <span style="display: inline-block;float: right;">
+                        <i class="material-icons" ng-if="!knowMore1" style="font-size: 16px">keyboard_arrow_down</i>
+                       <i class="material-icons" ng-if="knowMore1" style="font-size: 16px">keyboard_arrow_up</i>
+                   </span>
+               </div>
+           </div>
+           <div class="know-more-answer" ng-show="knowMore1">
+               <p>1. Price for “Remove scratches” includes removal of all scratches and painting on the selected panel.</p>
+               <p>2. Price for “Remove dents &amp; scratches” includes removal of all dents, scratches (if any) and painting on the selected panel.</p>
+               <p>3. Replacement price for the he panel or spare part is MRP of the part + Labour &amp; Material Charges.</p>
+               <p>4. Pick &amp; drop is completely free.</p>
+               <p>5. All prices are inclusive or taxes.</p>
+           </div>
+           <div class="row know-more-question" ng-click="knowMore2=!knowMore2;"  ng-init="knowMore2=false">
+               <div class="col-xs-10">
+                   Is the amount quoted by online estimator (BODE) final
+                   or can it change?
+               </div>
+               <div class="col-xs-2">
+                   <span style="display: inline-block;float: right;">
+                        <i class="material-icons" ng-if="!knowMore2" style="font-size: 16px">keyboard_arrow_down</i>
+                       <i class="material-icons" ng-if="knowMore2" style="font-size: 16px">keyboard_arrow_up</i>
+                   </span>
+               </div>
+           </div>
+           <div class="know-more-answer" ng-show="knowMore2">
+               <p> Price may change if the type of work
+                   changes while inspection in the workshop i.e. if scratch
+                   is identified as dent in workshop then price will change and customer will be
+                   intimated for the same. Workshop manager will call customer to confirm the changes.
+                   Work will not start unless customer confirms.</p>
+
+           </div>
+           <div class="row know-more-question" ng-click="knowMore3=!knowMore3;"  ng-init="knowMore3=false">
+               <div class="col-xs-10">
+                   What’s the difference between a scratch and a dent?
+               </div>
+               <div class="col-xs-2">
+                   <span style="display: inline-block;float: right;">
+                        <i class="material-icons" ng-if="!knowMore3" style="font-size: 16px">keyboard_arrow_down</i>
+                       <i class="material-icons" ng-if="knowMore3" style="font-size: 16px">keyboard_arrow_up</i>
+                   </span>
+               </div>
+           </div>
+           <div class="know-more-answer" ng-show="knowMore3">
+               <p> Sometimes you may think that a damage is a scratch but our technician will tell you that
+                   it is a dent – this is normal; the technician is only trying to say that the metal is slightly
+                   bent and he will need to get the metal to perfect shape with special tools before
+                   proceeding with the surface finish.</p>
+
+           </div>
+           <div class="row know-more-question" ng-click="knowMore4=!knowMore4;"  ng-init="knowMore4=false">
+               <div class="col-xs-10">
+                   What is the estimated delivery date?
+               </div>
+               <div class="col-xs-2">
+                   <span style="display: inline-block;float: right;">
+                        <i class="material-icons" ng-if="!knowMore4" style="font-size: 16px;margin-left: 20px">keyboard_arrow_down</i>
+                       <i class="material-icons" ng-if="knowMore4" style="font-size: 16px;margin-left: 20px">keyboard_arrow_up</i>
+                   </span>
+               </div>
+           </div>
+           <div class="know-more-answer animate-show" ng-show="knowMore4">
+               <p> We understand that a car is an integral part of your life and we do our best to deliver the
+                   car back at the earliest.  But we never compromise on quality. And therefore, we
+                   don&#39;t commit any delivery date until we inspect the car thoroughly in the workshop.
+                   However, we have created our benchmark as per our previous experiences.
+                   <br><br>For instance -
+               <ul>
+                   <li>Repairs or Replacement of 1 to 3 Panels will take around 3 Days.</li>
+                   <li>Repairs or Replacement of 4 to 6 Panels will take around 4 Days.</li>
+                   <li>Repairs or Replacement of 7 to 8 Panels will take around 5 days to a week.</li>
+                   <li>Full Body Paint will require a maximum of 10 Days.</li>
+               </ul>
+               Please note that actual delivery date is purely based on the condition of your car and the
+               number of jobs that your car requires.
+               </p>
+           </div>
+           <div class="row know-more-question" ng-click="knowMore5=!knowMore5;"  ng-init="knowMore5=false">
+               <div class="col-xs-10">
+                   Is Pick Up & Drop Free?
+               </div>
+               <div class="col-xs-2">
+                   <span style="display: inline-block;float: right;">
+                        <i class="material-icons" ng-if="!knowMore5" style="font-size: 16px;margin-left: 20px">keyboard_arrow_down</i>
+                       <i class="material-icons" ng-if="knowMore5" style="font-size: 16px;margin-left: 20px">keyboard_arrow_up</i>
+                   </span>
+               </div>
+           </div>
+           <div class="know-more-answer animate-show" ng-show="knowMore5">
+               <p>Yes, pick up & drop is completely free. Quick & easy.
+                   When you book our service we take care of everything from picking up the car and dropping it back.
+                   And don’t worry, Our drivers are well trained to drive any car in heavy traffic and tough weather
+                   conditions. Once the driver has picked up the car, its Bumper's responsibility then onwards till we
+                   hand over the keys back to you after the work.
+               </p>
+           </div>
+           <div class="row">
+               <div class="col-xs-12">
+                   <a ui-sref="base.contact" target="_blank" class="faq">See Frequently Asked Questions</a>
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+-->
+<section class="footer-strip1">
+    <div style="padding-left: 25px;padding-right: 25px">
+        <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                <a ui-sref="base.home" style="display: inline-block"><img class="lazy" data-original="img/footer_logo.svg" src="img/sample-loading.png" height="40" width="40">
+                    <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                <p style="text-align: center;">DOWNLOAD APP
+                    <a   analytics-on
+                         analytics-event="footer app link"
+                         analytics-category="footer" analytics-label="android app"
+                         href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                        <img src="img/Android_footer.svg" style="margin-left:8px">
+                    </a>
+                    <a analytics-on
+                       analytics-event="footer app link"
+                       analytics-category="footer" analytics-label="ios app"
+                       href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                <div class="footer-strip-sec2">
+                    <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                    <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                    <p style="padding-left: 5px">
+                        <a analytics-on analytics-event="Click- FB Button"
+                           analytics-category="Footer"
+                           href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                    </p>
+                    <p style="padding-left: 5px" >
+                        <a analytics-on analytics-event="Click- Twitter Button"
+                           analytics-category="Footer"
+                           href="https://www.twitter.com/HitBumper" target="_blank">
+                            <img src="img/footer_twit.svg">
+                        </a>
+                    </p >
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Linkedin Button"
+                            analytics-category="Footer"
+                            href="https://www.linkedin.com/company/bumper" target="_blank">
+                            <img src="img/footer_linked.svg">
+                        </a>
+                    </p>
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Youtube button"
+                            analytics-category="Footer"
+                            href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                            <img src="img/youtube.svg" width="22px">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="panel-price" ng-show="!carPanelSearchCtrl.showHelp">
+    <div class="row" style="height: 80px" ng-if="carPanelSearchCtrl.cartValue != null && carPanelSearchCtrl.isCarModelSelected">
+        <div class="col-lg-3  col-md-4 col-sm-6 col-xs-5" style="padding-right: 0">
+            <p class="amount-panel mobile-amount-panel-width"><span class="small-mobile-hide">Amount-</span>
+                <span ng-if="carPanelSearchCtrl.cartValue>0">&#8377; {$ carPanelSearchCtrl.cartValue | number:0 $}</span><span ng-if="carPanelSearchCtrl.replaceSelected">*</span></span>
+                <span ng-if="carPanelSearchCtrl.cartValue==0.00">Part MRP*</span>
+            </p>
+        </div>
+        <div class="col-lg-1 col-md-2 col-sm-6 col-xs-5">
+            <md-button
+                       ng-click="carPanelSearchCtrl.moveToCart()"
+                       analytics-on analytics-event="Click" analytics-category="BODE" analytics-label="Proceed To Cart Button"
+                       class="md-raised md-primary button-custom no-margin pull-right panel-button-margin">
+                BOOK NOW
+            </md-button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

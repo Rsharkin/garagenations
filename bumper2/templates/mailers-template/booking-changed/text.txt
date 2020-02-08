@@ -1,0 +1,23 @@
+Hi {{customer_name}},
+
+Your booking has been modified as per the conversation with our executive.
+Here are the booking details after the modification.
+
+Booking id:
+{{ booking_id }}
+
+Packages in the booking:
+{{ package_details }}
+
+Pick up details:
+{{ pickup_details }}
+
+{{pickup_address}}
+
+You will receive a call from our Bumper Executive prior for car pick up on {{ pickup_details }}.
+
+{% if not user_has_app %}
+Download from here for detailed tracking of booking
+Android app - http://bit.ly/hitbumper
+{% endif %}
+

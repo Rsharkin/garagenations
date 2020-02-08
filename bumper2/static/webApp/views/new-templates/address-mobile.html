@@ -1,0 +1,58 @@
+<div class="col-lg-4 col-md-4">
+    <div class="address-block">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="date-box-heading">Choose Address</h1>
+                <md-radio-group ng-model="data.address">
+                    <div class="">
+                        <md-radio-button value="{$ address.id $}"
+                                         ng-click="scheduleCtrl.addNewAddress=false;scheduleCtrl.getUserAddressId(address.id)"
+                                         class=" input-address"
+                                         analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Saved Address radio button"
+                                         ng-repeat="address in scheduleCtrl.addressList">
+
+                            {$address.address.address1$},
+                            {$address.address.address2$}<br>
+                            {$address.address.pin_code$},
+                            {$address.address.city$}
+                        </md-radio-button>
+                    </div>
+                </md-radio-group>
+                <md-button class="button-no-ink pull-right"
+                           ng-click="data.address=null;scheduleCtrl.addNewAddress=true;scheduleCtrl.scrollToAddress()"
+                           analytics-on analytics-event="Click" analytics-category="Schedule Booking Page" analytics-label="Add New Adress Button"
+                           ng-disabled="scheduleCtrl.addNewAddress">ADD NEW ADDRESS</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="address-block-new"  ng-show="scheduleCtrl.addNewAddress" >
+    <h2 class="date-box-heading" >Add Address</h2>
+    <form name="userForm">
+        <div>
+            <md-input-container class="md-accent input-address no-margin">
+                <label>Address line 1</label>
+                <input name="address1" ng-model="scheduleCtrl.userAddress.address.address1" />
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="md-accent input-address no-margin">
+                <label>Address line 2</label>
+                <input  name="address2"   ng-model="scheduleCtrl.userAddress.address.address2" />
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="md-accent input-address no-margin">
+                <label>PIN code</label>
+                <input  name="pincode"  ng-model="scheduleCtrl.userAddress.address.pin_code" />
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="md-accent input-address no-margin">
+                <label>City</label>
+                <input  name="email"  ng-model="scheduleCtrl.userAddress.address.city"/>
+            </md-input-container>
+        </div>
+    </form>
+</div>
+</div>

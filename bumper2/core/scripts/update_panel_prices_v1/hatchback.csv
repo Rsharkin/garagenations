@@ -1,0 +1,79 @@
+Panel  / Part,Internal,Part / Panel Id,Part / Panel,Car Type,Part MRP,Material Charges,Labour Charges,"Total Labour + Material Charges",Remove Dents Price
+Front Bumper,N,4,Panel,Hatchback,0,749.7,1749.3,2499,2499
+Rear Bumper,N,5,Panel,Hatchback,0,749.7,1749.3,2499,2499
+Left Fender,N,1,Panel,Hatchback,0,749.7,1749.3,2499,2499
+Right Fender,N,2,Panel,Hatchback,0,749.7,1749.3,2499,2499
+Trunk,N,10,Panel,Hatchback,0,2749.7,2249.3,4999,2499
+Bonnet,N,3,Panel,Hatchback,0,749.7,1749.3,2499,2499
+Left Front Door,N,6,Panel,Hatchback,0,749.7,2249.3,2999,2499
+Right Front Door,N,7,Panel,Hatchback,0,749.7,2249.3,2999,2499
+Left Rear Door,N,8,Panel,Hatchback,0,749.7,2249.3,2999,2499
+Right Rear Door,N,9,Panel,Hatchback,0,749.7,2249.3,2999,2499
+Left Running Board,N,13,Panel,Hatchback,0,749.7,3749.3,4499,2499
+Right Running Board,N,14,Panel,Hatchback,0,749.7,3749.3,4499,2499
+Left Quarter Panel,N,11,Panel,Hatchback,0,749.7,3749.3,4499,2499
+Right Quarter Panel,N,12,Panel,Hatchback,0,749.7,3749.3,4499,2499
+Tow Cap,Y,33,Part,Hatchback,0,89.7,209.3,299,0
+Door Handel,Y,27,Part,Hatchback,0,209.7,489.3,699,0
+Side view mirror,Y,18,Part,Hatchback,0,284.7,664.3,949,0
+Bumper Mount,Y,60,Part,Hatchback,0,0,99,99,0
+Bumper Lining,Y,21,Part,Hatchback,0,0,99,99,0
+Bumper Upper Grill,Y,42,Part,Hatchback,0,0,99,99,0
+Bumper Lower Grill,N,43,Part,Hatchback,0,0,99,99,0
+Fog Lamp Right,N,32,Part,Hatchback,0,0,99,99,0
+Fog Lamp Left,N,39,Part,Hatchback,0,0,99,99,0
+Fog Lamp Cover with fog lamp Cut,Y,61,Part,Hatchback,0,0,99,99,0
+Fog Lamp Cover without fog lamp Cut,Y,62,Part,Hatchback,0,0,99,99,0
+Fog lamp Mount,Y,63,Part,Hatchback,0,0,99,99,0
+Front Monogram ,Y,31,Part,Hatchback,0,0,0,0,0
+Headlight Right,N,38,Part,Hatchback,0,0,149,149,0
+Headlight Left,N,16,Part,Hatchback,0,0,149,149,0
+Taillight Right,N,19,Part,Hatchback,0,0,149,149,0
+Taillight Left,N,20,Part,Hatchback,0,0,149,149,0
+Sensors/Camera,Y,64,Part,Hatchback,0,0,149,149,0
+Bumper Guard/Beading,Y,65,Part,Hatchback,0,0,99,99,0
+Wheel Arch Lining,Y,66,Part,Hatchback,0,0,99,99,0
+Indicator,Y,67,Part,Hatchback,0,0,99,99,0
+Right Fender Indicator,N,40,Part,Hatchback,0,0,99,99,0
+Front Logo,N,41,Part,Hatchback,0,0,99,99,0
+Right Fender Monogram,N,44,Part,Hatchback,0,0,99,99,0
+Lock & Latch,Y,68,Part,Hatchback,0,0,249,249,0
+Bonnet lining,Y,69,Part,Hatchback,0,0,99,99,0
+Bonnet Mounts,Y,70,Part,Hatchback,0,74.7,174.3,249,0
+Door beading,Y,30,Part,Hatchback,0,0,99,99,0
+Door inner beading,Y,71,Part,Hatchback,0,0,99,99,0
+Window beading,Y,72,Part,Hatchback,0,0,99,99,0
+Window Glass,Y,45,Part,Hatchback,0,0,99,99,0
+Window Glass Rubber Channel,Y,73,Part,Hatchback,0,0,99,99,0
+Glass Beading,Y,74,Part,Hatchback,0,0,99,99,0
+Window Glass Lift Channel,Y,75,Part,Hatchback,0,0,499,499,0
+Power Window Switch,Y,76,Part,Hatchback,0,0,249,249,0
+Window Manual Switch,Y,77,Part,Hatchback,0,0,99,99,0
+Power Window Motor,Y,78,Part,Hatchback,0,0,249,249,0
+Door Lock Mechanism,Y,79,Part,Hatchback,0,0,999,999,0
+Central Locking Mechanism,Y,80,Part,Hatchback,0,0,999,999,0
+Door Mounts,Y,81,Part,Hatchback,0,299.7,699.3,999,0
+Fuel Cap,Y,82,Part,Hatchback,0,279.7,69.3,349,0
+Wheel Arch Lining,Y,83,Part,Hatchback,0,0,99,99,0
+Quarter glass,Y,84,Part,Hatchback,0,949.7,349.3,1299,0
+Quarter glass Beading,Y,85,Part,Hatchback,0,29.7,69.3,99,0
+Trunk Door Lining,Y,86,Part,Hatchback,0,0,99,99,0
+Trunk Door Beading,Y,87,Part,Hatchback,0,0,99,99,0
+Back Logo,Y,88,Part,Hatchback,0,0,99,99,0
+Trunk Door Glass,Y,89,Part,Hatchback,0,2299.7,699.3,2999,0
+Number Plate,N,22,Part,Hatchback,0,29.7,69.3,99,0
+Number plate Light,Y,90,Part,Hatchback,0,29.7,69.3,99,0
+Inner Rubber Beading,Y,91,Part,Hatchback,0,0,99,99,0
+Wiper,Y,36,Part,Hatchback,0,0,249,249,0
+Wiper Blades,Y,92,Part,Hatchback,0,0,99,99,0
+Wiper Scuffing,Y,93,Part,Hatchback,0,0,249,249,0
+Mud Flaps,Y,55,Part,Hatchback,0,0,99,99,0
+Wheel Caps,Y,94,Part,Hatchback,0,0,99,99,0
+Alloy Wheels,Y,95,Part,Hatchback,0,0,999,999,0
+Tires,Y,96,Part,Hatchback,0,0,999,999,0
+After Market Fog Lamp,Y,97,Part,Hatchback,0,0,999,999,0
+Interior Ambient Light,Y,98,Part,Hatchback,0,0,999,999,0
+Bull Guard,Y,99,Part,Hatchback,0,0,999,999,0
+After Market Antenna,Y,100,Part,Hatchback,0,29.7,69.3,99,0
+Laser Cut Number Plates,Y,101,Part,Hatchback,0,0,99,99,0
+Windshield,N,46,Part,Hatchback,0,2299.7,699.3,2999,0

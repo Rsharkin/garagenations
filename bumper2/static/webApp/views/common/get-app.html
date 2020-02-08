@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <img src="img/get-app.png" style="width: 100%">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="row">
+            <p class="get-app-header">
+                Track your Car,
+                Get real time updates
+                and more, only on App.
+            </p>
+        </div>
+        <div class="row">
+            <a
+                    analytics-on
+                    analytics-event="Get app popup clicked"
+                    analytics-category="get app popup" analytics-label="android app"
+                    href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                <img src="img/AndroidLink.png" width="40%"></a>
+            <a
+                    analytics-on
+                    analytics-event="Get app popup clicked"
+                    analytics-category="get app popup" analytics-label="android app"
+                    href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8">
+                <img src="img/iosLink.svg" width="40%" style="margin-left: 5px;"></a>
+        </div>
+    </div>
+</div>
+<div class="row get-app-back" ng-hide="true">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 no-margin">
+        <md-input-container  class="md-accent input-field-getapp">
+            <label>Enter 10 digit phone number</label>
+            <input name="phone"   ng-pattern="/^[0-9]{10}$/"  ng-model="loginCtrl.signUpDetails.phone" required />
+        </md-input-container>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 no-margin">
+        <div class="btn btn-getapp">GET APP LINK</div>
+    </div>
+</div>

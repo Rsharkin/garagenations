@@ -1,0 +1,23 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div ui-view="">
+                    <div class="tabs-container">
+                        <uib-tabset>
+                            <uib-tab heading="Followups" ui-sref="base.reports.followups.bookings" ui-sref-active="active">
+                                <div class="panel-body" ui-view="followups"></div>
+                            </uib-tab>
+                            <uib-tab heading="Crew" ui-sref="base.reports.crew">
+                                <div class="panel-body" ui-view="crew"></div>
+                            </uib-tab>
+                            <uib-tab heading="Feedback" ui-sref="base.reports.feedback.customer">
+                                <div class="panel-body" ui-view="feedback"></div>
+                            </uib-tab>
+                        </uib-tabset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

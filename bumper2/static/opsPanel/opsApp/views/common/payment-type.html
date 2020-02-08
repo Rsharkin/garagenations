@@ -1,0 +1,19 @@
+<div>
+    <div style="padding: 2px">
+    <button type="button" class="btn btn-outline btn-primary btn-circle pull-right"  ng-click="paymentTypeCtrl.cancel()">X</button>
+
+        </div>
+    <div class="ibox-content" style="display:block; padding-left:170px;padding-top: 30px;padding-bottom:100px;padding-right:auto;">
+        <div class="btn-group" uib-dropdown >
+            <button type="button" class="btn btn-primary" uib-dropdown-toggle >
+                {$paymentTypeCtrl.TypeName$}<span class="caret"></span>
+            </button>
+            <ul role="menu" uib-dropdown-menu="">
+                <li><a href="" ng-click="paymentTypeCtrl.choosePaymentType(1,'Pay Now ')">Pay Now</a></li>
+                <li><a href="" ng-click="paymentTypeCtrl.choosePaymentType(2,'Cash on Delivery ')">Cash on Delivery</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-danger" ng-click="paymentTypeCtrl.ok()">Choose</button>
+
+    </div>
+</div>

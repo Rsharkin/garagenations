@@ -1,0 +1,79 @@
+Panel  / Part,Internal,Part / Panel Id,Part / Panel,Car Type,Part MRP,Material Charges,Labour Charges,"Total Labour + Material Charges",Remove Dents Price
+Front Bumper,N,4,Panel,Sedan,0,809.7,1889.3,2699,2699
+Rear Bumper,N,5,Panel,Sedan,0,809.7,1889.3,2699,2699
+Left Fender,N,1,Panel,Sedan,0,809.7,1889.3,2699,2699
+Right Fender,N,2,Panel,Sedan,0,809.7,1889.3,2699,2699
+Trunk,N,10,Panel,Sedan,0,2809.7,2389.3,5199,2699
+Bonnet,N,3,Panel,Sedan,0,809.7,1889.3,2699,2699
+Left Front Door,N,6,Panel,Sedan,0,809.7,2389.3,3199,2699
+Right Front Door,N,7,Panel,Sedan,0,809.7,2389.3,3199,2699
+Left Rear Door,N,8,Panel,Sedan,0,809.7,2389.3,3199,2699
+Right Rear Door,N,9,Panel,Sedan,0,809.7,2389.3,3199,2699
+Left Running Board,N,13,Panel,Sedan,0,809.7,3889.3,4699,2699
+Right Running Board,N,14,Panel,Sedan,0,809.7,3889.3,4699,2699
+Left Quarter Panel,N,11,Panel,Sedan,0,809.7,3889.3,4699,2699
+Right Quarter Panel,N,12,Panel,Sedan,0,809.7,3889.3,4699,2699
+Tow Cap,Y,33,Part,Sedan,0,89.7,209.3,299,0
+Door Handel,Y,27,Part,Sedan,0,224.7,524.3,749,0
+Side view mirror,Y,18,Part,Sedan,0,329.7,769.3,1099,0
+Bumper Mount,Y,60,Part,Sedan,0,0,149,149,0
+Bumper Lining,Y,21,Part,Sedan,0,0,149,149,0
+Bumper Upper Grill,Y,42,Part,Sedan,0,0,149,149,0
+Bumper Lower Grill,N,43,Part,Sedan,0,0,149,149,0
+Fog Lamp Right,N,32,Part,Sedan,0,0,149,149,0
+Fog Lamp Left,N,39,Part,Sedan,0,0,149,149,0
+Fog Lamp Cover with fog lamp Cut,Y,61,Part,Sedan,0,0,149,149,0
+Fog Lamp Cover without fog lamp Cut,Y,62,Part,Sedan,0,0,149,149,0
+Fog lamp Mount,Y,63,Part,Sedan,0,0,149,149,0
+Front Monogram ,Y,31,Part,Sedan,0,0,149,149,0
+Headlight Right,N,38,Part,Sedan,0,0,199,199,0
+Headlight Left,N,16,Part,Sedan,0,0,199,199,0
+Taillight Right,N,19,Part,Sedan,0,0,199,199,0
+Taillight Left,N,20,Part,,,,,,
+Sensors/Camera,Y,64,Part,Sedan,0,0,199,199,0
+Bumper Guard/Beading,Y,65,Part,Sedan,0,0,149,149,0
+Wheel Arch Lining,Y,66,Part,Sedan,0,0,149,149,0
+Indicator,Y,67,Part,Sedan,0,0,99,99,0
+Right Fender Indicator,N,40,Part,Sedan,0,0,99,99,0
+Front Logo,N,41,Part,Sedan,0,0,99,99,0
+Right Fender Monogram,N,44,Part,,,,,,
+Lock & Latch,Y,68,Part,Sedan,0,0,349,349,0
+Bonnet lining,Y,69,Part,Sedan,0,0,149,149,0
+Bonnet Mounts,Y,70,Part,Sedan,0,89.7,209.3,299,0
+Door beading,Y,30,Part,Sedan,0,0,149,149,0
+Door inner beading,Y,71,Part,Sedan,0,0,149,149,0
+Window beading,Y,72,Part,Sedan,0,0,149,149,0
+Window Glass,Y,45,Part,Sedan,0,0,149,149,0
+Window Glass Rubber Channel,Y,73,Part,Sedan,0,0,149,149,0
+Glass Beading,Y,74,Part,Sedan,0,0,149,149,0
+Window Glass Lift Channel,Y,75,Part,Sedan,0,0,599,599,0
+Power Window Switch,Y,76,Part,Sedan,0,0,349,349,0
+Window Manual Switch,Y,77,Part,Sedan,0,0,149,149,0
+Power Window Motor,Y,78,Part,Sedan,0,0,349,349,0
+Door Lock Mechanism,Y,79,Part,Sedan,0,0,1199,1199,0
+Central Locking Mechanism,Y,80,Part,Sedan,0,0,1199,1199,0
+Door Mounts,Y,81,Part,Sedan,0,359.7,839.3,1199,0
+Fuel Cap,Y,82,Part,Sedan,0,119.7,279.3,399,0
+Wheel Arch Lining,Y,83,Part,Sedan,0,0,149,149,0
+Quarter glass,Y,84,Part,Sedan,0,979.7,419.3,1399,0
+Quarter glass Beading,Y,85,Part,Sedan,0,44.7,104.3,149,0
+Trunk Door Lining,Y,86,Part,Sedan,0,0,149,149,0
+Trunk Door Beading,Y,87,Part,Sedan,0,0,149,149,0
+Back Logo,Y,88,Part,Sedan,0,0,149,149,0
+Trunk Door Glass,Y,89,Part,Sedan,0,2359.7,839.3,3199,0
+Number Plate,N,22,Part,Sedan,0,44.7,104.3,149,0
+Number plate Light,Y,90,Part,Sedan,0,44.7,104.3,149,0
+Inner Rubber Beading,Y,91,Part,Sedan,0,0,149,149,0
+Wiper,Y,36,Part,Sedan,0,0,349,349,0
+Wiper Blades,Y,92,Part,Sedan,0,0,149,149,0
+Wiper Scuffing,Y,93,Part,Sedan,0,0,349,349,0
+Mud Flaps,Y,55,Part,Sedan,0,0,149,149,0
+Wheel Caps,Y,94,Part,Sedan,0,0,149,149,0
+Alloy Wheels,Y,95,Part,Sedan,0,0,1199,1199,0
+Tires,Y,96,Part,Sedan,0,0,1199,1199,0
+After Market Fog Lamp,Y,97,Part,Sedan,0,0,1199,1199,0
+Interior Ambient Light,Y,98,Part,Sedan,0,0,1199,1199,0
+Bull Guard,Y,99,Part,Sedan,0,0,1199,1199,0
+After Market Antenna,Y,100,Part,Sedan,0,44.7,104.3,149,0
+Laser Cut Number Plates,Y,101,Part,Sedan,0,0,99,99,0
+Windshield,N,46,Part,Sedan,0,2359.7,839.3,3199,0

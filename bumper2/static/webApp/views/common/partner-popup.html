@@ -1,0 +1,46 @@
+<div class="partner-form">
+    <h1>Be a part of Bumper Network</h1>
+    <p>For workshops and mechanics</p>
+    <form name="userForm">
+        <md-input-container class=" input-partner accent" md-autofocus="true">
+            <label>Workshop Name</label>
+            <input  name="workshopName" ng-model="partnerCtrl.partnerDetails.workshop_name" required/>
+            <div ng-messages="userForm.name.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="input-partner accent" md-autofocus="true">
+            <label>Name</label>
+            <input  name="name" ng-model="partnerCtrl.partnerDetails.name"required/>
+            <div ng-messages="userForm.name.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container  class=" input-partner md-accent">
+            <label class="md-primary">Phone</label>
+            <input name="phone"   ng-pattern="/^[0-9]{10}$/"  ng-model="partnerCtrl.partnerDetails.mobile" required/>
+            <div ng-messages="userForm.phone.$error">
+                <div ng-message="required">This is required!</div>
+                <div ng-message="pattern">Phone number must be of 10 digits</div>
+                <div>{$ loginCtrl.errors $}</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="input-partner md-accent">
+            <label>Email</label>
+            <input  name="email"  ng-pattern="/^.+@.+\..+$/" md-autofocus="true" ng-model="partnerCtrl.partnerDetails.email" required  />
+            <div ng-messages="userForm.email.$error">
+                <div ng-message="required">This is required!</div>
+                <div ng-message="pattern">This does not looks like an email</div>
+        </md-input-container>
+</div>
+</form>
+<md-button
+        ng-disabled="userForm.$invalid"
+        class="md-primary md-raised partner-button"
+        ng-click="partnerCtrl.savePartnerDetails()"
+        analytics-on analytics-event="partner submit click"
+        analytics-category="bumper partner">
+    SIGN UP
+</md-button>
+</div>

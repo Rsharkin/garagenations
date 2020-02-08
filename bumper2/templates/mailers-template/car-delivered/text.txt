@@ -1,0 +1,11 @@
+Hi {{ customer_name }},
+
+{{ car_model }} has been delivered to your requested address. Thank you for taking Bumper services.
+
+Please share your experience and rate our work. Customer’s reviews and suggestions help us to improve for better.
+
+https://docs.google.com/a/bumper.com/forms/d/1-6kN_ldUor8o5UXw5Bzm5O0F7t72Ir7guYdpmR4Yia0/viewform?c=0&w=1&usp=mail_form_link
+
+Do not hesitate to contact us in case of any queries, by either writing to us at bumpercare@bumper.com or call us on our customer care number {{ cc_num }}.
+
+Happy Driving !!

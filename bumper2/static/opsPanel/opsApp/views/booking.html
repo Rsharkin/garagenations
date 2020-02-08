@@ -1,0 +1,88 @@
+<div class="wrapper wrapper-content ng-scope">
+    <div class="ibox float-e-margins" id="">
+        <div class="ibox-title text-center">
+            <h5 class="pull-left">Bookings</h5>
+            <button class="btn btn-primary btn-xs"
+                    ng-click="bookingCtrl.loadBookings()"><i class="fa fa-refresh"></i></button>
+
+            <a permission="['OpsAdmin','OpsManager','CityCallCenterManager','VASIncharge','WorkshopWorkManager','Caller','WorkshopAssistantManager', 'DriverManager']"
+               ui-sref="base.createUser({'flow':'booking'})"
+               class="btn btn-xs btn-primary pull-right">Create Booking</a>
+
+            <a permission="['OpsAdmin','OpsManager','FinanceTeam','MarketingTeam','CityCallCenterManager','WorkshopManager']"
+               ng-click="bookingCtrl.exportInCsv()"
+               class="btn btn-xs btn-info pull-right m-r-sm">Download in CSV</a>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-4 m-b-xs">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input id="showAllBookings" type="checkbox" ng-model="bookingCtrl.showAllBookings" ng-change="bookingCtrl.loadBookings()">
+                            <label for="showAllBookings"> Show All Bookings </label>
+                            <br>
+                            <input id="showEscalatedCheck" type="checkbox" ng-model="bookingCtrl.extraFilters.showEscalated" ng-change="bookingCtrl.externalFilterChanged()">
+                            <label for="showEscalatedCheck"> Show Only Escalated </label>
+                            <br>
+                            <input id="removeInternalCheck" type="checkbox" ng-model="bookingCtrl.extraFilters.removeInternal" ng-change="bookingCtrl.externalFilterChanged()">
+                            <label for="removeInternalCheck"> Remove Internal Accounts </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 m-b-xs text-center">
+                    <h4>Rows: <b>{$ bookingCtrl.gridOptions.api.rowModel.rowsToDisplay.length $}</b></h4>
+                    <div class="row">
+                        <!--<span style="padding-bottom: 4px; display: inline-block;">
+                            Active Filters: {$ bookingCtrl.savedFilters $}
+                        </span>-->
+                        <span style="padding-bottom: 4px; display: inline-block;">
+                            <button ng-click="bookingCtrl.clearFilters()">Clear Filters</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3 m-b-xs text-center">
+                    <div class="row">
+                        <div class="input-group text-left">
+                            <input date-range-picker class="form-control date-picker input-sm " type="text" ng-model="bookingCtrl.filters.date"
+                                   options="bookingCtrl.date_range_options"/>
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 m-b-xs">
+                    <div class="row">
+                        <div class="input-group pull-right">
+                            <input type="text" placeholder="Quick Search" class="input-sm form-control" ng-model="bookingCtrl.gridOptions.quickFilterText">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                        </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-sm-4">Workshops</div>
+                        <div class="col-sm-8">
+                            <select
+                                    multiple
+                                    chosen
+                                    ng-model="bookingCtrl.extraFilters.workshops"
+                                    ng-options="item as item.name for item in bookingCtrl.workshops track by item.id"
+                                    ng-change="bookingCtrl.externalFilterChanged()"
+                                    class="form-control input-sm">
+                                <option value="">Filter Workshops</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div style="margin-top: 4px;" class="full-height">
+                    <div ag-grid="bookingCtrl.gridOptions" style="height:100%; width:100%;" class="ag-fresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

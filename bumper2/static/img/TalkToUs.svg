@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28px" height="27px" viewBox="0 0 28 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>TalkToUs</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chat" transform="translate(-1254.000000, -1017.000000)" fill="#271F45">
+            <g id="Group-46" transform="translate(1233.000000, 999.000000)">
+                <g id="Group-45" transform="translate(19.368421, 17.684211)">
+                    <g id="TalkToUs" transform="translate(1.000000, 0.000000)">
+                        <g id="ic_chat_bubble_black_24px" transform="translate(0.684211, 8.842105)">
+                            <path d="M16.2105263,0.105263158 L1.89473684,0.105263158 C0.910526316,0.105263158 0.105263158,0.910526316 0.105263158,1.89473684 L0.105263158,18 L3.68421053,14.4210526 L16.2105263,14.4210526 C17.1947368,14.4210526 18,13.6157895 18,12.6315789 L18,1.89473684 C18,0.910526316 17.1947368,0.105263158 16.2105263,0.105263158 L16.2105263,0.105263158 Z" id="Shape"></path>
+                        </g>
+                        <g id="Group-43" transform="translate(18.684211, 0.000000)">
+                            <rect id="Rectangle" x="4.02631579" y="0.447368421" width="1.78947368" height="8.94736842"></rect>
+                            <polyline id="Rectangle" points="9.39473684 4.02631579 9.39473684 5.81578947 0.447368421 5.81578947 0.447368421 4.02631579 9.39473684 4.02631579"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

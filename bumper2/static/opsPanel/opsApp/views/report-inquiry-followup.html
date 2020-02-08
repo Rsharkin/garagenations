@@ -1,0 +1,56 @@
+
+<div class="ibox" style="margin-bottom: 0px !important;">
+    <div class="ibox-title">
+        <div class="row">
+            <div class="col-sm-4">
+                <h5>Followups Done Today</h5>
+            </div>
+            <div class="col-sm-8">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-4">
+                            <b>Rows: {$ reportInquiryFollowupsCtrl.num_of_followups $}</b>
+                        </div>
+                        <div class="col-sm-4 m-l-xs pull-right">
+                            <div class="form-group">
+                                <label class="control-label no-padding-right"> Followup Added On: </label>
+                                <div class="input-group text-left">
+                                    <input date-range-picker class="form-control date-picker input-sm " type="text" ng-model="reportInquiryFollowupsCtrl.filters.date"
+                                           options="reportInquiryFollowupsCtrl.date_range_options"/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <table datatable="ng" class="table table-striped table-bordered table-hover dataTables-example table-responsive" style="height: 450px;">
+                <thead>
+                <tr>
+                    <th class="text-center">Inquiry ID</th>
+                    <th class="text-center">Added For User</th>
+                    <th class="text-center">Added By</th>
+                    <th class="text-center">Added On</th>
+                    <th class="text-center">Note</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in reportInquiryFollowupsCtrl.followups_data">
+                    <td class="text-center"><a ui-sref="base.userInquiry.editUserInquiry({userInquiryId:item.user_inquiry_id})" target="_blank">{$ item.user_inquiry_id $}</a></td>
+                    <td >{$ item.name $} <br> {$ item.phone $} <br> {$ item.email $}</td>
+                    <td class="text-center">{$ item.updated_by $}</td>
+                    <td class="text-center">{$ item.created_at $}</td>
+                    <td class="text-center">{$ item.note $}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

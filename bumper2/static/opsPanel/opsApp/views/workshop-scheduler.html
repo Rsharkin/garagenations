@@ -1,0 +1,206 @@
+<div class="wrapper">
+    <div class="ibox" style="margin-bottom: 0px !important;">
+        <div class="ibox-title">
+            <h5>Workshop Scheduler <small>(All Time in min.)</small></h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form class="form-horizontal" role="form" name="generateForm" >
+                        <div class="form-group">
+                            <label class="control-label">Workshop:</label>
+                            <select ng-model="wsCtrl.inputs.workshop" class="form-control input-sm" title="Workshop to run scheduler for.">
+                                <option value="17">Kudlu Gate 1, 2, 3</option>
+                                <option value="15">Sector 6</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Resource at  Kudlu Gate 2,Kudlu Gate 3:</label>
+                            <input ng-model="wsCtrl.inputs.resources.Denter" class="form-control input-sm" required type="number"
+                                   placeholder="Denters" title="Denter"/>
+
+                            <input ng-model="wsCtrl.inputs.resources.Painter" class="form-control input-sm" required type="number"
+                                   placeholder="Painters" title="Painter"/>
+
+                            <input ng-model="wsCtrl.inputs.resources.PainterHelper" class="form-control input-sm" required type="number"
+                                   placeholder="PainterHelpers" title="PainterHelper"/>
+
+                            <input ng-model="wsCtrl.inputs.resources.Polisher" class="form-control input-sm" required type="number"
+                                   placeholder="Polisher" title="Polisher"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Remove From Scheduler:</label>
+                            <input ng-model="wsCtrl.inputs.removeList" class="form-control input-sm" type="text"
+                                   placeholder="Comma separated Booking Id." title="Booking Id to remove from scheduler."/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Run in mode:</label>
+                            <label><input type="radio" value="1" name="useCurrentStatus" required
+                                          ng-model="wsCtrl.inputs.useCurrentStatus"> Use current status and only remaining time till 07:00 pm will be allocated</label>
+                            <label><input type="radio" value="0" name="useCurrentStatus" required
+                                          ng-model="wsCtrl.inputs.useCurrentStatus"> Use status at start of day and show EOD</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <input class="btn btn-primary" type="submit"
+                                       ng-click="wsCtrl.generateSchedule()"
+                                       ng-disabled="wsCtrl.ajax_loading || generateForm.$invalid || generateForm.$pristine"
+                                       ng-value="wsCtrl.ajax_loading?'Please Wait..':'Generate'"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div ng-if="wsCtrl.resource_schedule">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="row  text-center">
+                            <h1 class="m-b-xs">
+                                {$ wsCtrl.workshopWiseSummary.tot_num_bookings $}
+                            </h1>
+                            <small>
+                                Total Cars processed
+                            </small>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table small m-t-sm table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Will Miss SLA</th>
+                                        <th>Will Miss ETA</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{$ wsCtrl.workshopWiseSummary.tot_num_bookings_delay_sla $}</td>
+                                        <td>{$ wsCtrl.workshopWiseSummary.tot_num_bookings_delay_eta $}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Work to be done on {$ wsCtrl.processingDate $} By Resource:</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2" ng-repeat="resource in wsCtrl.resource_schedule">
+                        <div class="ibox">
+                            <div class="ibox-content">
+                                <h3>{$ resource.name $}</h3>
+                                <ul class="connectList agile-list sortable-list">
+                                    <li class="success-element" ng-repeat="item in wsCtrl.sequenceForToday[resource.name]">
+                                        <div class="align-center"><strong><a ui-sref="base.bookings.editBooking.summary({bookingId:{$ item.id $}})" target="_blank">{$ item.id $}</a></strong>, <i class="fa fa-clock-o"></i> {$ item.hrs $}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Work to be done {$ wsCtrl.processingDate $} By Steps:</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2" ng-repeat="(key, seq) in wsCtrl.workSequenceForTodayOrdered">
+                        <div class="ibox">
+                            <div class="ibox-content">
+                                <h3>{$ key $}</h3>
+                                <ul class="connectList agile-list sortable-list">
+                                    <li class="success-element" ng-repeat="item in seq">
+                                        <div class="align-center">
+                                            <strong><a ui-sref="base.bookings.editBooking.summary({bookingId:{$ item.id $}})" target="_blank">{$ item.id $}</a></strong>,
+                                            <span>{$ item.task $}</span>
+                                            <i class="fa fa-clock-o"></i> {$ item.hrs $}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-line-dashed">
+                <div class="row">
+                    <h3>EOD for bookings datewise:</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" ng-repeat="dateToProcess in wsCtrl.summaryDates">
+                        <div class="ibox">
+                            <div class="ibox-content">
+                                <h3>{$ dateToProcess $}</h3>
+                                <ul class="connectList agile-list sortable-list">
+                                    <li ng-class="item.delay?'danger-element':'success-element'" ng-repeat="item in wsCtrl.dateWiseWork[dateToProcess]">
+                                        <div class="align-center">
+                                            <div>
+                                                <strong>
+                                                    <a ui-sref="base.bookings.editBooking.summary({bookingId:{$ item.booking_id $}})" target="_blank">{$ item.booking_id $}</a>
+                                                    <span>({$ item.car_model $}, {$ item.car_reg_num $})</span>
+                                                </strong> <small>at {$ item.workshop $}</small>
+                                            </div>
+                                            <div>
+                                                <small>(D1: {$ item.panels_breakup.D1 $}, D3: {$ item.panels_breakup.D3 $}), Day: {$ item.days_in_workshop $}</small>
+                                            </div>
+                                        </div>
+                                        <div><strong>At Start:</strong><small>{$ item.status_at_start_of_day_desc $}</small> </div>
+                                        <div><strong>As per SLA:</strong><small>{$ item.expected_status_as_per_sla $}</small> </div>
+                                        <div><strong>EOD:</strong> <small>{$ item.status_at_end_of_day_desc $}</small> </div>
+                                        <div><strong>Work:</strong><small>{D: {$ item.total_time_used_for_date.Denter $},
+                                            P:{$ item.total_time_used_for_date.Painter $},
+                                            PH:{$ item.total_time_used_for_date.PainterHelper $},
+                                            PB:{$ item.total_time_used_for_date.Paintbooth $},
+                                            W:{$ item.total_time_used_for_date.WashingBay $},
+                                            Polisher:{$ item.total_time_used_for_date.Polisher $}
+                                            Batman:{$ item.total_time_used_for_date.Batman $}
+                                            }</small></div>
+                                        <div><strong>Workshop ETA:</strong> <small>{$ item.workshop_eta | date:'medium' $}</small> </div>
+                                        <div><strong>Customer ETA:</strong> <small>{$ item.customer_eta | date:'medium' $}</small> </div>
+                                        <div><strong>Current Status:</strong> <small>{$ item.current_status $}</small> </div>
+                                        <div class="agile-detail" ng-if="item.delay">
+                                            <!--<a href="#" class="pull-right btn btn-xs btn-white">Mark</a>-->
+                                            <i class="fa fa-clock-o text-danger"></i> Possible Delay from SLA
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div>
+                            <table class="table table-bordered small m-b-xs table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Resource</th>
+                                    <th>Type</th>
+                                    <th ng-repeat="(key,value) in wsCtrl.resource_schedule[0].hrs_mapping">{$ key $}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="resource in wsCtrl.resource_schedule">
+                                    <td>{$ resource.name $}</td>
+                                    <td>
+                                        <div>
+                                            <span>Available</span><br>
+                                            <span>Remaining</span>
+                                        </div>
+                                    </td>
+                                    <td ng-repeat="(key,value) in resource.hrs_mapping"
+                                        ng-class="{'text-success':resource.hrs_mapping[key].total_minutes_available === resource.hrs_mapping[key].minutes_remaining,'text-danger':resource.hrs_mapping[key].minutes_remaining < 60}">
+                                        <div>
+                                            <span>{$ resource.hrs_mapping[key].total_minutes_available $}</span><br>
+                                            <span>{$ resource.hrs_mapping[key].minutes_remaining $}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+            </div>
+        </div>
+    </div>
+</div>

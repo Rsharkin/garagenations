@@ -1,0 +1,70 @@
+<section class="feedback-section">
+    <div class="feedback-box" ng-if="!feedbackCtrl.error && !feedbackCtrl.success">
+        <div class="heading-feedback">
+            <div class="container">
+                <p>Hello,</p>
+                <p>Will you please take a minute to share your feedback?</p>
+            </div>
+        </div>
+        <div>
+            <div class="container" style="text-align:center">
+                <h2>Customer support</h2>
+                <div layout>
+                    <md-slider id="slider1" flex md-discrete ng-model="feedbackCtrl.rating1" step="1" min="1" max="3" aria-label="rating" ng-change="feedbackCtrl.loadRating()">
+                    </md-slider>
+                </div>
+                <a id="rate1" style="float:left;color:rgb(113,71,230);text-decoration:none" ng-if="feedbackCtrl.rating1==1">Unhelpful</a>
+                <a id="rate1" style="text-align:center;color:rgb(113,71,230);text-decoration:none" ng-if="feedbackCtrl.rating1==2">Could be better</a>
+                <a id="rate1" style="float:right;color:rgb(113,71,230);text-decoration:none" ng-if="feedbackCtrl.rating1==3">Just wow</a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div class="container" style="text-align:center">
+                <h2>Value for money</h2>
+                <div layout>
+                    <md-slider id="slider2" flex md-discrete ng-model="feedbackCtrl.rating2" step="1" min="1" max="3" aria-label="rating" ng-change="feedbackCtrl.loadRating()">
+                    </md-slider>
+                </div>
+                <a id="rate2" style="float:left;color:rgb(113,71,230);" ng-if="feedbackCtrl.rating2==1">Not at all</a>
+                <a id="rate2" style="text-align:center;color:rgb(113,71,230);" ng-if="feedbackCtrl.rating2==2">Yes it is</a>
+                <a id="rate2" style="float:right;color:rgb(113,71,230);" ng-if="feedbackCtrl.rating2==3">Best in the market</a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div class="container" style="text-align:center">
+                <h2>Work quality</h2>
+                <div layout>
+                    <md-slider  id="slider3" flex md-discrete ng-model="feedbackCtrl.rating3" step="1" min="1" max="3" aria-label="rating" ng-change="feedbackCtrl.loadRating()">
+                    </md-slider>
+                </div>
+                <a id="rate3" style="float:left;color:rgb(113,71,230);" ng-if="feedbackCtrl.rating3==1">Really bad</a>
+                <a id="rate3" style="text-align:center;color:rgb(113,71,230);" ng-if="feedbackCtrl.rating3==2">Could be better</a>
+                <a id="rate3" style="float:right;color:rgb(113,71,230);" ng-if="feedbackCtrl.rating3==3">Love the work</a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div class="container">
+                <h2>Suggestions</h2>
+                <md-input-container class="md-accent suggestion-input">
+                    <input  name="sugestions"  md-autofocus="true" ng-model="feedbackCtrl.suggestions"   />
+                </md-input-container>
+            </div>
+        </div>
+        <div class="container">
+            <div layout="center center">
+                <md-button analytics-on
+                           analytics-event="feedback submit clicked"
+                           analytics-category="feedback" analytics-label="feedback submit button"
+                           md-no-ink class="md-raised md-primary"
+                           ng-click="feedbackCtrl.submit()">
+                    SUBMIT FEEDBACK
+                </md-button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="feedbackCtrl.error" style="color: red;text-align: center;margin-top: 50px;">{$feedbackCtrl.error$}</div>
+    <div ng-if="feedbackCtrl.success" style="color: red;text-align: center;margin-top: 50px;">{$feedbackCtrl.success$}</div>
+</section>

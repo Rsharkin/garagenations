@@ -1,0 +1,81 @@
+<div class="wrapper wrapper-content ng-scope">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Notify Users </h5>
+            <div class="pull-right">
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <form method="post" ng-submit="notifyUsersCtrl.sendNotification()" class="form-horizontal">
+                    <div ng-show="notifyUsersCtrl.errorMsg" ng-bind-html="notifyUsersCtrl.errorMsg" class="alert alert-danger"></div>
+                    <div class="form-group">
+                        <label for="id_type" class="col-sm-3 control-label">Type</label>
+                        <div class="col-sm-6">
+                            <select ng-model="notifyUsersCtrl.notice.type" class="form-control  input-sm" id="id_type" name="type"  title="Type of Notice" required>
+                                <option value="app" selected="selected">App</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_type" class="col-sm-3 control-label">Label</label>
+                        <div class="col-sm-6">
+                            <select ng-model="notifyUsersCtrl.notice.label" class="form-control  input-sm" id="id_type" name="type"  title="Label of Notice" required>
+                                <option value="1" >STATUS </option>
+                                <option value="2" >FEEDBACK</option>
+                                <option value="3" >UPDATE</option>
+                                <option value="4" >OFFER</option>
+                                <option value="5" >REFERRAL</option>
+                                <option value="6" >RATE US</option>
+                                <option value="7" >FILL PROFILE</option>
+                                <option value="8" >FILL CAR INFO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Title</label>
+                        <div class="col-sm-6">
+                            <input ng-model="notifyUsersCtrl.notice.title" type="text" title="Title" class=" input-sm form-control" maxlength="32" placeholder="Title of message" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Message</label>
+                        <div class="col-sm-6">
+                            <textarea ng-model="notifyUsersCtrl.notice.message"  class="form-control" cols="20" rows="2" maxlength="256" name="desc" placeholder="Message body" title="Message of notice" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <button class="btn btn-white" type="button" ng-click="notifyUsersCtrl.cancelEditing()">Cancel</button>
+                            <input class="btn btn-primary" type="submit" ng-disabled="notifyUsersCtrl.ajax_loading" ng-value="notifyUsersCtrl.ajax_loading?'Please Wait.. Do Not Refresh/Reload.':'Send'"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 m-b-xs">
+                    <div class="btn-group">
+                        <input type="button" class="btn btn-xs btn-warning" value="Clear selection" ng-click="notifyUsersCtrl.deselect_all()">
+                    </div>
+                </div>
+                <div class="col-sm-3 m-b-xs">
+                    <h4>Selected Users: <b>{$ notifyUsersCtrl.selected_rows_length $}</b></h4>
+                </div>
+                <div class="col-sm-4 m-b-xs">
+                    <div class="input-group">
+                        <input type="text" placeholder="Quick Search" class="input-sm form-control"
+                               ng-model="notifyUsersCtrl.gridOptions.quickFilterText">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div style="margin-top: 4px;" class="full-height">
+                    <div ag-grid="notifyUsersCtrl.gridOptions" style="height:100%; width:100%;" class="ag-fresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

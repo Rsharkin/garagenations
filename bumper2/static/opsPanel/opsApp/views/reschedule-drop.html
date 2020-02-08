@@ -1,0 +1,31 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Reschedule Drop</h4>
+    </div>
+    <div class="modal-body modal-padding">
+        <ul ng-show="rescheduleCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in rescheduleCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <div class="alert alert-warning">
+            This will set the booking in Drop Scheduled status.
+        </div>
+        <label class="control-label">Select Drop Time</label>
+        <form method="get" class="form-horizontal">
+            <div class="row">
+                <div class="input-group">
+                    <input name="pickup_time" data-ng-model="rescheduleCtrl.newTime.start" type="text" title="Time of pickup" readonly="readonly" class=" input-sm form_datetime form-control">
+                    <input name="pickup_slot_end_time" data-ng-model="rescheduleCtrl.newTime.end" type="text" title="Slot end time" readonly="readonly" class=" input-sm form_datetime form-control">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="rescheduleCtrl.cancel()">Cancel</button>
+        <input class="btn btn-primary btn-sm"
+                type="submit"
+                ng-click="rescheduleCtrl.updatePickupTime()"
+                ng-disabled="rescheduleCtrl.ajax_loading"
+                ng-value="rescheduleCtrl.ajax_loading?'Please Wait..':'Save'"/>
+    </div>
+</div>

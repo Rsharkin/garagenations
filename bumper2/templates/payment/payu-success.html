@@ -1,0 +1,43 @@
+{% extends 'payment/payment-base.html' %}
+
+{% block container %}
+    <style type="text/css">
+        .outer {
+            display: table;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .middle {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .inner {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+    </style>
+    <body onload="PayUMoney.success(1,'{{ data.payuMoneyId }}')">
+    <div class="">
+        <div class="outer">
+            <div class="middle">
+                <div class="inner">
+                    <div class="row text-center">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <img src="https://unbox-bumper-static.s3.amazonaws.com/bfdb7f81-79fa-49ca-8a6f-84e4f5ec76ec.png" width="135px" height="135px"/>
+                            </div>
+                            <div class="row">
+                                <h3 style="color: #00c853;">PAYMENT SUCCESSFUL!</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+    </body>
+{% endblock %}

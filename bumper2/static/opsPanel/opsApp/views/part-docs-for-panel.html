@@ -1,0 +1,218 @@
+<div class="inmodal" xmlns="http://www.w3.org/1999/html">
+    <div class="modal-header">
+        <h4 class="modal-title">Details Of Purchase Requisition Doc:  {$ partDocPanelDetailsCtrl.panelName $}</h4>
+    </div>
+    <div class="modal-body">
+        <div ng-show="partDocPanelDetailsCtrl.errorMsg" ng-bind-html="partDocPanelDetailsCtrl.errorMsg" class="alert alert-danger"></div>
+        <div class="row" ng-if="partDocPanelDetailsCtrl.showCreateDocForm">
+            <div class="col-md-12">
+                <form class="form-horizontal" name="createPartDocForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Part/Panel</label>
+                        <div class="col-sm-9">
+                            {$ partDocPanelDetailsCtrl.panelName $}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Registration Num. <span class="text-danger">*</span></label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <input ng-model="partDocPanelDetailsCtrl.carDetails.registration_number1"
+                                           name="registration_number1"
+                                           maxlength="2"
+                                           placeholder="StateCode"
+                                           required
+                                           class="form-control col-sm-3"
+                                    >
+                                </div>
+                                <div class="col-sm-2">
+                                    <input ng-model="partDocPanelDetailsCtrl.carDetails.registration_number2"
+                                           name="registration_number2"
+                                           maxlength="2"
+                                           placeholder="DistrictCode"
+                                           required
+                                           class="form-control col-sm-3"
+                                    >
+                                </div>
+                                <div class="col-sm-2">
+                                    <input ng-model="partDocPanelDetailsCtrl.carDetails.registration_number3"
+                                           name="registration_number3"
+                                           maxlength="2"
+                                           placeholder="DistrictSeries"
+                                           required
+                                           class="form-control col-sm-3"
+                                    >
+                                </div>
+                                <div class="col-sm-2">
+                                    <input ng-model="partDocPanelDetailsCtrl.carDetails.registration_number4"
+                                           name="registration_number4"
+                                           maxlength="4"
+                                           placeholder="Reg. no."
+                                           required
+                                           class="form-control col-sm-3"
+                                    >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">Eg. KA</div>
+                                <div class="col-sm-2">52</div>
+                                <div class="col-sm-2">MD</div>
+                                <div class="col-sm-2">2501</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Vehicle Identification Number</label>
+                        <div class="col-sm-6">
+                            <input ng-model="partDocPanelDetailsCtrl.carDetails.vin_no"
+                                   name="Vin Number"
+                                   maxlength="32"
+                                   placeholder="VIN Number."
+                                   class="form-control"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Brand</label>
+                        <div class="col-sm-9">
+                            {$ partDocPanelDetailsCtrl.carDetails.car_model.brand.name $}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Model</label>
+                        <div class="col-sm-9">
+                            {$ partDocPanelDetailsCtrl.carDetails.car_model.name $}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Year</label>
+                        <div class="col-sm-9">
+                            {$ partDocPanelDetailsCtrl.carDetails.year$}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Notes <small>(If car year or variant not in list then mention here)</small><span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                                <textarea ng-model="partDocPanelDetailsCtrl.purchaseDoc.notes"
+                                          cols="20" rows="4"
+                                          required
+                                          placeholder="If car year or variant not in list then mention here. Or any other details required."
+                                          class="form-control">
+                                </textarea>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <button type="button"
+                                class="btn btn-primary"
+                                ng-if="partDocPanelDetailsCtrl.showCreateDocForm"
+                                ng-disabled="partDocPanelDetailsCtrl.ajax_loading || createPartDocForm.$invalid || createPartDocForm.$pristine"
+                                ng-click="partDocPanelDetailsCtrl.saveUserCar()">Create Request For Part</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" ng-if="!partDocPanelDetailsCtrl.showCreateDocForm">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" method="post" name="updatePartDocForm">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>Current Status: </h4>
+                                </div>
+                                <div class="col-md-9">
+                                    <strong>{$ partDocPanelDetailsCtrl.updatePartDoc.status.name $}</strong>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="partDocPanelDetailsCtrl.updatePartDoc.quote_eta">
+                                <div class="col-md-3">
+                                    <h4>Getting quote will take time, Can get Quote by: </h4>
+                                </div>
+                                <div class="col-md-9">
+                                    <strong>{$ partDocPanelDetailsCtrl.updatePartDoc.quote_eta | date:'d MMMM yy HH:mm' : 'IST' $}</strong>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="partDocPanelDetailsCtrl.updatePartDoc.quote_eta_reason">
+                                <div class="col-md-3">
+                                    <h4>Reason: </h4>
+                                </div>
+                                <div class="col-md-9">
+                                    <strong>{$ partDocPanelDetailsCtrl.updatePartDoc.quote_eta_reason $}</strong>
+                                </div>
+                            </div>
+                            <hr class="hr-line-dashed" ng-if="partDocPanelDetailsCtrl.updatePartDoc.status.id >= 5">
+                            <h3 ng-if="partDocPanelDetailsCtrl.updatePartDoc.status.id >= 5">Part Price Details </h3>
+                            <div class="row" ng-if="partDocPanelDetailsCtrl.updatePartDoc.status.id >= 5">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped table-bordered table-hover table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Select</th>
+                                            <th class="text-center">Price <small>(inclusive of taxes)</small></th>
+                                            <th class="text-center">When can we get part</th>
+                                            <th class="text-center">Type</th>
+                                            <th class="text-center">Notes</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="quote in partDocPanelDetailsCtrl.quotes| filter:{ selected: true }">
+                                            <td class="text-center">
+                                                <input type="radio" class="form-control" required
+                                                       value="{$ quote.id $}"
+                                                       name="selectedQuote"
+                                                       ng-model="partDocPanelDetailsCtrl.selectedQuote"/>
+                                            </td>
+                                            <td>{$ quote.price $}</td>
+                                            <td>{$ quote.eta | date:'d MMMM yy HH:mm' : 'IST' $}</td>
+                                            <td>
+                                                <span ng-if="quote.quote_type === 1">OEM</span>
+                                                <span ng-if="quote.quote_type === 2">After Market</span>
+                                                <span ng-if="quote.quote_type === 3">Refurbished</span>
+                                            </td>
+                                            <td>
+                                                <div class="row" ng-repeat="note in quote.notes">
+                                                    <div class="col-sm-12">
+                                                        {$ note.created_at| date:'d MMMM yy HH:mm' : 'IST' $}: {$ note.note $}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="partDocPanelDetailsCtrl.updatePartDoc.status.id == 5">
+                                <div class="row text-center">
+                                    <!--<button type="button"
+                                            class="btn btn-warning btn-xs"
+                                            ng-disabled="partDocDetailsCtrl.ajax_loading || updatePartDocForm.$invalid || updatePartDocForm.$pristine"
+                                            ng-click="partDocPanelDetailsCtrl.quoteAction('Rejected')">Customer Rejected</button>-->
+                                    <button type="button"
+                                            class="btn btn-primary btn-xs"
+                                            ng-disabled="partDocDetailsCtrl.ajax_loading || updatePartDocForm.$invalid || updatePartDocForm.$pristine"
+                                            ng-click="partDocPanelDetailsCtrl.quoteAction('Accepted')">Customer Accepted</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-warning">
+                                        If Customer does not want replacement of this panel or has declined the quote. Then remove the panel from booking summary page.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="partDocPanelDetailsCtrl.cancel()">Close</button>
+    </div>
+</div>

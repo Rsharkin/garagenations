@@ -1,0 +1,17 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "M3ZRU6UD6G.com.bumper.bumperdev",
+                "paths": [ "/cart/", "/schedule/pickup/","/refer/","/rate_us/",
+                  "/booking-status/","/payment/","/feedback/"]
+            },
+            {
+                "appID": "M3ZRU6UD6G.com.bumper.bumper",
+                "paths": [ "/cart/", "/schedule/pickup/","/refer/","/rate_us/",
+                  "/booking-status/","/payment/","/feedback/"]
+            }
+        ]
+    }
+}

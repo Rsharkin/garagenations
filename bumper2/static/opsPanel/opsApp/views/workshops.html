@@ -1,0 +1,43 @@
+<div class="wrapper wrapper-content ng-scope">
+    <div class="ibox float-e-margins" id="">
+        <div class="ibox-title">
+            <h5>Workshop Management</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Workshop</th>
+                            <th>Workshop Manager</th>
+                            <th>Workshop Asst Manager</th>
+                            <th>Workshop Executive</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="workshopUser in workshopsCtrl.workshopUsers">
+                            <td>{$ workshopUser.workshop $}</td>
+                            <td>{$ workshopUser.workshop $}</td>
+                            <td>{$ workshopUser.workshop $}</td>
+                            <td>{$ workshopUser.workshop $}</td>
+                            <td>
+                                <input
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        value="Edit"
+                                        ng-click="workshopsCtrl.editWorkshopUser(workshopUser.id)">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

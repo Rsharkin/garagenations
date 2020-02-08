@@ -1,0 +1,7 @@
+Hi {{ customer_name }},
+
+{{ car_model }} has been picked up. Thank you for taking Bumper services.
+
+Do not hesitate to contact us in case of any queries, by either writing to us at bumpercare@bumper.com or call us on our customer care number {{ cc_num }}.
+
+Happy Driving !!

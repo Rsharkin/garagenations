@@ -1,0 +1,81 @@
+Panel  / Part,Scratch,Dent + Scratch,Replace,Internal,Part / Panel Id,Part / Panel,Scratch ,,Dent + Scratch,,Replace,
+,,,,,,,Material,Labour,Material,Labour,Material,Labour
+Front Bumper,5599,7999,NA,N,4,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Rear Bumper,5599,7999,NA,N,5,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Left Fender,5599,7999,NA,N,1,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Right Fender,5599,7999,NA,N,2,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Trunk,5599,7999,NA,N,10,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Bonnet,5599,7999,NA,N,3,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Left Front Door,5599,7999,NA,N,6,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Right Front Door,5599,7999,NA,N,7,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Left Rear Door,5599,7999,NA,N,8,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Right Rear Door,5599,7999,NA,N,9,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Left Running Board,5599,7999,NA,N,13,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Right Running Board,5599,7999,NA,N,14,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Left Quarter Panel,5599,7999,NA,N,11,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Right Quarter Panel,5599,7999,NA,N,12,Panel,1679.7,3919.3,2399.7,5599.3,NA,NA
+Roof,10999,15999,NA,Y,15,Panel,3299.7,7699.3,4799.7,11199.3,NA,NA
+Tow Cap,NA,NA,NA,Y,33,Part,NA,NA,NA,NA,NA,NA
+Door Handel,NA,NA,NA,Y,27,Part,NA,NA,NA,NA,NA,NA
+Side view mirror,NA,NA,NA,Y,18,Part,NA,NA,NA,NA,NA,NA
+Bumper Mount,NA,NA,NA,Y,60,Part,NA,NA,NA,NA,NA,NA
+Bumper Lining,NA,NA,NA,Y,21,Part,NA,NA,NA,NA,NA,NA
+Bumper Upper Grill,NA,NA,NA,Y,42,Part,NA,NA,NA,NA,NA,NA
+Bumper Lower Grill,NA,NA,NA,N,43,Part,NA,NA,NA,NA,NA,NA
+Fog Lamp Right,NA,NA,NA,N,32,Part,NA,NA,NA,NA,NA,NA
+Fog Lamp Left,NA,NA,NA,N,39,Part,NA,NA,NA,NA,NA,NA
+Fog Lamp Cover with fog lamp Cut,NA,NA,NA,Y,61,Part,NA,NA,NA,NA,NA,NA
+Fog Lamp Cover without fog lamp Cut,NA,NA,NA,Y,62,Part,NA,NA,NA,NA,NA,NA
+Fog lamp Mount,NA,NA,NA,Y,63,Part,NA,NA,NA,NA,NA,NA
+Front Monogram ,NA,NA,NA,Y,31,Part,NA,NA,NA,NA,NA,NA
+Headlight Right,NA,NA,NA,N,38,Part,NA,NA,NA,NA,NA,NA
+Headlight Left,NA,NA,NA,N,16,Part,NA,NA,NA,NA,NA,NA
+Taillight Right,NA,NA,NA,N,19,Part,NA,NA,NA,NA,NA,NA
+Taillight Left,NA,NA,NA,N,20,Part,NA,NA,NA,NA,NA,NA
+Sensors/Camera,NA,NA,NA,Y,64,Part,NA,NA,NA,NA,NA,NA
+Bumper Guard/Beading,NA,NA,NA,Y,65,Part,NA,NA,NA,NA,NA,NA
+Wheel Arch Lining,NA,NA,NA,Y,66,Part,NA,NA,NA,NA,NA,NA
+Indicator,NA,NA,NA,Y,67,Part,NA,NA,NA,NA,NA,NA
+Right Fender Indicator,NA,NA,NA,N,40,Part,NA,NA,NA,NA,NA,NA
+Front Logo,NA,NA,NA,N,41,Part,NA,NA,NA,NA,NA,NA
+Right Fender Monogram,NA,NA,NA,N,44,Part,NA,NA,NA,NA,NA,NA
+Lock & Latch,NA,NA,NA,Y,68,Part,NA,NA,NA,NA,NA,NA
+Bonnet lining,NA,NA,NA,Y,69,Part,NA,NA,NA,NA,NA,NA
+Bonnet Mounts,NA,NA,NA,Y,70,Part,NA,NA,NA,NA,NA,NA
+Door beading,NA,NA,NA,Y,30,Part,NA,NA,NA,NA,NA,NA
+Door inner beading,NA,NA,NA,Y,71,Part,NA,NA,NA,NA,NA,NA
+Window beading,NA,NA,NA,Y,72,Part,NA,NA,NA,NA,NA,NA
+Window Glass,NA,NA,NA,Y,45,Part,NA,NA,NA,NA,NA,NA
+Window Glass Rubber Channel,NA,NA,NA,Y,73,Part,NA,NA,NA,NA,NA,NA
+Glass Beading,NA,NA,NA,Y,74,Part,NA,NA,NA,NA,NA,NA
+Window Glass Lift Channel,NA,NA,NA,Y,75,Part,NA,NA,NA,NA,NA,NA
+Power Window Switch,NA,NA,NA,Y,76,Part,NA,NA,NA,NA,NA,NA
+Window Manual Switch,NA,NA,NA,Y,77,Part,NA,NA,NA,NA,NA,NA
+Power Window Motor,NA,NA,NA,Y,78,Part,NA,NA,NA,NA,NA,NA
+Door Lock Mechanism,NA,NA,NA,Y,79,Part,NA,NA,NA,NA,NA,NA
+Central Locking Mechanism,NA,NA,NA,Y,80,Part,NA,NA,NA,NA,NA,NA
+Door Mounts,NA,NA,NA,Y,81,Part,NA,NA,NA,NA,NA,NA
+Fuel Cap,NA,NA,NA,Y,82,Part,NA,NA,NA,NA,NA,NA
+Wheel Arch Lining,NA,NA,NA,Y,83,Part,NA,NA,NA,NA,NA,NA
+Quarter glass,NA,NA,NA,Y,84,Part,NA,NA,NA,NA,NA,NA
+Quarter glass Beading,NA,NA,NA,Y,85,Part,NA,NA,NA,NA,NA,NA
+Trunk Door Lining,NA,NA,NA,Y,86,Part,NA,NA,NA,NA,NA,NA
+Trunk Door Beading,NA,NA,NA,Y,87,Part,NA,NA,NA,NA,NA,NA
+Back Logo,NA,NA,NA,Y,88,Part,NA,NA,NA,NA,NA,NA
+Trunk Door Glass,NA,NA,NA,Y,89,Part,NA,NA,NA,NA,NA,NA
+Number Plate,NA,NA,NA,N,22,Part,NA,NA,NA,NA,NA,NA
+Number plate Light,NA,NA,NA,Y,90,Part,NA,NA,NA,NA,NA,NA
+Inner Rubber Beading,NA,NA,NA,Y,91,Part,NA,NA,NA,NA,NA,NA
+Wiper,NA,NA,NA,Y,36,Part,NA,NA,NA,NA,NA,NA
+Wiper Blades,NA,NA,NA,Y,92,Part,NA,NA,NA,NA,NA,NA
+Wiper Scuffing,NA,NA,NA,Y,93,Part,NA,NA,NA,NA,NA,NA
+Mud Flaps,NA,NA,NA,Y,55,Part,NA,NA,NA,NA,NA,NA
+Wheel Caps,NA,NA,NA,Y,94,Part,NA,NA,NA,NA,NA,NA
+Alloy Wheels,NA,NA,NA,Y,95,Part,NA,NA,NA,NA,NA,NA
+Tires,NA,NA,NA,Y,96,Part,NA,NA,NA,NA,NA,NA
+After Market Fog Lamp,NA,NA,NA,Y,97,Part,NA,NA,NA,NA,NA,NA
+Interior Ambient Light,NA,NA,NA,Y,98,Part,NA,NA,NA,NA,NA,NA
+Bull Guard,NA,NA,NA,Y,99,Part,NA,NA,NA,NA,NA,NA
+After Market Antenna,NA,NA,NA,Y,100,Part,NA,NA,NA,NA,NA,NA
+Laser Cut Number Plates,NA,NA,NA,Y,101,Part,NA,NA,NA,NA,NA,NA
+Windshield,NA,NA,NA,N,46,Part,NA,NA,NA,NA,NA,NA

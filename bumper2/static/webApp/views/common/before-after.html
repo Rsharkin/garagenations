@@ -1,0 +1,10 @@
+<section class="before-after-popup">
+    <div class="ba-image border-ba" ng-repeat="image in base.beforeAfterImagesMobile">
+        <h2>{$image.caption$}</h2>
+        <img src={$image.url$} width="100%">
+        <div class="container">
+            <p class="ba-review">{$image.review$}</p>
+            <p class="ba-name">{$image.author$}</p>
+        </div>
+    </div>
+</section>

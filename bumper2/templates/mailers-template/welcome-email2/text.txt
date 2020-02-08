@@ -1,0 +1,9 @@
+Hi {{name}},
+
+Just sit in one place with nothing but your phone, and we will will make everything else happen!
+
+{% if not user_has_app %}
+Download from here for detailed tracking of booking
+Android app - http://bit.ly/hitbumper
+{% endif %}
+

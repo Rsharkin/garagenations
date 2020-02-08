@@ -1,0 +1,113 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tabs-container">
+            <uib-tabset>
+                <uib-tab heading="Notification sent for this Booking" ui-sref-active="active">
+                    <div class="panel-body">
+                        <table class="table table-stripped small table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Sent To</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                                <th>Sent by</th>
+                                <th>Sent On</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Sent To</th>
+                                <th>Gateway Response</th>
+                                <th>Delivered On</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingNotificationCtrl.messagesForBooking">
+                                <td>
+                                    <span ng-if="item.send_notice_to==1">User</span>
+                                    <span ng-if="item.send_notice_to==2">Ops</span>
+                                    <span ng-if="item.send_notice_to==3">Pickup Driver</span>
+                                    <span ng-if="item.send_notice_to==4">Drop Driver</span>
+                                    <span ng-if="item.send_notice_to==5">Workshop Executive</span>
+                                    <span ng-if="!item.send_notice_to">User</span>
+                                </td>
+                                <td>
+                                    <span  ng-if="item.message_type==1">SMS</span>
+                                    <span  ng-if="item.message_type==2">PUSH</span>
+                                    <span  ng-if="item.message_type==3">Email</span>
+                                </td>
+                                <td>{$ editBookingNotificationCtrl.actionMapping[item.action]  $}</td>
+                                <td>{$ item.sent_by $}</td>
+                                <td>{$ item.created_at $}</td>
+                                <td>{$ item.subject $}</td>
+                                <td>
+                                    <span ng-if="item.message_type!=3">{$ item.message $}</span>
+                                    <span ng-if="item.message_type==3"><a ng-click="editBookingNotificationCtrl.openEmailPopup(item.message)">show email content</a></span>
+                                </td>
+                                <td>
+                                    <span ng-if="item.message_type==2">App</span>
+                                    <span ng-if="item.message_type!=2">{$ item.sent_to $}</span>
+                                </td>
+                                <td>{$ item.gateway_api_response $}</td>
+                                <td>{$ item.delivered_dt $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </uib-tab>
+
+                <uib-tab heading="All Notifications sent to this User till now">
+                    <div class="panel-body">
+                        <table class="table table-stripped small table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Sent To</th>
+                                <th>Booking</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                                <th>Sent by</th>
+                                <th>Sent On</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Sent To</th>
+                                <th>Gateway Response</th>
+                                <th>Delivered On</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingNotificationCtrl.messagesToUser">
+                                <td>
+                                    <span ng-if="item.send_notice_to==1">User</span>
+                                    <span ng-if="item.send_notice_to==2">Ops</span>
+                                    <span ng-if="item.send_notice_to==3">Pickup Driver</span>
+                                    <span ng-if="item.send_notice_to==4">Drop Driver</span>
+                                    <span ng-if="item.send_notice_to==5">Workshop Executive</span>
+                                    <span ng-if="!item.send_notice_to">User</span>
+                                </td>
+                                <td>{$ item.booking_id $}</td>
+                                <td>
+                                    <span  ng-if="item.message_type==1">SMS</span>
+                                    <span  ng-if="item.message_type==2">PUSH</span>
+                                    <span  ng-if="item.message_type==3">Email</span>
+                                </td>
+                                <td>{$ editBookingNotificationCtrl.actionMapping[item.action]  $}</td>
+                                <td>{$ item.sent_by $}</td>
+                                <td>{$ item.created_at $}</td>
+                                <td>{$ item.subject $}</td>
+                                <td>
+                                    <span ng-if="item.message_type!=3">{$ item.message $}</span>
+                                    <span ng-if="item.message_type==3"><a ng-click="editBookingNotificationCtrl.openEmailPopup(item.message)">show email content</a></span>
+                                </td>
+                                <td>
+                                    <span ng-if="item.message_type==2">App</span>
+                                    <span ng-if="item.message_type!=2">{$ item.sent_to $}</span>
+                                </td>
+                                <td>{$ item.gateway_api_response $}</td>
+                                <td>{$ item.delivered_dt $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

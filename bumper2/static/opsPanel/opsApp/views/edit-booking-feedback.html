@@ -1,0 +1,225 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Offline Feedback Collected.</h5>
+            </div>
+            <div class="ibox-content">
+                <form name="feedbackForm" method="post" class="form-horizontal" novalidate>
+                    <div class="form-group">
+                        <label class="col-sm-3">Bumper App/ Website: <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" value="1" name="bumper_app" required ng-model="editBookingFeedbackCtrl.editedFeedback.bumper_app"> Not Happy</label>
+                            <label><input type="radio" value="2" name="bumper_app" required ng-model="editBookingFeedbackCtrl.editedFeedback.bumper_app"> Loved It</label>
+                            <p class="text-danger" ng-if="feedbackForm.bumper_app.$touched && feedbackForm.bumper_app.$invalid">Please enter a valid value.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Customer Care: <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" value="1" name="customer_care" required ng-model="editBookingFeedbackCtrl.editedFeedback.customer_care"> Not Happy</label>
+                            <label><input type="radio" value="2" name="customer_care" required ng-model="editBookingFeedbackCtrl.editedFeedback.customer_care"> Loved It</label>
+                            <p class="text-danger" ng-if="feedbackForm.customer_care.$touched && feedbackForm.customer_care.$invalid">Please enter a valid value.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Work Quality: <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" value="1" name="work_quality" required ng-model="editBookingFeedbackCtrl.editedFeedback.work_quality"> Not Happy</label>
+                            <label><input type="radio" value="2" name="work_quality" required ng-model="editBookingFeedbackCtrl.editedFeedback.work_quality"> Loved It</label>
+                            <p class="text-danger" ng-if="feedbackForm.work_quality.$touched && feedbackForm.work_quality.$invalid">Please enter a valid value.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Value For Money: <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" value="1" name="value_for_money" required ng-model="editBookingFeedbackCtrl.editedFeedback.value_for_money"> Not Happy</label>
+                            <label><input type="radio" value="2" name="value_for_money" required ng-model="editBookingFeedbackCtrl.editedFeedback.value_for_money"> Loved It</label>
+                            <p class="text-danger" ng-if="feedbackForm.value_for_money.$touched && feedbackForm.value_for_money.$invalid">Please enter a valid value.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Pick & Drop service: <span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" value="1" name="pick_drop_service" required ng-model="editBookingFeedbackCtrl.editedFeedback.pick_drop_service"> Not Happy</label>
+                            <label><input type="radio" value="2" name="pick_drop_service" required ng-model="editBookingFeedbackCtrl.editedFeedback.pick_drop_service"> Loved It</label>
+                            <p class="text-danger" ng-if="feedbackForm.pick_drop_service.$touched && feedbackForm.pick_drop_service.$invalid">Please enter a valid value.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Overall Experience: <span class="text-danger">*</span> </label>
+                        <div class="col-sm-6">
+                            <label><input type="radio" value="1" name="experience_rating" required ng-model="editBookingFeedbackCtrl.editedFeedback.experience_rating"> 1</label>
+                            <label><input type="radio" value="2" name="experience_rating" required ng-model="editBookingFeedbackCtrl.editedFeedback.experience_rating"> 2</label>
+                            <label><input type="radio" value="3" name="experience_rating" required ng-model="editBookingFeedbackCtrl.editedFeedback.experience_rating"> 3</label>
+                            <label><input type="radio" value="4" name="experience_rating" required ng-model="editBookingFeedbackCtrl.editedFeedback.experience_rating"> 4</label>
+                            <label><input type="radio" value="5" name="experience_rating" required ng-model="editBookingFeedbackCtrl.editedFeedback.experience_rating"> 5</label>
+                            <p class="text-danger" ng-if="feedbackForm.experience_rating.$touched && feedbackForm.experience_rating.$invalid">Please enter a valid value.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">WOW Moment:</label>
+                        <div class="col-sm-9">
+                            <div class="">
+                        <textarea
+                                maxlength="2048"
+                                ng-model="editBookingFeedbackCtrl.editedFeedback.wow_moment"
+                                class="form-control"
+                                name="wow_moment"
+                                cols="20"
+                                rows="2"
+                        ></textarea>
+                                <p class="text-danger" ng-if="feedbackForm.wow_moment.$touched && feedbackForm.wow_moment.$invalid">Please enter a valid value.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Any Suggestions?</label>
+                        <div class="col-sm-9">
+                            <div class="">
+                        <textarea
+                                maxlength="2048"
+                                ng-model="editBookingFeedbackCtrl.editedFeedback.any_suggestions"
+                                class="form-control"
+                                name="any_suggestions"
+                                cols="20"
+                                rows="2"
+                        ></textarea>
+                                <p class="text-danger" ng-if="feedbackForm.any_suggestions.$touched && feedbackForm.any_suggestions.$invalid">Please enter a valid value.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Feedback Remarks: <span class="text-danger">*</span></label>
+                        <div class="col-sm-9">
+                            <div class="">
+                        <textarea
+                                required
+                                maxlength="2048"
+                                ng-model="editBookingFeedbackCtrl.editedFeedback.feedback_remarks"
+                                class="form-control"
+                                name="feedback_remarks"
+                                cols="20"
+                                rows="2"
+                        ></textarea>
+                                <p class="text-danger" ng-if="feedbackForm.feedback_remarks.$touched && feedbackForm.feedback_remarks.$invalid">Please enter a valid value.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Customer Issues:</label>
+                        <div class="col-sm-9">
+                            <div class="">
+                        <textarea
+                                maxlength="2048"
+                                ng-model="editBookingFeedbackCtrl.editedFeedback.customer_issue"
+                                class="form-control"
+                                name="customer_issue"
+                                cols="20"
+                                rows="2"
+                        ></textarea>
+                                <p class="text-danger" ng-if="feedbackForm.customer_issue.$touched && feedbackForm.customer_issue.$invalid">Please enter a valid value.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Referrals:</label>
+                        <div class="col-sm-9">
+                            <div class="">
+                        <textarea
+                                maxlength="2048"
+                                ng-model="editBookingFeedbackCtrl.editedFeedback.referrals"
+                                class="form-control"
+                                name="referrals"
+                                cols="20"
+                                rows="2"
+                        ></textarea>
+                                <p class="text-danger" ng-if="feedbackForm.referrals.$touched && feedbackForm.referrals.$invalid">Please enter a valid value.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Customer Relations Remarks:</label>
+                        <div class="col-sm-9">
+                            <div class="">
+                        <textarea
+                                maxlength="2048"
+                                ng-model="editBookingFeedbackCtrl.editedFeedback.customer_relation_remarks"
+                                class="form-control"
+                                name="customer_relation_remarks"
+                                cols="20"
+                                rows="2"
+                        ></textarea>
+                                <p class="text-danger" ng-if="feedbackForm.feedback_remarks.$touched && feedbackForm.feedback_remarks.$invalid">Please enter a valid value.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 text-center">
+                            <button
+                                    permission="['CustomerRelations', 'CustomerRelationsExecutive']"
+                                    ng-disabled="feedbackForm.$invalid"
+                                    type="button"
+                                    class="btn btn-primary"
+                                    ng-click="editBookingFeedbackCtrl.saveFeedback()">
+                                Save Feedback
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Customer's Feedback From App.</h5>
+            </div>
+            <div class="ibox-content no-padding" >
+                <div class="ibox float-e-margins" ng-repeat="item in editBookingFeedbackCtrl.customerFeedbackData">
+                    <div class="ibox-title">
+                        <h5>Submitted At: {$ item.created_at  | date:'d MMMM yy HH:mm' : 'IST' $}</h5>
+                    </div>
+                    <div class="ibox-content no-padding">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge badge-primary">{$ item.booking_experience $}</span>
+                                Booking Experience
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge badge-primary">{$ item.customer_care $}</span>
+                                Customer Care
+                            </li>
+                            <li class="list-group-item ">
+                                <span class="badge badge-primary">{$ item.work_quality $}</span>
+                                Work Quality
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge badge-primary">{$ item.value_for_money $}</span>
+                                Value For Money
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge badge-primary">{$ item.pickup_experience $}</span>
+                                Pickup Experience
+                            </li>
+                            <li class="list-group-item">
+                                <h5>Suggestions</h5><br/>
+                                <span>{$ item.any_suggestions $}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

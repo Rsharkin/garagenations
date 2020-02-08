@@ -1,0 +1,67 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <h3 class="modal-title">Workshop Users</h3>
+    </div>
+    <div class="modal-body">
+        <ul ng-show="workshopUserCtrl.errorMsgs.length>0" class="alert alert-danger">
+            <li ng-repeat="item in workshopUserCtrl.errorMsgs">{$ item $}</li>
+        </ul>
+        <div class="row">
+            <div class="col-lg-12">
+                <form id="workshopUserForm"  class="form-horizontal" role="form" method="post" >
+                    <div ng-form="workshopUserForm">
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label no-padding-right">Workshop:</label>
+                            <div class="col-lg-7">
+                                <select
+                                        ng-model="workshopUserForm.workshopUser.workshop"
+                                        ng-options="item as item.name for item in workshopUserCtrl.workshopList track by item.id"
+                                        required
+                                        class="form-control  input-sm col-xs-10">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="workshopUserCtrl.workshopUser.role==3">
+                            <label class="col-lg-5 control-label no-padding-right">Workshop Manager:</label>
+                            <div class="col-lg-7">
+                                <select
+                                        ng-model="workshopUserForm.workshopUser.user"
+                                        ng-options="item as item.name for item in workshopUserCtrl.workshopManagerList track by item.id"
+                                        required
+                                        class="form-control input-sm col-xs-10">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="workshopUserCtrl.workshopUser.role==2">
+                            <label class="col-lg-5 control-label no-padding-right">Workshop Assistant Manager:</label>
+                            <div class="col-lg-7">
+                                <select
+                                        ng-model="workshopUserForm.workshopUser.user"
+                                        ng-options="item as item.name for item in workshopUserCtrl.workshopAssistantManagerList track by item.id"
+                                        class="form-control input-sm col-xs-10">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="workshopUserCtrl.workshopUser.role==1">
+                            <label class="col-lg-5 control-label no-padding-right">Workshop Executive:</label>
+                            <div class="col-lg-7">
+                                <select
+                                        ng-model="workshopUserForm.workshopUser.user"
+                                        ng-options="item as item.name for item in workshopUserCtrl.workshopExecList track by item.id"
+                                        required
+                                        class="form-control input-sm col-xs-10">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="workshopUserCtrl.cancel()">Close</button>
+        <button type="button" class="btn btn-primary"
+                ng-disabled="workshopUserCtrl.ajax_loading||  workshopUserForm.$invalid "
+                ng-click="workshopUserCtrl.saveWorkshopUser()">Return Car</button>
+    </div>
+</div>

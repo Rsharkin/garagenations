@@ -1,0 +1,268 @@
+<section class="customer-section">
+    <div  class="container">
+        <h1>Our customers speak for us</h1>
+        <div class="row hide-in-mob">
+            <div class="col-xs-12 col-sm-6" style="margin-bottom:20px;min-height:  ">
+                <div class="youtube" data-embed="BWYG1T-L8NI">
+                    <div class="play-button"></div>
+                </div>
+                <div class="carousel-text">
+                    <p>"You took the car on the day you told me it would be taken, you finished the job much ahead of time.
+                        I was more than happy that you kept me updated regularly.
+                        I knew it was in safe hands, now that I look at the car, I think its better than the original"</p>
+                    <span>- Ramesh, Entreprenuer</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6" style="margin-bottom:20px">
+                <div class="youtube" data-embed="QoCfrGcZk0A">
+                    <div class="play-button"></div>
+                </div>
+                <div class="carousel-text">
+                    <p>"Once the car came back, it came back as good as new. I think that was the real happy moment for me while using Bumper.
+                        It smelt new, it looked new - on the inside and the outside.
+                        I was planning on selling it. But, I am going to keep this car for a few more years now."</p>
+                    <span>- Chaitanya Adapa, VP Products, ngpay</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6" style="margin-bottom:20px">
+                <div class="youtube" data-embed="b9ybbk7Ox6g">
+                    <div class="play-button"></div>
+                </div>
+                <div class="carousel-text">
+                    <p>"Got it done, hassle free. Paid on the App.
+                        No visiting workshop. No following up 5 times and
+                        getting 5 ETAs - 1 ETA, 1 day, 1 time, Done!"
+                    </p>
+                    <span>- Preetham ,Sr. Hardware Engineer, Broadcom</span>
+                </div>
+            </div>
+        </div>
+        <div class="row hide-on-desktop">
+            <div class="col-xs-12 col-sm-6" >
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="youtube" data-embed="BWYG1T-L8NI">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="carousel-text">
+                            <p>"You took the car on the day you told me it would be taken, you finished the job much ahead of time.
+                                I was more than happy that you kept me updated regularly. I knew it was in safe hands, now that I look at the car, I think its better than the original"</p>
+                            <span>- Ramesh</span><br>
+                            <span>Entreprenuer</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="youtube" data-embed="QoCfrGcZk0A">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="carousel-text">
+                            <p>"Once the car came back, it came back as good as new.
+                                It smelt new, it looked new - on the inside and the outside.
+                                I was planning on selling it. But, I am going to keep this car for a few more years now."</p>
+                            <span>- Chaitanya Adapa</span><br>
+                            <span>VP Products, ngpay</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="youtube" data-embed="b9ybbk7Ox6g">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="carousel-text">
+                            <p>"Got it done, hassle free. Paid on the App.
+                                No visiting workshop. No following up 5 times and
+                                getting 5 ETAs - 1 ETA, 1 day, 1 time, Done!"
+                            </p>
+                            <span>- Preetham</span><br>
+                            <span>Sr. Hardware Engineer, Broadcom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="review-section">
+    <div class="container">
+        <div class="row">
+            <h2 class="facebook-heading"><img src="img/facebook_logo.svg" class="heading-review">REVIEWS FROM FACEBOOK</h2>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="reviews in crCtrl.review.slice(0,6)">
+                <div class="review-box">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img ng-src="{$reviews.img$}">
+                        </div>
+                        <div class="col-xs-5 review-name">
+                            <p>{$reviews.name$}</p>
+                        </div>
+                        <div class="col-xs-5 review-rating">
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=1,'star-light':reviews.rating<1}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=2,'star-light':reviews.rating<2}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=3,'star-light':reviews.rating<3}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=4,'star-light':reviews.rating<4}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=5,'star-light':reviews.rating<5}">star</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 review-comment">{$reviews.comment$}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h2 class="playstore-heading"><img src="img/playstore_logo.svg" class="heading-review">REVIEWS FROM PLAYSTORE</h2>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="reviews in crCtrl.review.slice(6,12)">
+                <div class="review-box">
+                    <div class="row">
+                        <div class="col-xs-2 ">
+                            <img ng-src="{$reviews.img$}">
+                        </div>
+                        <div class="col-xs-5 review-name">
+                            <p>{$reviews.name$}</p>
+                        </div>
+                        <div class="col-xs-5 review-rating">
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=1,'star-light':reviews.rating<1}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=2,'star-light':reviews.rating<2}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=3,'star-light':reviews.rating<3}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=4,'star-light':reviews.rating<4}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=5,'star-light':reviews.rating<5}">star</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 review-comment">{$reviews.comment$}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h2 class="appstore-heading"><img src="img/appstore_logo.svg" class="heading-review">REVIEWS FROM APPSTORE</h2>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="reviews in crCtrl.review.slice(12,15)">
+                <div class="review-box">
+                    <div class="row">
+                        <div class="col-xs-2 ">
+                            <img ng-src="{$reviews.img$}">
+                        </div>
+                        <div class="col-xs-5 review-name">
+                            <p>{$reviews.name$}</p>
+                        </div>
+                        <div class="col-xs-5 review-rating">
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=1,'star-light':reviews.rating<1}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=2,'star-light':reviews.rating<2}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=3,'star-light':reviews.rating<3}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=4,'star-light':reviews.rating<4}">star</i>
+                            <i class="material-icons" style="font-size:15px" ng-class="{'star-dark':reviews.rating>=5,'star-light':reviews.rating<5}">star</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 review-comment">{$reviews.comment$}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-strip1">
+    <div style="padding-left: 25px;padding-right: 25px">
+        <a href ="#" ui-sref="base.contactUs" style="text-align:center;text-decoration: none; display:block;color:#fff;margin-bottom: 15px">Our workshops in Bengaluru & Delhi</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 no-margin no-padding footer-mobile-sec1">
+                <a ui-sref="base.home" style="display: inline-block"><img class="lazy" data-original="img/footer_logo.svg" src="img/sample-loading.png" height="40" width="40">
+                    <span style="margin-left: 10px;">India’s first network of body repair workshops</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding download-app-footer">
+                <p style="text-align: center;">DOWNLOAD APP
+                    <a   analytics-on
+                         analytics-event="footer app link"
+                         analytics-category="footer" analytics-label="android app"
+                         href="https://play.google.com/store/apps/details?id=com.bumper.android&referrer=utm_source%3Dwebsite%2520%26utm_medium%3Dunknown%26utm_campaign%3Dandroid" target="_blank">
+                        <img src="img/Android_footer.svg" style="margin-left:8px">
+                    </a>
+                    <a analytics-on
+                       analytics-event="footer app link"
+                       analytics-category="footer" analytics-label="ios app"
+                       href="https://itunes.apple.com/app/apple-store/id1134862260?pt=118116317&ct=test_170717&mt=8"><img src="img/AppStore_footer.svg" style="margin-left:8px"></a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 no-margin no-padding">
+                <div class="footer-strip-sec2">
+                    <p style="border-right: solid 1px rgba(255,255,255,0.1);">+91 9108446586</p>
+                    <a style="border-right: solid 1px rgba(255,255,255,0.1);padding-right:5px;color: #fff;text-decoration: none" href="mailto:support@bumper.com" target="_top">support@bumper.com</a>
+                    <p style="padding-left: 5px">
+                        <a analytics-on analytics-event="Click- FB Button"
+                           analytics-category="Footer"
+                           href="https://www.facebook.com/HitBumper" target="_blank"><img src="img/footer_fb.svg"></a>
+                    </p>
+                    <p style="padding-left: 5px" >
+                        <a analytics-on analytics-event="Click- Twitter Button"
+                           analytics-category="Footer"
+                           href="https://www.twitter.com/HitBumper" target="_blank">
+                            <img src="img/footer_twit.svg">
+                        </a>
+                    </p >
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Linkedin Button"
+                            analytics-category="Footer"
+                            href="https://www.linkedin.com/company/bumper" target="_blank">
+                            <img src="img/footer_linked.svg">
+                        </a>
+                    </p>
+                    <p style="padding-left: 5px">
+                        <a  analytics-on analytics-event="Click- Youtube button"
+                            analytics-category="Footer"
+                            href="https://www.youtube.com/channel/UCAd8t8QH0Ft7QK8P1e4zUiQ?&ab_channel=Bumper" target="_blank">
+                            <img src="img/youtube.svg" width="22px">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <md-fab-speed-dial ng-if="!base.isDeviceMobile" ng-cloak="" md-open="crCtrl.isOpen" md-direction="{$base.selectedDirection$}"
+                   ng-class="base.selectedMode">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-raised"
+                   analytics-on analytics-event="close FAB icon clicked"
+                   analytics-category="CART Page">
+            <img src="img/TalkToUs.svg" ng-if="!crCtrl.isOpen" style="margin-left:inherit;margin-bottom:inherit">
+            <i class="material-icons" style="margin-top: 18px;" ng-if="crCtrl.isOpen">close</i>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button ng-click="base.requestCallback();"
+                   analytics-on analytics-event="phone icon clicked"
+                   analytics-category="CART Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #462b94;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">phone</i>
+        </md-button>
+        <md-button ng-click="base.userQuery();"
+                   analytics-on analytics-event="inquiry icon clicked"
+                   analytics-category="CART Page"
+                   href="#" class="md-fab md-raised"
+                   style="background-color: #5436a7;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);" >
+            <img src="img/SendEnquiry.svg">
+        </md-button>
+        <md-button
+                id="my-chat-link" href="#" class="custom_chat_button md-fab md-raised "
+                analytics-on analytics-event="chat icon clicked"
+                analytics-category="Home Page"
+                style="background-color: #7351d1;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);">
+            <i class="material-icons" style="margin-top: 18px;color:#fff">chat_bubble</i>
+        </md-button>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+-->
+<section class="footer-strip2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <span ><p style="border-right: solid 1px rgba(255,255,255,0.1);float: none">&copy; 2016 Bumper.com <p>
+                <p style="float: none">All rights reserved</p></span>
+            </div>
+        </div>
+    </div>
+</section>

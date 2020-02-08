@@ -1,0 +1,160 @@
+<!-- Wrapper-->
+<div id="wrapper" class="top-navigation">
+
+    <!-- Navigation -->
+    <div>
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="#" class="navbar-brand">Bumper</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav bumper-top-nav">
+                        <li><a ui-sref="base.dashboard" > Dashboard </a></li>
+                        <li uib-dropdown>
+                            <a href uib-dropdown-toggle> Scheduler <span class="caret"></span></a>
+                            <ul role="menu" uib-dropdown-menu>
+                                <li permission="['WorkshopScheduler']"><a ui-sref="base.workshopScheduler" > Workshop </a></li>
+                                <li><a ui-sref="base.crewDashboard" > Crew </a></li>
+                            </ul>
+                        </li>
+
+                        <li><a ui-sref="base.bookings" > Bookings </a></li>
+                        <li permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager','VASIncharge','MarketingTeam']"><a ui-sref="base.userInquiry" > Users Inquiries</a></li>
+                        <li uib-dropdown>
+                            <a href uib-dropdown-toggle> Users <span class="caret"></span></a>
+                            <ul role="menu" uib-dropdown-menu>
+                                <li permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager','MarketingTeam']"><a ui-sref="base.users" > Users </a></li>
+                                <li permission="['OpsAdmin','OpsManager']"><a ui-sref="base.notifyUsers" > Notify User </a></li>
+                            </ul>
+                        </li>
+                        <li uib-dropdown>
+                            <a href uib-dropdown-toggle> Others <span class="caret"></span></a>
+                            <ul role="menu" uib-dropdown-menu>
+                                <li><a ui-sref="base.partDocs" > Parts </a></li>
+                                <li permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager','DriverManager']"><a ui-sref="base.reports.followups.bookings" > Reports </a></li>
+                                <li permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager','MarketingTeam']"><a ui-sref="base.recordings" > Recordings </a></li>
+                                <li permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager','DriverManager','ViewOnlyBooking','MarketingTeam']"><a ui-sref="base.campaigns.allLeads" > Scratch Finder </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <form role="search" class="navbar-form-custom"
+                                  method="post"
+                                  ng-submit="baseCtrl.goToBooking()">
+                                <div class="form-group">
+                                    <input type="text"
+                                           placeholder="Go To Booking Id..."
+                                           class="form-control"
+                                           ng-model="baseCtrl.topSearchBookingId">
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <div style="width: 200px; padding: 10px 4px;">
+                                <select
+                                        multiple
+                                        chosen
+                                        ng-model="baseCtrl.baseFilters.cities"
+                                        ng-options="item as item.name for item in baseCtrl.cities track by item.id"
+                                        ng-change="baseCtrl.baseFiltersChanged()"
+                                        class="form-control"
+                                >
+                                </select>
+                            </div>
+                        </li>
+                        <li uib-dropdown="" class="dropdown">
+                            <a class="count-info" ui-sref="base.alerts">
+                                <i class="fa fa-bell"></i> <span class="label" ng-class="{'label-danger': baseCtrl.activeAlerts.length>0 }">{$ baseCtrl.activeAlerts.length $}</span>
+                            </a>
+                        </li>
+                        <li class="dropdown" uib-dropdown>
+                            <a class="dropdown-toggle count-info small" href="" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-secret"></i> {$ baseCtrl.currentUser.name $}
+                            </a>
+                            <ul class="dropdown-menu animated fadeInTop m-t-xs">
+                                <li><a ui-sref="base.changePassword">Change Password</a></li>
+                                <li><a ng-click="baseCtrl.logout()"><i class="fa fa-sign-out"></i> Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page wraper -->
+    <!-- ng-class with current state name give you the ability to extended customization your view -->
+    <div id="page-wrapper" class="gray-bg {$ $state.current.name $}" >
+
+
+        <!-- Main view  -->
+        <div ui-view></div>
+
+
+        <!--followup --- common -- window --- during call -->
+        <div class="small-chat-box ng-small-chat fadeInRight animated" ng-show="baseCtrl.openFolloupPopup" style="z-index: 99;overflow: scroll">
+            <div class="heading" draggable="true">
+                <small class="chat-date pull-right">
+                    ID - {$baseCtrl.followUpId$}
+                </small>
+                CALL FOLLOWUPS
+            </div>
+
+            <div class="content" chat-slim-scroll>
+                <ul ng-show="baseCtrl.errorMsgs.length>0" class="alert alert-danger">
+                    <li ng-repeat="item in baseCtrl.errorMsgs">{$ item $}</li>
+                </ul>
+                <form name="addFollowupForm" class="form-horizontal" role="form" method="post"  style="padding: 5px">
+                    <div class="form-group">
+                        <label for="notes" class=" control-label no-padding-right" style="padding-top: 0">Notes from Customer Talk:</label>
+                        <textarea ng-model="baseCtrl.modalItem.notes"  ng-focus="baseCtrl.updateNotes()"
+                                  ng-blur="baseCtrl.saveText()"
+                                  required class="input-sm col-xs-10" cols="20"
+                                  placeholder="Notes" rows="4" title="Notes from FollowUp" style="width: 100%"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label" style="padding-top: 0">Result:</label>
+                        <select
+                                ng-model="baseCtrl.modalItem.result"
+                                ng-options="item as item.name for item in baseCtrl.followupResults track by item.id"
+                                class="form-control input-sm"
+                                required
+                                name="result"
+                                title="result">
+                        </select>
+                    </div>
+                    <div class="form-group" ng-show="baseCtrl.modalItem.result.action_type==1">
+                        <label class="control-label">Next Followup Dt:</label>
+                        <div class="input-group">
+                            <input ng-model="baseCtrl.modalItem.nextFollowUpDt" type="text"
+                                   ng-required="baseCtrl.modalItem.result.action_type==1"
+                                   readonly="readonly" class=" input-sm form_datetime form-control">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn-primary" style="padding: 5px;border-radius: 5px;text-align: center;margin-left: auto;margin-right: auto;display: block;" ng-click="baseCtrl.submitFollowup()">Submit</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="small-chat" ng-click="baseCtrl.openFolloupPopup = !baseCtrl.openFolloupPopup" ng-if="baseCtrl.showFollowupButtomButton">
+            <a class="open-small-chat">
+                <span class="badge badge-warning pull-right" ng-if="!baseCtrl.openFolloupPopup">1</span>
+                <i class="fa fa-phone"></i>
+            </a>
+        </div>
+        <!-- Footer -->
+        <div ng-include="'views/common/footer.html'"></div>
+
+    </div>
+    <!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->
+

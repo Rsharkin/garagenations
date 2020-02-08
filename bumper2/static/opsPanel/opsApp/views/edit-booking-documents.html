@@ -1,0 +1,269 @@
+<h5>Document Details</h5>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive" >
+                            <thead>
+                            <tr>
+                                <th colspan="3" class="text-center">
+                                    <a href="#" class="product-name"> JOB CARDS</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Type</th>
+                                <th>Link</th>
+                                <th>Uploaded At</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.jobCards | filter:{ image_type: 1 }">
+                                <td>
+                                    <b ng-if="item.jobcard_type==1">while Pickup</b>
+                                    <b ng-if="item.jobcard_type==2">After Inspection</b>
+                                    <b ng-if="item.jobcard_type==3">By Workshop</b>
+                                    <b ng-if="item.jobcard_type>3">{$ item.jobcard_type $}</b>
+                                </td>
+                                <td>
+                                    <a ng-click="editBookingDocumentCtrl.openModal(item.media_url)" >Open</a>
+                                </td>
+                                <td>{$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product-desc">
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary" ng-click="editBookingCtrl.uploadBookingImage(1)"> Upload Job Card</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive" >
+                            <thead>
+                            <tr>
+                                <th colspan="3" class="text-center">
+                                    <a href="#" class="product-name"> HANDORVER SHEETS</a>
+                                    <div class="small m-t-xs">
+                                        Handover from Crew To Workshop Sheet
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Link</th>
+                                <th>Uploaded At</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.jobCards | filter:{ image_type: 2 }">
+                                <td>
+                                    <a ng-click="editBookingDocumentCtrl.openModal(item.media_url)" >Open</a>
+                                </td>
+                                <td>{$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product-desc">
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary" ng-click="editBookingCtrl.uploadBookingImage(2)">Upload Handover Sheet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive" >
+                            <thead>
+                            <tr>
+                                <th colspan="3" class="text-center">
+                                    <a href="#" class="product-name"> INSPECTION SHEETS</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Link</th>
+                                <th>Uploaded At</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.jobCards | filter:{ image_type: 4 }">
+                                <td>
+                                    <a ng-click="editBookingDocumentCtrl.openModal(item.media_url)" >Open</a>
+                                </td>
+                                <td>{$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product-desc">
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary" ng-click="editBookingCtrl.uploadBookingImage(4)">Upload Inspection Sheet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th colspan="4" class="text-center">
+                                    <a href="#" class="product-name">Inventory Checklist</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <th>Uploaded By</th>
+                                <th>Details</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.inventoryGroupWise">
+                                <td>
+                                    <span ng-if="item.hasItemsWithMismatch" class=" label label-danger">Mismatch</span>
+                                    <span ng-if="!item.hasItemsWithMismatch" class="label label-primary">Same as Initial</span>
+                                </td>
+                                <td> <small>{$ item.created_at | date:'medium' : '+0530' $} By: <b>{$ item.updated_by_name $}</b>, {$ item.updated_by_num $}</small></td>
+                                <td><a ng-click="editBookingDocumentCtrl.showChecklistItems(item.data, 'inventory')">Details</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th colspan="3" class="text-center">
+                                    <a href="#" class="product-name"> HANDORVER SHEETS</a>
+                                    <div class="small m-t-xs">
+                                        Handover from Workshop To Crew Sheet
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Link</th>
+                                <th>Uploaded At</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.jobCards | filter:{ image_type: 5 }">
+                                <td>
+                                    <a ng-click="editBookingDocumentCtrl.openModal(item.media_url)" >Open</a>
+                                </td>
+                                <td>{$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product-desc">
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary" ng-click="editBookingCtrl.uploadBookingImage(5)">Upload Handover Sheet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th colspan="4" class="text-center">
+                                    <a href="#" class="product-name">Electrical Checklist</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <th>Uploaded By</th>
+                                <th>Details</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.electricalGroupWise">
+                                <td>
+                                    <span ng-if="item.hasItemsWithMismatch" class=" label label-danger">Mismatch From Initial</span>
+                                    <span ng-if="!item.hasItemsWithMismatch" class=" label label-primary">Same As Initial</span>
+                                </td>
+                                <td> <small>{$ item.created_at | date:'medium' : '+0530' $} By: <b>{$ item.updated_by_name $}</b>, {$ item.updated_by_num $}</small></td>
+                                <td><a ng-click="editBookingDocumentCtrl.showChecklistItems(item.data, 'electrical')">Details</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div style="min-height: 175px">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th colspan="5" class="text-center">
+                                    <a href="#" class="product-name"> CAR PHOTOS</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Panel</th>
+                                <th>Link</th>
+                                <th>Status</th>
+                                <th>Ops Status</th>
+                                <th>Uploaded At</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.InteriorPhotosGroupWise">
+                                <td>Interiors</td>
+                                <td><span ng-repeat="m in item.media"><a ng-click="editBookingDocumentCtrl.openModal(m.media_url)">Open</a></span></td>
+                                <td>{$ item.status $}</td>
+                                <td>{$ item.ops_status $}</td>
+                                <td>{$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $} By: <b>{$ item.updated_by_details.name $}</b></td>
+                            </tr>
+                            <tr ng-repeat="item in editBookingDocumentCtrl.jobCards | filter:{ image_type: 3 }">
+                                <td>{$ item.panel.name $}</td>
+                                <td>
+                                    <a ng-click="editBookingDocumentCtrl.openModal(item.media_url)">Open</a>
+                                </td>
+                                <td>{$ item.status.status_desc $}</td>
+                                <td>{$ item.ops_status.ops_status_desc $}</td>
+                                <td>{$ item.created_at | date:'d MMMM yy HH:mm' : 'IST' $} By: <b>{$ item.updated_by.name $}</b></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product-desc">
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary" ng-click="editBookingCtrl.uploadBookingImage(3)">Upload Car Photos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

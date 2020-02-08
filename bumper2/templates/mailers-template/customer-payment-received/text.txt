@@ -1,0 +1,7 @@
+Hi {{ customer_name }},
+
+We have received the payment of amount {{ amt_paid }} for booking id {{ booking_id }}. Thank you for using Bumper Services.
+
+Do not hesitate to contact us in case of any queries, by either writing to us at bumpercare@bumper.com or call us on our customer care number {{ cc_num }}.
+
+Happy Driving !!

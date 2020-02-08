@@ -1,0 +1,329 @@
+id,car_type,name,name,segment
+9,4,Camry,Toyota,S3
+247,2,Corolla,Toyota,S2
+10,2,Corolla Altis,Toyota,S2
+1,2,Etios,Toyota,S1
+150,1,Etios Cross,Toyota,V2
+8,1,Etios Liva,Toyota,H2
+56,3,Fortuner,Toyota,SUV
+55,3,Innova,Toyota,V2
+334,3,Innova Crysta,Toyota,V2
+54,3,Land Cruiser,Toyota,LUXURY
+53,3,Land Cruiser Prado,Toyota,LUXURY
+329,3,Prado,Toyota,LUXURY
+251,2,Prius,Toyota,S3
+245,3,Qualis,Toyota,V2
+65,1,A-Star,Maruti Suzuki,H1
+118,1,Alto,Maruti Suzuki,H1
+3,1,Alto 800,Maruti Suzuki,H1
+4,1,Alto K10,Maruti Suzuki,H1
+158,2,Baleno,Maruti Suzuki,S1
+62,1,Celerio,Maruti Suzuki,H1
+66,2,Ciaz,Maruti Suzuki,S2
+5,2,Eeco,Maruti Suzuki,V1
+6,3,Ertiga,Maruti Suzuki,V1
+157,2,Esteem,Maruti Suzuki,S1
+24,3,Grand Vitara,Maruti Suzuki,SUV
+64,3,Gypsy,Maruti Suzuki,V2
+25,4,Kizashi,Maruti Suzuki,S3
+68,1,M800,Maruti Suzuki,H1
+185,1,New Baleno,Maruti Suzuki,H3
+26,1,Omni,Maruti Suzuki,V1
+27,1,Ritz,Maruti Suzuki,H2
+67,3,S Cross,Maruti Suzuki,V2
+28,1,Stingray,Maruti Suzuki,H1
+2,1,Swift,Maruti Suzuki,H2
+23,2,Swift Dzire,Maruti Suzuki,S1
+7,2,Swift Dzire Tour,Maruti Suzuki,S1
+63,2,SX4,Maruti Suzuki,S1
+156,3,Versa,Maruti Suzuki,V1
+191,3,Vitara Brezza,Maruti Suzuki,V2
+29,1,Wagon R,Maruti Suzuki,H1
+249,1,Zen,Maruti Suzuki,H1
+252,1,Zen Estilo,Maruti Suzuki,H1
+153,2,Accent,Hyundai,S1
+154,2,Accent Viva,Hyundai,S1
+146,3,Creta,Hyundai,V2
+11,2,Elantra,Hyundai,S3
+13,1,Eon,Hyundai,H1
+145,1,Getz,Hyundai,H2
+14,1,Grand i10,Hyundai,H2
+15,1,i10,Hyundai,H2
+16,1,i20,Hyundai,H2
+147,1,i20 Active,Hyundai,V2
+12,1,i20 Elite,Hyundai,H3
+17,3,Santa Fe,Hyundai,V3
+18,1,Santro Xing,Hyundai,H1
+255,1,Santro ZipDrive,Hyundai,H1
+19,2,Sonata ,Hyundai,S3
+261,2,Sonata Embera,Hyundai,S3
+20,2,Verna Fluidic,Hyundai,S2
+155,2,Verna Transform,Hyundai,S2
+21,2,Xcent,Hyundai,S1
+253,2,Ameo,Volkswagen,S1
+198,4,Beetel,Volkswagen,H3
+58,1,Cross Polo,Volkswagen,V2
+57,2,Jetta,Volkswagen,S3
+151,4,Passat,Volkswagen,S3
+60,1,Polo,Volkswagen,H2
+61,1,Polo GT,Volkswagen,H2
+59,2,Vento,Volkswagen,S2
+199,3,Aria,Tata,V2
+92,1,Bolt,Tata,H2
+42,1,Indica eV2,Tata,H1
+43,1,Indica Vista,Tata,H1
+331,1,Indica Vista VX Tech,Tata,H1
+44,2,Indigo eCS,Tata,S1
+45,2,Indigo Manza,Tata,S1
+187,2,Indigo Marina,Tata,V1
+46,1,Nano,Tata,H1
+330,1,Nano GenX,Tata,H1
+47,1,Nano Twist,Tata,H1
+48,3,Safari Dicor,Tata,SUV
+49,3,Safari Storme,Tata,SUV
+152,3,Sumo Gold,Tata,V1
+50,3,Sumo Grande,Tata,V1
+193,1,Tiago,Tata,H2
+51,2,Venture,Tata,V1
+256,2,Winger,Tata,V1
+201,3,Xenon XT,Tata,V2
+202,3,Xenon XT 4X4,Tata,V2
+91,2,Zest,Tata,H2
+102,2,Classic,Ford,S1
+104,3,Ecosport,Ford,V2
+106,3,Ecosport 1.0 Ecoboost,Ford,V2
+159,3,Endeavour,Ford,SUV
+160,3,Endeavour 4x4,Ford,SUV
+148,2,Fiesta,Ford,S2
+103,1,Figo,Ford,H2
+149,2,Figo Aspire,Ford,S1
+257,1,Fusion,Ford,H2
+248,2,Ikon,Ford,S1
+296,4,Mustang GT,Ford,S3
+128,4,1 Series,BMW,LUXURY
+129,4,3 Series Sedan,BMW,LUXURY
+130,4,5 Series 520d,BMW,LUXURY
+135,4,5 Series 530d,BMW,LUXURY
+131,4,6 Series Gran Coupe,BMW,LUXURY
+132,4,7 Series Sedan,BMW,LUXURY
+207,4,Gran Turismo,BMW,LUXURY
+215,4,i8,BMW,LUXURY
+133,4,M3 Sedan,BMW,LUXURY
+210,4,M4 Coupe,BMW,LUXURY
+211,4,M5 Sedan,BMW,LUXURY
+212,4,M6 Gran Coupe,BMW,LUXURY
+134,4,X1,BMW,LUXURY
+136,4,X3 20d,BMW,LUXURY
+137,4,X3 30d,BMW,LUXURY
+140,4,X5 AT,BMW,LUXURY
+213,4,X5 M Sedan,BMW,LUXURY
+139,4,X5 Sport AT,BMW,LUXURY
+141,4,X6,BMW,LUXURY
+214,4,X6 M Sedan,BMW,LUXURY
+209,4,Z4 Roadster,BMW,LUXURY
+164,4,A-Class,Mercedes-Benz,LUXURY
+236,4,AMG C 63 S,Mercedes-Benz,LUXURY
+235,4,AMG CLA 45,Mercedes-Benz,LUXURY
+227,4,AMG E 63,Mercedes-Benz,LUXURY
+228,4,AMG G 63,Mercedes-Benz,LUXURY
+229,4,AMG GL 63,Mercedes-Benz,LUXURY
+230,4,AMG GLA 45,Mercedes-Benz,LUXURY
+231,4,AMG GT S,Mercedes-Benz,LUXURY
+219,4,AMG S 63,Mercedes-Benz,LUXURY
+220,4,AMG S 63 Coupe,Mercedes-Benz,LUXURY
+225,4,AMG SLK 55,Mercedes-Benz,LUXURY
+165,4,B-Class,Mercedes-Benz,LUXURY
+166,4,C-Class,Mercedes-Benz,LUXURY
+167,4,CLA,Mercedes-Benz,LUXURY
+168,4,CLS Coupe,Mercedes-Benz,LUXURY
+226,4,E Class Cabriolet,Mercedes-Benz,LUXURY
+169,4,E-Class Saloon,Mercedes-Benz,LUXURY
+170,4,GL SUV,Mercedes-Benz,LUXURY
+171,4,GLA,Mercedes-Benz,LUXURY
+233,4,GLE 250 d 4MATIC,Mercedes-Benz,LUXURY
+234,4,GLE 350 d 4MATIC,Mercedes-Benz,LUXURY
+232,4,GLE Coupe 450 AMG,Mercedes-Benz,LUXURY
+172,4,M-Class,Mercedes-Benz,LUXURY
+217,4,Maybach S 500,Mercedes-Benz,LUXURY
+218,4,Maybach S 600,Mercedes-Benz,LUXURY
+221,4,S 500 Coupe,Mercedes-Benz,LUXURY
+216,4,S Class,Mercedes-Benz,LUXURY
+222,4,SLK 200 BlueEFFICIENCY,Mercedes-Benz,LUXURY
+223,4,SLK 250 BlueEFFICIENCY,Mercedes-Benz,LUXURY
+224,4,SLK 350 BlueEFFICIENCY,Mercedes-Benz,LUXURY
+73,4,A3 Carbiolet,Audi,LUXURY
+72,4,A3 Sedan,Audi,LUXURY
+74,4,A4 Sedan,Audi,LUXURY
+75,4,A6 Sedan,Audi,LUXURY
+119,4,A8 L,Audi,LUXURY
+120,4,Q3,Audi,LUXURY
+124,4,Q3 AWD,Audi,LUXURY
+121,4,Q5,Audi,LUXURY
+122,4,Q7,Audi,LUXURY
+241,4,R8 V10 Coupe,Audi,LUXURY
+243,4,R8 V10 Plus,Audi,LUXURY
+242,4,R8 V10 Spyder,Audi,LUXURY
+240,4,R8 V8 Coupe,Audi,LUXURY
+238,4,RS 6 Avant,Audi,LUXURY
+239,4,RS 7 Sportback,Audi,LUXURY
+123,4,RS5,Audi,LUXURY
+237,4,S5 Sportback,Audi,LUXURY
+125,4,S6,Audi,LUXURY
+244,4,TT Coupe,Audi,LUXURY
+174,2,Aveo,Chevrolet,S1
+175,1,Aveo U-VA,Chevrolet,H2
+77,1,Beat,Chevrolet,H1
+80,3,Captiva,Chevrolet,SUV
+83,2,Cruze,Chevrolet,S2
+81,3,Enjoy,Chevrolet,V1
+246,2,Optra,Chevrolet,S2
+262,1,Optra SRV,Chevrolet,S2
+78,1,Sail Hatchback,Chevrolet,H2
+79,2,Sail Sedan,Chevrolet,S1
+76,1,Spark,Chevrolet,H1
+82,3,Tavera,Chevrolet,V1
+203,3,Trailblazer,Chevrolet,SUV
+126,1,Go,Datsun,H1
+127,1,Go+,Datsun,V1
+254,1,Redi Go,Datsun,H1
+84,3,Bolero,Mahindra,V1
+195,3,KUV100,Mahindra,H2
+200,3,NuvoSport,Mahindra,V2
+90,3,Quanto,Mahindra,V2
+85,1,Reva e2o,Mahindra,H2
+86,3,Scorpio,Mahindra,V2
+189,3,thar,Mahindra,V2
+178,3,Thar,Mahindra,V2
+194,3,TUV 300,Mahindra,V2
+87,2,Verito,Mahindra,S1
+196,1,Verito Vibe,Mahindra,H2
+89,3,XUV 500,Mahindra,V2
+88,3,Xylo,Mahindra,V1
+30,4,370 Z,Nissan,S3
+31,3,Evalia,Nissan,V2
+258,4,GT-R,Nissan,S3
+33,1,Micra,Nissan,H2
+32,1,Micra Active,Nissan,H2
+34,2,Sunny,Nissan,S2
+259,2,Sunny Diesel XV,Nissan,S2
+186,4,Teana,Nissan,S3
+36,3,Terrano,Nissan,V2
+138,3,Terrano 110PS,Nissan,V2
+37,3,X Trail,Nissan,SUV
+71,3,Duster,Renault,V2
+96,3,Duster 110PS,Renault,V2
+97,3,Duster AWD,Renault,V2
+93,2,Fluence,Renault,S3
+94,3,Koleos,Renault,SUV
+99,3,Koleos 4WD,Renault,SUV
+197,1,Kwid,Renault,H1
+98,3,Lodgy 110PS,Renault,V2
+95,3,Lodgy 85PS,Renault,V2
+335,3,Lodgy Stepway,Renault,V2
+336,2,Logan,Renault,S1
+69,1,Pulse,Renault,H2
+70,2,Scala,Renault,S2
+100,1,Fabia,Skoda,H3
+188,2,Laura,Skoda,S2
+177,2,Octavia,Skoda,S3
+38,2,Octavia,Skoda,S3
+39,2,Rapid,Skoda,S2
+40,2,Superb,Skoda,S3
+41,3,Yeti,Skoda,V3
+101,3,Yeti 4X4,Skoda,V3
+205,1,Abarth 595,Fiat,H3
+204,1,Abarth Punto,Fiat,H3
+109,1,Avventura,Fiat,V2
+108,2,Linea,Fiat,S2
+161,2,Linea Classic,Fiat,S2
+173,1,Palio,Fiat,H2
+107,1,Punto,Fiat,H3
+117,1,Punto 90HP,Fiat,H3
+162,1,Punto Evo,Fiat,H3
+163,1,Punto Evo 90HP,Fiat,H3
+206,1,Punto Pure,Fiat,H3
+144,4,Accord,Honda,S3
+114,2,Amaze,Honda,S1
+260,3,BR-V,Honda,V2
+112,1,Brio,Honda,H2
+110,2,City,Honda,S2
+143,2,Civic,Honda,S2
+113,3,CR-V,Honda,SUV
+116,1,CR-V 4WD,Honda,SUV
+111,1,Jazz,Honda,H3
+115,3,Mobilio,Honda,V1
+142,1,Default Car,Default,
+179,2,Cedia,Mitsubishi,S2
+180,2,Challenger,Mitsubishi,SUV
+181,2,Lancer,Mitsubishi,S2
+182,4,Montero,Mitsubishi,SUV
+184,4,Outlander,Mitsubishi,SUV
+183,4,Pajero Sports,Mitsubishi,SUV
+190,3,Rexton,Ssangyong,SUV
+265,3,D Max,Isuzu,V1
+263,3,D Max V Cross,Isuzu,V1
+264,3,MU7,Isuzu,SUV
+268,4,S 60,Volvo,LUXURY
+269,4,S 60 Cross Country,Volvo,LUXURY
+270,4,S 80,Volvo,LUXURY
+266,4,V 40,Volvo,LUXURY
+267,4,V 40 Cross Country,Volvo,LUXURY
+271,4,XC 60,Volvo,LUXURY
+272,4,XC 90,Volvo,LUXURY
+333,4,F Type Coupe,Jaguar,LUXURY
+308,4,F Type Roadster,Jaguar,LUXURY
+273,4,XE,Jaguar,LUXURY
+274,4,XF,Jaguar,LUXURY
+275,4,XJ L,Jaguar,LUXURY
+332,4,XK,Jaguar,LUXURY
+279,4,Discovery 4,Land Rover,LUXURY
+277,4,Discovery Sport,Land Rover,LUXURY
+276,4,Freelander 2,Land Rover,LUXURY
+281,4,Range Rover 4,Land Rover,LUXURY
+278,4,Range Rover Evoque,Land Rover,LUXURY
+280,4,Range Rover Sport,Land Rover,LUXURY
+282,4,Mini Cooper 3 Door,Mini,LUXURY
+283,4,Mini Cooper 5 Door,Mini,LUXURY
+284,4,Mini Cooper Convertible,Mini,LUXURY
+285,4,Mini Countryman,Mini,LUXURY
+286,3,Force One,Force,V1
+287,3,Gurkha,Force,V1
+288,3,Trax Cruiser ,Force,V1
+289,3,Exteme,ICML,V1
+295,4,911,Porsche,LUXURY
+291,4,Boxster,Porsche,LUXURY
+292,4,Cayenne,Porsche,LUXURY
+293,4,Cayman,Porsche,LUXURY
+290,4,Macan,Porsche,LUXURY
+294,4,Panamera,Porsche,LUXURY
+299,4,458,Ferrari,LUXURY
+300,4,458 Speciale,Ferrari,LUXURY
+298,4,488 GTB,Ferrari,LUXURY
+297,4,California T,Ferrari,LUXURY
+302,4,F12 Berlinetta,Ferrari,LUXURY
+301,4,FF,Ferrari,LUXURY
+303,4,Aventador ,Lamborghini,LUXURY
+304,4,Aventador Roadster,Lamborghini,LUXURY
+306,4,Gallardo,Lamborghini,LUXURY
+305,4,Huracan,Lamborghini,LUXURY
+307,4,Murcielago,Lamborghini,LUXURY
+309,4,DB9 Coupe,Aston Martin,LUXURY
+310,4,DB9 Volante,Aston Martin,LUXURY
+316,4,Rapide,Aston Martin,LUXURY
+313,4,V12 Vantage,Aston Martin,LUXURY
+311,4,V8 Vantage Coupe,Aston Martin,LUXURY
+312,4,V8 Vantage Roadster,Aston Martin,LUXURY
+314,4,V8 Vantage S Coupe,Aston Martin,LUXURY
+315,4,Vanquish V12,Aston Martin,LUXURY
+322,4,Bentayga,Bentley,LUXURY
+321,4,Continental Flying Spur W12,Bentley,LUXURY
+317,4,Continental GT,Bentley,LUXURY
+319,4,Continental GT V8,Bentley,LUXURY
+318,4,Continental GTC,Bentley,LUXURY
+320,4,Continental GTC V8,Bentley,LUXURY
+323,4,Mulsanne,Bentley,LUXURY
+328,4,Dawn Convertible,Rolls Royce,LUXURY
+327,4,Ghost Series,Rolls Royce,LUXURY
+324,4,Phantom Coupe Series ,Rolls Royce,LUXURY
+325,4,Phantom Drophead Series,Rolls Royce,LUXURY
+326,4,Phantom Series EWB,Rolls Royce,LUXURY

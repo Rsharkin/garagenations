@@ -1,0 +1,160 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Booking ID: <b>{$ editBookingCtrl.booking.id $}</b></h5>
+                    <div class="ibox-tools">
+                        <a
+                                class="btn btn-danger btn-xs"
+                                ng-if="editBookingCtrl.booking.rework_booking"
+                                ui-sref="base.bookings.editBooking.summary({bookingId:editBookingCtrl.booking.rework_booking})"
+                                target="_blank" style="color:white"
+                        >
+                            Rework of: {$ editBookingCtrl.booking.rework_booking $}
+                        </a>
+                        <a
+                                class="btn btn-danger btn-xs"
+                                ng-if="editBookingCtrl.hasRework"
+                                style="color:white"
+                        >
+                            Has Rework
+                        </a>
+                        <a
+                                class="btn btn-danger btn-xs"
+                                ng-if="editBookingCtrl.booking.return_reason.id"
+                                style="color:white"
+                        >
+                            Car Returned Without Work
+                        </a>
+                        <a
+                                class="btn btn-primary btn-xs dim"
+                                ui-sref="base.users.editUser({'userId':editBookingCtrl.booking.user})"
+                                target="_blank"
+                        >
+                            <i class="fa fa-user"></i>
+                            {$ editBookingCtrl.user.name $}
+                            ( {$ editBookingCtrl.user.formatedPhone $} - {$ editBookingCtrl.user.email $} ),
+                            CREDITS: &#8377;<span ng-if="editBookingCtrl.user.user_credit">{$ editBookingCtrl.user.user_credit $}</span>
+                            <span ng-if="!editBookingCtrl.user.user_credit"> 0 </span>
+                        </a>
+                        <a
+                                class="btn btn-primary btn-xs dim"
+                                ui-sref="base.users.editUserCar({'userCarId':editBookingCtrl.userCar.id})"
+                                target="_blank"
+                        >
+                            <i class="fa fa-car"></i> {$ editBookingCtrl.userCar.car_model.name $} - {$ editBookingCtrl.userCar.color $}
+                        </a>
+                        <a ng-if="editBookingCtrl.userInquiries.length >0">
+                            <div class="btn-group dropdown" uib-dropdown="">
+                                <button type="button" class="btn btn-info btn-xs dropdown-toggle" uib-dropdown-toggle="">
+                                    User Inquiries <span class="caret"></span>
+                                </button>
+                                <ul role="menu" uib-dropdown-menu="" class="dropdown-menu">
+                                    <li ng-repeat="item in editBookingCtrl.userInquiries">
+                                        <a ui-sref="base.userInquiry.editUserInquiry({userInquiryId:item.id})" target="_blank">
+                                            <div>{$ item.id $} - {$ editBookingCtrl.inquiryStatus[item.status] $}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                        <span class="label label-info pull-right">{$ editBookingCtrl.userDevices $}</span>
+                        <!--<button class="btn btn-xs btn-link" ui-sref="base.userCarExtraDetails({bookingId:editBookingCtrl.booking.id,userCarId:editBookingCtrl.booking.usercar})">Add Extra Details</button>-->
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <h5>Booking Status: <strong>{$ editBookingCtrl.booking.status.status $}</strong></h5>
+                            <h5 class="pull-right">
+                                <label class="label label-info" ng-if="editBookingCtrl.booking.is_doorstep">At Doorstep</label>
+                                <label class="label label-info" ng-if="!editBookingCtrl.booking.is_doorstep">For Pickup</label>
+                            </h5>
+                            <h5 class="pull-right" ng-if="editBookingCtrl.booking.booking_rework.length>0">
+                                <div class="btn-group dropdown" uib-dropdown="">
+                                    <button type="button" class="btn btn-danger btn-xs dropdown-toggle" uib-dropdown-toggle="">
+                                        Reworks of this Booking <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" uib-dropdown-menu="" class="dropdown-menu">
+                                        <li ng-repeat="item in editBookingCtrl.booking.booking_rework">
+                                            <a ui-sref="base.bookings.editBooking.summary({bookingId:item})" target="_blank">
+                                                <div>{$ item $}</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </h5>
+                            <h5 class="pull-right" ng-if="editBookingCtrl.flagTypes.length>0">
+                                <div class="btn-group dropdown" uib-dropdown="">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" uib-dropdown-toggle="">
+                                        Flag This Booking! <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" uib-dropdown-menu="" class="dropdown-menu">
+                                        <li ng-repeat="item in editBookingCtrl.availableFlags">
+                                            <a ng-click="editBookingCtrl.addBookingFlag(item.id)">
+                                                <div>{$ item.name $}</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </h5>
+                        </div>
+                        <div class="row"><h5>Ops Status: <strong>{$ editBookingCtrl.booking.ops_status.ops_status $}</strong></h5></div>
+
+                        <ul class="connectList agile-list">
+                            <li class="danger-element" ng-repeat="item in editBookingCtrl.booking.booking_flag">
+                                <i class="fa fa-flag text-danger"></i> <b>{$ item.flag_type.name $}:</b>
+                                <span>
+                                    {$ item.reason $} <small>(Added: <i class="fa fa-clock-o"></i> {$ item.created_at | date:'d-MMMM-yy HH:mm' : 'IST' $})</small>
+                                    <a ng-click="editBookingCtrl.removeBookingFlag(item.id)" class="btn btn-outline btn-link btn-success btn-xs" permission="['OpsAdmin']">Remove</a>
+                                </span>
+                            </li>
+                            <li class="danger-element" ng-if="editBookingCtrl.booking.return_reason.id">
+                                <b>Reason For Car Returned Without Work:</b> <span>{$ editBookingCtrl.booking.return_reason.reason $}</span>
+                            </li>
+                        </ul>
+                        <div ui-view="">
+                            <div class="tabs-container">
+                                <uib-tabset>
+                                    <uib-tab heading="Summary" ui-sref="base.bookings.editBooking.summary" ui-sref-active="active">
+                                        <div class="panel-body" ui-view="summary"></div>
+                                    </uib-tab>
+                                    <uib-tab ng-if="!editBookingCtrl.booking.is_doorstep" ui-sref="base.bookings.editBooking.pickup" heading="Pickup">
+                                        <div class="panel-body" ui-view="pickup"></div>
+                                    </uib-tab>
+                                    <uib-tab ng-if="!editBookingCtrl.booking.is_doorstep" ui-sref="base.bookings.editBooking.workshop" heading="Workshop">
+                                        <div class="panel-body" ui-view="workshop"></div>
+                                    </uib-tab>
+                                    <uib-tab ng-if="!editBookingCtrl.booking.is_doorstep" ui-sref="base.bookings.editBooking.drop" heading="Drop">
+                                        <div class="panel-body" ui-view="drop"></div>
+                                    </uib-tab>
+                                    <uib-tab ng-if="editBookingCtrl.booking.is_doorstep" ui-sref="base.bookings.editBooking.doorstep" heading="Service at Door Step">
+                                        <div class="panel-body" ui-view="doorstep"></div>
+                                    </uib-tab>
+                                    <uib-tab ui-sref="base.bookings.editBooking.billing" heading="Invoice & Payments">
+                                        <div class="panel-body" ui-view="billing"></div>
+                                    </uib-tab>
+                                    <uib-tab ui-sref="base.bookings.editBooking.coupons" heading="Discounts & Coupons">
+                                        <div permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager']" class="panel-body" ui-view="coupons"></div>
+                                    </uib-tab>
+                                    <uib-tab ui-sref="base.bookings.editBooking.documents" heading="Documents">
+                                        <div class="panel-body" ui-view="documents"></div>
+                                    </uib-tab>
+                                    <uib-tab ui-sref="base.bookings.editBooking.feedback" heading="Feedback">
+                                        <div permission="['OpsAdmin','OpsManager','Caller','CityCallCenterManager', 'WorkshopManager', 'WorkshopAssistantManager']" class="panel-body" ui-view="feedback"></div>
+                                    </uib-tab>
+                                    <uib-tab ui-sref="base.bookings.editBooking.notifications" heading="Notifications Sent">
+                                        <div class="panel-body" ui-view="notifications"></div>
+                                    </uib-tab>
+                                    <uib-tab ui-sref="base.bookings.editBooking.history" heading="History">
+                                        <div class="panel-body" ui-view="history"></div>
+                                    </uib-tab>
+                                </uib-tabset>
+                            </div>
+                        </div>
+                        <div ui-view="pickupJobCard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

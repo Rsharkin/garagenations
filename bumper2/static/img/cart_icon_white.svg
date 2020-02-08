@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>cart_icon_white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="CustomerReviews" transform="translate(-253.000000, -20.000000)" fill="#FFFFFF">
+            <g id="header" transform="translate(13.828125, 4.500000)">
+                <g id="Icons" transform="translate(239.171875, 11.500000)">
+                    <g id="cart_icon_white" transform="translate(0.000000, 4.000000)">
+                        <path d="M4.8,12.8 C3.92,12.8 3.208,13.52 3.208,14.4 C3.208,15.28 3.92,16 4.8,16 C5.68,16 6.4,15.28 6.4,14.4 C6.4,13.52 5.68,12.8 4.8,12.8 L4.8,12.8 Z M0,0 L0,1.6 L1.6,1.6 L4.48,7.672 L3.4,9.632 C3.272,9.856 3.2,10.12 3.2,10.4 C3.2,11.28 3.92,12 4.8,12 L14.4,12 L14.4,10.4 L5.136,10.4 C5.024,10.4 4.936,10.312 4.936,10.2 L4.96,10.104 L5.68,8.8 L11.64,8.8 C12.24,8.8 12.768,8.472 13.04,7.976 L15.904,2.784 C15.968,2.672 16,2.536 16,2.4 C16,1.96 15.64,1.6 15.2,1.6 L3.368,1.6 L2.616,0 L0,0 L0,0 Z M12.8,12.8 C11.92,12.8 11.208,13.52 11.208,14.4 C11.208,15.28 11.92,16 12.8,16 C13.68,16 14.4,15.28 14.4,14.4 C14.4,13.52 13.68,12.8 12.8,12.8 L12.8,12.8 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
